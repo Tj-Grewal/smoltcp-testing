@@ -1,0 +1,8 @@
+[package]
+name = "safety_suite"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+smoltcp = { path = "../../.." }

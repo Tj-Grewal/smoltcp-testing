@@ -1,0 +1,824 @@
+info: cargo-llvm-cov currently setting cfg(coverage); you can opt-out it by passing --no-cfg-coverage
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling libc v0.2.184
+   Compiling stable_deref_trait v1.2.1
+   Compiling cfg-if v1.0.4
+   Compiling memchr v2.8.0
+   Compiling writeable v0.5.5
+   Compiling litemap v0.7.5
+   Compiling icu_locid_transform_data v1.5.1
+   Compiling semver v1.0.27
+   Compiling futures-sink v0.3.32
+   Compiling syn v2.0.117
+   Compiling icu_properties_data v1.5.1
+   Compiling zerocopy v0.8.48
+   Compiling futures-core v0.3.32
+   Compiling futures-channel v0.3.32
+   Compiling rustc_version v0.4.1
+   Compiling rustix v1.1.4
+   Compiling tinyvec_macros v0.1.1
+   Compiling icu_normalizer_data v1.5.1
+   Compiling syn v1.0.109
+   Compiling futures-io v0.3.32
+   Compiling futures-task v0.3.32
+   Compiling slab v0.4.12
+   Compiling getrandom v0.4.2
+   Compiling pin-project-lite v0.2.17
+   Compiling synstructure v0.13.2
+   Compiling tinyvec v1.11.0
+   Compiling rstest_macros v0.17.0
+   Compiling getrandom v0.2.17
+   Compiling aho-corasick v1.1.4
+   Compiling zerofrom-derive v0.1.7
+   Compiling yoke-derive v0.7.5
+   Compiling zerovec-derive v0.10.3
+   Compiling displaydoc v0.2.5
+   Compiling zerofrom v0.1.7
+   Compiling yoke v0.7.5
+   Compiling icu_provider_macros v1.5.0
+   Compiling futures-macro v0.3.32
+   Compiling regex-syntax v0.8.10
+   Compiling bitflags v2.11.0
+   Compiling linux-raw-sys v0.12.1
+   Compiling zerovec v0.10.4
+   Compiling futures-util v0.3.32
+   Compiling tinystr v0.7.6
+   Compiling icu_locid v1.5.0
+   Compiling icu_collections v1.5.0
+   Compiling icu_provider v1.5.0
+   Compiling icu_locid_transform v1.5.0
+   Compiling futures-executor v0.3.32
+   Compiling regex-automata v0.4.14
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_core v0.6.4
+   Compiling icu_properties v1.5.1
+   Compiling unicode-normalization v0.1.25
+   Compiling utf16_iter v1.0.5
+   Compiling smallvec v1.15.1
+   Compiling byteorder v1.5.0
+   Compiling utf8_iter v1.0.4
+   Compiling once_cell v1.21.4
+   Compiling unicode-bidi v0.3.18
+   Compiling fastrand v2.3.0
+   Compiling heapless v0.9.2
+   Compiling write16 v1.0.0
+   Compiling percent-encoding v2.3.2
+   Compiling form_urlencoded v1.2.2
+   Compiling icu_normalizer v1.5.0
+   Compiling tempfile v3.27.0
+   Compiling idna v0.5.0
+   Compiling hash32 v0.3.1
+   Compiling regex v1.12.3
+   Compiling rand_chacha v0.3.1
+   Compiling futures v0.3.32
+   Compiling console v0.16.3
+   Compiling is-terminal v0.4.17
+   Compiling unicode-width v0.2.2
+   Compiling futures-timer v3.0.3
+   Compiling smoltcp v0.12.0 (/mnt/c/Users/TJ/Desktop/smoltcp-main-1)
+   Compiling termcolor v1.4.1
+   Compiling similar v2.7.0
+   Compiling humantime v2.3.0
+   Compiling log v0.4.29
+   Compiling env_logger v0.10.2
+   Compiling insta v1.47.2
+   Compiling getopts v0.2.24
+   Compiling rand v0.8.5
+   Compiling url v2.5.2
+   Compiling rstest v0.17.0
+   Compiling idna v1.0.1
+   Compiling bitflags v1.3.2
+   Compiling managed v0.8.0
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 52.28s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/smoltcp-9629e61e703a569b)
+
+running 648 tests
+test iface::fragmentation::tests::packet_assembler_set ... ok
+test iface::fragmentation::tests::packet_assembler_out_of_order_assemble ... ok
+test iface::fragmentation::tests::packet_assembler_assemble ... ok
+test iface::fragmentation::tests::packet_assembler_set_assembling_many ... ok
+test iface::fragmentation::tests::packet_assembler_set_full ... ok
+test iface::fragmentation::tests::packet_assembler_overlap ... ok
+test iface::interface::tests::ipv4::get_source_address_empty_interface::case_1 ... ok
+test iface::interface::tests::ipv4::get_source_address::case_1 ... ok
+test iface::interface::tests::ipv4::get_source_address::case_2 ... ok
+test iface::interface::tests::ipv4::get_source_address_empty_interface::case_2 ... ok
+test iface::interface::tests::ipv4::test_any_ip_accept_arp::case_1 ... ok
+test iface::interface::tests::ipv4::test_handle_ipv4_broadcast::case_1 ... ok
+test iface::interface::tests::ipv4::test_arp_flush_after_update_ip::case_1 ... ok
+test iface::interface::tests::ipv4::test_handle_ipv4_broadcast::case_2 ... ok
+test iface::interface::tests::ipv4::test_handle_igmp::case_1 ... ok
+test iface::interface::tests::ipv4::test_handle_igmp::case_2 ... ok
+test iface::interface::tests::ipv4::test_handle_valid_arp_request::case_1 ... ok
+test iface::interface::tests::ipv4::test_handle_other_arp_request::case_1 ... ok
+test iface::interface::tests::ipv4::test_icmp_error_no_payload::case_2 ... ok
+test iface::interface::tests::ipv4::test_icmp_error_no_payload::case_1 ... ok
+test iface::interface::tests::ipv4::test_icmp_error_port_unreachable::case_1 ... ok
+test iface::interface::tests::ipv4::test_icmp_reply_size::case_2 ... ok
+test iface::interface::tests::ipv4::test_icmp_error_port_unreachable::case_2 ... ok
+test iface::interface::tests::ipv4::test_icmp_reply_size::case_1 ... ok
+test iface::interface::tests::ipv4::test_ipv4_fragment_size ... ok
+test iface::interface::tests::ipv4::test_local_subnet_broadcasts::case_2 ... ok
+test iface::interface::tests::ipv4::test_local_subnet_broadcasts::case_1 ... ok
+test iface::interface::tests::ipv4::test_icmpv4_socket::case_2 ... ok
+test iface::interface::tests::ipv4::test_icmpv4_socket::case_1 ... ok
+test iface::interface::tests::ipv4::test_no_icmp_no_unicast::case_1 ... ok
+test iface::interface::tests::ipv4::test_no_icmp_no_unicast::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_no_reply_tcp::case_1 ... ok
+test iface::interface::tests::ipv4::test_packet_len::case_1 ... ok
+test iface::interface::tests::ipv4::test_packet_len::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_no_reply_udp::case_1 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_no_reply_udp::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_no_reply_tcp::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_rx_fragmentation::case_1 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_rx_fragmentation::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_tx_fragmentation::case_1 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_tx_fragmentation::case_2 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_with_udp_socket::case_1 ... ok
+test iface::interface::tests::ipv4::test_raw_socket_with_udp_socket::case_2 ... ok
+test iface::interface::tests::ipv6::get_source_address ... ok
+test iface::interface::tests::ipv6::any_ip::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::any_ip::case_1_ip ... ok
+test iface::interface::tests::ipv6::any_ip::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::get_source_address_empty_interface ... ok
+test iface::interface::tests::ipv6::hop_by_hop_discard_with_icmp::case_1_ip ... ok
+test iface::interface::tests::ipv6::get_source_address_only_link_local ... ok
+test iface::interface::tests::ipv6::hop_by_hop_discard_param_problem::case_1_ip ... ok
+test iface::interface::tests::ipv6::hop_by_hop_discard_with_icmp::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::hop_by_hop_discard_with_icmp::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::hop_by_hop_discard_with_multicast::case_1_ip ... ok
+test iface::interface::tests::ipv6::hop_by_hop_skip_with_icmp::case_1_ip ... ok
+test iface::interface::tests::ipv6::hop_by_hop_skip_with_icmp::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::hop_by_hop_skip_with_icmp::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::icmp_echo_reply_as_input::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::icmp_echo_reply_as_input::case_1_ip ... ok
+test iface::interface::tests::ipv6::icmp_echo_reply_as_input::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::icmp_echo_request::case_1_ip ... ok
+test iface::interface::tests::ipv6::icmp_echo_request::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::icmp_echo_request::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::imcp_empty_echo_request::case_1_ip ... ok
+test iface::interface::tests::ipv6::imcp_empty_echo_request::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::imcp_empty_echo_request::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::multicast_source_address::case_1_ip ... ok
+test iface::interface::tests::ipv6::multicast_source_address::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::multicast_source_address::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::ndisc_neighbor_advertisement_ethernet::case_1_ethernet ... ok
+test iface::interface::tests::ipv6::ndisc_neighbor_advertisement_ethernet_multicast_addr::case_1_ethernet ... ok
+test iface::interface::tests::ipv6::ndisc_neighbor_advertisement_ieee802154::case_1_ieee802154 ... ok
+test iface::interface::tests::ipv6::test_icmp_reply_size::case_1 ... ok
+test iface::interface::tests::ipv6::test_handle_valid_ndisc_request::case_1 ... ok
+test iface::interface::tests::ipv6::test_handle_valid_multicast_query::case_1 ... ok
+test iface::interface::tests::ipv6::test_icmp_reply_size::case_3 ... ok
+test iface::interface::tests::ipv6::test_icmp_reply_size::case_2 ... ok
+test iface::interface::tests::ipv6::test_join_ipv6_multicast_group::case_1 ... ok
+test iface::interface::tests::ipv6::test_join_ipv6_multicast_group::case_2 ... ok
+test iface::interface::tests::ipv6::test_router_advertisement::case_1 ... ok
+test iface::interface::tests::ipv6::test_solicited_node_addrs::case_1 ... ok
+test iface::interface::tests::ipv6::test_solicited_node_addrs::case_2 ... ok
+test iface::interface::tests::ipv6::test_solicited_node_addrs::case_3 ... ok
+test iface::interface::tests::ipv6::test_solicited_node_multicast_autojoin::case_1 ... ok
+test iface::interface::tests::ipv6::unknown_proto::case_1_ip ... ok
+test iface::interface::tests::ipv6::unknown_proto::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::unknown_proto::case_3_ieee802154 ... ok
+test iface::interface::tests::ipv6::unknown_proto_with_multicast_dst_address::case_1_ip ... ok
+test iface::interface::tests::ipv6::unknown_proto_with_multicast_dst_address::case_2_ethernet ... ok
+test iface::interface::tests::ipv6::unknown_proto_with_multicast_dst_address::case_3_ieee802154 ... ok
+test iface::interface::tests::sixlowpan::test_echo_request_sixlowpan_128_bytes ... ok
+test iface::interface::tests::sixlowpan::ieee802154_wrong_pan_id::case_1_ieee802154 ... ok
+test iface::interface::tests::sixlowpan::icmp_echo_request::case_1_ieee802154 ... ok
+test iface::interface::tests::tcp_not_accepted ... ok
+test iface::interface::tests::sixlowpan::test_sixlowpan_udp_with_fragmentation ... ok
+test iface::interface::tests::test_handle_udp_broadcast::case_1_ip ... ok
+test iface::interface::tests::test_handle_udp_broadcast::case_2_ethernet ... ok
+test iface::interface::tests::test_handle_udp_broadcast::case_3_ieee802154 ... ok
+test iface::neighbor::test::test_evict ... ok
+test iface::neighbor::test::test_expire ... ok
+test iface::neighbor::test::test_fill ... ok
+test iface::neighbor::test::test_flush ... ok
+test iface::neighbor::test::test_hush ... ok
+test iface::neighbor::test::test_replace ... ok
+test iface::slaac::test::test_ra_expire ... ok
+test iface::route::test::test_fill ... ok
+test iface::slaac::test::test_route ... ok
+test iface::slaac::test::test_ra_state ... ok
+test iface::slaac::test::test_route_valid ... ok
+test iface::slaac::test::test_solicitation ... ok
+test parsers::test::test_cidr_ipv4 ... ok
+test parsers::test::test_endpoint_ipv4 ... ok
+test parsers::test::test_endpoint_ipv6 ... ok
+test parsers::test::test_ip_ipv4 ... ok
+test parsers::test::test_ip_ipv6 ... ok
+test parsers::test::test_mac ... ok
+test phy::tracer::tests::test_tracer ... ok
+test parsers::test::test_cidr_ipv6 ... ok
+test phy::tracer::tests::test_tracer_packet_display_ip ... ok
+test socket::dhcpv4::test::test_bind::case_1_ip ... ok
+test phy::tracer::tests::test_tracer_packet_display_ether ... ok
+test socket::dhcpv4::test::test_bind_different_ports::case_1_ip ... ok
+test socket::dhcpv4::test::test_discover_retransmit::case_1_ip ... ok
+test socket::dhcpv4::test::test_min_max_renew_timeout::case_1_ip ... ok
+test socket::dhcpv4::test::test_renew::case_1_ip ... ok
+test socket::dhcpv4::test::test_renew_nak::case_1_ip ... ok
+test socket::dhcpv4::test::test_renew_rebind_retransmit::case_1_ip ... ok
+test socket::dhcpv4::test::test_renew_rebind_timeout::case_1_ip ... ok
+test socket::dhcpv4::test::test_request_nak::case_1_ip ... ok
+test socket::dhcpv4::test::test_request_retransmit::case_1_ip ... ok
+test socket::dhcpv4::test::test_request_timeout::case_1_ip ... ok
+test socket::icmp::test_ipv4::test_accept_bad_id::case_1_ethernet ... ok
+test socket::icmp::test_ipv4::test_accepts_udp::case_1_ethernet ... ok
+test socket::icmp::test_ipv4::test_recv_process::case_1_ethernet ... ok
+test socket::icmp::test_ipv4::test_send_dispatch::case_1_ethernet ... ok
+test socket::icmp::test_ipv4::test_send_unaddressable ... ok
+test socket::icmp::test_ipv4::test_set_hop_limit_v4::case_1_ethernet ... ok
+test socket::icmp::test_ipv6::test_accept_bad_id::case_1_ethernet ... ok
+test iface::interface::tests::test_new_panic - should panic ... ok
+test socket::icmp::test_ipv6::test_recv_process::case_1_ethernet ... ok
+test socket::icmp::test_ipv6::test_accepts_udp::case_1_ethernet ... ok
+test socket::icmp::test_ipv6::test_send_unaddressable ... ok
+test socket::icmp::test_ipv6::test_set_hop_limit::case_1_ethernet ... ok
+test socket::icmp::test_ipv6::test_send_dispatch::case_1_ethernet ... ok
+test socket::icmp::test_ipv6::test_truncated_recv_slice::case_1_ethernet ... ok
+test socket::raw::test::ipv4::test_peek_truncated_slice::case_1_ip ... ok
+test socket::raw::test::ipv4::test_peek_truncated_slice::case_3_ieee802154 ... ok
+test socket::raw::test::ipv4::test_peek_truncated_slice::case_2_ethernet ... ok
+test socket::raw::test::ipv4::test_recv_truncated_packet::case_1_ip ... ok
+test socket::raw::test::ipv4::test_recv_truncated_packet::case_2_ethernet ... ok
+test socket::raw::test::ipv4::test_recv_truncated_slice::case_1_ip ... ok
+test socket::raw::test::ipv4::test_recv_truncated_slice::case_2_ethernet ... ok
+test socket::raw::test::ipv4::test_recv_truncated_slice::case_3_ieee802154 ... ok
+test socket::raw::test::ipv4::test_send_dispatch::case_1_ip ... ok
+test socket::raw::test::ipv4::test_send_dispatch::case_2_ethernet ... ok
+test socket::raw::test::ipv4::test_recv_truncated_packet::case_3_ieee802154 ... ok
+test socket::raw::test::ipv4::test_send_truncated ... ok
+test socket::raw::test::ipv4::test_send_dispatch::case_3_ieee802154 ... ok
+test socket::raw::test::ipv6::test_peek_truncated_slice::case_1_ip ... ok
+test socket::raw::test::ipv6::test_peek_truncated_slice::case_2_ethernet ... ok
+test socket::raw::test::ipv6::test_recv_truncated_packet::case_1_ip ... ok
+test socket::raw::test::ipv6::test_peek_truncated_slice::case_3_ieee802154 ... ok
+test socket::raw::test::ipv6::test_recv_truncated_packet::case_2_ethernet ... ok
+test socket::raw::test::ipv6::test_recv_truncated_slice::case_1_ip ... ok
+test socket::raw::test::ipv6::test_recv_truncated_packet::case_3_ieee802154 ... ok
+test socket::raw::test::ipv6::test_recv_truncated_slice::case_2_ethernet ... ok
+test socket::raw::test::ipv6::test_recv_truncated_slice::case_3_ieee802154 ... ok
+test socket::raw::test::ipv6::test_send_dispatch::case_2_ethernet ... ok
+test socket::raw::test::ipv6::test_send_dispatch::case_1_ip ... ok
+test socket::raw::test::test_doesnt_accept_wrong_proto ... ok
+test socket::raw::test::ipv6::test_send_dispatch::case_3_ieee802154 ... ok
+test socket::raw::test::ipv6::test_send_truncated ... ok
+test socket::raw::test::test_peek_process::case_1_ip ... ok
+test socket::raw::test::test_peek_process::case_2_ethernet ... ok
+test socket::raw::test::test_peek_process::case_3_ieee802154 ... ok
+test socket::raw::test::test_recv_process::case_2_ethernet ... ok
+test socket::raw::test::test_recv_process::case_1_ip ... ok
+test socket::raw::test::test_recv_process::case_3_ieee802154 ... ok
+test socket::raw::test::test_send_illegal::case_1_ip ... ok
+test socket::raw::test::test_send_illegal::case_2_ethernet ... ok
+test socket::raw::test::test_send_illegal::case_3_ieee802154 ... ok
+test socket::raw::test::test_unfiltered_accepts_all::case_1_proto ... ok
+test socket::raw::test::test_unfiltered_accepts_all::case_2_proto ... ok
+test socket::raw::test::test_unfiltered_accepts_all::case_3_proto ... ok
+test socket::raw::test::test_unfiltered_sends_all::case_1_ip ... ok
+test socket::raw::test::test_unfiltered_sends_all::case_3_ieee802154 ... ok
+test socket::raw::test::test_unfiltered_sends_all::case_2_ethernet ... ok
+test socket::tcp::test::test_buffer_wraparound_rx ... ok
+test socket::tcp::test::test_buffer_wraparound_tx ... ok
+test socket::tcp::test::test_close_wait_ack ... ok
+test socket::tcp::test::test_announce_window_after_read ... ok
+test socket::tcp::test::test_close_wait_close ... ok
+test socket::tcp::test::test_closed_close ... ok
+test socket::tcp::test::test_closed_reject ... ok
+test socket::tcp::test::test_closed_reject_after_listen ... ok
+test socket::tcp::test::test_closed_timeout ... ok
+test socket::tcp::test::test_close_wait_no_window_update ... ok
+test socket::tcp::test::test_closing_close ... ok
+test socket::tcp::test::test_connect ... ok
+test socket::tcp::test::test_connect_specified_local ... ok
+test socket::tcp::test::test_connect_twice ... ok
+test socket::tcp::test::test_closing_ack_fin ... ok
+test socket::tcp::test::test_connect_unspecified_local ... ok
+test socket::tcp::test::test_connect_timeout ... ok
+test socket::tcp::test::test_connect_validation ... ok
+test socket::tcp::test::test_close_wait_retransmit_reset_after_ack ... ok
+test socket::tcp::test::test_data_retransmit ... ok
+test socket::tcp::test::test_data_retransmit_ack_more_than_expected ... ok
+test socket::tcp::test::test_data_retransmit_bursts_half_ack_close ... ok
+test socket::tcp::test::test_delayed_ack ... ok
+test socket::tcp::test::test_delayed_ack_every_rmss ... ok
+test socket::tcp::test::test_delayed_ack_every_rmss_or_more ... ok
+test socket::tcp::test::test_data_retransmit_bursts ... ok
+test socket::tcp::test::test_data_retransmit_bursts_half_ack ... ok
+test socket::tcp::test::test_delayed_ack_win ... ok
+test socket::tcp::test::test_doesnt_accept_wrong_ip ... ok
+test socket::tcp::test::test_delayed_ack_reply ... ok
+test socket::tcp::test::test_doesnt_accept_wrong_port ... ok
+test socket::tcp::test::test_duplicate_seq_ack ... ok
+test socket::tcp::test::test_established_abort ... ok
+test socket::tcp::test::test_established_bad_ack ... ok
+test socket::tcp::test::test_established_close ... ok
+test socket::tcp::test::test_established_bad_seq ... ok
+test socket::tcp::test::test_established_fin_after_missing ... ok
+test socket::tcp::test::test_established_fin ... ok
+test socket::tcp::test::test_established_no_ack ... ok
+test socket::tcp::test::test_established_close_on_src_ip_change ... ok
+test socket::tcp::test::test_established_receive_partially_outside_window ... ok
+test socket::tcp::test::test_established_receive_partially_outside_window_fin ... ok
+test socket::tcp::test::test_established_queue_during_retransmission ... ok
+test socket::tcp::test::test_established_keep_alive_timeout ... ok
+test socket::tcp::test::test_established_rfc2018_cases ... ok
+test socket::tcp::test::test_established_rst ... ok
+test socket::tcp::test::test_established_retransmit_for_dup_ack ... ok
+test socket::tcp::test::test_established_recv ... ok
+test socket::tcp::test::test_established_retransmit_reset_after_ack ... ok
+test socket::tcp::test::test_established_rst_bad_seq ... ok
+test socket::tcp::test::test_established_rst_no_ack ... ok
+test socket::tcp::test::test_established_send_buf_gt_win ... ok
+test socket::tcp::test::test_established_send ... ok
+test socket::tcp::test::test_established_send_window_shrink ... ok
+test socket::tcp::test::test_established_send_wrap ... ok
+test socket::tcp::test::test_established_sliding_window_recv ... ok
+test socket::tcp::test::test_established_send_no_ack_send ... ok
+test socket::tcp::test::test_established_send_fin ... ok
+test socket::tcp::test::test_fast_retransmit_dup_acks_counter ... ok
+test socket::tcp::test::test_established_timeout ... ok
+test socket::tcp::test::test_fast_retransmit_duplicate_detection_with_data ... ok
+test socket::tcp::test::test_fast_retransmit_after_triple_duplicate_ack ... ok
+test socket::tcp::test::test_fast_retransmit_duplicate_detection ... ok
+test socket::tcp::test::test_fill_peer_window ... ok
+test socket::tcp::test::test_fast_retransmit_duplicate_detection_with_window_update ... ok
+test socket::tcp::test::test_fast_retransmit_zero_window ... ok
+test socket::tcp::test::test_fin_wait_1_close ... ok
+test socket::tcp::test::test_fin_wait_1_fin_with_data_queued ... ok
+test socket::tcp::test::test_fin_wait_1_fin_ack ... ok
+test socket::tcp::test::test_fin_wait_1_recv ... ok
+test socket::tcp::test::test_fin_wait_1_fin_fin ... ok
+test socket::tcp::test::test_fin_wait_1_retransmit_reset_after_ack ... ok
+test socket::tcp::test::test_fin_wait_1_timeout ... ok
+test socket::tcp::test::test_fin_wait_2_close ... ok
+test socket::tcp::test::test_fin_wait_2_recv ... ok
+test socket::tcp::test::test_fin_wait_2_fin ... ok
+test socket::tcp::test::test_fin_with_data ... ok
+test socket::tcp::test::test_last_ack_close ... ok
+test socket::tcp::test::test_final_packet_in_stream_doesnt_wait_for_nagle ... ok
+test socket::tcp::test::test_last_ack_duplicate_ack_challenge_ack ... ok
+test socket::tcp::test::test_last_ack_partial_ack_no_challenge_ack ... ok
+test socket::tcp::test::test_last_ack_ack_not_of_fin ... ok
+test socket::tcp::test::test_last_ack_fin_ack ... ok
+test socket::tcp::test::test_last_ack_timeout ... ok
+test socket::tcp::test::test_listen ... ok
+test socket::tcp::test::test_listen_close ... ok
+test socket::tcp::test::test_listen_rst ... ok
+test socket::tcp::test::test_listen_sanity ... ok
+test socket::tcp::test::test_listen_syn ... ok
+test socket::tcp::test::test_listen_sack_option ... ok
+test socket::tcp::test::test_listen_syn_reject_ack ... ok
+test socket::tcp::test::test_listen_timeout ... ok
+test socket::tcp::test::test_listen_twice ... ok
+test socket::tcp::test::test_listen_syn_win_scale_buffers ... ok
+test socket::tcp::test::test_listen_validation ... ok
+test socket::tcp::test::test_local_close ... ok
+test socket::tcp::test::test_maximum_segment_size ... ok
+test socket::tcp::test::test_mutual_close_with_data_1 ... ok
+test socket::tcp::test::test_mutual_close_with_data_2 ... ok
+test socket::tcp::test::test_nagle ... ok
+test socket::tcp::test::test_out_of_order ... ok
+test socket::tcp::test::test_peek_slice ... ok
+test socket::tcp::test::test_peek_slice_buffer_wrap ... ok
+test socket::tcp::test::test_psh_receive ... ok
+test socket::tcp::test::test_psh_transmit ... ok
+test socket::tcp::test::test_recv_out_of_recv_win ... ok
+test socket::tcp::test::test_remote_close ... ok
+test socket::tcp::test::test_responds_to_keep_alive ... ok
+test socket::tcp::test::test_retransmit_fin ... ok
+test socket::tcp::test::test_retransmit_timer_restart_on_partial_ack ... ok
+test socket::tcp::test::test_retransmit_fin_wait ... ok
+test socket::tcp::test::test_retransmit_exponential_backoff ... ok
+test socket::tcp::test::test_rtt_estimator ... ok
+test socket::tcp::test::test_rx_close_fin ... ok
+test socket::tcp::test::test_rx_close_fin_in_fin_wait_2 ... ok
+test socket::tcp::test::test_rx_close_fin_in_fin_wait_1 ... ok
+test socket::tcp::test::test_rx_close_rst ... ok
+test socket::tcp::test::test_rx_close_fin_with_hole ... ok
+test socket::tcp::test::test_rx_close_rst_with_hole ... ok
+test socket::tcp::test::test_sends_keep_alive ... ok
+test socket::tcp::test::test_set_get_congestion_control ... ok
+test socket::tcp::test::test_send_data_after_syn_ack_retransmit ... ok
+test socket::tcp::test::test_set_hop_limit ... ok
+test socket::tcp::test::test_simultaneous_close ... ok
+test socket::tcp::test::test_simultaneous_close_combined_fin_ack ... ok
+test socket::tcp::test::test_simultaneous_close_raced ... ok
+test socket::tcp::test::test_simultaneous_close_raced_with_data ... ok
+test socket::tcp::test::test_syn_received_ack ... ok
+test socket::tcp::test::test_syn_received_ack_too_high ... ok
+test socket::tcp::test::test_set_hop_limit_zero - should panic ... ok
+test socket::tcp::test::test_syn_received_ack_too_low ... ok
+test socket::tcp::test::test_syn_received_close ... ok
+test socket::tcp::test::test_syn_received_fin ... ok
+test socket::tcp::test::test_syn_received_no_window_scaling ... ok
+test socket::tcp::test::test_syn_received_rst ... ok
+test socket::tcp::test::test_syn_sent_bad_ack ... ok
+test socket::tcp::test::test_syn_sent_bad_ack_seq_1 ... ok
+test socket::tcp::test::test_syn_sent_bad_ack_seq_2 ... ok
+test socket::tcp::test::test_syn_received_window_scaling ... ok
+test socket::tcp::test::test_syn_sent_rst_bad_ack ... ok
+test socket::tcp::test::test_syn_sent_close ... ok
+test socket::tcp::test::test_syn_sent_rst ... ok
+test socket::tcp::test::test_syn_sent_rst_no_ack ... ok
+test socket::tcp::test::test_syn_sent_sack_option ... ok
+test socket::tcp::test::test_syn_sent_sanity ... ok
+test socket::tcp::test::test_syn_sent_syn_ack_not_incremented ... ok
+test socket::tcp::test::test_syn_sent_syn_ack_window_scaling ... ok
+test socket::tcp::test::test_syn_sent_syn_ack_no_window_scaling ... ok
+test socket::tcp::test::test_syn_sent_syn_received_ack ... ok
+test socket::tcp::test::test_syn_sent_syn_received_rst ... ok
+test socket::tcp::test::test_syn_sent_syn_ack ... ok
+test socket::tcp::test::test_time_wait_close ... ok
+test socket::tcp::test::test_three_way_handshake ... ok
+test socket::tcp::test::test_time_wait_from_closing_no_ack ... ok
+test socket::tcp::test::test_time_wait_from_fin_wait_2_ack ... ok
+test socket::tcp::test::test_time_wait_retransmit ... ok
+test socket::tcp::test::test_time_wait_no_window_update ... ok
+test socket::tcp::test::test_time_wait_timeout ... ok
+test socket::tcp::test::test_syn_sent_win_scale_buffers ... ok
+test socket::tcp::test::test_timer_retransmit ... ok
+test socket::tcp::test::test_tsval_disabled_in_local_client ... ok
+test socket::tcp::test::test_tsval_disabled_in_remote_server ... ok
+test socket::tcp::test::test_tsval_disabled_in_remote_client ... ok
+test socket::tcp::test::test_tsval_disabled_in_local_server ... ok
+test socket::tcp::test::test_window_update_with_delay_ack ... ok
+test socket::tcp::test::test_zero_window_ack ... ok
+test socket::tcp::test::test_zero_window_ack_on_window_growth ... ok
+test socket::tcp::test::test_tsval_established_connection ... ok
+test socket::tcp::test::test_zero_window_fin ... ok
+test socket::tcp::test::test_zero_window_probe_backoff_no_reply ... ok
+test socket::tcp::test::test_zero_window_probe_backoff_nack_reply ... ok
+test socket::tcp::test::test_zero_window_probe_enter_on_send ... ok
+test socket::tcp::test::test_zero_window_probe_enter_on_win_update ... ok
+test socket::tcp::test::test_zero_window_probe_exit ... ok
+test socket::tcp::test::test_zero_window_probe_exit_ack ... ok
+test socket::udp::test::test_bind_twice ... ok
+test socket::udp::test::test_bind_unaddressable ... ok
+test socket::tcp::test::test_zero_window_probe_shift ... ok
+test socket::udp::test::test_closing ... ok
+test socket::udp::test::test_doesnt_accept_wrong_ip::case_1_ip ... ok
+test socket::udp::test::test_doesnt_accept_wrong_port::case_1_ip ... ok
+test socket::udp::test::test_doesnt_accept_wrong_ip::case_2_ethernet ... ok
+test socket::udp::test::test_doesnt_accept_wrong_ip::case_3_ieee802154 ... ok
+test socket::udp::test::test_doesnt_accept_wrong_port::case_2_ethernet ... ok
+test socket::udp::test::test_doesnt_accept_wrong_port::case_3_ieee802154 ... ok
+test socket::udp::test::test_peek_process::case_1_ip ... ok
+test socket::udp::test::test_peek_process::case_3_ieee802154 ... ok
+test socket::udp::test::test_peek_process::case_2_ethernet ... ok
+test socket::udp::test::test_peek_truncated_slice::case_1_ip ... ok
+test socket::udp::test::test_peek_truncated_slice::case_2_ethernet ... ok
+test socket::udp::test::test_process_empty_payload::case_2_ethernet ... ok
+test socket::udp::test::test_peek_truncated_slice::case_3_ieee802154 ... ok
+test socket::udp::test::test_process_empty_payload::case_3_ieee802154 ... ok
+test socket::udp::test::test_recv_process::case_2_ethernet ... ok
+test socket::udp::test::test_recv_process::case_1_ip ... ok
+test socket::udp::test::test_process_empty_payload::case_1_ip ... ok
+test socket::udp::test::test_recv_truncated_slice::case_2_ethernet ... ok
+test socket::udp::test::test_recv_process::case_3_ieee802154 ... ok
+test socket::udp::test::test_recv_truncated_slice::case_1_ip ... ok
+test socket::udp::test::test_send_dispatch::case_1_ip ... ok
+test socket::udp::test::test_send_dispatch::case_3_ieee802154 ... ok
+test socket::udp::test::test_recv_truncated_slice::case_3_ieee802154 ... ok
+test socket::udp::test::test_send_dispatch::case_2_ethernet ... ok
+test socket::udp::test::test_send_large_packet ... ok
+test socket::udp::test::test_send_unaddressable ... ok
+test socket::udp::test::test_send_with_source ... ok
+test socket::udp::test::test_set_hop_limit::case_1_ip ... ok
+test socket::udp::test::test_set_hop_limit_zero - should panic ... ok
+test socket::udp::test::test_set_hop_limit::case_2_ethernet ... ok
+test storage::assembler::test::test_add_then_remove_front ... ok
+test storage::assembler::test::test_add_then_remove_front_at_front ... ok
+test socket::udp::test::test_set_hop_limit::case_3_ieee802154 ... ok
+test storage::assembler::test::test_add_then_remove_front_at_front_full ... ok
+test storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0 ... ok
+test storage::assembler::test::test_add_then_remove_front_at_front_touch ... ok
+test storage::assembler::test::test_empty_add_front ... ok
+test storage::assembler::test::test_boundary_case_remove_front ... ok
+test storage::assembler::test::test_empty_add_full ... ok
+test storage::assembler::test::test_empty_add_back ... ok
+test storage::assembler::test::test_empty_add_mid ... ok
+test storage::assembler::test::test_iter_empty ... ok
+test storage::assembler::test::test_issue_694 ... ok
+test storage::assembler::test::test_empty_remove_front ... ok
+test storage::assembler::test::test_iter_offset ... ok
+test storage::assembler::test::test_iter_one_back ... ok
+test storage::assembler::test::test_iter_full ... ok
+test storage::assembler::test::test_iter_one_front ... ok
+test storage::assembler::test::test_iter_one_trailing_gap ... ok
+test storage::assembler::test::test_iter_three_split ... ok
+test storage::assembler::test::test_join_two ... ok
+test storage::assembler::test::test_iter_two_split ... ok
+test storage::assembler::test::test_iter_one_mid ... ok
+test storage::assembler::test::test_join_two_overlong ... ok
+test storage::assembler::test::test_new ... ok
+test storage::assembler::test::test_join_two_reversed ... ok
+test storage::assembler::test::test_partial_add_back ... ok
+test storage::assembler::test::test_partial_add_back_overlap ... ok
+test storage::assembler::test::test_partial_add_back_overlap_split ... ok
+test storage::assembler::test::test_partial_add_both_overlap_split ... ok
+test storage::assembler::test::test_partial_add_both_overlap ... ok
+test storage::assembler::test::test_partial_add_front_overlap_split ... ok
+test storage::assembler::test::test_partial_add_front ... ok
+test storage::assembler::test::test_partial_add_front_overlap ... ok
+test storage::assembler::test::test_rejected_add_keeps_state ... ok
+test storage::assembler::test::test_shrink_next_hole ... ok
+test storage::assembler::test::test_trailing_hole_remove_front ... ok
+test storage::assembler::test::test_trailing_data_remove_front ... ok
+test storage::packet_buffer::test::clear ... ok
+test storage::packet_buffer::test::test_capacity_too_small ... ok
+test storage::packet_buffer::test::test_contig_window_prioritized ... ok
+test storage::packet_buffer::test::test_contiguous_window_wrap ... ok
+test storage::packet_buffer::test::test_contiguous_window_too_small ... ok
+test storage::packet_buffer::test::test_dequeue_with ... ok
+test storage::packet_buffer::test::test_metadata_full_empty ... ok
+test storage::packet_buffer::test::test_padding_with_large_payload ... ok
+test storage::packet_buffer::test::test_padding ... ok
+test storage::packet_buffer::test::test_peek ... ok
+test storage::packet_buffer::test::test_window_too_small ... ok
+test storage::packet_buffer::test::test_simple ... ok
+test storage::ring_buffer::test::test_buffer_dequeue_many ... ok
+test storage::ring_buffer::test::test_buffer_dequeue_many_with ... ok
+test storage::ring_buffer::test::test_buffer_dequeue_slice ... ok
+test storage::ring_buffer::test::test_buffer_enqueue_dequeue_one ... ok
+test storage::ring_buffer::test::test_buffer_enqueue_dequeue_one_with ... ok
+test storage::ring_buffer::test::test_buffer_enqueue_many ... ok
+test storage::ring_buffer::test::test_buffer_enqueue_many_with ... ok
+test storage::ring_buffer::test::test_buffer_enqueue_slice ... ok
+test storage::ring_buffer::test::test_buffer_get_allocated ... ok
+test storage::ring_buffer::test::test_buffer_get_unallocated ... ok
+test storage::ring_buffer::test::test_buffer_length_changes ... ok
+test storage::ring_buffer::test::test_buffer_read_allocated ... ok
+test storage::ring_buffer::test::test_buffer_with_no_capacity ... ok
+test storage::ring_buffer::test::test_buffer_write_unallocated ... ok
+test storage::ring_buffer::test::test_buffer_write_wholly ... ok
+test time::test::test_duration_assign_ops ... ok
+test time::test::test_duration_conversions ... ok
+test time::test::test_duration_ops ... ok
+test time::test::test_duration_getters ... ok
+test time::test::test_instant_conversions ... ok
+test time::test::test_instant_display ... ok
+test time::test::test_instant_getters ... ok
+test time::test::test_instant_ops ... ok
+test wire::arp::test::test_construct ... ok
+test wire::arp::test::test_deconstruct ... ok
+test wire::arp::test::test_emit ... ok
+test time::test::test_div_by_zero - should panic ... ok
+test time::test::test_sub_from_zero_overflow - should panic ... ok
+test wire::arp::test::test_parse ... ok
+test wire::dhcpv4::test::test_deconstruct_discover ... ok
+test wire::dhcpv4::test::test_construct_discover ... ok
+test wire::dhcpv4::test::test_emit_dhcp_option ... ok
+test wire::dhcpv4::test::test_emit_discover ... ok
+test wire::dhcpv4::test::test_emit_offer ... ok
+test wire::dhcpv4::test::test_emit_offer_dns ... ok
+test wire::dhcpv4::test::test_parse_ack_dns_servers ... ok
+test wire::dhcpv4::test::test_parse_discover ... ok
+test wire::dhcpv4::test::test_parse_ack_lease_duration ... ok
+test wire::dns::test::test_emit ... ok
+test wire::dns::test::test_parse_name ... ok
+test wire::dns::test::test_parse_request ... ok
+test wire::dns::test::test_parse_response ... ok
+test wire::dns::test::test_parse_response_cname ... ok
+test wire::dns::test::test_parse_response_nxdomain ... ok
+test wire::ethernet::test::test_broadcast ... ok
+test wire::ethernet::test_ipv4::test_construct ... ok
+test wire::ethernet::test_ipv4::test_deconstruct ... ok
+test wire::ethernet::test_ipv6::test_construct ... ok
+test wire::ethernet::test_ipv6::test_deconstruct ... ok
+test wire::icmpv4::test::test_check_len ... ok
+test wire::icmpv4::test::test_echo_construct ... ok
+test wire::icmpv4::test::test_echo_deconstruct ... ok
+test wire::icmpv4::test::test_echo_emit ... ok
+test wire::icmpv4::test::test_echo_parse ... ok
+test wire::dns::test::test_parse_response_multiple_a ... ok
+test wire::icmpv6::test::test_buffer_length_is_truncated_to_mtu ... ok
+test wire::icmpv6::test::test_echo_construct ... ok
+test wire::icmpv6::test::test_echo_deconstruct ... ok
+test wire::icmpv6::test::test_echo_emit ... ok
+test wire::icmpv6::test::test_echo_repr_parse ... ok
+test wire::icmpv6::test::test_too_big_construct ... ok
+test wire::icmpv6::test::test_mtu_truncated_payload_roundtrip ... ok
+test wire::icmpv6::test::test_too_big_deconstruct ... ok
+test wire::icmpv6::test::test_too_big_emit ... ok
+test wire::icmpv6::test::test_too_big_repr_parse ... ok
+test wire::ieee802154::test::extended_addr ... ok
+test wire::ieee802154::test::prepare_frame ... ok
+test wire::icmpv6::test::test_truncated_payload_ipv6_header_parse_fails ... ok
+test wire::ieee802154::test::security ... ok
+test wire::ieee802154::test::short_addr ... ok
+test wire::ieee802154::test::test_broadcast ... ok
+test wire::ieee802154::test::zolertia_remote ... ok
+test wire::igmp::test::max_resp_time_to_duration_and_back ... ok
+test wire::igmp::test::test_leave_construct ... ok
+test wire::igmp::test::test_leave_group_deconstruct ... ok
+test wire::igmp::test::test_report_construct ... ok
+test wire::igmp::test::test_report_deconstruct ... ok
+test wire::ip::test::parse_ipv4_packet ... ok
+test wire::ip::test::parse_ipv4_packet_error ... ok
+test wire::ip::test::parse_ipv6_packet ... ok
+test wire::igmp::test::duration_to_max_resp_time_max ... ok
+test wire::ip::test::parse_packet_invalid_version ... ok
+test wire::ip::test::parse_ipv6_packet_error ... ok
+test wire::ip::test::parse_packet_too_short ... ok
+test wire::ip::test::to_prefix_len_ipv4_error ... ok
+test wire::ip::test::to_prefix_len_ipv4 ... ok
+test wire::ip::test::to_prefix_len_ipv6 ... ok
+test wire::ip::test::to_prefix_len_ipv6_error ... ok
+test wire::ipv4::test::test_cidr ... ok
+test wire::ipv4::test::test_broadcast ... ok
+test wire::ipv4::test::test_cidr_broadcast ... ok
+test wire::ipv4::test::test_cidr_netmask ... ok
+test wire::ipv4::test::test_cidr_from_netmask ... ok
+test wire::ipv4::test::test_cidr_network ... ok
+test wire::ipv4::test::test_construct ... ok
+test wire::ipv4::test::test_deconstruct ... ok
+test wire::ipv4::test::test_overlong ... ok
+test wire::ipv4::test::test_emit ... ok
+test wire::ipv4::test::test_parse ... ok
+test wire::ipv4::test::test_parse_bad_version ... ok
+test wire::ipv4::test::test_parse_total_len_less_than_header_len ... ok
+test wire::ipv4::test::test_total_len_overflow ... ok
+test wire::ipv4::test::test_unspecified ... ok
+test wire::ipv6::test::test_basic_link_local ... ok
+test wire::ipv6::test::test_basic_loopback ... ok
+test wire::ipv6::test::test_basic_multicast ... ok
+test wire::ipv6::test::test_cidr ... ok
+test wire::ipv6::test::test_basic_repr_emit ... ok
+test wire::ipv6::test::test_from_eui_64 ... ok
+test wire::ipv6::test::test_global_unicast ... ok
+test wire::ipv6::test::test_mask ... ok
+test wire::ipv6::test::test_packet_construction ... ok
+test wire::ipv6::test::test_overlong ... ok
+test wire::ipv6::test::test_packet_deconstruction ... ok
+test wire::ipv6::test::test_pretty_print ... ok
+test wire::ipv6::test::test_repr_parse_smaller_than_header ... ok
+test wire::ipv6::test::test_repr_parse_bad_version ... ok
+test wire::ipv6::test::test_repr_parse_valid ... ok
+test wire::ipv6::test::test_repr_parse_smaller_than_payload ... ok
+test wire::ipv6::test::test_scope ... ok
+test wire::ipv6::test::test_sollicited_node_multicast ... ok
+test wire::ipv6::test::test_total_len_overflow ... ok
+test wire::ipv6::test::test_unique_local ... ok
+test wire::ipv6ext_header::test::test_check_len ... ok
+test wire::ipv6ext_header::test::test_header_deconstruct ... ok
+test wire::ipv6ext_header::test::test_overlong ... ok
+test wire::ipv6ext_header::test::test_header_len_overflow ... ok
+test wire::ipv6ext_header::test::test_repr_parse_valid ... ok
+test wire::ipv6ext_header::test::test_repr_emit ... ok
+test wire::ipv6fragment::test::test_buffer_len ... ok
+test wire::ipv6fragment::test::test_check_len ... ok
+test wire::ipv6fragment::test::test_header_deconstruct ... ok
+test wire::ipv6fragment::test::test_repr_emit ... ok
+test wire::ipv6fragment::test::test_repr_parse_valid ... ok
+test wire::ipv6hbh::tests::test_check_len ... ok
+test wire::ipv6hbh::tests::test_repr_emit ... ok
+test wire::ipv6option::test::test_check_len ... ok
+test wire::ipv6hbh::tests::test_repr_parse_valid ... ok
+test wire::ipv6option::test::test_data_len - should panic ... ok
+test wire::ipv6option::test::test_failure_type ... ok
+test wire::ipv6option::test::test_option_deconstruct ... ok
+test wire::ipv6option::test::test_option_emit ... ok
+test wire::ipv6option::test::test_option_parse ... ok
+test wire::ipv6option::test::test_options_iter ... ok
+test wire::ipv6routing::test::test_buffer_len ... ok
+test wire::ipv6routing::test::test_header_deconstruct ... ok
+test wire::ipv6routing::test::test_check_len ... ok
+test wire::ipv6routing::test::test_repr_emit ... ok
+test wire::mld::test::test_query_construct ... ok
+test wire::ipv6routing::test::test_repr_parse_valid ... ok
+test wire::mld::test::test_query_deconstruct ... ok
+test wire::mld::test::test_query_repr_emit ... ok
+test wire::mld::test::test_query_repr_parse ... ok
+test wire::mld::test::test_record_deconstruct ... ok
+test wire::mld::test::test_report_repr_emit ... ok
+test wire::mld::test::test_report_repr_parse ... ok
+test wire::ndisc::test::test_router_advert_construct ... ok
+test wire::ndisc::test::test_router_advert_repr_emit ... ok
+test wire::ndisc::test::test_router_advert_repr_parse ... ok
+test wire::ndiscoption::test::test_construct ... ok
+test wire::ndiscoption::test::test_deconstruct ... ok
+test wire::mld::test::test_record_construct ... ok
+test wire::ndisc::test::test_router_advert_deconstruct ... ok
+test wire::ndiscoption::test::test_repr_emit_prefix_info ... ok
+test wire::ndiscoption::test::test_repr_parse_link_layer_opt_ethernet ... ok
+test wire::ndiscoption::test::test_repr_parse_mtu ... ok
+test wire::ndiscoption::test::test_repr_parse_prefix_info ... ok
+test wire::ndiscoption::test::test_short_packet ... ok
+test wire::sixlowpan::iphc::test::iphc_fields ... ok
+test wire::sixlowpan::nhc::test::ext_header_emit ... ok
+test wire::sixlowpan::nhc::test::ext_header_nh_elided ... ok
+test wire::sixlowpan::nhc::test::ext_header_nh_inlined ... ok
+test wire::sixlowpan::nhc::test::udp_emit ... ok
+test wire::sixlowpan::nhc::test::udp_nhc_fields ... ok
+test wire::sixlowpan::nhc::tests::test_source_routing_deconstruct ... ok
+test wire::sixlowpan::nhc::tests::test_source_routing_emit ... ok
+test wire::sixlowpan::test::sixlowpan_fragment_emit ... ok
+test wire::sixlowpan::test::sixlowpan_three_fragments ... ok
+test wire::tcp::test::test_construct ... ok
+test wire::tcp::test::test_emit ... ok
+test wire::tcp::test::test_header_len_multiple_of_4 ... ok
+test wire::tcp::test::test_impossible_len ... ok
+test wire::tcp::test::test_malformed_tcp_options ... ok
+test wire::tcp::test::test_parse ... ok
+test wire::tcp::test::test_tcp_options ... ok
+test wire::tcp::test::test_truncated ... ok
+test wire::tests::parse_hardware_address::case_2 ... ok
+test wire::tests::parse_hardware_address::case_1 ... ok
+test wire::tests::parse_hardware_address::case_3 ... ok
+test wire::tests::parse_hardware_address::case_4 ... ok
+test wire::tests::parse_hardware_address::case_5 ... ok
+test wire::udp::test::test_checksum_omitted ... ok
+test wire::tcp::test::test_deconstruct ... ok
+test wire::tests::parse_hardware_address::case_6 ... ok
+test wire::udp::test::test_deconstruct ... ok
+test wire::udp::test::test_emit ... ok
+test wire::udp::test::test_construct ... ok
+test wire::udp::test::test_impossible_len ... ok
+test wire::udp::test::test_no_checksum ... ok
+test wire::udp::test::test_parse ... ok
+test wire::udp::test::test_zero_checksum ... ok
+test storage::assembler::test::test_random ... ok
+
+test result: ok. 648 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s
+
+Filename                                Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+iface/fragmentation.rs                      343                18    94.75%          24                 3    87.50%         232                13    94.40%           0                 0         -
+iface/interface/ethernet.rs                  67                17    74.63%           3                 0   100.00%          48                 9    81.25%           0                 0         -
+iface/interface/ieee802154.rs                67                 8    88.06%           4                 0   100.00%          72                 6    91.67%           0                 0         -
+iface/interface/ipv4.rs                     450               108    76.00%          19                 2    89.47%         308                67    78.25%           0                 0         -
+iface/interface/ipv6.rs                     643                75    88.34%          35                 4    88.57%         494                45    90.89%           0                 0         -
+iface/interface/mod.rs                      956               413    56.80%          72                27    62.50%         710               293    58.73%           0                 0         -
+iface/interface/multicast.rs                426               112    73.71%          20                 2    90.00%         358                92    74.30%           0                 0         -
+iface/interface/sixlowpan.rs                556               143    74.28%          19                 4    78.95%         416                96    76.92%           0                 0         -
+iface/interface/tcp.rs                       50                18    64.00%           3                 1    66.67%          33                 6    81.82%           0                 0         -
+iface/interface/udp.rs                       89                18    79.78%           3                 0   100.00%          54                 6    88.89%           0                 0         -
+iface/neighbor.rs                           257                 6    97.67%          14                 0   100.00%         198                 7    96.46%           0                 0         -
+iface/packet.rs                             164                56    65.85%          10                 1    90.00%         121                33    72.73%           0                 0         -
+iface/route.rs                              236                59    75.00%          19                 9    52.63%         165                60    63.64%           0                 0         -
+iface/slaac.rs                              557                 5    99.10%          34                 0   100.00%         295                 4    98.64%           0                 0         -
+iface/socket_meta.rs                         29                25    13.79%           3                 2    33.33%          31                25    19.35%           0                 0         -
+iface/socket_set.rs                          98                45    54.08%          15                 9    40.00%          66                30    54.55%           0                 0         -
+macros.rs                                    11                 0   100.00%           2                 0   100.00%           9                 0   100.00%           0                 0         -
+parsers.rs                                  550                48    91.27%          50                 3    94.00%         398                20    94.97%           0                 0         -
+phy/fault_injector.rs                       234               234     0.00%          30                30     0.00%         192               192     0.00%           0                 0         -
+phy/fuzz_injector.rs                         74                74     0.00%          13                13     0.00%          63                63     0.00%           0                 0         -
+phy/loopback.rs                              36                 0   100.00%           7                 0   100.00%          42                 0   100.00%           0                 0         -
+phy/mod.rs                                   36                 1    97.22%           8                 0   100.00%          38                 1    97.37%           0                 0         -
+phy/pcap_writer.rs                          179               179     0.00%          22                22     0.00%         122               122     0.00%           0                 0         -
+phy/raw_socket.rs                            83                83     0.00%           7                 7     0.00%          69                69     0.00%           0                 0         -
+phy/sys/mod.rs                               72                72     0.00%           3                 3     0.00%          54                54     0.00%           0                 0         -
+phy/sys/raw_socket.rs                        75                75     0.00%           8                 8     0.00%          66                66     0.00%           0                 0         -
+phy/sys/tuntap_interface.rs                  99                99     0.00%          10                10     0.00%          77                77     0.00%           0                 0         -
+phy/tracer.rs                               244                30    87.70%          27                 6    77.78%         194                24    87.63%           0                 0         -
+phy/tuntap_interface.rs                      85                85     0.00%           8                 8     0.00%          64                64     0.00%           0                 0         -
+rand.rs                                      27                 8    70.37%           4                 1    75.00%          19                 6    68.42%           0                 0         -
+socket/dhcpv4.rs                            536                92    82.84%          36                10    72.22%         502                72    85.66%           0                 0         -
+socket/dns.rs                               495               495     0.00%          23                23     0.00%         365               365     0.00%           0                 0         -
+socket/icmp.rs                              506               187    63.04%          45                16    64.44%         379               131    65.44%           0                 0         -
+socket/mod.rs                                51                42    17.65%           7                 5    28.57%          35                27    22.86%           0                 0         -
+socket/raw.rs                               387               123    68.22%          46                20    56.52%         278                92    66.91%           0                 0         -
+socket/tcp.rs                              5124               312    93.91%         344                35    89.83%        4510               246    94.55%           0                 0         -
+socket/tcp/congestion.rs                     25                 0   100.00%          10                 0   100.00%          32                 0   100.00%           0                 0         -
+socket/tcp/congestion/no_control.rs           3                 0   100.00%           1                 0   100.00%           3                 0   100.00%           0                 0         -
+socket/udp.rs                               499               131    73.75%          49                17    65.31%         366                94    74.32%           0                 0         -
+socket/waker.rs                              21                13    38.10%           4                 2    50.00%          12                 6    50.00%           0                 0         -
+storage/assembler.rs                        812                14    98.28%          63                 1    98.41%         454                 7    98.46%           0                 0         -
+storage/packet_buffer.rs                    491                59    87.98%          34                 5    85.29%         254                38    85.04%           0                 0         -
+storage/ring_buffer.rs                     1020                18    98.24%          63                 5    92.06%         523                14    97.32%           0                 0         -
+time.rs                                     290                33    88.62%          53                 9    83.02%         221                28    87.33%           0                 0         -
+wire/arp.rs                                 458                61    86.68%          38                 4    89.47%         251                46    81.67%           0                 0         -
+wire/dhcpv4.rs                              957                85    91.12%          57                 4    92.98%         657                39    94.06%           0                 0         -
+wire/dns.rs                                 739                72    90.26%          42                 4    90.48%         466                37    92.06%           0                 0         -
+wire/ethernet.rs                            331                49    85.20%          34                 2    94.12%         184                21    88.59%           0                 0         -
+wire/icmp.rs                                  6                 0   100.00%           2                 0   100.00%           6                 0   100.00%           0                 0         -
+wire/icmpv4.rs                              577               260    54.94%          35                 7    80.00%         334               155    53.59%           0                 0         -
+wire/icmpv6.rs                              840               186    77.86%          50                 7    86.00%         551               118    78.58%           0                 0         -
+wire/ieee802154.rs                          989               294    70.27%          63                 9    85.71%         579               163    71.85%           0                 0         -
+wire/igmp.rs                                364                75    79.40%          29                 4    86.21%         231                54    76.62%           0                 0         -
+wire/ip.rs                                  808               190    76.49%          78                15    80.77%         587               124    78.88%           0                 0         -
+wire/ipv4.rs                               1123               111    90.12%          77                 3    96.10%         663                62    90.65%           0                 0         -
+wire/ipv6.rs                                928                17    98.17%          74                 1    98.65%         635                10    98.43%           0                 0         -
+wire/ipv6ext_header.rs                      275                 3    98.91%          20                 0   100.00%         162                 1    99.38%           0                 0         -
+wire/ipv6fragment.rs                        215                26    87.91%          21                 3    85.71%         127                17    86.61%           0                 0         -
+wire/ipv6hbh.rs                             172                 6    96.51%          15                 0   100.00%          97                 2    97.94%           0                 0         -
+wire/ipv6option.rs                          560                89    84.11%          30                 5    83.33%         329                57    82.67%           0                 0         -
+wire/ipv6routing.rs                         406                49    87.93%          30                 3    90.00%         235                34    85.53%           0                 0         -
+wire/mld.rs                                 565                11    98.05%          45                 1    97.78%         343                 7    97.96%           0                 0         -
+wire/mod.rs                                 140                50    64.29%          21                 6    71.43%         108                34    68.52%           0                 0         -
+wire/ndisc.rs                               507               131    74.16%          24                 3    87.50%         303                74    75.58%           0                 0         -
+wire/ndiscoption.rs                         554               198    64.26%          42                 8    80.95%         346               124    64.16%           0                 0         -
+wire/pretty_print.rs                         33                 4    87.88%           6                 1    83.33%          30                 7    76.67%           0                 0         -
+wire/sixlowpan/frag.rs                      195                52    73.33%          19                 2    89.47%         123                33    73.17%           0                 0         -
+wire/sixlowpan/iphc.rs                      777               237    69.50%          44                 4    90.91%         596               234    60.74%           0                 0         -
+wire/sixlowpan/mod.rs                       321               125    61.06%           6                 2    66.67%         196                76    61.22%           0                 0         -
+wire/sixlowpan/nhc.rs                       671               167    75.11%          49                 6    87.76%         452               119    73.67%           0                 0         -
+wire/tcp.rs                                1415               388    72.58%          92                15    83.70%         865               221    74.45%           0                 0         -
+wire/udp.rs                                 410                37    90.98%          36                 3    91.67%         255                32    87.45%           0                 0         -
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                     32389              6606    79.60%        2353               445    81.09%       22653              4571    79.82%           0                 0         -
