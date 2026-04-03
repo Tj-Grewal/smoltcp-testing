@@ -1,0 +1,63 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:11:55.966706+00:00
+FINISHED_UTC: 2026-04-03T19:11:59.205938+00:00
+DURATION_SECONDS: 3.234613
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+............ 12/38
+storage::assembler::test::test_issue_694 --- FAILED
+...... 19/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+... 24/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+............ 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_issue_694 stdout ----
+
+thread 'storage::assembler::test::test_issue_694' (14344) panicked at src\storage\assembler.rs:249:13:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (12860) panicked at src\storage\assembler.rs:249:13:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (2920) panicked at src\storage\assembler.rs:249:13:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (13048) panicked at src\storage\assembler.rs:249:13:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (14292) panicked at src\storage\assembler.rs:740:25:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 55, data_size: 1 }, Contig { hole_size: 49, data_size: 4 }, Contig { hole_size: 47, data_size: 2 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 55, data_size: 1 }, Contig { hole_size: 49, data_size: 6 }, Contig { hole_size: 51, data_size: 2 }, Contig { hole_size: 0, data_size: 0 }] }
+
+
+failures:
+    storage::assembler::test::test_issue_694
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

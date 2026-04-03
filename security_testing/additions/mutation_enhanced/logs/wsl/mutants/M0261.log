@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:15:12.629499+00:00
+FINISHED_UTC: 2026-04-03T20:15:23.529897+00:00
+DURATION_SECONDS: 10.900363
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+........ 8/9
+wire::tcp::test::test_parse --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_parse stdout ----
+
+thread 'wire::tcp::test::test_parse' (78670) panicked at src/wire/tcp.rs:1320:10:
+called `Result::unwrap()` on an `Err` value: Error
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_parse
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

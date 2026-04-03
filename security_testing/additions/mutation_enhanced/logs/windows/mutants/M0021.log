@@ -1,0 +1,139 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:09:04.072640+00:00
+FINISHED_UTC: 2026-04-03T19:09:07.247247+00:00
+DURATION_SECONDS: 3.166256
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+......... 9/38
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+........... 21/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+. 25/38
+storage::assembler::test::test_partial_add_back --- FAILED
+storage::assembler::test::test_partial_add_back_overlap --- FAILED
+storage::assembler::test::test_partial_add_back_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_both_overlap --- FAILED
+storage::assembler::test::test_partial_add_front --- FAILED
+storage::assembler::test::test_partial_add_front_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_front_overlap --- FAILED
+storage::assembler::test::test_partial_add_both_overlap_split --- FAILED
+. 34/38
+storage::assembler::test::test_shrink_next_hole --- FAILED
+.. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (18076) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (12612) panicked at src\storage\assembler.rs:557:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 45 }, Contig { hole_size: 15, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (4544) panicked at src\storage\assembler.rs:548:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 45 }, Contig { hole_size: 15, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (936) panicked at src\storage\assembler.rs:566:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 70 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 65 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (7896) panicked at src\storage\assembler.rs:444:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 4, data_size: 20 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 4, data_size: 12 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_partial_add_back_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap' (18628) panicked at src\storage\assembler.rs:465:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 4, data_size: 20 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 4, data_size: 12 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_partial_add_back_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap_split' (13220) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap' (10064) panicked at src\storage\assembler.rs:479:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 24 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 0, data_size: 16 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_partial_add_front stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front' (9864) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_front_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap_split' (3488) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_front_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap' (5700) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap_split' (3820) panicked at src\storage\assembler.rs:486:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 2, data_size: 22 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 2, data_size: 12 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (11944) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (19196) panicked at src\storage\assembler.rs:252:21:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_partial_add_back_overlap
+    storage::assembler::test::test_partial_add_back_overlap_split
+    storage::assembler::test::test_partial_add_both_overlap
+    storage::assembler::test::test_partial_add_both_overlap_split
+    storage::assembler::test::test_partial_add_front
+    storage::assembler::test::test_partial_add_front_overlap
+    storage::assembler::test::test_partial_add_front_overlap_split
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 24 passed; 14 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

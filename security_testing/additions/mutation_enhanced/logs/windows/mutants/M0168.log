@@ -1,0 +1,59 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:17:13.858639+00:00
+FINISHED_UTC: 2026-04-03T19:17:17.225409+00:00
+DURATION_SECONDS: 3.372971
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+..... 5/15
+wire::ipv4::test::test_cidr_netmask --- FAILED
+wire::ipv4::test::test_cidr_from_netmask --- FAILED
+wire::ipv4::test::test_cidr_broadcast --- FAILED
+wire::ipv4::test::test_cidr_network --- FAILED
+. 10/15
+wire::ipv4::test::test_cidr --- FAILED
+....
+failures:
+
+---- wire::ipv4::test::test_cidr_netmask stdout ----
+
+thread 'wire::ipv4::test::test_cidr_netmask' (17056) panicked at src\wire\ipv4.rs:97:9:
+assertion failed: prefix_len < 32
+
+---- wire::ipv4::test::test_cidr_from_netmask stdout ----
+
+thread 'wire::ipv4::test::test_cidr_from_netmask' (18164) panicked at src\wire\ipv4.rs:97:9:
+assertion failed: prefix_len < 32
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::ipv4::test::test_cidr_broadcast stdout ----
+
+thread 'wire::ipv4::test::test_cidr_broadcast' (4400) panicked at src\wire\ipv4.rs:97:9:
+assertion failed: prefix_len < 32
+
+---- wire::ipv4::test::test_cidr_network stdout ----
+
+thread 'wire::ipv4::test::test_cidr_network' (13892) panicked at src\wire\ipv4.rs:97:9:
+assertion failed: prefix_len < 32
+
+---- wire::ipv4::test::test_cidr stdout ----
+
+thread 'wire::ipv4::test::test_cidr' (14748) panicked at src\wire\ipv4.rs:97:9:
+assertion failed: prefix_len < 32
+
+
+failures:
+    wire::ipv4::test::test_cidr
+    wire::ipv4::test::test_cidr_broadcast
+    wire::ipv4::test::test_cidr_from_netmask
+    wire::ipv4::test::test_cidr_netmask
+    wire::ipv4::test::test_cidr_network
+
+test result: FAILED. 10 passed; 5 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

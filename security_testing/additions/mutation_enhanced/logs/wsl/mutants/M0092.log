@@ -1,0 +1,44 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:44:33.312705+00:00
+FINISHED_UTC: 2026-04-03T19:44:43.777891+00:00
+DURATION_SECONDS: 10.465152
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+............ 12/15
+wire::ipv4::test::test_deconstruct --- FAILED
+wire::ipv4::test::test_construct --- FAILED
+wire::ipv4::test::test_emit --- FAILED
+
+failures:
+
+---- wire::ipv4::test::test_deconstruct stdout ----
+
+thread 'wire::ipv4::test::test_deconstruct' (31713) panicked at src/wire/ipv4.rs:307:38:
+slice index starts at 6 but ends at 4
+
+---- wire::ipv4::test::test_construct stdout ----
+
+thread 'wire::ipv4::test::test_construct' (31712) panicked at src/wire/ipv4.rs:431:48:
+slice index starts at 6 but ends at 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::ipv4::test::test_emit stdout ----
+
+thread 'wire::ipv4::test::test_emit' (31714) panicked at src/wire/ipv4.rs:431:48:
+slice index starts at 6 but ends at 4
+
+
+failures:
+    wire::ipv4::test::test_construct
+    wire::ipv4::test::test_deconstruct
+    wire::ipv4::test::test_emit
+
+test result: FAILED. 12 passed; 3 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

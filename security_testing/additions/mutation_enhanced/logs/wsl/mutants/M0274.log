@@ -1,0 +1,41 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:17:28.625470+00:00
+FINISHED_UTC: 2026-04-03T20:17:40.227686+00:00
+DURATION_SECONDS: 10.649508
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+....... 7/9
+wire::tcp::test::test_impossible_len --- FAILED
+wire::tcp::test::test_truncated --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_impossible_len stdout ----
+
+thread 'wire::tcp::test::test_impossible_len' (81863) panicked at src/wire/tcp.rs:1283:9:
+assertion `left == right` failed
+  left: Ok(())
+ right: Err(Error)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::tcp::test::test_truncated stdout ----
+
+thread 'wire::tcp::test::test_truncated' (81867) panicked at src/wire/tcp.rs:1275:9:
+assertion `left == right` failed
+  left: Ok(())
+ right: Err(Error)
+
+
+failures:
+    wire::tcp::test::test_impossible_len
+    wire::tcp::test::test_truncated
+
+test result: FAILED. 7 passed; 2 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

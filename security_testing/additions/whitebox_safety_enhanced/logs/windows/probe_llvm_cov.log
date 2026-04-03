@@ -1,0 +1,11 @@
+COMMAND: cargo llvm-cov --version
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T21:43:34.822556+00:00
+FINISHED_UTC: 2026-04-03T21:43:34.905829+00:00
+DURATION_SECONDS: 0.083884
+EXIT_CODE: 0
+
+=== STDOUT ===
+cargo-llvm-cov 0.8.5
+
+=== STDERR ===

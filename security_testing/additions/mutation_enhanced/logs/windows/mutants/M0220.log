@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:20:07.802154+00:00
+FINISHED_UTC: 2026-04-03T19:20:11.289480+00:00
+DURATION_SECONDS: 3.481961
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+........ 8/9
+wire::tcp::test::test_deconstruct --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_deconstruct stdout ----
+
+thread 'wire::tcp::test::test_deconstruct' (15592) panicked at src\wire\tcp.rs:1236:9:
+assertion failed: packet.urg()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_deconstruct
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

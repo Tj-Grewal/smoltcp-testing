@@ -1,0 +1,4329 @@
+### M0001 | src/storage/assembler.rs:252 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -249,7 +249,7 @@
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+         }
+-        let shift = j - i - 1;
++        let shift = j - i + 1;
+         if shift != 0 {
+             for x in i + 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+
+### M0002 | src/storage/assembler.rs:285 | bool_or_and
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -282,7 +282,7 @@
+     /// If no such range, return 0.
+     pub fn remove_front(&mut self) -> usize {
+         let front = self.front();
+-        if front.has_hole() || !front.has_data() {
++        if front.has_hole() && !front.has_data() {
+             0
+         } else {
+             self.remove_contig_at(0);
+
+### M0003 | src/storage/assembler.rs:288 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -285,7 +285,7 @@
+         if front.has_hole() || !front.has_data() {
+             0
+         } else {
+-            self.remove_contig_at(0);
++            self.remove_contig_at(1);
+             debug_assert!(front.data_size > 0);
+             front.data_size
+         }
+
+### M0004 | src/storage/assembler.rs:154 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -151,7 +151,7 @@
+     /// Return length of the front contiguous range without removing it from the assembler
+     pub fn peek_front(&self) -> usize {
+         let front = self.front();
+-        if front.has_hole() { 0 } else { front.data_size }
++        if front.has_hole() { 1 } else { front.data_size }
+     }
+ 
+     fn back(&self) -> Contig {
+
+### M0005 | src/storage/assembler.rs:286 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -283,7 +283,7 @@
+     pub fn remove_front(&mut self) -> usize {
+         let front = self.front();
+         if front.has_hole() || !front.has_data() {
+-            0
++            1
+         } else {
+             self.remove_contig_at(0);
+             debug_assert!(front.data_size > 0);
+
+### M0006 | src/storage/assembler.rs:58 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -55,7 +55,7 @@
+     const fn empty() -> Contig {
+         Contig {
+             hole_size: 0,
+-            data_size: 0,
++            data_size: 1,
+         }
+     }
+ 
+
+### M0007 | src/storage/assembler.rs:220 | assign_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -217,7 +217,7 @@
+                 break;
+             }
+             offset -= contig.total_size();
+-            i += 1;
++            i -= 1;
+         }
+ 
+         let contig = &mut self.contigs[i];
+
+### M0008 | src/storage/assembler.rs:187 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -184,7 +184,7 @@
+             return Err(TooManyHolesError);
+         }
+ 
+-        for i in (at + 1..self.contigs.len()).rev() {
++        for i in (at + 0..self.contigs.len()).rev() {
+             self.contigs[i] = self.contigs[i - 1];
+         }
+ 
+
+### M0009 | src/storage/assembler.rs:224 | rel_lt_le
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -221,7 +221,7 @@
+         }
+ 
+         let contig = &mut self.contigs[i];
+-        if offset < contig.hole_size {
++        if offset <= contig.hole_size {
+             // Range starts within the hole.
+ 
+             if offset + size < contig.hole_size {
+
+### M0010 | src/storage/assembler.rs:273 | rel_lt_le
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i + 1 <= self.contigs.len() && self.contigs[i + 1].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0011 | src/storage/assembler.rs:308 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -305,7 +305,7 @@
+         // This is the only case where a segment at offset=0 would cause the
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+-        if offset == 0 && size < self.contigs[0].hole_size {
++        if offset == 0 || size < self.contigs[0].hole_size {
+             self.contigs[0].hole_size -= size;
+             return Ok(size);
+         }
+
+### M0012 | src/storage/assembler.rs:254 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -251,7 +251,7 @@
+         }
+         let shift = j - i - 1;
+         if shift != 0 {
+-            for x in i + 1..self.contigs.len() {
++            for x in i - 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+                     break;
+                 }
+
+### M0013 | src/storage/assembler.rs:227 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -224,7 +224,7 @@
+         if offset < contig.hole_size {
+             // Range starts within the hole.
+ 
+-            if offset + size < contig.hole_size {
++            if offset - size < contig.hole_size {
+                 // Range also ends within the hole.
+                 let new_contig = self.add_contig_at(i)?;
+                 new_contig.hole_size = offset;
+
+### M0014 | src/storage/assembler.rs:220 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -217,7 +217,7 @@
+                 break;
+             }
+             offset -= contig.total_size();
+-            i += 1;
++            i += 0;
+         }
+ 
+         let contig = &mut self.contigs[i];
+
+### M0015 | src/storage/assembler.rs:29 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -26,7 +26,7 @@
+         if self.has_hole() {
+             write!(f, "({})", self.hole_size)?;
+         }
+-        if self.has_hole() && self.has_data() {
++        if self.has_hole() || self.has_data() {
+             write!(f, " ")?;
+         }
+         if self.has_data() {
+
+### M0016 | src/storage/assembler.rs:250 | assign_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -247,7 +247,7 @@
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+-            j += 1;
++            j -= 1;
+         }
+         let shift = j - i - 1;
+         if shift != 0 {
+
+### M0017 | src/storage/assembler.rs:270 | assign_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -267,7 +267,7 @@
+         if offset + size > self.contigs[i].total_size() {
+             // The added range still extends beyond the current contig. Increase data size.
+             let left = offset + size - self.contigs[i].total_size();
+-            self.contigs[i].data_size += left;
++            self.contigs[i].data_size -= left;
+ 
+             // Decrease hole size of the next, if any.
+             if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
+
+### M0018 | src/storage/assembler.rs:227 | rel_lt_le
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -224,7 +224,7 @@
+         if offset < contig.hole_size {
+             // Range starts within the hole.
+ 
+-            if offset + size < contig.hole_size {
++            if offset + size <= contig.hole_size {
+                 // Range also ends within the hole.
+                 let new_contig = self.add_contig_at(i)?;
+                 new_contig.hole_size = offset;
+
+### M0019 | src/storage/assembler.rs:90 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -87,7 +87,7 @@
+ 
+         let total_size = self.total_size();
+         self.hole_size = size;
+-        self.data_size = total_size - size;
++        self.data_size = total_size + size;
+     }
+ }
+ 
+
+### M0020 | src/storage/assembler.rs:289 | rel_gt_ge
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -286,7 +286,7 @@
+             0
+         } else {
+             self.remove_contig_at(0);
+-            debug_assert!(front.data_size > 0);
++            debug_assert!(front.data_size >= 0);
+             front.data_size
+         }
+     }
+
+### M0021 | src/storage/assembler.rs:244 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -241,7 +241,7 @@
+         }
+ 
+         // coalesce contigs to the right.
+-        let mut j = i + 1;
++        let mut j = i + 0;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+
+### M0022 | src/storage/assembler.rs:234 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -231,7 +231,7 @@
+                 new_contig.data_size = size;
+ 
+                 // Previous contigs[index] got moved to contigs[index+1]
+-                self.contigs[i + 1].shrink_hole_by(offset + size);
++                self.contigs[i - 1].shrink_hole_by(offset + size);
+                 return Ok(());
+             }
+ 
+
+### M0023 | src/storage/assembler.rs:308 | rel_eq_ne
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -305,7 +305,7 @@
+         // This is the only case where a segment at offset=0 would cause the
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+-        if offset == 0 && size < self.contigs[0].hole_size {
++        if offset != 0 && size < self.contigs[0].hole_size {
+             self.contigs[0].hole_size -= size;
+             return Ok(size);
+         }
+
+### M0024 | src/storage/assembler.rs:247 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -244,7 +244,7 @@
+         let mut j = i + 1;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+-            && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
++            && offset - size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+
+### M0025 | src/storage/assembler.rs:269 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -266,7 +266,7 @@
+ 
+         if offset + size > self.contigs[i].total_size() {
+             // The added range still extends beyond the current contig. Increase data size.
+-            let left = offset + size - self.contigs[i].total_size();
++            let left = offset - size - self.contigs[i].total_size();
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+
+### M0026 | src/storage/assembler.rs:273 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i - 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0027 | src/storage/assembler.rs:174 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -171,7 +171,7 @@
+             if !self.contigs[i].has_data() {
+                 return;
+             }
+-            self.contigs[i] = self.contigs[i + 1];
++            self.contigs[i] = self.contigs[i - 1];
+         }
+ 
+         // Removing the last one.
+
+### M0028 | src/storage/assembler.rs:253 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -250,7 +250,7 @@
+             j += 1;
+         }
+         let shift = j - i - 1;
+-        if shift != 0 {
++        if shift != 1 {
+             for x in i + 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+                     break;
+
+### M0029 | src/storage/assembler.rs:74 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -71,7 +71,7 @@
+     }
+ 
+     fn has_data(&self) -> bool {
+-        self.data_size != 0
++        self.data_size != 1
+     }
+ 
+     fn total_size(&self) -> usize {
+
+### M0030 | src/storage/assembler.rs:188 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -185,7 +185,7 @@
+         }
+ 
+         for i in (at + 1..self.contigs.len()).rev() {
+-            self.contigs[i] = self.contigs[i - 1];
++            self.contigs[i] = self.contigs[i - 0];
+         }
+ 
+         self.contigs[at] = Contig::empty();
+
+### M0031 | src/storage/assembler.rs:234 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -231,7 +231,7 @@
+                 new_contig.data_size = size;
+ 
+                 // Previous contigs[index] got moved to contigs[index+1]
+-                self.contigs[i + 1].shrink_hole_by(offset + size);
++                self.contigs[i + 1].shrink_hole_by(offset - size);
+                 return Ok(());
+             }
+ 
+
+### M0032 | src/storage/assembler.rs:273 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i + 1 < self.contigs.len() || self.contigs[i + 1].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0033 | src/storage/assembler.rs:274 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -271,7 +271,7 @@
+ 
+             // Decrease hole size of the next, if any.
+             if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
+-                self.contigs[i + 1].hole_size -= left;
++                self.contigs[i + 0].hole_size -= left;
+             }
+         }
+ 
+
+### M0034 | src/storage/assembler.rs:261 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -258,7 +258,7 @@
+ 
+                 self.contigs[x] = self
+                     .contigs
+-                    .get(x + shift)
++                    .get(x - shift)
+                     .copied()
+                     .unwrap_or_else(Contig::empty);
+             }
+
+### M0035 | src/storage/assembler.rs:82 | assign_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -79,7 +79,7 @@
+     }
+ 
+     fn shrink_hole_by(&mut self, size: usize) {
+-        self.hole_size -= size;
++        self.hole_size += size;
+     }
+ 
+     fn shrink_hole_to(&mut self, size: usize) {
+
+### M0036 | src/storage/assembler.rs:178 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -175,7 +175,7 @@
+         }
+ 
+         // Removing the last one.
+-        self.contigs[self.contigs.len() - 1] = Contig::empty();
++        self.contigs[self.contigs.len() + 1] = Contig::empty();
+     }
+ 
+     /// Add a contig at the given index, and return a pointer to it.
+
+### M0037 | src/storage/assembler.rs:170 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -167,7 +167,7 @@
+     fn remove_contig_at(&mut self, at: usize) {
+         debug_assert!(self.contigs[at].has_data());
+ 
+-        for i in at..self.contigs.len() - 1 {
++        for i in at..self.contigs.len() + 1 {
+             if !self.contigs[i].has_data() {
+                 return;
+             }
+
+### M0038 | src/storage/assembler.rs:267 | rel_gt_ge
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -264,7 +264,7 @@
+             }
+         }
+ 
+-        if offset + size > self.contigs[i].total_size() {
++        if offset + size >= self.contigs[i].total_size() {
+             // The added range still extends beyond the current contig. Increase data size.
+             let left = offset + size - self.contigs[i].total_size();
+             self.contigs[i].data_size += left;
+
+### M0039 | src/storage/assembler.rs:188 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -185,7 +185,7 @@
+         }
+ 
+         for i in (at + 1..self.contigs.len()).rev() {
+-            self.contigs[i] = self.contigs[i - 1];
++            self.contigs[i] = self.contigs[i + 1];
+         }
+ 
+         self.contigs[at] = Contig::empty();
+
+### M0040 | src/storage/assembler.rs:267 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -264,7 +264,7 @@
+             }
+         }
+ 
+-        if offset + size > self.contigs[i].total_size() {
++        if offset - size > self.contigs[i].total_size() {
+             // The added range still extends beyond the current contig. Increase data size.
+             let left = offset + size - self.contigs[i].total_size();
+             self.contigs[i].data_size += left;
+
+### M0041 | src/storage/assembler.rs:74 | rel_ne_eq
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -71,7 +71,7 @@
+     }
+ 
+     fn has_data(&self) -> bool {
+-        self.data_size != 0
++        self.data_size == 0
+     }
+ 
+     fn total_size(&self) -> usize {
+
+### M0042 | src/storage/assembler.rs:70 | rel_ne_eq
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -67,7 +67,7 @@
+     }
+ 
+     fn has_hole(&self) -> bool {
+-        self.hole_size != 0
++        self.hole_size == 0
+     }
+ 
+     fn has_data(&self) -> bool {
+
+### M0043 | src/storage/assembler.rs:252 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -249,7 +249,7 @@
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+         }
+-        let shift = j - i - 1;
++        let shift = j + i - 1;
+         if shift != 0 {
+             for x in i + 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+
+### M0044 | src/storage/assembler.rs:247 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -244,7 +244,7 @@
+         let mut j = i + 1;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+-            && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
++            && offset + size >= self.contigs[i].total_size() - self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+
+### M0045 | src/storage/assembler.rs:246 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -243,7 +243,7 @@
+         // coalesce contigs to the right.
+         let mut j = i + 1;
+         while j < self.contigs.len()
+-            && self.contigs[j].has_data()
++ || self.contigs[j].has_data()
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+
+### M0046 | src/storage/assembler.rs:202 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -199,7 +199,7 @@
+             return Ok(());
+         }
+ 
+-        let mut i = 0;
++        let mut i = 1;
+ 
+         // Find index of the contig containing the start of the range.
+         loop {
+
+### M0047 | src/storage/assembler.rs:269 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -266,7 +266,7 @@
+ 
+         if offset + size > self.contigs[i].total_size() {
+             // The added range still extends beyond the current contig. Increase data size.
+-            let left = offset + size - self.contigs[i].total_size();
++            let left = offset + size + self.contigs[i].total_size();
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+
+### M0048 | src/storage/assembler.rs:244 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -241,7 +241,7 @@
+         }
+ 
+         // coalesce contigs to the right.
+-        let mut j = i + 1;
++        let mut j = i - 1;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+
+### M0049 | src/storage/assembler.rs:308 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -305,7 +305,7 @@
+         // This is the only case where a segment at offset=0 would cause the
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+-        if offset == 0 && size < self.contigs[0].hole_size {
++        if offset == 0 && size < self.contigs[1].hole_size {
+             self.contigs[0].hole_size -= size;
+             return Ok(size);
+         }
+
+### M0050 | src/storage/assembler.rs:308 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -305,7 +305,7 @@
+         // This is the only case where a segment at offset=0 would cause the
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+-        if offset == 0 && size < self.contigs[0].hole_size {
++        if offset == 1 && size < self.contigs[0].hole_size {
+             self.contigs[0].hole_size -= size;
+             return Ok(size);
+         }
+
+### M0051 | src/storage/assembler.rs:206 | rel_eq_ne
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -203,7 +203,7 @@
+ 
+         // Find index of the contig containing the start of the range.
+         loop {
+-            if i == self.contigs.len() {
++            if i != self.contigs.len() {
+                 // The new range is after all the previous ranges, but there/s no space to add it.
+                 return Err(TooManyHolesError);
+             }
+
+### M0052 | src/storage/assembler.rs:247 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -244,7 +244,7 @@
+         let mut j = i + 1;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+-            && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
++ || offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+
+### M0053 | src/storage/assembler.rs:309 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -306,7 +306,7 @@
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+         if offset == 0 && size < self.contigs[0].hole_size {
+-            self.contigs[0].hole_size -= size;
++            self.contigs[1].hole_size -= size;
+             return Ok(size);
+         }
+ 
+
+### M0054 | src/storage/assembler.rs:245 | rel_lt_le
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -242,7 +242,7 @@
+ 
+         // coalesce contigs to the right.
+         let mut j = i + 1;
+-        while j < self.contigs.len()
++        while j <= self.contigs.len()
+             && self.contigs[j].has_data()
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+
+### M0055 | src/storage/assembler.rs:78 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -75,7 +75,7 @@
+     }
+ 
+     fn total_size(&self) -> usize {
+-        self.hole_size + self.data_size
++        self.hole_size - self.data_size
+     }
+ 
+     fn shrink_hole_by(&mut self, size: usize) {
+
+### M0056 | src/storage/assembler.rs:158 | arith_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -155,7 +155,7 @@
+     }
+ 
+     fn back(&self) -> Contig {
+-        self.contigs[self.contigs.len() - 1]
++        self.contigs[self.contigs.len() + 1]
+     }
+ 
+     /// Return whether the assembler contains no data.
+
+### M0057 | src/storage/assembler.rs:273 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i + 1 < self.contigs.len() && self.contigs[i + 0].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0058 | src/storage/assembler.rs:57 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -54,7 +54,7 @@
+ impl Contig {
+     const fn empty() -> Contig {
+         Contig {
+-            hole_size: 0,
++            hole_size: 1,
+             data_size: 0,
+         }
+     }
+
+### M0059 | src/storage/assembler.rs:250 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -247,7 +247,7 @@
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+-            j += 1;
++            j += 0;
+         }
+         let shift = j - i - 1;
+         if shift != 0 {
+
+### M0060 | src/storage/assembler.rs:158 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -155,7 +155,7 @@
+     }
+ 
+     fn back(&self) -> Contig {
+-        self.contigs[self.contigs.len() - 1]
++        self.contigs[self.contigs.len() - 0]
+     }
+ 
+     /// Return whether the assembler contains no data.
+
+### M0061 | src/storage/assembler.rs:219 | assign_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -216,7 +216,7 @@
+             if offset <= contig.total_size() {
+                 break;
+             }
+-            offset -= contig.total_size();
++            offset += contig.total_size();
+             i += 1;
+         }
+ 
+
+### M0062 | src/storage/assembler.rs:274 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -271,7 +271,7 @@
+ 
+             // Decrease hole size of the next, if any.
+             if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
+-                self.contigs[i + 1].hole_size -= left;
++                self.contigs[i - 1].hole_size -= left;
+             }
+         }
+ 
+
+### M0063 | src/storage/assembler.rs:174 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -171,7 +171,7 @@
+             if !self.contigs[i].has_data() {
+                 return;
+             }
+-            self.contigs[i] = self.contigs[i + 1];
++            self.contigs[i] = self.contigs[i + 0];
+         }
+ 
+         // Removing the last one.
+
+### M0064 | src/storage/assembler.rs:45 | bool_and_or
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -42,7 +42,7 @@
+         if self.has_hole() {
+             defmt::write!(fmt, "({})", self.hole_size);
+         }
+-        if self.has_hole() && self.has_data() {
++        if self.has_hole() || self.has_data() {
+             defmt::write!(fmt, " ");
+         }
+         if self.has_data() {
+
+### M0065 | src/storage/assembler.rs:289 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -286,7 +286,7 @@
+             0
+         } else {
+             self.remove_contig_at(0);
+-            debug_assert!(front.data_size > 0);
++            debug_assert!(front.data_size > 1);
+             front.data_size
+         }
+     }
+
+### M0066 | src/storage/assembler.rs:86 | rel_ge_gt
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -83,7 +83,7 @@
+     }
+ 
+     fn shrink_hole_to(&mut self, size: usize) {
+-        debug_assert!(self.hole_size >= size);
++        debug_assert!(self.hole_size > size);
+ 
+         let total_size = self.total_size();
+         self.hole_size = size;
+
+### M0067 | src/storage/assembler.rs:273 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i + 1 < self.contigs.len() && self.contigs[i - 1].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0068 | src/storage/assembler.rs:198 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -195,7 +195,7 @@
+     /// Add a new contiguous range to the assembler,
+     /// or return `Err(TooManyHolesError)` if too many discontinuities are already recorded.
+     pub fn add(&mut self, mut offset: usize, size: usize) -> Result<(), TooManyHolesError> {
+-        if size == 0 {
++        if size == 1 {
+             return Ok(());
+         }
+ 
+
+### M0069 | src/storage/assembler.rs:309 | assign_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -306,7 +306,7 @@
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+         if offset == 0 && size < self.contigs[0].hole_size {
+-            self.contigs[0].hole_size -= size;
++            self.contigs[0].hole_size += size;
+             return Ok(size);
+         }
+ 
+
+### M0070 | src/storage/assembler.rs:70 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -67,7 +67,7 @@
+     }
+ 
+     fn has_hole(&self) -> bool {
+-        self.hole_size != 0
++        self.hole_size != 1
+     }
+ 
+     fn has_data(&self) -> bool {
+
+### M0071 | src/storage/assembler.rs:170 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -167,7 +167,7 @@
+     fn remove_contig_at(&mut self, at: usize) {
+         debug_assert!(self.contigs[at].has_data());
+ 
+-        for i in at..self.contigs.len() - 1 {
++        for i in at..self.contigs.len() - 0 {
+             if !self.contigs[i].has_data() {
+                 return;
+             }
+
+### M0072 | src/storage/assembler.rs:249 | assign_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -246,7 +246,7 @@
+             && self.contigs[j].has_data()
+             && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+-            self.contigs[i].data_size += self.contigs[j].total_size();
++            self.contigs[i].data_size -= self.contigs[j].total_size();
+             j += 1;
+         }
+         let shift = j - i - 1;
+
+### M0073 | src/storage/assembler.rs:187 | arith_add_sub
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -184,7 +184,7 @@
+             return Err(TooManyHolesError);
+         }
+ 
+-        for i in (at + 1..self.contigs.len()).rev() {
++        for i in (at - 1..self.contigs.len()).rev() {
+             self.contigs[i] = self.contigs[i - 1];
+         }
+ 
+
+### M0074 | src/storage/assembler.rs:216 | rel_le_lt
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -213,7 +213,7 @@
+                 *contig = Contig::hole_and_data(offset, size);
+                 return Ok(());
+             }
+-            if offset <= contig.total_size() {
++            if offset < contig.total_size() {
+                 break;
+             }
+             offset -= contig.total_size();
+
+### M0075 | src/storage/assembler.rs:247 | rel_ge_gt
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -244,7 +244,7 @@
+         let mut j = i + 1;
+         while j < self.contigs.len()
+             && self.contigs[j].has_data()
+-            && offset + size >= self.contigs[i].total_size() + self.contigs[j].hole_size
++            && offset + size > self.contigs[i].total_size() + self.contigs[j].hole_size
+         {
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+
+### M0076 | src/storage/assembler.rs:178 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -175,7 +175,7 @@
+         }
+ 
+         // Removing the last one.
+-        self.contigs[self.contigs.len() - 1] = Contig::empty();
++        self.contigs[self.contigs.len() - 0] = Contig::empty();
+     }
+ 
+     /// Add a contig at the given index, and return a pointer to it.
+
+### M0077 | src/storage/assembler.rs:148 | const_0_1
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -145,7 +145,7 @@
+     }
+ 
+     fn front(&self) -> Contig {
+-        self.contigs[0]
++        self.contigs[1]
+     }
+ 
+     /// Return length of the front contiguous range without removing it from the assembler
+
+### M0078 | src/storage/assembler.rs:252 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -249,7 +249,7 @@
+             self.contigs[i].data_size += self.contigs[j].total_size();
+             j += 1;
+         }
+-        let shift = j - i - 1;
++        let shift = j - i - 0;
+         if shift != 0 {
+             for x in i + 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+
+### M0079 | src/storage/assembler.rs:198 | rel_eq_ne
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -195,7 +195,7 @@
+     /// Add a new contiguous range to the assembler,
+     /// or return `Err(TooManyHolesError)` if too many discontinuities are already recorded.
+     pub fn add(&mut self, mut offset: usize, size: usize) -> Result<(), TooManyHolesError> {
+-        if size == 0 {
++        if size != 0 {
+             return Ok(());
+         }
+ 
+
+### M0080 | src/storage/assembler.rs:273 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -270,7 +270,7 @@
+             self.contigs[i].data_size += left;
+ 
+             // Decrease hole size of the next, if any.
+-            if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
++            if i + 0 < self.contigs.len() && self.contigs[i + 1].has_data() {
+                 self.contigs[i + 1].hole_size -= left;
+             }
+         }
+
+### M0081 | src/storage/assembler.rs:253 | rel_ne_eq
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -250,7 +250,7 @@
+             j += 1;
+         }
+         let shift = j - i - 1;
+-        if shift != 0 {
++        if shift == 0 {
+             for x in i + 1..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+                     break;
+
+### M0082 | src/storage/assembler.rs:234 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -231,7 +231,7 @@
+                 new_contig.data_size = size;
+ 
+                 // Previous contigs[index] got moved to contigs[index+1]
+-                self.contigs[i + 1].shrink_hole_by(offset + size);
++                self.contigs[i + 0].shrink_hole_by(offset + size);
+                 return Ok(());
+             }
+ 
+
+### M0083 | src/storage/assembler.rs:274 | assign_sub_add
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -271,7 +271,7 @@
+ 
+             // Decrease hole size of the next, if any.
+             if i + 1 < self.contigs.len() && self.contigs[i + 1].has_data() {
+-                self.contigs[i + 1].hole_size -= left;
++                self.contigs[i + 1].hole_size += left;
+             }
+         }
+ 
+
+### M0084 | src/storage/assembler.rs:254 | const_1_0
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -251,7 +251,7 @@
+         }
+         let shift = j - i - 1;
+         if shift != 0 {
+-            for x in i + 1..self.contigs.len() {
++            for x in i + 0..self.contigs.len() {
+                 if !self.contigs[x].has_data() {
+                     break;
+                 }
+
+### M0085 | src/storage/assembler.rs:308 | rel_lt_le
+--- src/storage/assembler.rs
++++ src/storage/assembler.rs
+@@ -305,7 +305,7 @@
+         // This is the only case where a segment at offset=0 would cause the
+         // total amount of contigs to rise (and therefore can potentially cause
+         // a TooManyHolesError). Handle it in a way that is guaranteed to succeed.
+-        if offset == 0 && size < self.contigs[0].hole_size {
++        if offset == 0 && size <= self.contigs[0].hole_size {
+             self.contigs[0].hole_size -= size;
+             return Ok(size);
+         }
+
+### M0086 | src/wire/ipv4.rs:204 | const_16_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -201,7 +201,7 @@
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+     pub const SRC_ADDR: Field = 12..16;
+-    pub const DST_ADDR: Field = 16..20;
++    pub const DST_ADDR: Field = 8..20;
+ }
+ 
+ pub const HEADER_LEN: usize = field::DST_ADDR.end;
+
+### M0087 | src/wire/ipv4.rs:141 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -138,7 +138,7 @@
+     pub fn broadcast(&self) -> Option<Address> {
+         let network = self.network();
+ 
+-        if network.prefix_len == 31 || network.prefix_len == 32 {
++        if network.prefix_len != 31 || network.prefix_len == 32 {
+             return None;
+         }
+ 
+
+### M0088 | src/wire/ipv4.rs:76 | rel_ge_gt
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -73,7 +73,7 @@
+                     // 1 where 0 was expected
+                     return None;
+                 }
+-                mask >>= 1;
++                mask > > 1;
+             }
+         }
+         Some(prefix_len)
+
+### M0089 | src/wire/ipv4.rs:273 | const_2_3
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -270,7 +270,7 @@
+     /// Return the Differential Services Code Point field.
+     pub fn dscp(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        data[field::DSCP_ECN] >> 2
++        data[field::DSCP_ECN] >> 3
+     }
+ 
+     /// Return the Explicit Congestion Notification field.
+
+### M0090 | src/wire/ipv4.rs:300 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -297,7 +297,7 @@
+     #[inline]
+     pub fn dont_frag(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x4000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) | 0x4000 != 0
+     }
+ 
+     /// Return the "more fragments" flag.
+
+### M0091 | src/wire/ipv4.rs:76 | const_1_0
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -73,7 +73,7 @@
+                     // 1 where 0 was expected
+                     return None;
+                 }
+-                mask >>= 1;
++                mask >>= 0;
+             }
+         }
+         Some(prefix_len)
+
+### M0092 | src/wire/ipv4.rs:199 | const_8_4
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -196,7 +196,7 @@
+     pub const DSCP_ECN: usize = 1;
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+-    pub const FLG_OFF: Field = 6..8;
++    pub const FLG_OFF: Field = 6..4;
+     pub const TTL: usize = 8;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+
+### M0093 | src/wire/ipv4.rs:141 | const_32_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -138,7 +138,7 @@
+     pub fn broadcast(&self) -> Option<Address> {
+         let network = self.network();
+ 
+-        if network.prefix_len == 31 || network.prefix_len == 32 {
++        if network.prefix_len == 31 || network.prefix_len == 16 {
+             return None;
+         }
+ 
+
+### M0094 | src/wire/ipv4.rs:242 | rel_gt_ge
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -239,7 +239,7 @@
+             Err(Error)
+         } else if len < self.header_len() as usize {
+             Err(Error)
+-        } else if self.header_len() as u16 > self.total_len() {
++        } else if self.header_len() as u16 >= self.total_len() {
+             Err(Error)
+         } else if len < self.total_len() as usize {
+             Err(Error)
+
+### M0095 | src/wire/ipv4.rs:133 | shift_left_right
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -130,7 +130,7 @@
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+-        let number = 0xffffffffu32 << (32 - self.prefix_len);
++        let number = 0xffffffffu32 >> (32 - self.prefix_len);
+         Address::from_bits(number)
+     }
+ 
+
+### M0096 | src/wire/ipv4.rs:195 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -192,7 +192,7 @@
+ mod field {
+     use crate::wire::field::*;
+ 
+-    pub const VER_IHL: usize = 0;
++    pub const VER_IHL: usize = 1;
+     pub const DSCP_ECN: usize = 1;
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+
+### M0097 | src/wire/ipv4.rs:197 | const_2_3
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -194,7 +194,7 @@
+ 
+     pub const VER_IHL: usize = 0;
+     pub const DSCP_ECN: usize = 1;
+-    pub const LENGTH: Field = 2..4;
++    pub const LENGTH: Field = 3..4;
+     pub const IDENT: Field = 4..6;
+     pub const FLG_OFF: Field = 6..8;
+     pub const TTL: usize = 8;
+
+### M0098 | src/wire/ipv4.rs:68 | assign_add_sub
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -65,7 +65,7 @@
+                 if ones {
+                     // Expect 1s until first 0
+                     if one {
+-                        prefix_len += 1;
++                        prefix_len -= 1;
+                     } else {
+                         ones = false;
+                     }
+
+### M0099 | src/wire/ipv4.rs:279 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -276,7 +276,7 @@
+     /// Return the Explicit Congestion Notification field.
+     pub fn ecn(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        data[field::DSCP_ECN] & 0x03
++        data[field::DSCP_ECN] | 0x03
+     }
+ 
+     /// Return the total length field.
+
+### M0100 | src/wire/ipv4.rs:307 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -304,7 +304,7 @@
+     #[inline]
+     pub fn more_frags(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x2000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x2000 != 1
+     }
+ 
+     /// Return the fragment offset, in octets.
+
+### M0101 | src/wire/ipv4.rs:307 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -304,7 +304,7 @@
+     #[inline]
+     pub fn more_frags(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x2000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) | 0x2000 != 0
+     }
+ 
+     /// Return the fragment offset, in octets.
+
+### M0102 | src/wire/ipv4.rs:25 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -22,7 +22,7 @@
+ pub const MIN_MTU: usize = 576;
+ 
+ /// All multicast-capable nodes
+-pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
++pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 1, 0, 1);
+ 
+ /// All multicast-capable routers
+ pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
+
+### M0103 | src/wire/ipv4.rs:129 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -126,7 +126,7 @@
+ 
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+-        if self.prefix_len == 0 {
++        if self.prefix_len != 0 {
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+
+### M0104 | src/wire/ipv4.rs:244 | rel_lt_le
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -241,7 +241,7 @@
+             Err(Error)
+         } else if self.header_len() as u16 > self.total_len() {
+             Err(Error)
+-        } else if len < self.total_len() as usize {
++        } else if len <= self.total_len() as usize {
+             Err(Error)
+         } else {
+             Ok(())
+
+### M0105 | src/wire/ipv4.rs:267 | arith_mul_div
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -264,7 +264,7 @@
+     #[inline]
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        (data[field::VER_IHL] & 0x0f) * 4
++        (data[field::VER_IHL] & 0x0f) / 4
+     }
+ 
+     /// Return the Differential Services Code Point field.
+
+### M0106 | src/wire/ipv4.rs:141 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -138,7 +138,7 @@
+     pub fn broadcast(&self) -> Option<Address> {
+         let network = self.network();
+ 
+-        if network.prefix_len == 31 || network.prefix_len == 32 {
++        if network.prefix_len == 31 || network.prefix_len != 32 {
+             return None;
+         }
+ 
+
+### M0107 | src/wire/ipv4.rs:273 | shift_right_left
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -270,7 +270,7 @@
+     /// Return the Differential Services Code Point field.
+     pub fn dscp(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        data[field::DSCP_ECN] >> 2
++        data[field::DSCP_ECN] << 2
+     }
+ 
+     /// Return the Explicit Congestion Notification field.
+
+### M0108 | src/wire/ipv4.rs:162 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -159,7 +159,7 @@
+     /// the given address.
+     pub fn contains_addr(&self, addr: &Address) -> bool {
+         self.address.to_bits() & self.netmask().to_bits()
+-            == addr.to_bits() & self.netmask().to_bits()
++            == addr.to_bits() | self.netmask().to_bits()
+     }
+ 
+     /// Query whether the subnetwork described by this IPv4 CIDR block contains
+
+### M0109 | src/wire/ipv4.rs:203 | const_16_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -200,7 +200,7 @@
+     pub const TTL: usize = 8;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+-    pub const SRC_ADDR: Field = 12..16;
++    pub const SRC_ADDR: Field = 12..8;
+     pub const DST_ADDR: Field = 16..20;
+ }
+ 
+
+### M0110 | src/wire/ipv4.rs:146 | bit_or_and
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -143,7 +143,7 @@
+         }
+ 
+         let network_number = network.address.to_bits();
+-        let number = network_number | 0xffffffffu32 >> network.prefix_len;
++        let number = network_number & 0xffffffffu32 >> network.prefix_len;
+         Some(Address::from_bits(number))
+     }
+ 
+
+### M0111 | src/wire/ipv4.rs:97 | const_32_64
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -94,7 +94,7 @@
+     /// # Panics
+     /// This function panics if the prefix length is larger than 32.
+     pub const fn new(address: Address, prefix_len: u8) -> Cidr {
+-        assert!(prefix_len <= 32);
++        assert!(prefix_len <= 64);
+         Cidr {
+             address,
+             prefix_len,
+
+### M0112 | src/wire/ipv4.rs:25 | const_1_0
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -22,7 +22,7 @@
+ pub const MIN_MTU: usize = 576;
+ 
+ /// All multicast-capable nodes
+-pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
++pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 0);
+ 
+ /// All multicast-capable routers
+ pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
+
+### M0113 | src/wire/ipv4.rs:63 | const_8_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -60,7 +60,7 @@
+         let mut prefix_len = 0;
+         for byte in self.octets() {
+             let mut mask = 0x80;
+-            for _ in 0..8 {
++            for _ in 0..16 {
+                 let one = byte & mask != 0;
+                 if ones {
+                     // Expect 1s until first 0
+
+### M0114 | src/wire/ipv4.rs:141 | const_32_64
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -138,7 +138,7 @@
+     pub fn broadcast(&self) -> Option<Address> {
+         let network = self.network();
+ 
+-        if network.prefix_len == 31 || network.prefix_len == 32 {
++        if network.prefix_len == 31 || network.prefix_len == 64 {
+             return None;
+         }
+ 
+
+### M0115 | src/wire/ipv4.rs:63 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -60,7 +60,7 @@
+         let mut prefix_len = 0;
+         for byte in self.octets() {
+             let mut mask = 0x80;
+-            for _ in 0..8 {
++            for _ in 1..8 {
+                 let one = byte & mask != 0;
+                 if ones {
+                     // Expect 1s until first 0
+
+### M0116 | src/wire/ipv4.rs:200 | const_8_4
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -197,7 +197,7 @@
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+     pub const FLG_OFF: Field = 6..8;
+-    pub const TTL: usize = 8;
++    pub const TTL: usize = 4;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+     pub const SRC_ADDR: Field = 12..16;
+
+### M0117 | src/wire/ipv4.rs:130 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -127,7 +127,7 @@
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+         if self.prefix_len == 0 {
+-            return Address::new(0, 0, 0, 0);
++            return Address::new(0, 0, 0, 1);
+         }
+ 
+         let number = 0xffffffffu32 << (32 - self.prefix_len);
+
+### M0118 | src/wire/ipv4.rs:358 | bool_true_false
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -355,7 +355,7 @@
+     /// This function always returns `true` when fuzzing.
+     pub fn verify_checksum(&self) -> bool {
+         if cfg!(fuzzing) {
+-            return true;
++            return false;
+         }
+ 
+         let data = self.buffer.as_ref();
+
+### M0119 | src/wire/ipv4.rs:64 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -61,7 +61,7 @@
+         for byte in self.octets() {
+             let mut mask = 0x80;
+             for _ in 0..8 {
+-                let one = byte & mask != 0;
++                let one = byte | mask != 0;
+                 if ones {
+                     // Expect 1s until first 0
+                     if one {
+
+### M0120 | src/wire/ipv4.rs:76 | assign_shr_shl
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -73,7 +73,7 @@
+                     // 1 where 0 was expected
+                     return None;
+                 }
+-                mask >>= 1;
++                mask <<= 1;
+             }
+         }
+         Some(prefix_len)
+
+### M0121 | src/wire/ipv4.rs:28 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -25,7 +25,7 @@
+ pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
+ 
+ /// All multicast-capable routers
+-pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
++pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 1, 2);
+ 
+ #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy)]
+ #[cfg_attr(feature = "defmt", derive(defmt::Format))]
+
+### M0122 | src/wire/ipv4.rs:196 | const_1_0
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -193,7 +193,7 @@
+     use crate::wire::field::*;
+ 
+     pub const VER_IHL: usize = 0;
+-    pub const DSCP_ECN: usize = 1;
++    pub const DSCP_ECN: usize = 0;
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+     pub const FLG_OFF: Field = 6..8;
+
+### M0123 | src/wire/ipv4.rs:59 | bool_true_false
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -56,7 +56,7 @@
+     }
+ 
+     fn prefix_len(&self) -> Option<u8> {
+-        let mut ones = true;
++        let mut ones = false;
+         let mut prefix_len = 0;
+         for byte in self.octets() {
+             let mut mask = 0x80;
+
+### M0124 | src/wire/ipv4.rs:362 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -359,7 +359,7 @@
+         }
+ 
+         let data = self.buffer.as_ref();
+-        checksum::data(&data[..self.header_len() as usize]) == !0
++        checksum::data(&data[..self.header_len() as usize]) == !1
+     }
+ 
+     /// Returns the key for identifying the packet.
+
+### M0125 | src/wire/ipv4.rs:133 | const_32_64
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -130,7 +130,7 @@
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+-        let number = 0xffffffffu32 << (32 - self.prefix_len);
++        let number = 0xffffffffu32 << (64 - self.prefix_len);
+         Address::from_bits(number)
+     }
+ 
+
+### M0126 | src/wire/ipv4.rs:200 | const_8_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -197,7 +197,7 @@
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+     pub const FLG_OFF: Field = 6..8;
+-    pub const TTL: usize = 8;
++    pub const TTL: usize = 16;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+     pub const SRC_ADDR: Field = 12..16;
+
+### M0127 | src/wire/ipv4.rs:238 | rel_lt_le
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -235,7 +235,7 @@
+     #[allow(clippy::if_same_then_else)]
+     pub fn check_len(&self) -> Result<()> {
+         let len = self.buffer.as_ref().len();
+-        if len < field::DST_ADDR.end {
++        if len <= field::DST_ADDR.end {
+             Err(Error)
+         } else if len < self.header_len() as usize {
+             Err(Error)
+
+### M0128 | src/wire/ipv4.rs:107 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -104,7 +104,7 @@
+     /// Create an IPv4 CIDR block from the given address and network mask.
+     pub fn from_netmask(addr: Address, netmask: Address) -> Result<Cidr> {
+         let netmask = netmask.to_bits();
+-        if netmask.leading_zeros() == 0 && netmask.trailing_zeros() == netmask.count_zeros() {
++        if netmask.leading_zeros() == 0 && netmask.trailing_zeros() != netmask.count_zeros() {
+             Ok(Cidr {
+                 address: addr,
+                 prefix_len: netmask.count_ones() as u8,
+
+### M0129 | src/wire/ipv4.rs:130 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -127,7 +127,7 @@
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+         if self.prefix_len == 0 {
+-            return Address::new(0, 0, 0, 0);
++            return Address::new(1, 0, 0, 0);
+         }
+ 
+         let number = 0xffffffffu32 << (32 - self.prefix_len);
+
+### M0130 | src/wire/ipv4.rs:60 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -57,7 +57,7 @@
+ 
+     fn prefix_len(&self) -> Option<u8> {
+         let mut ones = true;
+-        let mut prefix_len = 0;
++        let mut prefix_len = 1;
+         for byte in self.octets() {
+             let mut mask = 0x80;
+             for _ in 0..8 {
+
+### M0131 | src/wire/ipv4.rs:107 | bool_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -104,7 +104,7 @@
+     /// Create an IPv4 CIDR block from the given address and network mask.
+     pub fn from_netmask(addr: Address, netmask: Address) -> Result<Cidr> {
+         let netmask = netmask.to_bits();
+-        if netmask.leading_zeros() == 0 && netmask.trailing_zeros() == netmask.count_zeros() {
++        if netmask.leading_zeros() == 0 || netmask.trailing_zeros() == netmask.count_zeros() {
+             Ok(Cidr {
+                 address: addr,
+                 prefix_len: netmask.count_ones() as u8,
+
+### M0132 | src/wire/ipv4.rs:70 | bool_false_true
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -67,7 +67,7 @@
+                     if one {
+                         prefix_len += 1;
+                     } else {
+-                        ones = false;
++                        ones = true;
+                     }
+                 } else if one {
+                     // 1 where 0 was expected
+
+### M0133 | src/wire/ipv4.rs:141 | bool_or_and
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -138,7 +138,7 @@
+     pub fn broadcast(&self) -> Option<Address> {
+         let network = self.network();
+ 
+-        if network.prefix_len == 31 || network.prefix_len == 32 {
++        if network.prefix_len == 31 && network.prefix_len == 32 {
+             return None;
+         }
+ 
+
+### M0134 | src/wire/ipv4.rs:55 | bool_or_and
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -52,7 +52,7 @@
+ impl AddressExt for Address {
+     /// Query whether the address is an unicast address.
+     fn x_is_unicast(&self) -> bool {
+-        !(self.is_broadcast() || self.is_multicast() || self.is_unspecified())
++        !(self.is_broadcast() || self.is_multicast() && self.is_unspecified())
+     }
+ 
+     fn prefix_len(&self) -> Option<u8> {
+
+### M0135 | src/wire/ipv4.rs:314 | shift_left_right
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -311,7 +311,7 @@
+     #[inline]
+     pub fn frag_offset(&self) -> u16 {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) << 3
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) >> 3
+     }
+ 
+     /// Return the time to live field.
+
+### M0136 | src/wire/ipv4.rs:240 | rel_lt_le
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -237,7 +237,7 @@
+         let len = self.buffer.as_ref().len();
+         if len < field::DST_ADDR.end {
+             Err(Error)
+-        } else if len < self.header_len() as usize {
++        } else if len <= self.header_len() as usize {
+             Err(Error)
+         } else if self.header_len() as u16 > self.total_len() {
+             Err(Error)
+
+### M0137 | src/wire/ipv4.rs:362 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -359,7 +359,7 @@
+         }
+ 
+         let data = self.buffer.as_ref();
+-        checksum::data(&data[..self.header_len() as usize]) == !0
++        checksum::data(&data[..self.header_len() as usize]) != !0
+     }
+ 
+     /// Returns the key for identifying the packet.
+
+### M0138 | src/wire/ipv4.rs:199 | const_8_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -196,7 +196,7 @@
+     pub const DSCP_ECN: usize = 1;
+     pub const LENGTH: Field = 2..4;
+     pub const IDENT: Field = 4..6;
+-    pub const FLG_OFF: Field = 6..8;
++    pub const FLG_OFF: Field = 6..16;
+     pub const TTL: usize = 8;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+
+### M0139 | src/wire/ipv4.rs:107 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -104,7 +104,7 @@
+     /// Create an IPv4 CIDR block from the given address and network mask.
+     pub fn from_netmask(addr: Address, netmask: Address) -> Result<Cidr> {
+         let netmask = netmask.to_bits();
+-        if netmask.leading_zeros() == 0 && netmask.trailing_zeros() == netmask.count_zeros() {
++        if netmask.leading_zeros() != 0 && netmask.trailing_zeros() == netmask.count_zeros() {
+             Ok(Cidr {
+                 address: addr,
+                 prefix_len: netmask.count_ones() as u8,
+
+### M0140 | src/wire/ipv4.rs:28 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -25,7 +25,7 @@
+ pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
+ 
+ /// All multicast-capable routers
+-pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
++pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 1, 0, 2);
+ 
+ #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy)]
+ #[cfg_attr(feature = "defmt", derive(defmt::Format))]
+
+### M0141 | src/wire/ipv4.rs:25 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -22,7 +22,7 @@
+ pub const MIN_MTU: usize = 576;
+ 
+ /// All multicast-capable nodes
+-pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
++pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 1, 1);
+ 
+ /// All multicast-capable routers
+ pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
+
+### M0142 | src/wire/ipv4.rs:197 | const_4_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -194,7 +194,7 @@
+ 
+     pub const VER_IHL: usize = 0;
+     pub const DSCP_ECN: usize = 1;
+-    pub const LENGTH: Field = 2..4;
++    pub const LENGTH: Field = 2..8;
+     pub const IDENT: Field = 4..6;
+     pub const FLG_OFF: Field = 6..8;
+     pub const TTL: usize = 8;
+
+### M0143 | src/wire/ipv4.rs:63 | const_8_4
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -60,7 +60,7 @@
+         let mut prefix_len = 0;
+         for byte in self.octets() {
+             let mut mask = 0x80;
+-            for _ in 0..8 {
++            for _ in 0..4 {
+                 let one = byte & mask != 0;
+                 if ones {
+                     // Expect 1s until first 0
+
+### M0144 | src/wire/ipv4.rs:168 | bool_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -165,7 +165,7 @@
+     /// Query whether the subnetwork described by this IPv4 CIDR block contains
+     /// the subnetwork described by the given IPv4 CIDR block.
+     pub fn contains_subnet(&self, subnet: &Cidr) -> bool {
+-        self.prefix_len <= subnet.prefix_len && self.contains_addr(&subnet.address)
++        self.prefix_len <= subnet.prefix_len || self.contains_addr(&subnet.address)
+     }
+ }
+ 
+
+### M0145 | src/wire/ipv4.rs:64 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -61,7 +61,7 @@
+         for byte in self.octets() {
+             let mut mask = 0x80;
+             for _ in 0..8 {
+-                let one = byte & mask != 0;
++                let one = byte & mask != 1;
+                 if ones {
+                     // Expect 1s until first 0
+                     if one {
+
+### M0146 | src/wire/ipv4.rs:300 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -297,7 +297,7 @@
+     #[inline]
+     pub fn dont_frag(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x4000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x4000 != 1
+     }
+ 
+     /// Return the "more fragments" flag.
+
+### M0147 | src/wire/ipv4.rs:97 | const_32_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -94,7 +94,7 @@
+     /// # Panics
+     /// This function panics if the prefix length is larger than 32.
+     pub const fn new(address: Address, prefix_len: u8) -> Cidr {
+-        assert!(prefix_len <= 32);
++        assert!(prefix_len <= 16);
+         Cidr {
+             address,
+             prefix_len,
+
+### M0148 | src/wire/ipv4.rs:267 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -264,7 +264,7 @@
+     #[inline]
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        (data[field::VER_IHL] & 0x0f) * 4
++        (data[field::VER_IHL] | 0x0f) * 4
+     }
+ 
+     /// Return the Differential Services Code Point field.
+
+### M0149 | src/wire/ipv4.rs:130 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -127,7 +127,7 @@
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+         if self.prefix_len == 0 {
+-            return Address::new(0, 0, 0, 0);
++            return Address::new(0, 0, 1, 0);
+         }
+ 
+         let number = 0xffffffffu32 << (32 - self.prefix_len);
+
+### M0150 | src/wire/ipv4.rs:314 | const_3_2
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -311,7 +311,7 @@
+     #[inline]
+     pub fn frag_offset(&self) -> u16 {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) << 3
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) << 2
+     }
+ 
+     /// Return the time to live field.
+
+### M0151 | src/wire/ipv4.rs:168 | rel_le_lt
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -165,7 +165,7 @@
+     /// Query whether the subnetwork described by this IPv4 CIDR block contains
+     /// the subnetwork described by the given IPv4 CIDR block.
+     pub fn contains_subnet(&self, subnet: &Cidr) -> bool {
+-        self.prefix_len <= subnet.prefix_len && self.contains_addr(&subnet.address)
++        self.prefix_len < subnet.prefix_len && self.contains_addr(&subnet.address)
+     }
+ }
+ 
+
+### M0152 | src/wire/ipv4.rs:204 | const_16_32
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -201,7 +201,7 @@
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+     pub const SRC_ADDR: Field = 12..16;
+-    pub const DST_ADDR: Field = 16..20;
++    pub const DST_ADDR: Field = 32..20;
+ }
+ 
+ pub const HEADER_LEN: usize = field::DST_ADDR.end;
+
+### M0153 | src/wire/ipv4.rs:260 | const_4_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -257,7 +257,7 @@
+     #[inline]
+     pub fn version(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        data[field::VER_IHL] >> 4
++        data[field::VER_IHL] >> 8
+     }
+ 
+     /// Return the header length, in octets.
+
+### M0154 | src/wire/ipv4.rs:129 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -126,7 +126,7 @@
+ 
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+-        if self.prefix_len == 0 {
++        if self.prefix_len == 1 {
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+
+### M0155 | src/wire/ipv4.rs:28 | const_2_3
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -25,7 +25,7 @@
+ pub const MULTICAST_ALL_SYSTEMS: Address = Address::new(224, 0, 0, 1);
+ 
+ /// All multicast-capable routers
+-pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 2);
++pub const MULTICAST_ALL_ROUTERS: Address = Address::new(224, 0, 0, 3);
+ 
+ #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone, Copy)]
+ #[cfg_attr(feature = "defmt", derive(defmt::Format))]
+
+### M0156 | src/wire/ipv4.rs:198 | const_4_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -195,7 +195,7 @@
+     pub const VER_IHL: usize = 0;
+     pub const DSCP_ECN: usize = 1;
+     pub const LENGTH: Field = 2..4;
+-    pub const IDENT: Field = 4..6;
++    pub const IDENT: Field = 8..6;
+     pub const FLG_OFF: Field = 6..8;
+     pub const TTL: usize = 8;
+     pub const PROTOCOL: usize = 9;
+
+### M0157 | src/wire/ipv4.rs:64 | rel_ne_eq
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -61,7 +61,7 @@
+         for byte in self.octets() {
+             let mut mask = 0x80;
+             for _ in 0..8 {
+-                let one = byte & mask != 0;
++                let one = byte & mask == 0;
+                 if ones {
+                     // Expect 1s until first 0
+                     if one {
+
+### M0158 | src/wire/ipv4.rs:107 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -104,7 +104,7 @@
+     /// Create an IPv4 CIDR block from the given address and network mask.
+     pub fn from_netmask(addr: Address, netmask: Address) -> Result<Cidr> {
+         let netmask = netmask.to_bits();
+-        if netmask.leading_zeros() == 0 && netmask.trailing_zeros() == netmask.count_zeros() {
++        if netmask.leading_zeros() == 1 && netmask.trailing_zeros() == netmask.count_zeros() {
+             Ok(Cidr {
+                 address: addr,
+                 prefix_len: netmask.count_ones() as u8,
+
+### M0159 | src/wire/ipv4.rs:260 | shift_right_left
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -257,7 +257,7 @@
+     #[inline]
+     pub fn version(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        data[field::VER_IHL] >> 4
++        data[field::VER_IHL] << 4
+     }
+ 
+     /// Return the header length, in octets.
+
+### M0160 | src/wire/ipv4.rs:68 | const_1_0
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -65,7 +65,7 @@
+                 if ones {
+                     // Expect 1s until first 0
+                     if one {
+-                        prefix_len += 1;
++                        prefix_len += 0;
+                     } else {
+                         ones = false;
+                     }
+
+### M0161 | src/wire/ipv4.rs:133 | arith_sub_add
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -130,7 +130,7 @@
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+-        let number = 0xffffffffu32 << (32 - self.prefix_len);
++        let number = 0xffffffffu32 << (32 + self.prefix_len);
+         Address::from_bits(number)
+     }
+ 
+
+### M0162 | src/wire/ipv4.rs:130 | const_0_1
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -127,7 +127,7 @@
+     /// Return the network mask of this IPv4 CIDR.
+     pub const fn netmask(&self) -> Address {
+         if self.prefix_len == 0 {
+-            return Address::new(0, 0, 0, 0);
++            return Address::new(0, 1, 0, 0);
+         }
+ 
+         let number = 0xffffffffu32 << (32 - self.prefix_len);
+
+### M0163 | src/wire/ipv4.rs:162 | rel_eq_ne
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -159,7 +159,7 @@
+     /// the given address.
+     pub fn contains_addr(&self, addr: &Address) -> bool {
+         self.address.to_bits() & self.netmask().to_bits()
+-            == addr.to_bits() & self.netmask().to_bits()
++ != addr.to_bits() & self.netmask().to_bits()
+     }
+ 
+     /// Query whether the subnetwork described by this IPv4 CIDR block contains
+
+### M0164 | src/wire/ipv4.rs:203 | const_16_32
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -200,7 +200,7 @@
+     pub const TTL: usize = 8;
+     pub const PROTOCOL: usize = 9;
+     pub const CHECKSUM: Field = 10..12;
+-    pub const SRC_ADDR: Field = 12..16;
++    pub const SRC_ADDR: Field = 12..32;
+     pub const DST_ADDR: Field = 16..20;
+ }
+ 
+
+### M0165 | src/wire/ipv4.rs:153 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -150,7 +150,7 @@
+     /// Return the network block of this IPv4 CIDR.
+     pub const fn network(&self) -> Cidr {
+         Cidr {
+-            address: Address::from_bits(self.address.to_bits() & self.netmask().to_bits()),
++            address: Address::from_bits(self.address.to_bits() | self.netmask().to_bits()),
+             prefix_len: self.prefix_len,
+         }
+     }
+
+### M0166 | src/wire/ipv4.rs:161 | bit_and_or
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -158,7 +158,7 @@
+     /// Query whether the subnetwork described by this IPv4 CIDR block contains
+     /// the given address.
+     pub fn contains_addr(&self, addr: &Address) -> bool {
+-        self.address.to_bits() & self.netmask().to_bits()
++        self.address.to_bits() | self.netmask().to_bits()
+             == addr.to_bits() & self.netmask().to_bits()
+     }
+ 
+
+### M0167 | src/wire/ipv4.rs:146 | shift_right_left
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -143,7 +143,7 @@
+         }
+ 
+         let network_number = network.address.to_bits();
+-        let number = network_number | 0xffffffffu32 >> network.prefix_len;
++        let number = network_number | 0xffffffffu32 << network.prefix_len;
+         Some(Address::from_bits(number))
+     }
+ 
+
+### M0168 | src/wire/ipv4.rs:97 | rel_le_lt
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -94,7 +94,7 @@
+     /// # Panics
+     /// This function panics if the prefix length is larger than 32.
+     pub const fn new(address: Address, prefix_len: u8) -> Cidr {
+-        assert!(prefix_len <= 32);
++        assert!(prefix_len < 32);
+         Cidr {
+             address,
+             prefix_len,
+
+### M0169 | src/wire/ipv4.rs:55 | bool_or_and
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -52,7 +52,7 @@
+ impl AddressExt for Address {
+     /// Query whether the address is an unicast address.
+     fn x_is_unicast(&self) -> bool {
+-        !(self.is_broadcast() || self.is_multicast() || self.is_unspecified())
++        !(self.is_broadcast() && self.is_multicast() || self.is_unspecified())
+     }
+ 
+     fn prefix_len(&self) -> Option<u8> {
+
+### M0170 | src/wire/ipv4.rs:133 | const_32_16
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -130,7 +130,7 @@
+             return Address::new(0, 0, 0, 0);
+         }
+ 
+-        let number = 0xffffffffu32 << (32 - self.prefix_len);
++        let number = 0xffffffffu32 << (16 - self.prefix_len);
+         Address::from_bits(number)
+     }
+ 
+
+### M0171 | src/wire/ipv4.rs:267 | const_4_8
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -264,7 +264,7 @@
+     #[inline]
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+-        (data[field::VER_IHL] & 0x0f) * 4
++        (data[field::VER_IHL] & 0x0f) * 8
+     }
+ 
+     /// Return the Differential Services Code Point field.
+
+### M0172 | src/wire/ipv4.rs:307 | rel_ne_eq
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -304,7 +304,7 @@
+     #[inline]
+     pub fn more_frags(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x2000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x2000 == 0
+     }
+ 
+     /// Return the fragment offset, in octets.
+
+### M0173 | src/wire/ipv4.rs:300 | rel_ne_eq
+--- src/wire/ipv4.rs
++++ src/wire/ipv4.rs
+@@ -297,7 +297,7 @@
+     #[inline]
+     pub fn dont_frag(&self) -> bool {
+         let data = self.buffer.as_ref();
+-        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x4000 != 0
++        NetworkEndian::read_u16(&data[field::FLG_OFF]) & 0x4000 == 0
+     }
+ 
+     /// Return the "more fragments" flag.
+
+### M0174 | src/wire/udp.rs:139 | bool_true_false
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -136,7 +136,7 @@
+         // > generated no checksum (for debugging or for higher level protocols
+         // > that don't care).
+         if self.checksum() == 0 {
+-            return true;
++            return false;
+         }
+ 
+         let data = self.buffer.as_ref();
+
+### M0175 | src/wire/udp.rs:138 | rel_eq_ne
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -135,7 +135,7 @@
+         // > An all zero transmitted checksum value means that the transmitter
+         // > generated no checksum (for debugging or for higher level protocols
+         // > that don't care).
+-        if self.checksum() == 0 {
++        if self.checksum() != 0 {
+             return true;
+         }
+ 
+
+### M0176 | src/wire/udp.rs:428 | const_8_16
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -425,7 +425,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_zero_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![0; 16];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0177 | src/wire/udp.rs:63 | rel_lt_le
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -60,7 +60,7 @@
+             Err(Error)
+         } else {
+             let field_len = self.len() as usize;
+-            if buffer_len < field_len || field_len < HEADER_LEN {
++            if buffer_len < field_len || field_len <= HEADER_LEN {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0178 | src/wire/udp.rs:21 | const_2_3
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -18,7 +18,7 @@
+     use crate::wire::field::*;
+ 
+     pub const SRC_PORT: Field = 0..2;
+-    pub const DST_PORT: Field = 2..4;
++    pub const DST_PORT: Field = 3..4;
+     pub const LENGTH: Field = 4..6;
+     pub const CHECKSUM: Field = 6..8;
+ 
+
+### M0179 | src/wire/udp.rs:440 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -437,7 +437,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_no_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![1; 8];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0180 | src/wire/udp.rs:374 | const_1_0
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -371,7 +371,7 @@
+     use crate::wire::Ipv4Address;
+ 
+     #[cfg(feature = "proto-ipv4")]
+-    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
++    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 0, 1);
+     #[cfg(feature = "proto-ipv4")]
+     const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
+ 
+
+### M0181 | src/wire/udp.rs:475 | arith_add_sub
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -472,7 +472,7 @@
+     #[cfg(feature = "proto-ipv4")]
+     fn test_emit() {
+         let repr = packet_repr();
+-        let mut bytes = vec![0xa5; repr.header_len() + PAYLOAD_BYTES.len()];
++        let mut bytes = vec![0xa5; repr.header_len() - PAYLOAD_BYTES.len()];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         repr.emit(
+             &mut packet,
+
+### M0182 | src/wire/udp.rs:146 | rel_eq_ne
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -143,7 +143,7 @@
+         checksum::combine(&[
+             checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Udp, self.len() as u32),
+             checksum::data(&data[..self.len() as usize]),
+-        ]) == !0
++        ]) != !0
+     }
+ }
+ 
+
+### M0183 | src/wire/udp.rs:376 | const_2_3
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -373,7 +373,7 @@
+     #[cfg(feature = "proto-ipv4")]
+     const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
+     #[cfg(feature = "proto-ipv4")]
+-    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
++    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 3);
+ 
+     #[cfg(feature = "proto-ipv4")]
+     static PACKET_BYTES: [u8; 12] = [
+
+### M0184 | src/wire/udp.rs:63 | rel_lt_le
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -60,7 +60,7 @@
+             Err(Error)
+         } else {
+             let field_len = self.len() as usize;
+-            if buffer_len < field_len || field_len < HEADER_LEN {
++            if buffer_len <= field_len || field_len < HEADER_LEN {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0185 | src/wire/udp.rs:146 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -143,7 +143,7 @@
+         checksum::combine(&[
+             checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Udp, self.len() as u32),
+             checksum::data(&data[..self.len() as usize]),
+-        ]) == !0
++        ]) == !1
+     }
+ }
+ 
+
+### M0186 | src/wire/udp.rs:59 | rel_lt_le
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -56,7 +56,7 @@
+     /// [set_len]: #method.set_len
+     pub fn check_len(&self) -> Result<()> {
+         let buffer_len = self.buffer.as_ref().len();
+-        if buffer_len < HEADER_LEN {
++        if buffer_len <= HEADER_LEN {
+             Err(Error)
+         } else {
+             let field_len = self.len() as usize;
+
+### M0187 | src/wire/udp.rs:432 | const_8_4
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -429,7 +429,7 @@
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+-        packet.set_len(8);
++        packet.set_len(4);
+         packet.fill_checksum(&SRC_ADDR.into(), &DST_ADDR.into());
+         assert_eq!(packet.checksum(), 0xffff);
+     }
+
+### M0188 | src/wire/udp.rs:430 | const_1_0
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -427,7 +427,7 @@
+     fn test_zero_checksum() {
+         let mut bytes = vec![0; 8];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+-        packet.set_src_port(1);
++        packet.set_src_port(0);
+         packet.set_dst_port(31881);
+         packet.set_len(8);
+         packet.fill_checksum(&SRC_ADDR.into(), &DST_ADDR.into());
+
+### M0189 | src/wire/udp.rs:21 | const_4_8
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -18,7 +18,7 @@
+     use crate::wire::field::*;
+ 
+     pub const SRC_PORT: Field = 0..2;
+-    pub const DST_PORT: Field = 2..4;
++    pub const DST_PORT: Field = 2..8;
+     pub const LENGTH: Field = 4..6;
+     pub const CHECKSUM: Field = 6..8;
+ 
+
+### M0190 | src/wire/udp.rs:428 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -425,7 +425,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_zero_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![1; 8];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0191 | src/wire/udp.rs:63 | bool_or_and
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -60,7 +60,7 @@
+             Err(Error)
+         } else {
+             let field_len = self.len() as usize;
+-            if buffer_len < field_len || field_len < HEADER_LEN {
++            if buffer_len < field_len && field_len < HEADER_LEN {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0192 | src/wire/udp.rs:22 | const_4_8
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -19,7 +19,7 @@
+ 
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+-    pub const LENGTH: Field = 4..6;
++    pub const LENGTH: Field = 8..6;
+     pub const CHECKSUM: Field = 6..8;
+ 
+     pub const fn PAYLOAD(length: u16) -> Field {
+
+### M0193 | src/wire/udp.rs:23 | const_8_4
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -20,7 +20,7 @@
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+     pub const LENGTH: Field = 4..6;
+-    pub const CHECKSUM: Field = 6..8;
++    pub const CHECKSUM: Field = 6..4;
+ 
+     pub const fn PAYLOAD(length: u16) -> Field {
+         CHECKSUM.end..(length as usize)
+
+### M0194 | src/wire/udp.rs:389 | const_4_8
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -386,7 +386,7 @@
+     ];
+ 
+     #[cfg(feature = "proto-ipv4")]
+-    static PAYLOAD_BYTES: [u8; 4] = [0xaa, 0x00, 0x00, 0xff];
++    static PAYLOAD_BYTES: [u8; 8] = [0xaa, 0x00, 0x00, 0xff];
+ 
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+
+### M0195 | src/wire/udp.rs:432 | const_8_16
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -429,7 +429,7 @@
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+-        packet.set_len(8);
++        packet.set_len(16);
+         packet.fill_checksum(&SRC_ADDR.into(), &DST_ADDR.into());
+         assert_eq!(packet.checksum(), 0xffff);
+     }
+
+### M0196 | src/wire/udp.rs:118 | rel_eq_ne
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -115,7 +115,7 @@
+         }
+ 
+         checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Udp, self.len() as u32)
+-            == self.checksum()
++ != self.checksum()
+     }
+ 
+     /// Validate the packet checksum.
+
+### M0197 | src/wire/udp.rs:114 | bool_true_false
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -111,7 +111,7 @@
+     /// This function always returns `true` when fuzzing.
+     pub fn verify_partial_checksum(&self, src_addr: &IpAddress, dst_addr: &IpAddress) -> bool {
+         if cfg!(fuzzing) {
+-            return true;
++            return false;
+         }
+ 
+         checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Udp, self.len() as u32)
+
+### M0198 | src/wire/udp.rs:419 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -416,7 +416,7 @@
+ 
+     #[test]
+     fn test_impossible_len() {
+-        let mut bytes = vec![0; 12];
++        let mut bytes = vec![1; 12];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_len(4);
+         assert_eq!(packet.check_len(), Err(Error));
+
+### M0199 | src/wire/udp.rs:20 | const_2_3
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -17,7 +17,7 @@
+ 
+     use crate::wire::field::*;
+ 
+-    pub const SRC_PORT: Field = 0..2;
++    pub const SRC_PORT: Field = 0..3;
+     pub const DST_PORT: Field = 2..4;
+     pub const LENGTH: Field = 4..6;
+     pub const CHECKSUM: Field = 6..8;
+
+### M0200 | src/wire/udp.rs:421 | const_4_8
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -418,7 +418,7 @@
+     fn test_impossible_len() {
+         let mut bytes = vec![0; 12];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+-        packet.set_len(4);
++        packet.set_len(8);
+         assert_eq!(packet.check_len(), Err(Error));
+     }
+ 
+
+### M0201 | src/wire/udp.rs:442 | const_1_0
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -439,7 +439,7 @@
+     fn test_no_checksum() {
+         let mut bytes = vec![0; 8];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+-        packet.set_src_port(1);
++        packet.set_src_port(0);
+         packet.set_dst_port(31881);
+         packet.set_len(8);
+         packet.set_checksum(0);
+
+### M0202 | src/wire/udp.rs:444 | const_8_4
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -441,7 +441,7 @@
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+-        packet.set_len(8);
++        packet.set_len(4);
+         packet.set_checksum(0);
+         assert!(packet.verify_checksum(&SRC_ADDR.into(), &DST_ADDR.into()));
+     }
+
+### M0203 | src/wire/udp.rs:445 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -442,7 +442,7 @@
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+         packet.set_len(8);
+-        packet.set_checksum(0);
++        packet.set_checksum(1);
+         assert!(packet.verify_checksum(&SRC_ADDR.into(), &DST_ADDR.into()));
+     }
+ 
+
+### M0204 | src/wire/udp.rs:20 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -17,7 +17,7 @@
+ 
+     use crate::wire::field::*;
+ 
+-    pub const SRC_PORT: Field = 0..2;
++    pub const SRC_PORT: Field = 1..2;
+     pub const DST_PORT: Field = 2..4;
+     pub const LENGTH: Field = 4..6;
+     pub const CHECKSUM: Field = 6..8;
+
+### M0205 | src/wire/udp.rs:374 | const_1_0
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -371,7 +371,7 @@
+     use crate::wire::Ipv4Address;
+ 
+     #[cfg(feature = "proto-ipv4")]
+-    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
++    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 0);
+     #[cfg(feature = "proto-ipv4")]
+     const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
+ 
+
+### M0206 | src/wire/udp.rs:131 | bool_true_false
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -128,7 +128,7 @@
+     /// This function always returns `true` when fuzzing.
+     pub fn verify_checksum(&self, src_addr: &IpAddress, dst_addr: &IpAddress) -> bool {
+         if cfg!(fuzzing) {
+-            return true;
++            return false;
+         }
+ 
+         // From the RFC:
+
+### M0207 | src/wire/udp.rs:444 | const_8_16
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -441,7 +441,7 @@
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+-        packet.set_len(8);
++        packet.set_len(16);
+         packet.set_checksum(0);
+         assert!(packet.verify_checksum(&SRC_ADDR.into(), &DST_ADDR.into()));
+     }
+
+### M0208 | src/wire/udp.rs:23 | const_8_16
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -20,7 +20,7 @@
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+     pub const LENGTH: Field = 4..6;
+-    pub const CHECKSUM: Field = 6..8;
++    pub const CHECKSUM: Field = 6..16;
+ 
+     pub const fn PAYLOAD(length: u16) -> Field {
+         CHECKSUM.end..(length as usize)
+
+### M0209 | src/wire/udp.rs:428 | const_8_4
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -425,7 +425,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_zero_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![0; 4];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0210 | src/wire/udp.rs:376 | const_1_0
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -373,7 +373,7 @@
+     #[cfg(feature = "proto-ipv4")]
+     const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
+     #[cfg(feature = "proto-ipv4")]
+-    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
++    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 0, 2);
+ 
+     #[cfg(feature = "proto-ipv4")]
+     static PACKET_BYTES: [u8; 12] = [
+
+### M0211 | src/wire/udp.rs:440 | const_8_4
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -437,7 +437,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_no_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![0; 4];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0212 | src/wire/udp.rs:440 | const_8_16
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -437,7 +437,7 @@
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+     fn test_no_checksum() {
+-        let mut bytes = vec![0; 8];
++        let mut bytes = vec![0; 16];
+         let mut packet = Packet::new_unchecked(&mut bytes);
+         packet.set_src_port(1);
+         packet.set_dst_port(31881);
+
+### M0213 | src/wire/udp.rs:138 | const_0_1
+--- src/wire/udp.rs
++++ src/wire/udp.rs
+@@ -135,7 +135,7 @@
+         // > An all zero transmitted checksum value means that the transmitter
+         // > generated no checksum (for debugging or for higher level protocols
+         // > that don't care).
+-        if self.checksum() == 0 {
++        if self.checksum() == 1 {
+             return true;
+         }
+ 
+
+### M0214 | src/wire/tcp.rs:71 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -68,7 +68,7 @@
+     type Output = usize;
+ 
+     fn sub(self, rhs: SeqNumber) -> usize {
+-        let result = self.0.wrapping_sub(rhs.0);
++        let result = self.1.wrapping_sub(rhs.0);
+         if result < 0 {
+             panic!("attempt to subtract sequence numbers with underflow")
+         }
+
+### M0215 | src/wire/tcp.rs:717 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -714,7 +714,7 @@
+ 
+     pub fn buffer_len(&self) -> usize {
+         match *self {
+-            TcpOption::EndOfList => 1,
++            TcpOption::EndOfList => 0,
+             TcpOption::NoOperation => 1,
+             TcpOption::MaxSegmentSize(_) => 4,
+             TcpOption::WindowScale(_) => 3,
+
+### M0216 | src/wire/tcp.rs:720 | const_3_2
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -717,7 +717,7 @@
+             TcpOption::EndOfList => 1,
+             TcpOption::NoOperation => 1,
+             TcpOption::MaxSegmentSize(_) => 4,
+-            TcpOption::WindowScale(_) => 3,
++            TcpOption::WindowScale(_) => 2,
+             TcpOption::SackPermitted => 2,
+             TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+
+### M0217 | src/wire/tcp.rs:684 | const_3_2
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -681,7 +681,7 @@
+                             // maximum of 3 SACK blocks will be allowed in this case.
+                             net_debug!("sACK with >3 blocks, truncating to 3");
+                         }
+-                        let mut sack_ranges: [Option<(u32, u32)>; 3] = [None; 3];
++                        let mut sack_ranges: [Option<(u32, u32)>; 2] = [None; 3];
+ 
+                         // RFC 2018: Each contiguous block of data queued at the data receiver is
+                         // defined in the SACK option by two 32-bit unsigned integers in network
+
+### M0218 | src/wire/tcp.rs:474 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -471,7 +471,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_RST
++            raw & field::FLG_RST
+         } else {
+             raw & !field::FLG_RST
+         };
+
+### M0219 | src/wire/tcp.rs:528 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -525,7 +525,7 @@
+         let raw = if value {
+             raw | field::FLG_ECE
+         } else {
+-            raw & !field::FLG_ECE
++            raw | !field::FLG_ECE
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0220 | src/wire/tcp.rs:247 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -244,7 +244,7 @@
+     pub fn urg(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_URG != 0
++        raw & field::FLG_URG == 0
+     }
+ 
+     /// Return the ECE flag.
+
+### M0221 | src/wire/tcp.rs:539 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -536,7 +536,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_CWR
++            raw & field::FLG_CWR
+         } else {
+             raw & !field::FLG_CWR
+         };
+
+### M0222 | src/wire/tcp.rs:722 | const_8_4
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -719,7 +719,7 @@
+             TcpOption::MaxSegmentSize(_) => 4,
+             TcpOption::WindowScale(_) => 3,
+             TcpOption::SackPermitted => 2,
+-            TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
++            TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 4 + 2,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+             TcpOption::Unknown { data, .. } => 2 + data.len(),
+         }
+
+### M0223 | src/wire/tcp.rs:554 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -551,7 +551,7 @@
+         let raw = if value {
+             raw | field::FLG_NS
+         } else {
+-            raw & !field::FLG_NS
++            raw | !field::FLG_NS
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0224 | src/wire/tcp.rs:279 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -276,7 +276,7 @@
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        ((raw >> 12) * 4) as u8
++        ((raw >> 12) * 8) as u8
+     }
+ 
+     /// Return the window size field.
+
+### M0225 | src/wire/tcp.rs:500 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -497,7 +497,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_ACK
++            raw & field::FLG_ACK
+         } else {
+             raw & !field::FLG_ACK
+         };
+
+### M0226 | src/wire/tcp.rs:722 | const_2_3
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -719,7 +719,7 @@
+             TcpOption::MaxSegmentSize(_) => 4,
+             TcpOption::WindowScale(_) => 3,
+             TcpOption::SackPermitted => 2,
+-            TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
++            TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 3,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+             TcpOption::Unknown { data, .. } => 2 + data.len(),
+         }
+
+### M0227 | src/wire/tcp.rs:382 | rel_eq_ne
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -379,7 +379,7 @@
+         checksum::combine(&[
+             checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Tcp, data.len() as u32),
+             checksum::data(data),
+-        ]) == !0
++        ]) != !0
+     }
+ }
+ 
+
+### M0228 | src/wire/tcp.rs:263 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -260,7 +260,7 @@
+     pub fn cwr(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_CWR != 0
++        raw & field::FLG_CWR == 0
+     }
+ 
+     /// Return the NS flag.
+
+### M0229 | src/wire/tcp.rs:72 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -69,7 +69,7 @@
+ 
+     fn sub(self, rhs: SeqNumber) -> usize {
+         let result = self.0.wrapping_sub(rhs.0);
+-        if result < 0 {
++        if result <= 0 {
+             panic!("attempt to subtract sequence numbers with underflow")
+         }
+         result as usize
+
+### M0230 | src/wire/tcp.rs:43 | rel_gt_ge
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -40,7 +40,7 @@
+     type Output = SeqNumber;
+ 
+     fn add(self, rhs: usize) -> SeqNumber {
+-        if rhs > i32::MAX as usize {
++        if rhs >= i32::MAX as usize {
+             panic!("attempt to add to sequence number with unsigned overflow")
+         }
+         SeqNumber(self.0.wrapping_add(rhs as i32))
+
+### M0231 | src/wire/tcp.rs:438 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -435,7 +435,7 @@
+     pub fn clear_flags(&mut self) {
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        let raw = raw & !0x0fff;
++        let raw = raw | !0x0fff;
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+ 
+
+### M0232 | src/wire/tcp.rs:161 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -158,7 +158,7 @@
+             Err(Error)
+         } else {
+             let header_len = self.header_len() as usize;
+-            if len < header_len || header_len < field::URGENT.end {
++            if len <= header_len || header_len < field::URGENT.end {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0233 | src/wire/tcp.rs:103 | const_16_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -100,7 +100,7 @@
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+     pub const WIN_SIZE: Field = 14..16;
+-    pub const CHECKSUM: Field = 16..18;
++    pub const CHECKSUM: Field = 8..18;
+     pub const URGENT: Field = 18..20;
+ 
+     pub const fn OPTIONS(length: u8) -> Field {
+
+### M0234 | src/wire/tcp.rs:239 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -236,7 +236,7 @@
+     pub fn ack(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_ACK != 0
++        raw | field::FLG_ACK != 0
+     }
+ 
+     /// Return the URG flag.
+
+### M0235 | src/wire/tcp.rs:247 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -244,7 +244,7 @@
+     pub fn urg(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_URG != 0
++        raw | field::FLG_URG != 0
+     }
+ 
+     /// Return the ECE flag.
+
+### M0236 | src/wire/tcp.rs:18 | rel_gt_ge
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -15,7 +15,7 @@
+ 
+ impl SeqNumber {
+     pub fn max(self, rhs: Self) -> Self {
+-        if self > rhs { self } else { rhs }
++        if self >= rhs { self } else { rhs }
+     }
+ 
+     pub fn min(self, rhs: Self) -> Self {
+
+### M0237 | src/wire/tcp.rs:215 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -212,7 +212,7 @@
+     pub fn syn(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_SYN != 0
++        raw | field::FLG_SYN != 0
+     }
+ 
+     /// Return the RST flag.
+
+### M0238 | src/wire/tcp.rs:311 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -308,7 +308,7 @@
+             length += 1
+         }
+         if self.fin() {
+-            length += 1
++            length += 0
+         }
+         length
+     }
+
+### M0239 | src/wire/tcp.rs:489 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -486,7 +486,7 @@
+         let raw = if value {
+             raw | field::FLG_PSH
+         } else {
+-            raw & !field::FLG_PSH
++            raw | !field::FLG_PSH
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0240 | src/wire/tcp.rs:28 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -25,7 +25,7 @@
+ 
+ impl fmt::Display for SeqNumber {
+     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+-        write!(f, "{}", self.0 as u32)
++        write!(f, "{}", self.1 as u32)
+     }
+ }
+ 
+
+### M0241 | src/wire/tcp.rs:564 | shift_left_right
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -561,7 +561,7 @@
+     pub fn set_header_len(&mut self, value: u8) {
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        let raw = (raw & !0xf000) | ((value as u16) / 4) << 12;
++        let raw = (raw & !0xf000) | ((value as u16) / 4) >> 12;
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+ 
+
+### M0242 | src/wire/tcp.rs:223 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -220,7 +220,7 @@
+     pub fn rst(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_RST != 0
++        raw & field::FLG_RST == 0
+     }
+ 
+     /// Return the PSH flag.
+
+### M0243 | src/wire/tcp.rs:1208 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1205,7 +1205,7 @@
+     #[cfg(feature = "proto-ipv4")]
+     const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
+     #[cfg(feature = "proto-ipv4")]
+-    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
++    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 0, 2);
+ 
+     #[cfg(feature = "proto-ipv4")]
+     static PACKET_BYTES: [u8; 28] = [
+
+### M0244 | src/wire/tcp.rs:263 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -260,7 +260,7 @@
+     pub fn cwr(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_CWR != 0
++        raw | field::FLG_CWR != 0
+     }
+ 
+     /// Return the NS flag.
+
+### M0245 | src/wire/tcp.rs:271 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -268,7 +268,7 @@
+     pub fn ns(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_NS != 0
++        raw | field::FLG_NS != 0
+     }
+ 
+     /// Return the header length, in octets.
+
+### M0246 | src/wire/tcp.rs:382 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -379,7 +379,7 @@
+         checksum::combine(&[
+             checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Tcp, data.len() as u32),
+             checksum::data(data),
+-        ]) == !0
++        ]) == !1
+     }
+ }
+ 
+
+### M0247 | src/wire/tcp.rs:223 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -220,7 +220,7 @@
+     pub fn rst(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_RST != 0
++        raw & field::FLG_RST != 1
+     }
+ 
+     /// Return the PSH flag.
+
+### M0248 | src/wire/tcp.rs:100 | const_8_16
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -97,7 +97,7 @@
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+     pub const SEQ_NUM: Field = 4..8;
+-    pub const ACK_NUM: Field = 8..12;
++    pub const ACK_NUM: Field = 16..12;
+     pub const FLAGS: Field = 12..14;
+     pub const WIN_SIZE: Field = 14..16;
+     pub const CHECKSUM: Field = 16..18;
+
+### M0249 | src/wire/tcp.rs:161 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -158,7 +158,7 @@
+             Err(Error)
+         } else {
+             let header_len = self.header_len() as usize;
+-            if len < header_len || header_len < field::URGENT.end {
++            if len < header_len || header_len <= field::URGENT.end {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0250 | src/wire/tcp.rs:63 | arith_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -60,7 +60,7 @@
+ 
+ impl ops::AddAssign<usize> for SeqNumber {
+     fn add_assign(&mut self, rhs: usize) {
+-        *self = *self + rhs;
++        *self = *self - rhs;
+     }
+ }
+ 
+
+### M0251 | src/wire/tcp.rs:430 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -427,7 +427,7 @@
+     #[inline]
+     pub fn set_ack_number(&mut self, value: SeqNumber) {
+         let data = self.buffer.as_mut();
+-        NetworkEndian::write_i32(&mut data[field::ACK_NUM], value.0)
++        NetworkEndian::write_i32(&mut data[field::ACK_NUM], value.1)
+     }
+ 
+     /// Clear the entire flags field.
+
+### M0252 | src/wire/tcp.rs:322 | rel_eq_ne
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -319,7 +319,7 @@
+         let mut options = &data[field::OPTIONS(self.header_len())];
+         while !options.is_empty() {
+             let (next_options, option) = TcpOption::parse(options)?;
+-            if option == TcpOption::SackPermitted {
++            if option != TcpOption::SackPermitted {
+                 return Ok(true);
+             }
+             options = next_options;
+
+### M0253 | src/wire/tcp.rs:333 | const_3_2
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -330,7 +330,7 @@
+     /// Return the selective acknowledgement ranges, if any. If there are none in the packet, an
+     /// array of ``None`` values will be returned.
+     ///
+-    pub fn selective_ack_ranges(&self) -> Result<[Option<(u32, u32)>; 3]> {
++    pub fn selective_ack_ranges(&self) -> Result<[Option<(u32, u32)>; 2]> {
+         let data = self.buffer.as_ref();
+         let mut options = &data[field::OPTIONS(self.header_len())];
+         while !options.is_empty() {
+
+### M0254 | src/wire/tcp.rs:102 | const_16_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -99,7 +99,7 @@
+     pub const SEQ_NUM: Field = 4..8;
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+-    pub const WIN_SIZE: Field = 14..16;
++    pub const WIN_SIZE: Field = 14..8;
+     pub const CHECKSUM: Field = 16..18;
+     pub const URGENT: Field = 18..20;
+ 
+
+### M0255 | src/wire/tcp.rs:690 | arith_mul_div
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -687,7 +687,7 @@
+                         // defined in the SACK option by two 32-bit unsigned integers in network
+                         // byte order[...]
+                         sack_ranges.iter_mut().enumerate().for_each(|(i, nmut)| {
+-                            let left = i * 8;
++                            let left = i / 8;
+                             *nmut = if left < data.len() {
+                                 let mid = left + 4;
+                                 let right = mid + 4;
+
+### M0256 | src/wire/tcp.rs:541 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -538,7 +538,7 @@
+         let raw = if value {
+             raw | field::FLG_CWR
+         } else {
+-            raw & !field::FLG_CWR
++            raw | !field::FLG_CWR
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0257 | src/wire/tcp.rs:690 | const_8_4
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -687,7 +687,7 @@
+                         // defined in the SACK option by two 32-bit unsigned integers in network
+                         // byte order[...]
+                         sack_ranges.iter_mut().enumerate().for_each(|(i, nmut)| {
+-                            let left = i * 8;
++                            let left = i * 4;
+                             *nmut = if left < data.len() {
+                                 let mid = left + 4;
+                                 let right = mid + 4;
+
+### M0258 | src/wire/tcp.rs:362 | rel_eq_ne
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -359,7 +359,7 @@
+         let data = self.buffer.as_ref();
+ 
+         checksum::pseudo_header(src_addr, dst_addr, IpProtocol::Tcp, data.len() as u32)
+-            == self.checksum()
++ != self.checksum()
+     }
+ 
+     /// Validate the packet checksum.
+
+### M0259 | src/wire/tcp.rs:704 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -701,7 +701,7 @@
+                         option = TcpOption::SackRange(sack_ranges);
+                     }
+                     (field::OPT_TSTAMP, 10) => {
+-                        let tsval = NetworkEndian::read_u32(&data[0..4]);
++                        let tsval = NetworkEndian::read_u32(&data[0..8]);
+                         let tsecr = NetworkEndian::read_u32(&data[4..8]);
+                         option = TcpOption::TimeStamp { tsval, tsecr };
+                     }
+
+### M0260 | src/wire/tcp.rs:71 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -68,7 +68,7 @@
+     type Output = usize;
+ 
+     fn sub(self, rhs: SeqNumber) -> usize {
+-        let result = self.0.wrapping_sub(rhs.0);
++        let result = self.0.wrapping_sub(rhs.1);
+         if result < 0 {
+             panic!("attempt to subtract sequence numbers with underflow")
+         }
+
+### M0261 | src/wire/tcp.rs:223 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -220,7 +220,7 @@
+     pub fn rst(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_RST != 0
++        raw | field::FLG_RST != 0
+     }
+ 
+     /// Return the PSH flag.
+
+### M0262 | src/wire/tcp.rs:691 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -688,7 +688,7 @@
+                         // byte order[...]
+                         sack_ranges.iter_mut().enumerate().for_each(|(i, nmut)| {
+                             let left = i * 8;
+-                            *nmut = if left < data.len() {
++                            *nmut = if left <= data.len() {
+                                 let mid = left + 4;
+                                 let right = mid + 4;
+                                 let range_left = NetworkEndian::read_u32(&data[left..mid]);
+
+### M0263 | src/wire/tcp.rs:684 | const_3_2
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -681,7 +681,7 @@
+                             // maximum of 3 SACK blocks will be allowed in this case.
+                             net_debug!("sACK with >3 blocks, truncating to 3");
+                         }
+-                        let mut sack_ranges: [Option<(u32, u32)>; 3] = [None; 3];
++                        let mut sack_ranges: [Option<(u32, u32)>; 3] = [None; 2];
+ 
+                         // RFC 2018: Each contiguous block of data queued at the data receiver is
+                         // defined in the SACK option by two 32-bit unsigned integers in network
+
+### M0264 | src/wire/tcp.rs:97 | const_2_3
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -94,7 +94,7 @@
+ 
+     use crate::wire::field::*;
+ 
+-    pub const SRC_PORT: Field = 0..2;
++    pub const SRC_PORT: Field = 0..3;
+     pub const DST_PORT: Field = 2..4;
+     pub const SEQ_NUM: Field = 4..8;
+     pub const ACK_NUM: Field = 8..12;
+
+### M0265 | src/wire/tcp.rs:356 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -353,7 +353,7 @@
+     /// This function always returns `true` when fuzzing.
+     pub fn verify_partial_checksum(&self, src_addr: &IpAddress, dst_addr: &IpAddress) -> bool {
+         if cfg!(fuzzing) {
+-            return true;
++            return false;
+         }
+ 
+         let data = self.buffer.as_ref();
+
+### M0266 | src/wire/tcp.rs:595 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -592,7 +592,7 @@
+     /// This function panics unless `src_addr` and `dst_addr` belong to the same family,
+     /// and that family is IPv4 or IPv6.
+     pub fn fill_checksum(&mut self, src_addr: &IpAddress, dst_addr: &IpAddress) {
+-        self.set_checksum(0);
++        self.set_checksum(1);
+         let checksum = {
+             let data = self.buffer.as_ref();
+             !checksum::combine(&[
+
+### M0267 | src/wire/tcp.rs:1208 | const_2_3
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1205,7 +1205,7 @@
+     #[cfg(feature = "proto-ipv4")]
+     const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
+     #[cfg(feature = "proto-ipv4")]
+-    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
++    const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 3);
+ 
+     #[cfg(feature = "proto-ipv4")]
+     static PACKET_BYTES: [u8; 28] = [
+
+### M0268 | src/wire/tcp.rs:255 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -252,7 +252,7 @@
+     pub fn ece(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_ECE != 0
++        raw & field::FLG_ECE == 0
+     }
+ 
+     /// Return the CWR flag.
+
+### M0269 | src/wire/tcp.rs:693 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -690,7 +690,7 @@
+                             let left = i * 8;
+                             *nmut = if left < data.len() {
+                                 let mid = left + 4;
+-                                let right = mid + 4;
++                                let right = mid + 8;
+                                 let range_left = NetworkEndian::read_u32(&data[left..mid]);
+                                 let range_right = NetworkEndian::read_u32(&data[mid..right]);
+                                 Some((range_left, range_right))
+
+### M0270 | src/wire/tcp.rs:239 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -236,7 +236,7 @@
+     pub fn ack(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_ACK != 0
++        raw & field::FLG_ACK == 0
+     }
+ 
+     /// Return the URG flag.
+
+### M0271 | src/wire/tcp.rs:99 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -96,7 +96,7 @@
+ 
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+-    pub const SEQ_NUM: Field = 4..8;
++    pub const SEQ_NUM: Field = 8..8;
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+     pub const WIN_SIZE: Field = 14..16;
+
+### M0272 | src/wire/tcp.rs:718 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -715,7 +715,7 @@
+     pub fn buffer_len(&self) -> usize {
+         match *self {
+             TcpOption::EndOfList => 1,
+-            TcpOption::NoOperation => 1,
++            TcpOption::NoOperation => 0,
+             TcpOption::MaxSegmentSize(_) => 4,
+             TcpOption::WindowScale(_) => 3,
+             TcpOption::SackPermitted => 2,
+
+### M0273 | src/wire/tcp.rs:57 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -54,7 +54,7 @@
+         if rhs > i32::MAX as usize {
+             panic!("attempt to subtract to sequence number with unsigned overflow")
+         }
+-        SeqNumber(self.0.wrapping_sub(rhs as i32))
++        SeqNumber(self.1.wrapping_sub(rhs as i32))
+     }
+ }
+ 
+
+### M0274 | src/wire/tcp.rs:161 | bool_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -158,7 +158,7 @@
+             Err(Error)
+         } else {
+             let header_len = self.header_len() as usize;
+-            if len < header_len || header_len < field::URGENT.end {
++            if len < header_len && header_len < field::URGENT.end {
+                 Err(Error)
+             } else {
+                 Ok(())
+
+### M0275 | src/wire/tcp.rs:1258 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1255,7 +1255,7 @@
+         packet.clear_flags();
+         packet.set_fin(true);
+         packet.set_syn(false);
+-        packet.set_rst(true);
++        packet.set_rst(false);
+         packet.set_psh(false);
+         packet.set_ack(true);
+         packet.set_urg(true);
+
+### M0276 | src/wire/tcp.rs:72 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -69,7 +69,7 @@
+ 
+     fn sub(self, rhs: SeqNumber) -> usize {
+         let result = self.0.wrapping_sub(rhs.0);
+-        if result < 0 {
++        if result < 1 {
+             panic!("attempt to subtract sequence numbers with underflow")
+         }
+         result as usize
+
+### M0277 | src/wire/tcp.rs:247 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -244,7 +244,7 @@
+     pub fn urg(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_URG != 0
++        raw & field::FLG_URG != 1
+     }
+ 
+     /// Return the ECE flag.
+
+### M0278 | src/wire/tcp.rs:564 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -561,7 +561,7 @@
+     pub fn set_header_len(&mut self, value: u8) {
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        let raw = (raw & !0xf000) | ((value as u16) / 4) << 12;
++        let raw = (raw | !0xf000) | ((value as u16) / 4) << 12;
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+ 
+
+### M0279 | src/wire/tcp.rs:692 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -689,7 +689,7 @@
+                         sack_ranges.iter_mut().enumerate().for_each(|(i, nmut)| {
+                             let left = i * 8;
+                             *nmut = if left < data.len() {
+-                                let mid = left + 4;
++                                let mid = left + 8;
+                                 let right = mid + 4;
+                                 let range_left = NetworkEndian::read_u32(&data[left..mid]);
+                                 let range_right = NetworkEndian::read_u32(&data[mid..right]);
+
+### M0280 | src/wire/tcp.rs:81 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -78,7 +78,7 @@
+ 
+ impl cmp::PartialOrd for SeqNumber {
+     fn partial_cmp(&self, other: &SeqNumber) -> Option<cmp::Ordering> {
+-        self.0.wrapping_sub(other.0).partial_cmp(&0)
++        self.0.wrapping_sub(other.1).partial_cmp(&0)
+     }
+ }
+ 
+
+### M0281 | src/wire/tcp.rs:81 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -78,7 +78,7 @@
+ 
+ impl cmp::PartialOrd for SeqNumber {
+     fn partial_cmp(&self, other: &SeqNumber) -> Option<cmp::Ordering> {
+-        self.0.wrapping_sub(other.0).partial_cmp(&0)
++        self.1.wrapping_sub(other.0).partial_cmp(&0)
+     }
+ }
+ 
+
+### M0282 | src/wire/tcp.rs:526 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -523,7 +523,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_ECE
++            raw & field::FLG_ECE
+         } else {
+             raw & !field::FLG_ECE
+         };
+
+### M0283 | src/wire/tcp.rs:102 | const_16_32
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -99,7 +99,7 @@
+     pub const SEQ_NUM: Field = 4..8;
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+-    pub const WIN_SIZE: Field = 14..16;
++    pub const WIN_SIZE: Field = 14..32;
+     pub const CHECKSUM: Field = 16..18;
+     pub const URGENT: Field = 18..20;
+ 
+
+### M0284 | src/wire/tcp.rs:404 | arith_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -401,7 +401,7 @@
+     }
+ }
+ 
+-impl<T: AsRef<[u8]> + AsMut<[u8]>> Packet<T> {
++impl<T: AsRef<[u8]> - AsMut<[u8]>> Packet<T> {
+     /// Set the source port field.
+     #[inline]
+     pub fn set_src_port(&mut self, value: u16) {
+
+### M0285 | src/wire/tcp.rs:207 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -204,7 +204,7 @@
+     pub fn fin(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_FIN != 0
++        raw & field::FLG_FIN == 0
+     }
+ 
+     /// Return the SYN flag.
+
+### M0286 | src/wire/tcp.rs:46 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -43,7 +43,7 @@
+         if rhs > i32::MAX as usize {
+             panic!("attempt to add to sequence number with unsigned overflow")
+         }
+-        SeqNumber(self.0.wrapping_add(rhs as i32))
++        SeqNumber(self.1.wrapping_add(rhs as i32))
+     }
+ }
+ 
+
+### M0287 | src/wire/tcp.rs:690 | const_8_16
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -687,7 +687,7 @@
+                         // defined in the SACK option by two 32-bit unsigned integers in network
+                         // byte order[...]
+                         sack_ranges.iter_mut().enumerate().for_each(|(i, nmut)| {
+-                            let left = i * 8;
++                            let left = i * 16;
+                             *nmut = if left < data.len() {
+                                 let mid = left + 4;
+                                 let right = mid + 4;
+
+### M0288 | src/wire/tcp.rs:448 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -445,7 +445,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_FIN
++            raw & field::FLG_FIN
+         } else {
+             raw & !field::FLG_FIN
+         };
+
+### M0289 | src/wire/tcp.rs:207 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -204,7 +204,7 @@
+     pub fn fin(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_FIN != 0
++        raw | field::FLG_FIN != 0
+     }
+ 
+     /// Return the SYN flag.
+
+### M0290 | src/wire/tcp.rs:99 | const_8_4
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -96,7 +96,7 @@
+ 
+     pub const SRC_PORT: Field = 0..2;
+     pub const DST_PORT: Field = 2..4;
+-    pub const SEQ_NUM: Field = 4..8;
++    pub const SEQ_NUM: Field = 4..4;
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+     pub const WIN_SIZE: Field = 14..16;
+
+### M0291 | src/wire/tcp.rs:513 | bit_or_and
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -510,7 +510,7 @@
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+         let raw = if value {
+-            raw | field::FLG_URG
++            raw & field::FLG_URG
+         } else {
+             raw & !field::FLG_URG
+         };
+
+### M0292 | src/wire/tcp.rs:255 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -252,7 +252,7 @@
+     pub fn ece(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_ECE != 0
++        raw | field::FLG_ECE != 0
+     }
+ 
+     /// Return the CWR flag.
+
+### M0293 | src/wire/tcp.rs:704 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -701,7 +701,7 @@
+                         option = TcpOption::SackRange(sack_ranges);
+                     }
+                     (field::OPT_TSTAMP, 10) => {
+-                        let tsval = NetworkEndian::read_u32(&data[0..4]);
++                        let tsval = NetworkEndian::read_u32(&data[1..4]);
+                         let tsecr = NetworkEndian::read_u32(&data[4..8]);
+                         option = TcpOption::TimeStamp { tsval, tsecr };
+                     }
+
+### M0294 | src/wire/tcp.rs:97 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -94,7 +94,7 @@
+ 
+     use crate::wire::field::*;
+ 
+-    pub const SRC_PORT: Field = 0..2;
++    pub const SRC_PORT: Field = 1..2;
+     pub const DST_PORT: Field = 2..4;
+     pub const SEQ_NUM: Field = 4..8;
+     pub const ACK_NUM: Field = 8..12;
+
+### M0295 | src/wire/tcp.rs:54 | rel_gt_ge
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -51,7 +51,7 @@
+     type Output = SeqNumber;
+ 
+     fn sub(self, rhs: usize) -> SeqNumber {
+-        if rhs > i32::MAX as usize {
++        if rhs >= i32::MAX as usize {
+             panic!("attempt to subtract to sequence number with unsigned overflow")
+         }
+         SeqNumber(self.0.wrapping_sub(rhs as i32))
+
+### M0296 | src/wire/tcp.rs:450 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -447,7 +447,7 @@
+         let raw = if value {
+             raw | field::FLG_FIN
+         } else {
+-            raw & !field::FLG_FIN
++            raw | !field::FLG_FIN
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0297 | src/wire/tcp.rs:705 | const_8_4
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -702,7 +702,7 @@
+                     }
+                     (field::OPT_TSTAMP, 10) => {
+                         let tsval = NetworkEndian::read_u32(&data[0..4]);
+-                        let tsecr = NetworkEndian::read_u32(&data[4..8]);
++                        let tsecr = NetworkEndian::read_u32(&data[4..4]);
+                         option = TcpOption::TimeStamp { tsval, tsecr };
+                     }
+                     (_, _) => option = TcpOption::Unknown { kind, data },
+
+### M0298 | src/wire/tcp.rs:693 | arith_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -690,7 +690,7 @@
+                             let left = i * 8;
+                             *nmut = if left < data.len() {
+                                 let mid = left + 4;
+-                                let right = mid + 4;
++                                let right = mid - 4;
+                                 let range_left = NetworkEndian::read_u32(&data[left..mid]);
+                                 let range_right = NetworkEndian::read_u32(&data[mid..right]);
+                                 Some((range_left, range_right))
+
+### M0299 | src/wire/tcp.rs:98 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -95,7 +95,7 @@
+     use crate::wire::field::*;
+ 
+     pub const SRC_PORT: Field = 0..2;
+-    pub const DST_PORT: Field = 2..4;
++    pub const DST_PORT: Field = 2..8;
+     pub const SEQ_NUM: Field = 4..8;
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+
+### M0300 | src/wire/tcp.rs:263 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -260,7 +260,7 @@
+     pub fn cwr(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_CWR != 0
++        raw & field::FLG_CWR != 1
+     }
+ 
+     /// Return the NS flag.
+
+### M0301 | src/wire/tcp.rs:1206 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1203,7 +1203,7 @@
+     use crate::wire::Ipv4Address;
+ 
+     #[cfg(feature = "proto-ipv4")]
+-    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 1);
++    const SRC_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 0);
+     #[cfg(feature = "proto-ipv4")]
+     const DST_ADDR: Ipv4Address = Ipv4Address::new(192, 168, 1, 2);
+ 
+
+### M0302 | src/wire/tcp.rs:279 | shift_right_left
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -276,7 +276,7 @@
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        ((raw >> 12) * 4) as u8
++        ((raw << 12) * 4) as u8
+     }
+ 
+     /// Return the window size field.
+
+### M0303 | src/wire/tcp.rs:215 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -212,7 +212,7 @@
+     pub fn syn(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_SYN != 0
++        raw & field::FLG_SYN != 1
+     }
+ 
+     /// Return the RST flag.
+
+### M0304 | src/wire/tcp.rs:271 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -268,7 +268,7 @@
+     pub fn ns(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_NS != 0
++        raw & field::FLG_NS == 0
+     }
+ 
+     /// Return the header length, in octets.
+
+### M0305 | src/wire/tcp.rs:721 | const_2_3
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -718,7 +718,7 @@
+             TcpOption::NoOperation => 1,
+             TcpOption::MaxSegmentSize(_) => 4,
+             TcpOption::WindowScale(_) => 3,
+-            TcpOption::SackPermitted => 2,
++            TcpOption::SackPermitted => 3,
+             TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+             TcpOption::Unknown { data, .. } => 2 + data.len(),
+
+### M0306 | src/wire/tcp.rs:423 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -420,7 +420,7 @@
+     #[inline]
+     pub fn set_seq_number(&mut self, value: SeqNumber) {
+         let data = self.buffer.as_mut();
+-        NetworkEndian::write_i32(&mut data[field::SEQ_NUM], value.0)
++        NetworkEndian::write_i32(&mut data[field::SEQ_NUM], value.1)
+     }
+ 
+     /// Set the acknowledgement number field.
+
+### M0307 | src/wire/tcp.rs:724 | const_2_3
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -721,7 +721,7 @@
+             TcpOption::SackPermitted => 2,
+             TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+-            TcpOption::Unknown { data, .. } => 2 + data.len(),
++            TcpOption::Unknown { data, .. } => 3 + data.len(),
+         }
+     }
+ 
+
+### M0308 | src/wire/tcp.rs:564 | arith_div_mul
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -561,7 +561,7 @@
+     pub fn set_header_len(&mut self, value: u8) {
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        let raw = (raw & !0xf000) | ((value as u16) / 4) << 12;
++        let raw = (raw & !0xf000) | ((value as u16) * 4) << 12;
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+ 
+
+### M0309 | src/wire/tcp.rs:1261 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1258,7 +1258,7 @@
+         packet.set_rst(true);
+         packet.set_psh(false);
+         packet.set_ack(true);
+-        packet.set_urg(true);
++        packet.set_urg(false);
+         packet.set_window_len(0x0123);
+         packet.set_urgent_at(0x0201);
+         packet.set_checksum(0xEEEE);
+
+### M0310 | src/wire/tcp.rs:564 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -561,7 +561,7 @@
+     pub fn set_header_len(&mut self, value: u8) {
+         let data = self.buffer.as_mut();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        let raw = (raw & !0xf000) | ((value as u16) / 4) << 12;
++        let raw = (raw & !0xf000) | ((value as u16) / 8) << 12;
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+ 
+
+### M0311 | src/wire/tcp.rs:271 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -268,7 +268,7 @@
+     pub fn ns(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_NS != 0
++        raw & field::FLG_NS != 1
+     }
+ 
+     /// Return the header length, in octets.
+
+### M0312 | src/wire/tcp.rs:103 | const_16_32
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -100,7 +100,7 @@
+     pub const ACK_NUM: Field = 8..12;
+     pub const FLAGS: Field = 12..14;
+     pub const WIN_SIZE: Field = 14..16;
+-    pub const CHECKSUM: Field = 16..18;
++    pub const CHECKSUM: Field = 32..18;
+     pub const URGENT: Field = 18..20;
+ 
+     pub const fn OPTIONS(length: u8) -> Field {
+
+### M0313 | src/wire/tcp.rs:1220 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1217,7 +1217,7 @@
+     static OPTION_BYTES: [u8; 4] = [0x03, 0x03, 0x0c, 0x01];
+ 
+     #[cfg(feature = "proto-ipv4")]
+-    static PAYLOAD_BYTES: [u8; 4] = [0xaa, 0x00, 0x00, 0xff];
++    static PAYLOAD_BYTES: [u8; 8] = [0xaa, 0x00, 0x00, 0xff];
+ 
+     #[test]
+     #[cfg(feature = "proto-ipv4")]
+
+### M0314 | src/wire/tcp.rs:279 | arith_mul_div
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -276,7 +276,7 @@
+     pub fn header_len(&self) -> u8 {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        ((raw >> 12) * 4) as u8
++        ((raw >> 12) / 4) as u8
+     }
+ 
+     /// Return the window size field.
+
+### M0315 | src/wire/tcp.rs:463 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -460,7 +460,7 @@
+         let raw = if value {
+             raw | field::FLG_SYN
+         } else {
+-            raw & !field::FLG_SYN
++            raw | !field::FLG_SYN
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0316 | src/wire/tcp.rs:719 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -716,7 +716,7 @@
+         match *self {
+             TcpOption::EndOfList => 1,
+             TcpOption::NoOperation => 1,
+-            TcpOption::MaxSegmentSize(_) => 4,
++            TcpOption::MaxSegmentSize(_) => 8,
+             TcpOption::WindowScale(_) => 3,
+             TcpOption::SackPermitted => 2,
+             TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
+
+### M0317 | src/wire/tcp.rs:311 | assign_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -308,7 +308,7 @@
+             length += 1
+         }
+         if self.fin() {
+-            length += 1
++            length -= 1
+         }
+         length
+     }
+
+### M0318 | src/wire/tcp.rs:1256 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1253,7 +1253,7 @@
+         packet.set_ack_number(SeqNumber(0x89abcdefu32 as i32));
+         packet.set_header_len(24);
+         packet.clear_flags();
+-        packet.set_fin(true);
++        packet.set_fin(false);
+         packet.set_syn(false);
+         packet.set_rst(true);
+         packet.set_psh(false);
+
+### M0319 | src/wire/tcp.rs:35 | const_0_1
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -32,7 +32,7 @@
+ #[cfg(feature = "defmt")]
+ impl defmt::Format for SeqNumber {
+     fn format(&self, fmt: defmt::Formatter) {
+-        defmt::write!(fmt, "{}", self.0 as u32);
++        defmt::write!(fmt, "{}", self.1 as u32);
+     }
+ }
+ 
+
+### M0320 | src/wire/tcp.rs:157 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -154,7 +154,7 @@
+     /// [set_header_len]: #method.set_header_len
+     pub fn check_len(&self) -> Result<()> {
+         let len = self.buffer.as_ref().len();
+-        if len < field::URGENT.end {
++        if len <= field::URGENT.end {
+             Err(Error)
+         } else {
+             let header_len = self.header_len() as usize;
+
+### M0321 | src/wire/tcp.rs:22 | rel_lt_le
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -19,7 +19,7 @@
+     }
+ 
+     pub fn min(self, rhs: Self) -> Self {
+-        if self < rhs { self } else { rhs }
++        if self <= rhs { self } else { rhs }
+     }
+ }
+ 
+
+### M0322 | src/wire/tcp.rs:306 | arith_sub_add
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -303,7 +303,7 @@
+     /// Return the length of the segment, in terms of sequence space.
+     pub fn segment_len(&self) -> usize {
+         let data = self.buffer.as_ref();
+-        let mut length = data.len() - self.header_len() as usize;
++        let mut length = data.len() + self.header_len() as usize;
+         if self.syn() {
+             length += 1
+         }
+
+### M0323 | src/wire/tcp.rs:308 | const_1_0
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -305,7 +305,7 @@
+         let data = self.buffer.as_ref();
+         let mut length = data.len() - self.header_len() as usize;
+         if self.syn() {
+-            length += 1
++            length += 0
+         }
+         if self.fin() {
+             length += 1
+
+### M0324 | src/wire/tcp.rs:327 | bool_false_true
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -324,7 +324,7 @@
+             }
+             options = next_options;
+         }
+-        Ok(false)
++        Ok(true)
+     }
+ 
+     /// Return the selective acknowledgement ranges, if any. If there are none in the packet, an
+
+### M0325 | src/wire/tcp.rs:705 | const_4_8
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -702,7 +702,7 @@
+                     }
+                     (field::OPT_TSTAMP, 10) => {
+                         let tsval = NetworkEndian::read_u32(&data[0..4]);
+-                        let tsecr = NetworkEndian::read_u32(&data[4..8]);
++                        let tsecr = NetworkEndian::read_u32(&data[8..8]);
+                         option = TcpOption::TimeStamp { tsval, tsecr };
+                     }
+                     (_, _) => option = TcpOption::Unknown { kind, data },
+
+### M0326 | src/wire/tcp.rs:724 | arith_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -721,7 +721,7 @@
+             TcpOption::SackPermitted => 2,
+             TcpOption::SackRange(s) => s.iter().filter(|s| s.is_some()).count() * 8 + 2,
+             TcpOption::TimeStamp { tsval: _, tsecr: _ } => 10,
+-            TcpOption::Unknown { data, .. } => 2 + data.len(),
++            TcpOption::Unknown { data, .. } => 2 - data.len(),
+         }
+     }
+ 
+
+### M0327 | src/wire/tcp.rs:308 | assign_add_sub
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -305,7 +305,7 @@
+         let data = self.buffer.as_ref();
+         let mut length = data.len() - self.header_len() as usize;
+         if self.syn() {
+-            length += 1
++            length -= 1
+         }
+         if self.fin() {
+             length += 1
+
+### M0328 | src/wire/tcp.rs:323 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -320,7 +320,7 @@
+         while !options.is_empty() {
+             let (next_options, option) = TcpOption::parse(options)?;
+             if option == TcpOption::SackPermitted {
+-                return Ok(true);
++                return Ok(false);
+             }
+             options = next_options;
+         }
+
+### M0329 | src/wire/tcp.rs:515 | bit_and_or
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -512,7 +512,7 @@
+         let raw = if value {
+             raw | field::FLG_URG
+         } else {
+-            raw & !field::FLG_URG
++            raw | !field::FLG_URG
+         };
+         NetworkEndian::write_u16(&mut data[field::FLAGS], raw)
+     }
+
+### M0330 | src/wire/tcp.rs:215 | rel_ne_eq
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -212,7 +212,7 @@
+     pub fn syn(&self) -> bool {
+         let data = self.buffer.as_ref();
+         let raw = NetworkEndian::read_u16(&data[field::FLAGS]);
+-        raw & field::FLG_SYN != 0
++        raw & field::FLG_SYN == 0
+     }
+ 
+     /// Return the RST flag.
+
+### M0331 | src/wire/tcp.rs:1257 | bool_false_true
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -1254,7 +1254,7 @@
+         packet.set_header_len(24);
+         packet.clear_flags();
+         packet.set_fin(true);
+-        packet.set_syn(false);
++        packet.set_syn(true);
+         packet.set_rst(true);
+         packet.set_psh(false);
+         packet.set_ack(true);
+
+### M0332 | src/wire/tcp.rs:375 | bool_true_false
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -372,7 +372,7 @@
+     /// This function always returns `true` when fuzzing.
+     pub fn verify_checksum(&self, src_addr: &IpAddress, dst_addr: &IpAddress) -> bool {
+         if cfg!(fuzzing) {
+-            return true;
++            return false;
+         }
+ 
+         let data = self.buffer.as_ref();
+
+### M0333 | src/wire/tcp.rs:705 | const_8_16
+--- src/wire/tcp.rs
++++ src/wire/tcp.rs
+@@ -702,7 +702,7 @@
+                     }
+                     (field::OPT_TSTAMP, 10) => {
+                         let tsval = NetworkEndian::read_u32(&data[0..4]);
+-                        let tsecr = NetworkEndian::read_u32(&data[4..8]);
++                        let tsecr = NetworkEndian::read_u32(&data[4..16]);
+                         option = TcpOption::TimeStamp { tsval, tsecr };
+                     }
+                     (_, _) => option = TcpOption::Unknown { kind, data },
+

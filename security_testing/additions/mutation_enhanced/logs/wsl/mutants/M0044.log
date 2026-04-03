@@ -1,0 +1,61 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:35:48.532878+00:00
+FINISHED_UTC: 2026-04-03T19:35:58.808014+00:00
+DURATION_SECONDS: 10.275113
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.............................. 30/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+... 36/38
+storage::assembler::test::test_shrink_next_hole --- FAILED
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (16920) panicked at src/storage/assembler.rs:247:33:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (16921) panicked at src/storage/assembler.rs:247:33:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (16919) panicked at src/storage/assembler.rs:247:33:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (16933) panicked at src/storage/assembler.rs:539:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 40, data_size: 70 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 40, data_size: 30 }, Contig { hole_size: 30, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (16931) panicked at src/storage/assembler.rs:247:33:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.02s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

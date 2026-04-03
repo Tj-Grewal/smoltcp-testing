@@ -1,0 +1,69 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:35:25.660198+00:00
+FINISHED_UTC: 2026-04-03T19:35:36.767232+00:00
+DURATION_SECONDS: 11.107000
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+........ 8/38
+storage::assembler::test::test_boundary_case_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+........................ 35/38
+storage::assembler::test::test_trailing_data_remove_front --- FAILED
+storage::assembler::test::test_trailing_hole_remove_front --- FAILED
+.
+failures:
+
+---- storage::assembler::test::test_boundary_case_remove_front stdout ----
+
+thread 'storage::assembler::test::test_boundary_case_remove_front' (16269) panicked at src/storage/assembler.rs:526:9:
+assertion `left == right` failed
+  left: 0
+ right: 2
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (16264) panicked at src/storage/assembler.rs:649:9:
+assertion `left == right` failed
+  left: Ok(10)
+ right: Ok(0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (16268) panicked at src/storage/assembler.rs:665:9:
+assertion `left == right` failed
+  left: Ok(0)
+ right: Ok(60)
+
+---- storage::assembler::test::test_trailing_data_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_data_remove_front' (16300) panicked at src/storage/assembler.rs:517:9:
+assertion `left == right` failed
+  left: 0
+ right: 4
+
+---- storage::assembler::test::test_trailing_hole_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_hole_remove_front' (16301) panicked at src/storage/assembler.rs:510:9:
+assertion `left == right` failed
+  left: 0
+ right: 4
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_boundary_case_remove_front
+    storage::assembler::test::test_trailing_data_remove_front
+    storage::assembler::test::test_trailing_hole_remove_front
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.37s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

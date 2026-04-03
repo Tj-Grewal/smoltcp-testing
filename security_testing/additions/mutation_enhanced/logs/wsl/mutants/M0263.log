@@ -1,0 +1,23 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:15:35.514895+00:00
+FINISHED_UTC: 2026-04-03T20:15:41.571037+00:00
+DURATION_SECONDS: 6.056107
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+=== STDERR ===
+error[E0308]: mismatched types
+   --> src/wire/tcp.rs:684:72
+    |
+684 |                         let mut sack_ranges: [Option<(u32, u32)>; 3] = [None; 2];
+    |                                              -----------------------   ^^^^^^^^^ expected an array with a size of 3, found one with a size of 2
+    |                                              |
+    |                                              expected due to this
+    |
+    = note: expected array `[Option<(u32, u32)>; 3]`
+               found array `[Option<(u32, u32)>; 2]`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `smoltcp` (lib test) due to 1 previous error

@@ -1,0 +1,58 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:21:57.660938+00:00
+FINISHED_UTC: 2026-04-03T19:21:59.829597+00:00
+DURATION_SECONDS: 2.169242
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+=== STDERR ===
+error[E0308]: mismatched types
+   --> src\wire\tcp.rs:339:27
+    |
+339 |                 return Ok(slice);
+    |                        -- ^^^^^ expected an array with a size of 2, found one with a size of 3
+    |                        |
+    |                        arguments to this enum variant are incorrect
+    |
+    = note: expected array `[Option<(u32, u32)>; 2]`
+               found array `[Option<(u32, u32)>; 3]`
+help: the type constructed contains `[Option<(u32, u32)>; 3]` due to the type of the argument passed
+   --> src\wire\tcp.rs:339:24
+    |
+339 |                 return Ok(slice);
+    |                        ^^^-----^
+    |                           |
+    |                           this argument influences the type of `Ok`
+note: tuple variant defined here
+   --> C:\Users\TJ\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\result.rs:561:5
+    |
+561 |     Ok(#[stable(feature = "rust1", since = "1.0.0")] T),
+    |     ^^
+
+error[E0308]: mismatched types
+   --> src\wire\tcp.rs:343:12
+    |
+343 |         Ok([None, None, None])
+    |         -- ^^^^^^^^^^^^^^^^^^ expected an array with a size of 2, found one with a size of 3
+    |         |
+    |         arguments to this enum variant are incorrect
+    |
+    = note: expected array `[Option<(u32, u32)>; 2]`
+               found array `[Option<(u32, u32)>; 3]`
+help: the type constructed contains `[Option<(u32, u32)>; 3]` due to the type of the argument passed
+   --> src\wire\tcp.rs:343:9
+    |
+343 |         Ok([None, None, None])
+    |         ^^^------------------^
+    |            |
+    |            this argument influences the type of `Ok`
+note: tuple variant defined here
+   --> C:\Users\TJ\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\core\src\result.rs:561:5
+    |
+561 |     Ok(#[stable(feature = "rust1", since = "1.0.0")] T),
+    |     ^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `smoltcp` (lib test) due to 2 previous errors

@@ -1,0 +1,334 @@
+mutant_id,file,routine,operator,line,original,replacement,status,exit_code,duration_seconds,command,log_file
+M0001,src/storage/assembler.rs,add,arith_sub_add,252, - , + ,killed,101,17.955390,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0001.log
+M0002,src/storage/assembler.rs,remove_front,bool_or_and,285, || , && ,killed,101,10.803924,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0002.log
+M0003,src/storage/assembler.rs,remove_front,const_0_1,288,0,1,killed,101,11.386550,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0003.log
+M0004,src/storage/assembler.rs,peek_front,const_0_1,154,0,1,live,0,12.125741,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0004.log
+M0005,src/storage/assembler.rs,remove_front,const_0_1,286,0,1,killed,101,12.596260,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0005.log
+M0006,src/storage/assembler.rs,empty,const_0_1,58,0,1,killed,101,11.947147,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0006.log
+M0007,src/storage/assembler.rs,add,assign_add_sub,220, += , -= ,killed,101,12.040798,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0007.log
+M0008,src/storage/assembler.rs,add_contig_at,const_1_0,187,1,0,killed,101,11.652320,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0008.log
+M0009,src/storage/assembler.rs,add,rel_lt_le,224, < , <= ,live,0,11.238350,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0009.log
+M0010,src/storage/assembler.rs,add,rel_lt_le,273, < , <= ,killed,101,10.791464,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0010.log
+M0011,src/storage/assembler.rs,add_then_remove_front,bool_and_or,308, && , || ,killed,101,10.773480,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0011.log
+M0012,src/storage/assembler.rs,add,arith_add_sub,254, + , - ,killed,101,10.736151,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0012.log
+M0013,src/storage/assembler.rs,add,arith_add_sub,227, + , - ,killed,101,11.438112,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0013.log
+M0014,src/storage/assembler.rs,add,const_1_0,220,1,0,killed,101,10.941178,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0014.log
+M0015,src/storage/assembler.rs,fmt,bool_and_or,29, && , || ,live,0,11.189638,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0015.log
+M0016,src/storage/assembler.rs,add,assign_add_sub,250, += , -= ,killed,101,10.698566,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0016.log
+M0017,src/storage/assembler.rs,add,assign_add_sub,270, += , -= ,killed,101,10.498345,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0017.log
+M0018,src/storage/assembler.rs,add,rel_lt_le,227, < , <= ,killed,101,10.650221,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0018.log
+M0019,src/storage/assembler.rs,shrink_hole_to,arith_sub_add,90, - , + ,killed,101,11.028467,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0019.log
+M0020,src/storage/assembler.rs,remove_front,rel_gt_ge,289, > , >= ,live,0,10.864157,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0020.log
+M0021,src/storage/assembler.rs,add,const_1_0,244,1,0,killed,101,10.936607,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0021.log
+M0022,src/storage/assembler.rs,add,arith_add_sub,234, + , - ,killed,101,10.756414,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0022.log
+M0023,src/storage/assembler.rs,add_then_remove_front,rel_eq_ne,308, == , != ,killed,101,11.358151,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0023.log
+M0024,src/storage/assembler.rs,add,arith_add_sub,247, + , - ,killed,101,10.622520,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0024.log
+M0025,src/storage/assembler.rs,add,arith_add_sub,269, + , - ,killed,101,10.802729,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0025.log
+M0026,src/storage/assembler.rs,add,arith_add_sub,273, + , - ,killed,101,10.653663,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0026.log
+M0027,src/storage/assembler.rs,remove_contig_at,arith_add_sub,174, + , - ,killed,101,11.125224,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0027.log
+M0028,src/storage/assembler.rs,add,const_0_1,253,0,1,killed,101,10.603330,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0028.log
+M0029,src/storage/assembler.rs,has_data,const_0_1,74,0,1,killed,101,11.065998,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0029.log
+M0030,src/storage/assembler.rs,add_contig_at,const_1_0,188,1,0,killed,101,11.016378,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0030.log
+M0031,src/storage/assembler.rs,add,arith_add_sub,234, + , - ,killed,101,11.669559,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0031.log
+M0032,src/storage/assembler.rs,add,bool_and_or,273, && , || ,killed,101,11.541828,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0032.log
+M0033,src/storage/assembler.rs,add,const_1_0,274,1,0,killed,101,10.762187,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0033.log
+M0034,src/storage/assembler.rs,add,arith_add_sub,261, + , - ,killed,101,10.972990,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0034.log
+M0035,src/storage/assembler.rs,shrink_hole_by,assign_sub_add,82, -= , += ,killed,101,10.536362,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0035.log
+M0036,src/storage/assembler.rs,remove_contig_at,arith_sub_add,178, - , + ,killed,101,10.786480,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0036.log
+M0037,src/storage/assembler.rs,remove_contig_at,arith_sub_add,170, - , + ,killed,101,11.188830,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0037.log
+M0038,src/storage/assembler.rs,add,rel_gt_ge,267, > , >= ,live,0,10.966503,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0038.log
+M0039,src/storage/assembler.rs,add_contig_at,arith_sub_add,188, - , + ,killed,101,11.079554,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0039.log
+M0040,src/storage/assembler.rs,add,arith_add_sub,267, + , - ,killed,101,10.707680,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0040.log
+M0041,src/storage/assembler.rs,has_data,rel_ne_eq,74, != , == ,killed,101,10.558753,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0041.log
+M0042,src/storage/assembler.rs,has_hole,rel_ne_eq,70, != , == ,killed,101,11.107000,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0042.log
+M0043,src/storage/assembler.rs,add,arith_sub_add,252, - , + ,killed,101,10.784165,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0043.log
+M0044,src/storage/assembler.rs,add,arith_add_sub,247, + , - ,killed,101,10.275113,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0044.log
+M0045,src/storage/assembler.rs,add,bool_and_or,246,            && , || ,killed,101,10.711250,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0045.log
+M0046,src/storage/assembler.rs,add,const_0_1,202,0,1,killed,101,11.086198,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0046.log
+M0047,src/storage/assembler.rs,add,arith_sub_add,269, - , + ,killed,101,10.608193,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0047.log
+M0048,src/storage/assembler.rs,add,arith_add_sub,244, + , - ,killed,101,10.650545,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0048.log
+M0049,src/storage/assembler.rs,add_then_remove_front,const_0_1,308,0,1,live,0,10.989854,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0049.log
+M0050,src/storage/assembler.rs,add_then_remove_front,const_0_1,308,0,1,killed,101,10.746409,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0050.log
+M0051,src/storage/assembler.rs,add,rel_eq_ne,206, == , != ,killed,101,10.548784,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0051.log
+M0052,src/storage/assembler.rs,add,bool_and_or,247,            && , || ,killed,101,10.524389,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0052.log
+M0053,src/storage/assembler.rs,add_then_remove_front,const_0_1,309,0,1,killed,101,10.709444,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0053.log
+M0054,src/storage/assembler.rs,add,rel_lt_le,245, < , <= ,killed,101,10.510920,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0054.log
+M0055,src/storage/assembler.rs,total_size,arith_add_sub,78, + , - ,killed,101,10.858156,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0055.log
+M0056,src/storage/assembler.rs,back,arith_sub_add,158, - , + ,killed,101,10.260079,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0056.log
+M0057,src/storage/assembler.rs,add,const_1_0,273,1,0,killed,101,10.466436,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0057.log
+M0058,src/storage/assembler.rs,empty,const_0_1,57,0,1,killed,101,11.095736,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0058.log
+M0059,src/storage/assembler.rs,add,const_1_0,250,1,0,killed,101,10.229152,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0059.log
+M0060,src/storage/assembler.rs,back,const_1_0,158,1,0,killed,101,10.645928,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0060.log
+M0061,src/storage/assembler.rs,add,assign_sub_add,219, -= , += ,killed,101,10.692218,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0061.log
+M0062,src/storage/assembler.rs,add,arith_add_sub,274, + , - ,killed,101,10.131247,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0062.log
+M0063,src/storage/assembler.rs,remove_contig_at,const_1_0,174,1,0,killed,101,10.970400,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0063.log
+M0064,src/storage/assembler.rs,format,bool_and_or,45, && , || ,live,0,10.844483,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0064.log
+M0065,src/storage/assembler.rs,remove_front,const_0_1,289,0,1,live,0,10.465672,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0065.log
+M0066,src/storage/assembler.rs,shrink_hole_to,rel_ge_gt,86, >= , > ,live,0,10.951166,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0066.log
+M0067,src/storage/assembler.rs,add,arith_add_sub,273, + , - ,killed,101,10.638733,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0067.log
+M0068,src/storage/assembler.rs,add,const_0_1,198,0,1,killed,101,10.368115,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0068.log
+M0069,src/storage/assembler.rs,add_then_remove_front,assign_sub_add,309, -= , += ,killed,101,10.935195,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0069.log
+M0070,src/storage/assembler.rs,has_hole,const_0_1,70,0,1,killed,101,10.875151,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0070.log
+M0071,src/storage/assembler.rs,remove_contig_at,const_1_0,170,1,0,killed,101,11.060306,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0071.log
+M0072,src/storage/assembler.rs,add,assign_add_sub,249, += , -= ,killed,101,10.485621,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0072.log
+M0073,src/storage/assembler.rs,add_contig_at,arith_add_sub,187, + , - ,killed,101,10.801628,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0073.log
+M0074,src/storage/assembler.rs,add,rel_le_lt,216, <= , < ,killed,101,11.178998,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0074.log
+M0075,src/storage/assembler.rs,add,rel_ge_gt,247, >= , > ,killed,101,10.551476,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0075.log
+M0076,src/storage/assembler.rs,remove_contig_at,const_1_0,178,1,0,killed,101,10.897593,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0076.log
+M0077,src/storage/assembler.rs,front,const_0_1,148,0,1,killed,101,10.890669,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0077.log
+M0078,src/storage/assembler.rs,add,const_1_0,252,1,0,killed,101,10.724986,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0078.log
+M0079,src/storage/assembler.rs,add,rel_eq_ne,198, == , != ,killed,101,10.435423,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0079.log
+M0080,src/storage/assembler.rs,add,const_1_0,273,1,0,killed,101,10.722257,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0080.log
+M0081,src/storage/assembler.rs,add,rel_ne_eq,253, != , == ,killed,101,11.014892,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0081.log
+M0082,src/storage/assembler.rs,add,const_1_0,234,1,0,killed,101,10.418294,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0082.log
+M0083,src/storage/assembler.rs,add,assign_sub_add,274, -= , += ,killed,101,10.426926,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0083.log
+M0084,src/storage/assembler.rs,add,const_1_0,254,1,0,killed,101,10.621360,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0084.log
+M0085,src/storage/assembler.rs,add_then_remove_front,rel_lt_le,308, < , <= ,killed,101,10.908635,cargo test storage::assembler --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0085.log
+M0086,src/wire/ipv4.rs,format,const_16_8,204,16,8,killed,101,10.454651,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0086.log
+M0087,src/wire/ipv4.rs,broadcast,rel_eq_ne,141, == , != ,killed,101,10.723255,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0087.log
+M0088,src/wire/ipv4.rs,prefix_len,rel_ge_gt,76,>= , > ,killed,101,6.028581,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0088.log
+M0089,src/wire/ipv4.rs,dscp,const_2_3,273,2,3,live,0,10.331480,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0089.log
+M0090,src/wire/ipv4.rs,dont_frag,bit_and_or,300, & , | ,live,0,10.796340,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0090.log
+M0091,src/wire/ipv4.rs,prefix_len,const_1_0,76,1,0,live,0,10.681611,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0091.log
+M0092,src/wire/ipv4.rs,format,const_8_4,199,8,4,killed,101,10.465152,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0092.log
+M0093,src/wire/ipv4.rs,broadcast,const_32_16,141,32,16,killed,101,10.500894,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0093.log
+M0094,src/wire/ipv4.rs,check_len,rel_gt_ge,242, > , >= ,live,0,10.984113,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0094.log
+M0095,src/wire/ipv4.rs,netmask,shift_left_right,133, << , >> ,killed,101,10.915632,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0095.log
+M0096,src/wire/ipv4.rs,format,const_0_1,195,0,1,killed,101,10.711247,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0096.log
+M0097,src/wire/ipv4.rs,format,const_2_3,197,2,3,killed,101,10.588752,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0097.log
+M0098,src/wire/ipv4.rs,prefix_len,assign_add_sub,68, += , -= ,live,0,10.629600,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0098.log
+M0099,src/wire/ipv4.rs,ecn,bit_and_or,279, & , | ,killed,101,10.873858,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0099.log
+M0100,src/wire/ipv4.rs,more_frags,const_0_1,307,0,1,live,0,10.721589,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0100.log
+M0101,src/wire/ipv4.rs,more_frags,bit_and_or,307, & , | ,live,0,10.728003,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0101.log
+M0102,src/wire/ipv4.rs,<module>,const_0_1,25,0,1,live,0,10.783996,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0102.log
+M0103,src/wire/ipv4.rs,netmask,rel_eq_ne,129, == , != ,killed,101,10.483146,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0103.log
+M0104,src/wire/ipv4.rs,check_len,rel_lt_le,244, < , <= ,killed,101,10.956973,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0104.log
+M0105,src/wire/ipv4.rs,header_len,arith_mul_div,267, * , / ,killed,101,11.012391,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0105.log
+M0106,src/wire/ipv4.rs,broadcast,rel_eq_ne,141, == , != ,killed,101,10.565827,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0106.log
+M0107,src/wire/ipv4.rs,dscp,shift_right_left,273, >> , << ,live,0,10.842914,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0107.log
+M0108,src/wire/ipv4.rs,contains_addr,bit_and_or,162, & , | ,killed,101,10.537173,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0108.log
+M0109,src/wire/ipv4.rs,format,const_16_8,203,16,8,killed,101,10.726304,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0109.log
+M0110,src/wire/ipv4.rs,broadcast,bit_or_and,146, | , & ,killed,101,10.812281,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0110.log
+M0111,src/wire/ipv4.rs,new,const_32_64,97,32,64,live,0,10.563907,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0111.log
+M0112,src/wire/ipv4.rs,<module>,const_1_0,25,1,0,live,0,10.690815,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0112.log
+M0113,src/wire/ipv4.rs,prefix_len,const_8_16,63,8,16,live,0,10.634972,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0113.log
+M0114,src/wire/ipv4.rs,broadcast,const_32_64,141,32,64,killed,101,10.578038,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0114.log
+M0115,src/wire/ipv4.rs,prefix_len,const_0_1,63,0,1,live,0,10.638643,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0115.log
+M0116,src/wire/ipv4.rs,format,const_8_4,200,8,4,killed,101,10.445438,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0116.log
+M0117,src/wire/ipv4.rs,netmask,const_0_1,130,0,1,killed,101,10.595358,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0117.log
+M0118,src/wire/ipv4.rs,verify_checksum,bool_true_false,358,true,false,live,0,10.814975,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0118.log
+M0119,src/wire/ipv4.rs,prefix_len,bit_and_or,64, & , | ,live,0,10.612553,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0119.log
+M0120,src/wire/ipv4.rs,prefix_len,assign_shr_shl,76, >>= , <<= ,live,0,10.609365,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0120.log
+M0121,src/wire/ipv4.rs,<module>,const_0_1,28,0,1,live,0,10.494100,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0121.log
+M0122,src/wire/ipv4.rs,format,const_1_0,196,1,0,killed,101,10.861681,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0122.log
+M0123,src/wire/ipv4.rs,prefix_len,bool_true_false,59,true,false,live,0,10.458036,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0123.log
+M0124,src/wire/ipv4.rs,verify_checksum,const_0_1,362,0,1,killed,101,10.545491,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0124.log
+M0125,src/wire/ipv4.rs,netmask,const_32_64,133,32,64,killed,101,10.878349,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0125.log
+M0126,src/wire/ipv4.rs,format,const_8_16,200,8,16,killed,101,11.334606,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0126.log
+M0127,src/wire/ipv4.rs,check_len,rel_lt_le,238, < , <= ,live,0,10.620678,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0127.log
+M0128,src/wire/ipv4.rs,from_netmask,rel_eq_ne,107, == , != ,killed,101,10.650237,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0128.log
+M0129,src/wire/ipv4.rs,netmask,const_0_1,130,0,1,killed,101,10.609712,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0129.log
+M0130,src/wire/ipv4.rs,prefix_len,const_0_1,60,0,1,live,0,10.731794,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0130.log
+M0131,src/wire/ipv4.rs,from_netmask,bool_and_or,107, && , || ,killed,101,10.609628,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0131.log
+M0132,src/wire/ipv4.rs,prefix_len,bool_false_true,70,false,true,live,0,10.942265,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0132.log
+M0133,src/wire/ipv4.rs,broadcast,bool_or_and,141, || , && ,killed,101,11.049623,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0133.log
+M0134,src/wire/ipv4.rs,x_is_unicast,bool_or_and,55, || , && ,live,0,10.558061,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0134.log
+M0135,src/wire/ipv4.rs,frag_offset,shift_left_right,314, << , >> ,killed,101,10.516271,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0135.log
+M0136,src/wire/ipv4.rs,check_len,rel_lt_le,240, < , <= ,live,0,10.851427,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0136.log
+M0137,src/wire/ipv4.rs,verify_checksum,rel_eq_ne,362, == , != ,killed,101,10.732366,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0137.log
+M0138,src/wire/ipv4.rs,format,const_8_16,199,8,16,live,0,10.672587,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0138.log
+M0139,src/wire/ipv4.rs,from_netmask,rel_eq_ne,107, == , != ,killed,101,10.518397,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0139.log
+M0140,src/wire/ipv4.rs,<module>,const_0_1,28,0,1,live,0,10.408792,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0140.log
+M0141,src/wire/ipv4.rs,<module>,const_0_1,25,0,1,live,0,10.877769,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0141.log
+M0142,src/wire/ipv4.rs,format,const_4_8,197,4,8,live,0,10.825877,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0142.log
+M0143,src/wire/ipv4.rs,prefix_len,const_8_4,63,8,4,live,0,10.417126,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0143.log
+M0144,src/wire/ipv4.rs,contains_subnet,bool_and_or,168, && , || ,killed,101,10.952740,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0144.log
+M0145,src/wire/ipv4.rs,prefix_len,const_0_1,64,0,1,live,0,10.931109,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0145.log
+M0146,src/wire/ipv4.rs,dont_frag,const_0_1,300,0,1,live,0,10.918845,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0146.log
+M0147,src/wire/ipv4.rs,new,const_32_16,97,32,16,killed,101,10.753797,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0147.log
+M0148,src/wire/ipv4.rs,header_len,bit_and_or,267, & , | ,killed,101,10.848805,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0148.log
+M0149,src/wire/ipv4.rs,netmask,const_0_1,130,0,1,killed,101,10.626817,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0149.log
+M0150,src/wire/ipv4.rs,frag_offset,const_3_2,314,3,2,killed,101,10.712990,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0150.log
+M0151,src/wire/ipv4.rs,contains_subnet,rel_le_lt,168, <= , < ,killed,101,10.870526,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0151.log
+M0152,src/wire/ipv4.rs,format,const_16_32,204,16,32,killed,101,10.849234,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0152.log
+M0153,src/wire/ipv4.rs,version,const_4_8,260,4,8,killed,101,6.129737,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0153.log
+M0154,src/wire/ipv4.rs,netmask,const_0_1,129,0,1,killed,101,10.565137,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0154.log
+M0155,src/wire/ipv4.rs,<module>,const_2_3,28,2,3,live,0,10.838211,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0155.log
+M0156,src/wire/ipv4.rs,format,const_4_8,198,4,8,killed,101,11.366111,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0156.log
+M0157,src/wire/ipv4.rs,prefix_len,rel_ne_eq,64, != , == ,live,0,10.691351,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0157.log
+M0158,src/wire/ipv4.rs,from_netmask,const_0_1,107,0,1,killed,101,10.549094,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0158.log
+M0159,src/wire/ipv4.rs,version,shift_right_left,260, >> , << ,killed,101,10.641281,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0159.log
+M0160,src/wire/ipv4.rs,prefix_len,const_1_0,68,1,0,live,0,10.585557,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0160.log
+M0161,src/wire/ipv4.rs,netmask,arith_sub_add,133, - , + ,killed,101,10.346979,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0161.log
+M0162,src/wire/ipv4.rs,netmask,const_0_1,130,0,1,killed,101,10.404841,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0162.log
+M0163,src/wire/ipv4.rs,contains_addr,rel_eq_ne,162,            == , != ,killed,101,10.589372,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0163.log
+M0164,src/wire/ipv4.rs,format,const_16_32,203,16,32,killed,101,10.749743,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0164.log
+M0165,src/wire/ipv4.rs,network,bit_and_or,153, & , | ,killed,101,10.602092,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0165.log
+M0166,src/wire/ipv4.rs,contains_addr,bit_and_or,161, & , | ,killed,101,10.840350,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0166.log
+M0167,src/wire/ipv4.rs,broadcast,shift_right_left,146, >> , << ,killed,101,10.718447,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0167.log
+M0168,src/wire/ipv4.rs,new,rel_le_lt,97, <= , < ,killed,101,10.679321,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0168.log
+M0169,src/wire/ipv4.rs,x_is_unicast,bool_or_and,55, || , && ,live,0,10.749183,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0169.log
+M0170,src/wire/ipv4.rs,netmask,const_32_16,133,32,16,killed,101,10.936338,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0170.log
+M0171,src/wire/ipv4.rs,header_len,const_4_8,267,4,8,killed,101,10.704083,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0171.log
+M0172,src/wire/ipv4.rs,more_frags,rel_ne_eq,307, != , == ,killed,101,11.184557,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0172.log
+M0173,src/wire/ipv4.rs,dont_frag,rel_ne_eq,300, != , == ,killed,101,10.544528,cargo test wire::ipv4 --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0173.log
+M0174,src/wire/udp.rs,verify_checksum,bool_true_false,139,true,false,killed,101,10.684861,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0174.log
+M0175,src/wire/udp.rs,verify_checksum,rel_eq_ne,138, == , != ,live,0,10.944960,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0175.log
+M0176,src/wire/udp.rs,test_zero_checksum,const_8_16,428,8,16,live,0,11.127128,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0176.log
+M0177,src/wire/udp.rs,check_len,rel_lt_le,63, < , <= ,live,0,11.090768,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0177.log
+M0178,src/wire/udp.rs,<module>,const_2_3,21,2,3,killed,101,10.495621,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0178.log
+M0179,src/wire/udp.rs,test_no_checksum,const_0_1,440,0,1,live,0,10.617436,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0179.log
+M0180,src/wire/udp.rs,pretty_print,const_1_0,374,1,0,killed,101,10.721426,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0180.log
+M0181,src/wire/udp.rs,test_emit,arith_add_sub,475, + , - ,killed,101,10.937252,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0181.log
+M0182,src/wire/udp.rs,verify_checksum,rel_eq_ne,146, == , != ,killed,101,11.120585,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0182.log
+M0183,src/wire/udp.rs,pretty_print,const_2_3,376,2,3,killed,101,11.165888,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0183.log
+M0184,src/wire/udp.rs,check_len,rel_lt_le,63, < , <= ,killed,101,11.219245,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0184.log
+M0185,src/wire/udp.rs,verify_checksum,const_0_1,146,0,1,killed,101,10.685383,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0185.log
+M0186,src/wire/udp.rs,check_len,rel_lt_le,59, < , <= ,live,0,11.025423,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0186.log
+M0187,src/wire/udp.rs,test_zero_checksum,const_8_4,432,8,4,killed,101,10.747259,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0187.log
+M0188,src/wire/udp.rs,test_zero_checksum,const_1_0,430,1,0,killed,101,10.535458,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0188.log
+M0189,src/wire/udp.rs,<module>,const_4_8,21,4,8,live,0,10.659506,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0189.log
+M0190,src/wire/udp.rs,test_zero_checksum,const_0_1,428,0,1,live,0,10.585400,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0190.log
+M0191,src/wire/udp.rs,check_len,bool_or_and,63, || , && ,killed,101,10.594133,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0191.log
+M0192,src/wire/udp.rs,<module>,const_4_8,22,4,8,killed,101,10.789752,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0192.log
+M0193,src/wire/udp.rs,<module>,const_8_4,23,8,4,killed,101,10.530037,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0193.log
+M0194,src/wire/udp.rs,pretty_print,const_4_8,389,4,8,killed,101,6.013083,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0194.log
+M0195,src/wire/udp.rs,test_zero_checksum,const_8_16,432,8,16,killed,101,10.724754,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0195.log
+M0196,src/wire/udp.rs,verify_partial_checksum,rel_eq_ne,118,            == , != ,live,0,10.493537,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0196.log
+M0197,src/wire/udp.rs,verify_partial_checksum,bool_true_false,114,true,false,live,0,10.550291,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0197.log
+M0198,src/wire/udp.rs,test_impossible_len,const_0_1,419,0,1,live,0,10.869408,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0198.log
+M0199,src/wire/udp.rs,<module>,const_2_3,20,2,3,live,0,10.662550,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0199.log
+M0200,src/wire/udp.rs,test_impossible_len,const_4_8,421,4,8,killed,101,10.399842,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0200.log
+M0201,src/wire/udp.rs,test_no_checksum,const_1_0,442,1,0,live,0,10.678212,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0201.log
+M0202,src/wire/udp.rs,test_no_checksum,const_8_4,444,8,4,live,0,10.426281,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0202.log
+M0203,src/wire/udp.rs,test_no_checksum,const_0_1,445,0,1,killed,101,10.728400,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0203.log
+M0204,src/wire/udp.rs,<module>,const_0_1,20,0,1,killed,101,10.708778,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0204.log
+M0205,src/wire/udp.rs,pretty_print,const_1_0,374,1,0,killed,101,10.884504,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0205.log
+M0206,src/wire/udp.rs,verify_checksum,bool_true_false,131,true,false,live,0,10.364080,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0206.log
+M0207,src/wire/udp.rs,test_no_checksum,const_8_16,444,8,16,live,0,11.043062,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0207.log
+M0208,src/wire/udp.rs,<module>,const_8_16,23,8,16,killed,101,10.765202,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0208.log
+M0209,src/wire/udp.rs,test_zero_checksum,const_8_4,428,8,4,killed,101,10.865288,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0209.log
+M0210,src/wire/udp.rs,pretty_print,const_1_0,376,1,0,killed,101,10.704883,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0210.log
+M0211,src/wire/udp.rs,test_no_checksum,const_8_4,440,8,4,killed,101,10.454292,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0211.log
+M0212,src/wire/udp.rs,test_no_checksum,const_8_16,440,8,16,live,0,10.878973,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0212.log
+M0213,src/wire/udp.rs,verify_checksum,const_0_1,138,0,1,live,0,11.009680,cargo test wire::udp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0213.log
+M0214,src/wire/tcp.rs,sub,const_0_1,71,0,1,killed,101,5.720142,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0214.log
+M0215,src/wire/tcp.rs,buffer_len,const_1_0,717,1,0,killed,101,10.537085,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0215.log
+M0216,src/wire/tcp.rs,buffer_len,const_3_2,720,3,2,killed,101,10.750261,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0216.log
+M0217,src/wire/tcp.rs,parse,const_3_2,684,3,2,killed,101,6.548589,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0217.log
+M0218,src/wire/tcp.rs,set_rst,bit_or_and,474, | , & ,killed,101,11.409666,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0218.log
+M0219,src/wire/tcp.rs,set_ece,bit_and_or,528, & , | ,live,0,10.813393,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0219.log
+M0220,src/wire/tcp.rs,urg,rel_ne_eq,247, != , == ,killed,101,10.409300,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0220.log
+M0221,src/wire/tcp.rs,set_cwr,bit_or_and,539, | , & ,live,0,12.106482,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0221.log
+M0222,src/wire/tcp.rs,buffer_len,const_8_4,722,8,4,killed,101,10.402043,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0222.log
+M0223,src/wire/tcp.rs,set_ns,bit_and_or,554, & , | ,live,0,10.356351,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0223.log
+M0224,src/wire/tcp.rs,header_len,const_4_8,279,4,8,killed,101,10.894951,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0224.log
+M0225,src/wire/tcp.rs,set_ack,bit_or_and,500, | , & ,killed,101,10.449685,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0225.log
+M0226,src/wire/tcp.rs,buffer_len,const_2_3,722,2,3,killed,101,10.999266,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0226.log
+M0227,src/wire/tcp.rs,verify_checksum,rel_eq_ne,382, == , != ,killed,101,10.931464,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0227.log
+M0228,src/wire/tcp.rs,cwr,rel_ne_eq,263, != , == ,live,0,10.744052,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0228.log
+M0229,src/wire/tcp.rs,sub,rel_lt_le,72, < , <= ,live,0,11.228254,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0229.log
+M0230,src/wire/tcp.rs,add,rel_gt_ge,43, > , >= ,live,0,11.067985,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0230.log
+M0231,src/wire/tcp.rs,clear_flags,bit_and_or,438, & , | ,killed,101,10.942068,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0231.log
+M0232,src/wire/tcp.rs,check_len,rel_lt_le,161, < , <= ,live,0,10.878418,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0232.log
+M0233,src/wire/tcp.rs,partial_cmp,const_16_8,103,16,8,killed,101,10.691652,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0233.log
+M0234,src/wire/tcp.rs,ack,bit_and_or,239, & , | ,killed,101,10.621358,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0234.log
+M0235,src/wire/tcp.rs,urg,bit_and_or,247, & , | ,live,0,10.724281,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0235.log
+M0236,src/wire/tcp.rs,max,rel_gt_ge,18, > , >= ,live,0,11.066014,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0236.log
+M0237,src/wire/tcp.rs,syn,bit_and_or,215, & , | ,killed,101,10.814370,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0237.log
+M0238,src/wire/tcp.rs,segment_len,const_1_0,311,1,0,live,0,10.618970,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0238.log
+M0239,src/wire/tcp.rs,set_psh,bit_and_or,489, & , | ,killed,101,10.691572,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0239.log
+M0240,src/wire/tcp.rs,fmt,const_0_1,28,0,1,killed,101,6.179137,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0240.log
+M0241,src/wire/tcp.rs,set_header_len,shift_left_right,564, << , >> ,killed,101,10.312481,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0241.log
+M0242,src/wire/tcp.rs,rst,rel_ne_eq,223, != , == ,killed,101,11.174603,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0242.log
+M0243,src/wire/tcp.rs,pretty_print,const_1_0,1208,1,0,killed,101,10.712656,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0243.log
+M0244,src/wire/tcp.rs,cwr,bit_and_or,263, & , | ,live,0,11.773433,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0244.log
+M0245,src/wire/tcp.rs,ns,bit_and_or,271, & , | ,live,0,11.310969,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0245.log
+M0246,src/wire/tcp.rs,verify_checksum,const_0_1,382,0,1,killed,101,11.278418,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0246.log
+M0247,src/wire/tcp.rs,rst,const_0_1,223,0,1,killed,101,10.977181,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0247.log
+M0248,src/wire/tcp.rs,partial_cmp,const_8_16,100,8,16,killed,101,11.022519,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0248.log
+M0249,src/wire/tcp.rs,check_len,rel_lt_le,161, < , <= ,killed,101,11.190884,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0249.log
+M0250,src/wire/tcp.rs,add_assign,arith_add_sub,63, + , - ,live,0,10.775882,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0250.log
+M0251,src/wire/tcp.rs,set_ack_number,const_0_1,430,0,1,killed,101,6.089360,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0251.log
+M0252,src/wire/tcp.rs,selective_ack_permitted,rel_eq_ne,322, == , != ,live,0,10.538507,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0252.log
+M0253,src/wire/tcp.rs,selective_ack_ranges,const_3_2,333,3,2,killed,101,6.008782,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0253.log
+M0254,src/wire/tcp.rs,partial_cmp,const_16_8,102,16,8,killed,101,10.656182,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0254.log
+M0255,src/wire/tcp.rs,parse,arith_mul_div,690, * , / ,killed,101,11.100432,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0255.log
+M0256,src/wire/tcp.rs,set_cwr,bit_and_or,541, & , | ,live,0,10.397671,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0256.log
+M0257,src/wire/tcp.rs,parse,const_8_4,690,8,4,killed,101,10.777887,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0257.log
+M0258,src/wire/tcp.rs,verify_partial_checksum,rel_eq_ne,362,            == , != ,live,0,10.993206,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0258.log
+M0259,src/wire/tcp.rs,parse,const_4_8,704,4,8,live,0,10.400525,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0259.log
+M0260,src/wire/tcp.rs,sub,const_0_1,71,0,1,killed,101,5.908740,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0260.log
+M0261,src/wire/tcp.rs,rst,bit_and_or,223, & , | ,killed,101,10.900363,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0261.log
+M0262,src/wire/tcp.rs,parse,rel_lt_le,691, < , <= ,killed,101,10.875672,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0262.log
+M0263,src/wire/tcp.rs,parse,const_3_2,684,3,2,killed,101,6.056107,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0263.log
+M0264,src/wire/tcp.rs,partial_cmp,const_2_3,97,2,3,live,0,10.725397,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0264.log
+M0265,src/wire/tcp.rs,verify_partial_checksum,bool_true_false,356,true,false,live,0,10.898751,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0265.log
+M0266,src/wire/tcp.rs,fill_checksum,const_0_1,595,0,1,killed,101,10.737459,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0266.log
+M0267,src/wire/tcp.rs,pretty_print,const_2_3,1208,2,3,killed,101,10.866746,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0267.log
+M0268,src/wire/tcp.rs,ece,rel_ne_eq,255, != , == ,live,0,11.462281,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0268.log
+M0269,src/wire/tcp.rs,parse,const_4_8,693,4,8,killed,101,10.745659,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0269.log
+M0270,src/wire/tcp.rs,ack,rel_ne_eq,239, != , == ,killed,101,10.650340,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0270.log
+M0271,src/wire/tcp.rs,partial_cmp,const_4_8,99,4,8,killed,101,10.813598,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0271.log
+M0272,src/wire/tcp.rs,buffer_len,const_1_0,718,1,0,killed,101,10.953698,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0272.log
+M0273,src/wire/tcp.rs,sub,const_0_1,57,0,1,killed,101,5.877350,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0273.log
+M0274,src/wire/tcp.rs,check_len,bool_or_and,161, || , && ,killed,101,10.649508,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0274.log
+M0275,src/wire/tcp.rs,test_construct,bool_true_false,1258,true,false,killed,101,11.434081,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0275.log
+M0276,src/wire/tcp.rs,sub,const_0_1,72,0,1,live,0,11.221378,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0276.log
+M0277,src/wire/tcp.rs,urg,const_0_1,247,0,1,live,0,10.698236,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0277.log
+M0278,src/wire/tcp.rs,set_header_len,bit_and_or,564, & , | ,killed,101,10.737860,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0278.log
+M0279,src/wire/tcp.rs,parse,const_4_8,692,4,8,killed,101,11.493843,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0279.log
+M0280,src/wire/tcp.rs,partial_cmp,const_0_1,81,0,1,killed,101,5.949529,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0280.log
+M0281,src/wire/tcp.rs,partial_cmp,const_0_1,81,0,1,killed,101,5.556095,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0281.log
+M0282,src/wire/tcp.rs,set_ece,bit_or_and,526, | , & ,live,0,11.036685,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0282.log
+M0283,src/wire/tcp.rs,partial_cmp,const_16_32,102,16,32,killed,101,10.706153,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0283.log
+M0284,src/wire/tcp.rs,payload,arith_add_sub,404, + , - ,killed,101,11.946495,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0284.log
+M0285,src/wire/tcp.rs,fin,rel_ne_eq,207, != , == ,killed,101,10.529314,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0285.log
+M0286,src/wire/tcp.rs,add,const_0_1,46,0,1,killed,101,5.865472,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0286.log
+M0287,src/wire/tcp.rs,parse,const_8_16,690,8,16,killed,101,10.950502,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0287.log
+M0288,src/wire/tcp.rs,set_fin,bit_or_and,448, | , & ,killed,101,10.898888,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0288.log
+M0289,src/wire/tcp.rs,fin,bit_and_or,207, & , | ,killed,101,10.821622,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0289.log
+M0290,src/wire/tcp.rs,partial_cmp,const_8_4,99,8,4,killed,101,10.765271,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0290.log
+M0291,src/wire/tcp.rs,set_urg,bit_or_and,513, | , & ,killed,101,10.719641,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0291.log
+M0292,src/wire/tcp.rs,ece,bit_and_or,255, & , | ,live,0,10.748502,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0292.log
+M0293,src/wire/tcp.rs,parse,const_0_1,704,0,1,killed,101,10.915186,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0293.log
+M0294,src/wire/tcp.rs,partial_cmp,const_0_1,97,0,1,killed,101,10.862371,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0294.log
+M0295,src/wire/tcp.rs,sub,rel_gt_ge,54, > , >= ,live,0,10.627255,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0295.log
+M0296,src/wire/tcp.rs,set_fin,bit_and_or,450, & , | ,live,0,10.926725,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0296.log
+M0297,src/wire/tcp.rs,parse,const_8_4,705,8,4,killed,101,11.199550,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0297.log
+M0298,src/wire/tcp.rs,parse,arith_add_sub,693, + , - ,killed,101,11.178521,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0298.log
+M0299,src/wire/tcp.rs,partial_cmp,const_4_8,98,4,8,live,0,10.852813,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0299.log
+M0300,src/wire/tcp.rs,cwr,const_0_1,263,0,1,live,0,10.781847,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0300.log
+M0301,src/wire/tcp.rs,pretty_print,const_1_0,1206,1,0,killed,101,10.685530,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0301.log
+M0302,src/wire/tcp.rs,header_len,shift_right_left,279, >> , << ,killed,101,10.755785,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0302.log
+M0303,src/wire/tcp.rs,syn,const_0_1,215,0,1,killed,101,10.597758,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0303.log
+M0304,src/wire/tcp.rs,ns,rel_ne_eq,271, != , == ,live,0,10.866366,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0304.log
+M0305,src/wire/tcp.rs,buffer_len,const_2_3,721,2,3,killed,101,11.036473,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0305.log
+M0306,src/wire/tcp.rs,set_seq_number,const_0_1,423,0,1,killed,101,5.807722,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0306.log
+M0307,src/wire/tcp.rs,buffer_len,const_2_3,724,2,3,killed,101,10.615634,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0307.log
+M0308,src/wire/tcp.rs,set_header_len,arith_div_mul,564, / , * ,killed,101,10.758855,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0308.log
+M0309,src/wire/tcp.rs,test_construct,bool_true_false,1261,true,false,killed,101,11.955674,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0309.log
+M0310,src/wire/tcp.rs,set_header_len,const_4_8,564,4,8,killed,101,11.115048,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0310.log
+M0311,src/wire/tcp.rs,ns,const_0_1,271,0,1,live,0,11.742103,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0311.log
+M0312,src/wire/tcp.rs,partial_cmp,const_16_32,103,16,32,killed,101,11.121776,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0312.log
+M0313,src/wire/tcp.rs,pretty_print,const_4_8,1220,4,8,killed,101,6.159978,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0313.log
+M0314,src/wire/tcp.rs,header_len,arith_mul_div,279, * , / ,killed,101,10.805706,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0314.log
+M0315,src/wire/tcp.rs,set_syn,bit_and_or,463, & , | ,killed,101,11.227207,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0315.log
+M0316,src/wire/tcp.rs,buffer_len,const_4_8,719,4,8,killed,101,10.653303,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0316.log
+M0317,src/wire/tcp.rs,segment_len,assign_add_sub,311, += , -= ,live,0,10.814796,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0317.log
+M0318,src/wire/tcp.rs,test_construct,bool_true_false,1256,true,false,killed,101,11.042805,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0318.log
+M0319,src/wire/tcp.rs,format,const_0_1,35,0,1,live,0,10.637932,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0319.log
+M0320,src/wire/tcp.rs,check_len,rel_lt_le,157, < , <= ,live,0,10.749837,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0320.log
+M0321,src/wire/tcp.rs,min,rel_lt_le,22, < , <= ,live,0,11.908079,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0321.log
+M0322,src/wire/tcp.rs,segment_len,arith_sub_add,306, - , + ,live,0,11.883628,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0322.log
+M0323,src/wire/tcp.rs,segment_len,const_1_0,308,1,0,live,0,11.470721,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0323.log
+M0324,src/wire/tcp.rs,selective_ack_permitted,bool_false_true,327,false,true,live,0,11.244299,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0324.log
+M0325,src/wire/tcp.rs,parse,const_4_8,705,4,8,killed,101,10.626386,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0325.log
+M0326,src/wire/tcp.rs,buffer_len,arith_add_sub,724, + , - ,killed,101,11.014920,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0326.log
+M0327,src/wire/tcp.rs,segment_len,assign_add_sub,308, += , -= ,live,0,12.138450,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0327.log
+M0328,src/wire/tcp.rs,selective_ack_permitted,bool_true_false,323,true,false,live,0,11.176285,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0328.log
+M0329,src/wire/tcp.rs,set_urg,bit_and_or,515, & , | ,live,0,11.618742,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0329.log
+M0330,src/wire/tcp.rs,syn,rel_ne_eq,215, != , == ,killed,101,11.351558,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0330.log
+M0331,src/wire/tcp.rs,test_construct,bool_false_true,1257,false,true,killed,101,11.085524,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0331.log
+M0332,src/wire/tcp.rs,verify_checksum,bool_true_false,375,true,false,live,0,11.274355,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0332.log
+M0333,src/wire/tcp.rs,parse,const_8_16,705,8,16,killed,101,11.088427,cargo test wire::tcp --quiet,security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0333.log

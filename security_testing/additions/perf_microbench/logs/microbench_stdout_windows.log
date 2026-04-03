@@ -1,0 +1,3 @@
+[runner] still running: cargo test --release -- --nocapture
+Microbench suite complete for platform=windows
+Summary JSON: security_testing\additions\perf_microbench\artifacts\microbench_summary_windows.json

@@ -1,0 +1,32 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:14:01.017566+00:00
+FINISHED_UTC: 2026-04-03T19:14:04.291553+00:00
+DURATION_SECONDS: 3.267917
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+...... 6/15
+wire::ipv4::test::test_cidr_broadcast --- FAILED
+........
+failures:
+
+---- wire::ipv4::test::test_cidr_broadcast stdout ----
+
+thread 'wire::ipv4::test::test_cidr_broadcast' (18320) panicked at src\wire\ipv4.rs:1007:9:
+assertion `left == right` failed
+  left: 0.0.0.0
+ right: 255.255.255.255
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::ipv4::test::test_cidr_broadcast
+
+test result: FAILED. 14 passed; 1 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

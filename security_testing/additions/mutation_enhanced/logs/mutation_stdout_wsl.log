@@ -1,0 +1,995 @@
+Starting mutation suite: platform=wsl
+Candidate selection: file=src/storage/assembler.rs requested=110 selected=85
+Candidate selection: file=src/wire/ipv4.rs requested=100 selected=88
+Candidate selection: file=src/wire/udp.rs requested=100 selected=40
+Candidate selection: file=src/wire/tcp.rs requested=120 selected=120
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 1/333 M0001 status=killed killed_so_far=1
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 2/333 M0002 status=killed killed_so_far=2
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 3/333 M0003 status=killed killed_so_far=3
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 4/333 M0004 status=live killed_so_far=3
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 5/333 M0005 status=killed killed_so_far=4
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 6/333 M0006 status=killed killed_so_far=5
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 7/333 M0007 status=killed killed_so_far=6
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 8/333 M0008 status=killed killed_so_far=7
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 9/333 M0009 status=live killed_so_far=7
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 10/333 M0010 status=killed killed_so_far=8
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 11/333 M0011 status=killed killed_so_far=9
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 12/333 M0012 status=killed killed_so_far=10
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 13/333 M0013 status=killed killed_so_far=11
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 14/333 M0014 status=killed killed_so_far=12
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 15/333 M0015 status=live killed_so_far=12
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 16/333 M0016 status=killed killed_so_far=13
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 17/333 M0017 status=killed killed_so_far=14
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 18/333 M0018 status=killed killed_so_far=15
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 19/333 M0019 status=killed killed_so_far=16
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 20/333 M0020 status=live killed_so_far=16
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 21/333 M0021 status=killed killed_so_far=17
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 22/333 M0022 status=killed killed_so_far=18
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 23/333 M0023 status=killed killed_so_far=19
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 24/333 M0024 status=killed killed_so_far=20
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 25/333 M0025 status=killed killed_so_far=21
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 26/333 M0026 status=killed killed_so_far=22
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 27/333 M0027 status=killed killed_so_far=23
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 28/333 M0028 status=killed killed_so_far=24
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 29/333 M0029 status=killed killed_so_far=25
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 30/333 M0030 status=killed killed_so_far=26
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 31/333 M0031 status=killed killed_so_far=27
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 32/333 M0032 status=killed killed_so_far=28
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 33/333 M0033 status=killed killed_so_far=29
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 34/333 M0034 status=killed killed_so_far=30
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 35/333 M0035 status=killed killed_so_far=31
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 36/333 M0036 status=killed killed_so_far=32
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 37/333 M0037 status=killed killed_so_far=33
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 38/333 M0038 status=live killed_so_far=33
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 39/333 M0039 status=killed killed_so_far=34
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 40/333 M0040 status=killed killed_so_far=35
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 41/333 M0041 status=killed killed_so_far=36
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 42/333 M0042 status=killed killed_so_far=37
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 43/333 M0043 status=killed killed_so_far=38
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 44/333 M0044 status=killed killed_so_far=39
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 45/333 M0045 status=killed killed_so_far=40
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 46/333 M0046 status=killed killed_so_far=41
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 47/333 M0047 status=killed killed_so_far=42
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 48/333 M0048 status=killed killed_so_far=43
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 49/333 M0049 status=live killed_so_far=43
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 50/333 M0050 status=killed killed_so_far=44
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 51/333 M0051 status=killed killed_so_far=45
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 52/333 M0052 status=killed killed_so_far=46
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 53/333 M0053 status=killed killed_so_far=47
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 54/333 M0054 status=killed killed_so_far=48
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 55/333 M0055 status=killed killed_so_far=49
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 56/333 M0056 status=killed killed_so_far=50
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 57/333 M0057 status=killed killed_so_far=51
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 58/333 M0058 status=killed killed_so_far=52
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 59/333 M0059 status=killed killed_so_far=53
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 60/333 M0060 status=killed killed_so_far=54
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 61/333 M0061 status=killed killed_so_far=55
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 62/333 M0062 status=killed killed_so_far=56
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 63/333 M0063 status=killed killed_so_far=57
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 64/333 M0064 status=live killed_so_far=57
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 65/333 M0065 status=live killed_so_far=57
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 66/333 M0066 status=live killed_so_far=57
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 67/333 M0067 status=killed killed_so_far=58
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 68/333 M0068 status=killed killed_so_far=59
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 69/333 M0069 status=killed killed_so_far=60
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 70/333 M0070 status=killed killed_so_far=61
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 71/333 M0071 status=killed killed_so_far=62
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 72/333 M0072 status=killed killed_so_far=63
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 73/333 M0073 status=killed killed_so_far=64
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 74/333 M0074 status=killed killed_so_far=65
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 75/333 M0075 status=killed killed_so_far=66
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 76/333 M0076 status=killed killed_so_far=67
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 77/333 M0077 status=killed killed_so_far=68
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 78/333 M0078 status=killed killed_so_far=69
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 79/333 M0079 status=killed killed_so_far=70
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 80/333 M0080 status=killed killed_so_far=71
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 81/333 M0081 status=killed killed_so_far=72
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 82/333 M0082 status=killed killed_so_far=73
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 83/333 M0083 status=killed killed_so_far=74
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 84/333 M0084 status=killed killed_so_far=75
+[runner] still running: cargo test storage::assembler --quiet
+[runner] still running: cargo test storage::assembler --quiet
+[wsl] mutant 85/333 M0085 status=killed killed_so_far=76
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 86/333 M0086 status=killed killed_so_far=77
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 87/333 M0087 status=killed killed_so_far=78
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 88/333 M0088 status=killed killed_so_far=79
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 89/333 M0089 status=live killed_so_far=79
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 90/333 M0090 status=live killed_so_far=79
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 91/333 M0091 status=live killed_so_far=79
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 92/333 M0092 status=killed killed_so_far=80
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 93/333 M0093 status=killed killed_so_far=81
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 94/333 M0094 status=live killed_so_far=81
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 95/333 M0095 status=killed killed_so_far=82
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 96/333 M0096 status=killed killed_so_far=83
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 97/333 M0097 status=killed killed_so_far=84
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 98/333 M0098 status=live killed_so_far=84
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 99/333 M0099 status=killed killed_so_far=85
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 100/333 M0100 status=live killed_so_far=85
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 101/333 M0101 status=live killed_so_far=85
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 102/333 M0102 status=live killed_so_far=85
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 103/333 M0103 status=killed killed_so_far=86
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 104/333 M0104 status=killed killed_so_far=87
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 105/333 M0105 status=killed killed_so_far=88
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 106/333 M0106 status=killed killed_so_far=89
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 107/333 M0107 status=live killed_so_far=89
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 108/333 M0108 status=killed killed_so_far=90
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 109/333 M0109 status=killed killed_so_far=91
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 110/333 M0110 status=killed killed_so_far=92
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 111/333 M0111 status=live killed_so_far=92
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 112/333 M0112 status=live killed_so_far=92
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 113/333 M0113 status=live killed_so_far=92
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 114/333 M0114 status=killed killed_so_far=93
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 115/333 M0115 status=live killed_so_far=93
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 116/333 M0116 status=killed killed_so_far=94
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 117/333 M0117 status=killed killed_so_far=95
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 118/333 M0118 status=live killed_so_far=95
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 119/333 M0119 status=live killed_so_far=95
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 120/333 M0120 status=live killed_so_far=95
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 121/333 M0121 status=live killed_so_far=95
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 122/333 M0122 status=killed killed_so_far=96
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 123/333 M0123 status=live killed_so_far=96
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 124/333 M0124 status=killed killed_so_far=97
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 125/333 M0125 status=killed killed_so_far=98
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 126/333 M0126 status=killed killed_so_far=99
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 127/333 M0127 status=live killed_so_far=99
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 128/333 M0128 status=killed killed_so_far=100
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 129/333 M0129 status=killed killed_so_far=101
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 130/333 M0130 status=live killed_so_far=101
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 131/333 M0131 status=killed killed_so_far=102
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 132/333 M0132 status=live killed_so_far=102
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 133/333 M0133 status=killed killed_so_far=103
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 134/333 M0134 status=live killed_so_far=103
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 135/333 M0135 status=killed killed_so_far=104
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 136/333 M0136 status=live killed_so_far=104
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 137/333 M0137 status=killed killed_so_far=105
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 138/333 M0138 status=live killed_so_far=105
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 139/333 M0139 status=killed killed_so_far=106
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 140/333 M0140 status=live killed_so_far=106
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 141/333 M0141 status=live killed_so_far=106
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 142/333 M0142 status=live killed_so_far=106
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 143/333 M0143 status=live killed_so_far=106
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 144/333 M0144 status=killed killed_so_far=107
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 145/333 M0145 status=live killed_so_far=107
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 146/333 M0146 status=live killed_so_far=107
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 147/333 M0147 status=killed killed_so_far=108
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 148/333 M0148 status=killed killed_so_far=109
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 149/333 M0149 status=killed killed_so_far=110
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 150/333 M0150 status=killed killed_so_far=111
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 151/333 M0151 status=killed killed_so_far=112
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 152/333 M0152 status=killed killed_so_far=113
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 153/333 M0153 status=killed killed_so_far=114
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 154/333 M0154 status=killed killed_so_far=115
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 155/333 M0155 status=live killed_so_far=115
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 156/333 M0156 status=killed killed_so_far=116
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 157/333 M0157 status=live killed_so_far=116
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 158/333 M0158 status=killed killed_so_far=117
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 159/333 M0159 status=killed killed_so_far=118
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 160/333 M0160 status=live killed_so_far=118
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 161/333 M0161 status=killed killed_so_far=119
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 162/333 M0162 status=killed killed_so_far=120
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 163/333 M0163 status=killed killed_so_far=121
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 164/333 M0164 status=killed killed_so_far=122
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 165/333 M0165 status=killed killed_so_far=123
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 166/333 M0166 status=killed killed_so_far=124
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 167/333 M0167 status=killed killed_so_far=125
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 168/333 M0168 status=killed killed_so_far=126
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 169/333 M0169 status=live killed_so_far=126
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 170/333 M0170 status=killed killed_so_far=127
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 171/333 M0171 status=killed killed_so_far=128
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 172/333 M0172 status=killed killed_so_far=129
+[runner] still running: cargo test wire::ipv4 --quiet
+[runner] still running: cargo test wire::ipv4 --quiet
+[wsl] mutant 173/333 M0173 status=killed killed_so_far=130
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 174/333 M0174 status=killed killed_so_far=131
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 175/333 M0175 status=live killed_so_far=131
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 176/333 M0176 status=live killed_so_far=131
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 177/333 M0177 status=live killed_so_far=131
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 178/333 M0178 status=killed killed_so_far=132
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 179/333 M0179 status=live killed_so_far=132
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 180/333 M0180 status=killed killed_so_far=133
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 181/333 M0181 status=killed killed_so_far=134
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 182/333 M0182 status=killed killed_so_far=135
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 183/333 M0183 status=killed killed_so_far=136
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 184/333 M0184 status=killed killed_so_far=137
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 185/333 M0185 status=killed killed_so_far=138
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 186/333 M0186 status=live killed_so_far=138
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 187/333 M0187 status=killed killed_so_far=139
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 188/333 M0188 status=killed killed_so_far=140
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 189/333 M0189 status=live killed_so_far=140
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 190/333 M0190 status=live killed_so_far=140
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 191/333 M0191 status=killed killed_so_far=141
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 192/333 M0192 status=killed killed_so_far=142
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 193/333 M0193 status=killed killed_so_far=143
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 194/333 M0194 status=killed killed_so_far=144
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 195/333 M0195 status=killed killed_so_far=145
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 196/333 M0196 status=live killed_so_far=145
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 197/333 M0197 status=live killed_so_far=145
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 198/333 M0198 status=live killed_so_far=145
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 199/333 M0199 status=live killed_so_far=145
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 200/333 M0200 status=killed killed_so_far=146
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 201/333 M0201 status=live killed_so_far=146
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 202/333 M0202 status=live killed_so_far=146
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 203/333 M0203 status=killed killed_so_far=147
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 204/333 M0204 status=killed killed_so_far=148
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 205/333 M0205 status=killed killed_so_far=149
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 206/333 M0206 status=live killed_so_far=149
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 207/333 M0207 status=live killed_so_far=149
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 208/333 M0208 status=killed killed_so_far=150
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 209/333 M0209 status=killed killed_so_far=151
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 210/333 M0210 status=killed killed_so_far=152
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 211/333 M0211 status=killed killed_so_far=153
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 212/333 M0212 status=live killed_so_far=153
+[runner] still running: cargo test wire::udp --quiet
+[runner] still running: cargo test wire::udp --quiet
+[wsl] mutant 213/333 M0213 status=live killed_so_far=153
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 214/333 M0214 status=killed killed_so_far=154
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 215/333 M0215 status=killed killed_so_far=155
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 216/333 M0216 status=killed killed_so_far=156
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 217/333 M0217 status=killed killed_so_far=157
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 218/333 M0218 status=killed killed_so_far=158
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 219/333 M0219 status=live killed_so_far=158
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 220/333 M0220 status=killed killed_so_far=159
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 221/333 M0221 status=live killed_so_far=159
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 222/333 M0222 status=killed killed_so_far=160
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 223/333 M0223 status=live killed_so_far=160
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 224/333 M0224 status=killed killed_so_far=161
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 225/333 M0225 status=killed killed_so_far=162
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 226/333 M0226 status=killed killed_so_far=163
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 227/333 M0227 status=killed killed_so_far=164
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 228/333 M0228 status=live killed_so_far=164
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 229/333 M0229 status=live killed_so_far=164
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 230/333 M0230 status=live killed_so_far=164
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 231/333 M0231 status=killed killed_so_far=165
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 232/333 M0232 status=live killed_so_far=165
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 233/333 M0233 status=killed killed_so_far=166
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 234/333 M0234 status=killed killed_so_far=167
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 235/333 M0235 status=live killed_so_far=167
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 236/333 M0236 status=live killed_so_far=167
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 237/333 M0237 status=killed killed_so_far=168
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 238/333 M0238 status=live killed_so_far=168
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 239/333 M0239 status=killed killed_so_far=169
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 240/333 M0240 status=killed killed_so_far=170
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 241/333 M0241 status=killed killed_so_far=171
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 242/333 M0242 status=killed killed_so_far=172
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 243/333 M0243 status=killed killed_so_far=173
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 244/333 M0244 status=live killed_so_far=173
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 245/333 M0245 status=live killed_so_far=173
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 246/333 M0246 status=killed killed_so_far=174
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 247/333 M0247 status=killed killed_so_far=175
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 248/333 M0248 status=killed killed_so_far=176
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 249/333 M0249 status=killed killed_so_far=177
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 250/333 M0250 status=live killed_so_far=177
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 251/333 M0251 status=killed killed_so_far=178
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 252/333 M0252 status=live killed_so_far=178
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 253/333 M0253 status=killed killed_so_far=179
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 254/333 M0254 status=killed killed_so_far=180
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 255/333 M0255 status=killed killed_so_far=181
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 256/333 M0256 status=live killed_so_far=181
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 257/333 M0257 status=killed killed_so_far=182
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 258/333 M0258 status=live killed_so_far=182
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 259/333 M0259 status=live killed_so_far=182
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 260/333 M0260 status=killed killed_so_far=183
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 261/333 M0261 status=killed killed_so_far=184
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 262/333 M0262 status=killed killed_so_far=185
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 263/333 M0263 status=killed killed_so_far=186
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 264/333 M0264 status=live killed_so_far=186
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 265/333 M0265 status=live killed_so_far=186
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 266/333 M0266 status=killed killed_so_far=187
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 267/333 M0267 status=killed killed_so_far=188
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 268/333 M0268 status=live killed_so_far=188
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 269/333 M0269 status=killed killed_so_far=189
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 270/333 M0270 status=killed killed_so_far=190
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 271/333 M0271 status=killed killed_so_far=191
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 272/333 M0272 status=killed killed_so_far=192
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 273/333 M0273 status=killed killed_so_far=193
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 274/333 M0274 status=killed killed_so_far=194
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 275/333 M0275 status=killed killed_so_far=195
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 276/333 M0276 status=live killed_so_far=195
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 277/333 M0277 status=live killed_so_far=195
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 278/333 M0278 status=killed killed_so_far=196
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 279/333 M0279 status=killed killed_so_far=197
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 280/333 M0280 status=killed killed_so_far=198
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 281/333 M0281 status=killed killed_so_far=199
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 282/333 M0282 status=live killed_so_far=199
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 283/333 M0283 status=killed killed_so_far=200
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 284/333 M0284 status=killed killed_so_far=201
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 285/333 M0285 status=killed killed_so_far=202
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 286/333 M0286 status=killed killed_so_far=203
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 287/333 M0287 status=killed killed_so_far=204
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 288/333 M0288 status=killed killed_so_far=205
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 289/333 M0289 status=killed killed_so_far=206
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 290/333 M0290 status=killed killed_so_far=207
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 291/333 M0291 status=killed killed_so_far=208
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 292/333 M0292 status=live killed_so_far=208
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 293/333 M0293 status=killed killed_so_far=209
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 294/333 M0294 status=killed killed_so_far=210
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 295/333 M0295 status=live killed_so_far=210
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 296/333 M0296 status=live killed_so_far=210
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 297/333 M0297 status=killed killed_so_far=211
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 298/333 M0298 status=killed killed_so_far=212
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 299/333 M0299 status=live killed_so_far=212
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 300/333 M0300 status=live killed_so_far=212
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 301/333 M0301 status=killed killed_so_far=213
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 302/333 M0302 status=killed killed_so_far=214
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 303/333 M0303 status=killed killed_so_far=215
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 304/333 M0304 status=live killed_so_far=215
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 305/333 M0305 status=killed killed_so_far=216
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 306/333 M0306 status=killed killed_so_far=217
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 307/333 M0307 status=killed killed_so_far=218
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 308/333 M0308 status=killed killed_so_far=219
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 309/333 M0309 status=killed killed_so_far=220
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 310/333 M0310 status=killed killed_so_far=221
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 311/333 M0311 status=live killed_so_far=221
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 312/333 M0312 status=killed killed_so_far=222
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 313/333 M0313 status=killed killed_so_far=223
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 314/333 M0314 status=killed killed_so_far=224
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 315/333 M0315 status=killed killed_so_far=225
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 316/333 M0316 status=killed killed_so_far=226
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 317/333 M0317 status=live killed_so_far=226
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 318/333 M0318 status=killed killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 319/333 M0319 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 320/333 M0320 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 321/333 M0321 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 322/333 M0322 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 323/333 M0323 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 324/333 M0324 status=live killed_so_far=227
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 325/333 M0325 status=killed killed_so_far=228
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 326/333 M0326 status=killed killed_so_far=229
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 327/333 M0327 status=live killed_so_far=229
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 328/333 M0328 status=live killed_so_far=229
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 329/333 M0329 status=live killed_so_far=229
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 330/333 M0330 status=killed killed_so_far=230
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 331/333 M0331 status=killed killed_so_far=231
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 332/333 M0332 status=live killed_so_far=231
+[runner] still running: cargo test wire::tcp --quiet
+[runner] still running: cargo test wire::tcp --quiet
+[wsl] mutant 333/333 M0333 status=killed killed_so_far=232
+Mutation run complete for platform=wsl
+Total mutants: 333
+Killed: 232
+Live: 101
+Kill ratio: 0.6967
+Summary JSON: security_testing-v1/additions/mutation_enhanced/artifacts/mutation_summary_wsl.json

@@ -1,0 +1,16 @@
+run,metric,iterations,total_ns,ns_per_iter
+1,ipv4_parse,10000,106000,10.6000
+1,udp_parse_emit,10000,233200,23.3200
+1,ring_buffer_cycle,10000,4700,0.4700
+2,ipv4_parse,10000,105400,10.5400
+2,udp_parse_emit,10000,255800,25.5800
+2,ring_buffer_cycle,10000,4600,0.4600
+3,ipv4_parse,10000,102700,10.2700
+3,udp_parse_emit,10000,231800,23.1800
+3,ring_buffer_cycle,10000,4700,0.4700
+4,ipv4_parse,10000,109800,10.9800
+4,udp_parse_emit,10000,246700,24.6700
+4,ring_buffer_cycle,10000,4800,0.4800
+5,ipv4_parse,10000,112400,11.2400
+5,udp_parse_emit,10000,254300,25.4300
+5,ring_buffer_cycle,10000,4900,0.4900

@@ -1,0 +1,64 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:10:19.759291+00:00
+FINISHED_UTC: 2026-04-03T19:10:23.025883+00:00
+DURATION_SECONDS: 3.266295
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+....................... 23/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+......... 35/38
+storage::assembler::test::test_shrink_next_hole --- FAILED
+. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (13708) panicked at src\storage\assembler.rs:247:33:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (1528) panicked at src\storage\assembler.rs:247:33:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (2712) panicked at src\storage\assembler.rs:247:33:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (2996) panicked at src\storage\assembler.rs:539:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 40, data_size: 70 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 40, data_size: 30 }, Contig { hole_size: 30, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (19324) panicked at src\storage\assembler.rs:740:25:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 2, data_size: 1 }, Contig { hole_size: 94, data_size: 82 }, Contig { hole_size: 69, data_size: 2 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 2, data_size: 1 }, Contig { hole_size: 94, data_size: 4 }, Contig { hole_size: 76, data_size: 2 }, Contig { hole_size: 69, data_size: 2 }] }
+
+
+failures:
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

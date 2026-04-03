@@ -1,0 +1,22 @@
+COMMAND: cargo llvm-cov --manifest-path "C:\Users\TJ\Desktop\smoltcp-main-1\security_testing\additions\perf_microbench\microbench_suite\Cargo.toml" --tests --lcov --output-path "C:\Users\TJ\Desktop\smoltcp-main-1\security_testing\additions\whitebox_safety_enhanced\artifacts\coverage_microbench_windows.lcov"
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T21:43:38.452296+00:00
+FINISHED_UTC: 2026-04-03T21:43:39.576125+00:00
+DURATION_SECONDS: 1.123500
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+running 1 test
+test performance_microbench ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+
+=== STDERR ===
+info: cargo-llvm-cov currently setting cfg(coverage); you can opt-out it by passing --no-cfg-coverage
+   Compiling microbench_suite v0.1.0 (C:\Users\TJ\Desktop\smoltcp-main-1\security_testing\additions\perf_microbench\microbench_suite)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.59s
+     Running unittests src\lib.rs (security_testing\additions\perf_microbench\microbench_suite\target\llvm-cov-target\debug\deps\microbench_suite-e3540495882690fe.exe)
+
+    Finished report saved to C:\Users\TJ\Desktop\smoltcp-main-1\security_testing\additions\whitebox_safety_enhanced\artifacts\coverage_microbench_windows.lcov

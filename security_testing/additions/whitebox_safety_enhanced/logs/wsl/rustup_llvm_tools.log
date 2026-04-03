@@ -1,0 +1,11 @@
+COMMAND: rustup component add llvm-tools-preview
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T21:43:45.839518+00:00
+FINISHED_UTC: 2026-04-03T21:43:46.003158+00:00
+DURATION_SECONDS: 0.163601
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+=== STDERR ===
+info: component llvm-tools is up to date

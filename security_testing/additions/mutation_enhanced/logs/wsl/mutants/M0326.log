@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:26:54.491204+00:00
+FINISHED_UTC: 2026-04-03T20:27:05.506156+00:00
+DURATION_SECONDS: 11.014920
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+........ 8/9
+wire::tcp::test::test_tcp_options --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_tcp_options stdout ----
+
+thread 'wire::tcp::test::test_tcp_options' (95188) panicked at src/wire/tcp.rs:724:48:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_tcp_options
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

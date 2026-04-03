@@ -1,0 +1,74 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:09:39.858707+00:00
+FINISHED_UTC: 2026-04-03T19:09:43.067501+00:00
+DURATION_SECONDS: 3.215243
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+........................ 24/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_partial_add_back --- FAILED
+storage::assembler::test::test_partial_add_back_overlap --- FAILED
+storage::assembler::test::test_partial_add_back_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_both_overlap --- FAILED
+.. 31/38
+storage::assembler::test::test_partial_add_both_overlap_split --- FAILED
+..... 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (17688) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (9296) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap' (16200) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap_split' (6732) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap' (18452) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap_split' (13940) panicked at src\storage\assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (6816) panicked at src\storage\assembler.rs:273:46:
+index out of bounds: the len is 4 but the index is 4
+
+
+failures:
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_partial_add_back_overlap
+    storage::assembler::test::test_partial_add_back_overlap_split
+    storage::assembler::test::test_partial_add_both_overlap
+    storage::assembler::test::test_partial_add_both_overlap_split
+    storage::assembler::test::test_random
+
+test result: FAILED. 31 passed; 7 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

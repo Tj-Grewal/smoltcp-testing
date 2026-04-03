@@ -1,0 +1,19 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:55:46.230804+00:00
+FINISHED_UTC: 2026-04-03T19:55:52.360572+00:00
+DURATION_SECONDS: 6.129737
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+=== STDERR ===
+error: this arithmetic operation will overflow
+   --> src/wire/ipv4.rs:260:9
+    |
+260 |         data[field::VER_IHL] >> 8
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ attempt to shift right by `8_i32`, which would overflow
+    |
+    = note: `#[deny(arithmetic_overflow)]` on by default
+
+error: could not compile `smoltcp` (lib test) due to 1 previous error

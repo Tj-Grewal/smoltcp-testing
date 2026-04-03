@@ -1,0 +1,51 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:46:33.807534+00:00
+FINISHED_UTC: 2026-04-03T19:46:44.290730+00:00
+DURATION_SECONDS: 10.483146
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+.. 2/15
+wire::ipv4::test::test_cidr --- FAILED
+wire::ipv4::test::test_cidr_broadcast --- FAILED
+wire::ipv4::test::test_cidr_network --- FAILED
+wire::ipv4::test::test_cidr_netmask --- FAILED
+.........
+failures:
+
+---- wire::ipv4::test::test_cidr stdout ----
+
+thread 'wire::ipv4::test::test_cidr' (34941) panicked at src/wire/ipv4.rs:906:13:
+assertion failed: !cidr.contains_addr(&addr)
+
+---- wire::ipv4::test::test_cidr_broadcast stdout ----
+
+thread 'wire::ipv4::test::test_cidr_broadcast' (34942) panicked at src/wire/ipv4.rs:133:22:
+attempt to shift left with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::ipv4::test::test_cidr_network stdout ----
+
+thread 'wire::ipv4::test::test_cidr_network' (34945) panicked at src/wire/ipv4.rs:133:22:
+attempt to shift left with overflow
+
+---- wire::ipv4::test::test_cidr_netmask stdout ----
+
+thread 'wire::ipv4::test::test_cidr_netmask' (34944) panicked at src/wire/ipv4.rs:133:22:
+attempt to shift left with overflow
+
+
+failures:
+    wire::ipv4::test::test_cidr
+    wire::ipv4::test::test_cidr_broadcast
+    wire::ipv4::test::test_cidr_netmask
+    wire::ipv4::test::test_cidr_network
+
+test result: FAILED. 11 passed; 4 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

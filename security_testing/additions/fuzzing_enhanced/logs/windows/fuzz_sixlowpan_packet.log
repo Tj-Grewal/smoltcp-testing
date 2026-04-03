@@ -1,0 +1,17 @@
+COMMAND: cargo +nightly fuzz run sixlowpan_packet -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1\fuzz
+STARTED_UTC: 2026-04-03T21:19:48.696157+00:00
+FINISHED_UTC: 2026-04-03T21:19:49.056990+00:00
+DURATION_SECONDS: 0.361059
+EXIT_CODE: 1
+
+=== STDOUT ===
+
+=== STDERR ===
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.06s
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.06s
+     Running `target\x86_64-pc-windows-msvc\release\sixlowpan_packet.exe -artifact_prefix=C:\Users\TJ\Desktop\smoltcp-main-1\fuzz\artifacts\sixlowpan_packet\ -max_total_time=180 -timeout=10 -rss_limit_mb=4096 C:\Users\TJ\Desktop\smoltcp-main-1\fuzz\corpus\sixlowpan_packet`
+error: process didn't exit successfully: `target\x86_64-pc-windows-msvc\release\sixlowpan_packet.exe -artifact_prefix=C:\Users\TJ\Desktop\smoltcp-main-1\fuzz\artifacts\sixlowpan_packet\ -max_total_time=180 -timeout=10 -rss_limit_mb=4096 C:\Users\TJ\Desktop\smoltcp-main-1\fuzz\corpus\sixlowpan_packet` (exit code: 0xc0000135, STATUS_DLL_NOT_FOUND)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+Error: Fuzz target exited with exit code: 0xc0000135

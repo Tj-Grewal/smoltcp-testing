@@ -1,0 +1,30 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:09:52.816248+00:00
+FINISHED_UTC: 2026-04-03T19:09:56.365813+00:00
+DURATION_SECONDS: 3.553599
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+...... 6/38
+storage::assembler::test::test_boundary_case_remove_front --- FAILED
+...............................
+failures:
+
+---- storage::assembler::test::test_boundary_case_remove_front stdout ----
+
+thread 'storage::assembler::test::test_boundary_case_remove_front' (3432) panicked at src\storage\assembler.rs:178:9:
+index out of bounds: the len is 4 but the index is 5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    storage::assembler::test::test_boundary_case_remove_front
+
+test result: FAILED. 37 passed; 1 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.35s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,255 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:32:58.750067+00:00
+FINISHED_UTC: 2026-04-03T19:33:09.816092+00:00
+DURATION_SECONDS: 11.065998
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0 --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_full --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front --- FAILED
+storage::assembler::test::test_add_then_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+storage::assembler::test::test_empty_add_back --- FAILED
+storage::assembler::test::test_empty_add_mid --- FAILED
+storage::assembler::test::test_empty_add_full --- FAILED
+storage::assembler::test::test_empty_add_front --- FAILED
+storage::assembler::test::test_empty_remove_front --- FAILED
+storage::assembler::test::test_issue_694 --- FAILED
+storage::assembler::test::test_iter_full --- FAILED
+storage::assembler::test::test_iter_offset --- FAILED
+storage::assembler::test::test_iter_one_back --- FAILED
+storage::assembler::test::test_iter_one_front --- FAILED
+storage::assembler::test::test_boundary_case_remove_front --- FAILED
+. 17/38
+storage::assembler::test::test_iter_one_mid --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+... 23/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+. 25/38
+storage::assembler::test::test_partial_add_back --- FAILED
+storage::assembler::test::test_partial_add_back_overlap --- FAILED
+storage::assembler::test::test_partial_add_back_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_both_overlap --- FAILED
+storage::assembler::test::test_partial_add_both_overlap_split --- FAILED
+... 33/38
+storage::assembler::test::test_rejected_add_keeps_state --- FAILED
+storage::assembler::test::test_shrink_next_hole --- FAILED
+.. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0 stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0' (11524) panicked at src/storage/assembler.rs:685:13:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full' (11523) panicked at src/storage/assembler.rs:673:13:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front' (11522) panicked at src/storage/assembler.rs:656:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (11521) panicked at src/storage/assembler.rs:648:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (11525) panicked at src/storage/assembler.rs:664:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_empty_add_back stdout ----
+
+thread 'storage::assembler::test::test_empty_add_back' (11527) panicked at src/storage/assembler.rs:422:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_empty_add_mid stdout ----
+
+thread 'storage::assembler::test::test_empty_add_mid' (11530) panicked at src/storage/assembler.rs:429:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_empty_add_full stdout ----
+
+thread 'storage::assembler::test::test_empty_add_full' (11529) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_empty_add_front stdout ----
+
+thread 'storage::assembler::test::test_empty_add_front' (11528) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_empty_remove_front stdout ----
+
+thread 'storage::assembler::test::test_empty_remove_front' (11531) panicked at src/storage/assembler.rs:289:13:
+assertion failed: front.data_size > 0
+
+---- storage::assembler::test::test_issue_694 stdout ----
+
+thread 'storage::assembler::test::test_issue_694' (11532) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_iter_full stdout ----
+
+thread 'storage::assembler::test::test_iter_full' (11534) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_iter_offset stdout ----
+
+thread 'storage::assembler::test::test_iter_offset' (11535) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_iter_one_back stdout ----
+
+thread 'storage::assembler::test::test_iter_one_back' (11536) panicked at src/storage/assembler.rs:603:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_iter_one_front stdout ----
+
+thread 'storage::assembler::test::test_iter_one_front' (11537) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_boundary_case_remove_front stdout ----
+
+thread 'storage::assembler::test::test_boundary_case_remove_front' (11526) panicked at src/storage/assembler.rs:530:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }] }
+ right: Assembler { contigs: [Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_iter_one_mid stdout ----
+
+thread 'storage::assembler::test::test_iter_one_mid' (11538) panicked at src/storage/assembler.rs:611:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (11542) panicked at src/storage/assembler.rs:545:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (11543) panicked at src/storage/assembler.rs:563:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (11544) panicked at src/storage/assembler.rs:554:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (11546) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap' (11547) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap_split' (11548) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap' (11549) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap_split' (11550) panicked at src/storage/assembler.rs:274:17:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_rejected_add_keeps_state stdout ----
+
+thread 'storage::assembler::test::test_rejected_add_keeps_state' (11555) panicked at src/storage/assembler.rs:493:13:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (11556) panicked at src/storage/assembler.rs:536:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (11554) panicked at src/storage/assembler.rs:737:21:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_add_then_remove_front_at_front
+    storage::assembler::test::test_add_then_remove_front_at_front_full
+    storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_boundary_case_remove_front
+    storage::assembler::test::test_empty_add_back
+    storage::assembler::test::test_empty_add_front
+    storage::assembler::test::test_empty_add_full
+    storage::assembler::test::test_empty_add_mid
+    storage::assembler::test::test_empty_remove_front
+    storage::assembler::test::test_issue_694
+    storage::assembler::test::test_iter_full
+    storage::assembler::test::test_iter_offset
+    storage::assembler::test::test_iter_one_back
+    storage::assembler::test::test_iter_one_front
+    storage::assembler::test::test_iter_one_mid
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_partial_add_back_overlap
+    storage::assembler::test::test_partial_add_back_overlap_split
+    storage::assembler::test::test_partial_add_both_overlap
+    storage::assembler::test::test_partial_add_both_overlap_split
+    storage::assembler::test::test_random
+    storage::assembler::test::test_rejected_add_keeps_state
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 10 passed; 28 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

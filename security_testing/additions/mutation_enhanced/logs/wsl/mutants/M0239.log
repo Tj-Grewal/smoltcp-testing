@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:11:25.028887+00:00
+FINISHED_UTC: 2026-04-03T20:11:36.468354+00:00
+DURATION_SECONDS: 10.691572
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+........ 8/9
+wire::tcp::test::test_construct --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_construct stdout ----
+
+thread 'wire::tcp::test::test_construct' (73422) panicked at src/wire/tcp.rs:611:18:
+range end index 60 out of range for slice of length 28
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_construct
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

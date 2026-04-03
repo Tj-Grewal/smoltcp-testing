@@ -1,0 +1,32 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:35:36.806332+00:00
+FINISHED_UTC: 2026-04-03T19:35:48.494732+00:00
+DURATION_SECONDS: 10.784165
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+..................................... 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (16614) panicked at src/storage/assembler.rs:740:25:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 9, data_size: 2 }, Contig { hole_size: 141, data_size: 3 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 9, data_size: 2 }, Contig { hole_size: 141, data_size: 3 }, Contig { hole_size: 50, data_size: 2 }, Contig { hole_size: 34, data_size: 1 }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    storage::assembler::test::test_random
+
+test result: FAILED. 37 passed; 1 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

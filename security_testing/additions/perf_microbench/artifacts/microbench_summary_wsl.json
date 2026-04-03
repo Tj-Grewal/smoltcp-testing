@@ -1,0 +1,142 @@
+{
+  "platform": "wsl",
+  "repetitions": 5,
+  "iters": 10000,
+  "warmup_log": "security_testing/additions/perf_microbench/logs/wsl/microbench_warmup.log",
+  "runs": [
+    {
+      "run_index": 1,
+      "exit_code": 0,
+      "log_file": "security_testing/additions/perf_microbench/logs/wsl/microbench_run_01.log",
+      "metrics": {
+        "ipv4_parse": {
+          "iterations": 10000,
+          "total_ns": 106382,
+          "ns_per_iter": 10.6382
+        },
+        "udp_parse_emit": {
+          "iterations": 10000,
+          "total_ns": 224245,
+          "ns_per_iter": 22.4245
+        },
+        "ring_buffer_cycle": {
+          "iterations": 10000,
+          "total_ns": 4612,
+          "ns_per_iter": 0.4612
+        }
+      }
+    },
+    {
+      "run_index": 2,
+      "exit_code": 0,
+      "log_file": "security_testing/additions/perf_microbench/logs/wsl/microbench_run_02.log",
+      "metrics": {
+        "ipv4_parse": {
+          "iterations": 10000,
+          "total_ns": 177336,
+          "ns_per_iter": 17.7336
+        },
+        "udp_parse_emit": {
+          "iterations": 10000,
+          "total_ns": 317084,
+          "ns_per_iter": 31.7084
+        },
+        "ring_buffer_cycle": {
+          "iterations": 10000,
+          "total_ns": 5005,
+          "ns_per_iter": 0.5005
+        }
+      }
+    },
+    {
+      "run_index": 3,
+      "exit_code": 0,
+      "log_file": "security_testing/additions/perf_microbench/logs/wsl/microbench_run_03.log",
+      "metrics": {
+        "ipv4_parse": {
+          "iterations": 10000,
+          "total_ns": 109228,
+          "ns_per_iter": 10.9228
+        },
+        "udp_parse_emit": {
+          "iterations": 10000,
+          "total_ns": 227386,
+          "ns_per_iter": 22.7386
+        },
+        "ring_buffer_cycle": {
+          "iterations": 10000,
+          "total_ns": 4613,
+          "ns_per_iter": 0.4613
+        }
+      }
+    },
+    {
+      "run_index": 4,
+      "exit_code": 0,
+      "log_file": "security_testing/additions/perf_microbench/logs/wsl/microbench_run_04.log",
+      "metrics": {
+        "ipv4_parse": {
+          "iterations": 10000,
+          "total_ns": 106676,
+          "ns_per_iter": 10.6676
+        },
+        "udp_parse_emit": {
+          "iterations": 10000,
+          "total_ns": 225522,
+          "ns_per_iter": 22.5522
+        },
+        "ring_buffer_cycle": {
+          "iterations": 10000,
+          "total_ns": 4612,
+          "ns_per_iter": 0.4612
+        }
+      }
+    },
+    {
+      "run_index": 5,
+      "exit_code": 0,
+      "log_file": "security_testing/additions/perf_microbench/logs/wsl/microbench_run_05.log",
+      "metrics": {
+        "ipv4_parse": {
+          "iterations": 10000,
+          "total_ns": 107777,
+          "ns_per_iter": 10.7777
+        },
+        "udp_parse_emit": {
+          "iterations": 10000,
+          "total_ns": 238202,
+          "ns_per_iter": 23.8202
+        },
+        "ring_buffer_cycle": {
+          "iterations": 10000,
+          "total_ns": 4868,
+          "ns_per_iter": 0.4868
+        }
+      }
+    }
+  ],
+  "aggregate_ns_per_iter": {
+    "ipv4_parse": {
+      "sample_count": 5,
+      "mean_ns_per_iter": 12.14798,
+      "stdev_ns_per_iter": 2.794596381876996,
+      "min_ns_per_iter": 10.6382,
+      "max_ns_per_iter": 17.7336
+    },
+    "ring_buffer_cycle": {
+      "sample_count": 5,
+      "mean_ns_per_iter": 0.4742,
+      "stdev_ns_per_iter": 0.016461227171751185,
+      "min_ns_per_iter": 0.4612,
+      "max_ns_per_iter": 0.5005
+    },
+    "udp_parse_emit": {
+      "sample_count": 5,
+      "mean_ns_per_iter": 24.64878,
+      "stdev_ns_per_iter": 3.5641727289232215,
+      "min_ns_per_iter": 22.4245,
+      "max_ns_per_iter": 31.7084
+    }
+  },
+  "metrics_csv": "security_testing/additions/perf_microbench/artifacts/microbench_metrics_wsl.csv"
+}

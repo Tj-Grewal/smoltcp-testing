@@ -1,0 +1,32 @@
+{
+  "platform": "wsl",
+  "llvm_tools_exit_code": 0,
+  "llvm_cov_available": true,
+  "suites": {
+    "ipv4_combinatorial": {
+      "summary_exit_code": 0,
+      "coverage": {
+        "regions": 273,
+        "missed": 4,
+        "coverage_percent": 98.53,
+        "summary_log": "security_testing/additions/whitebox_safety_enhanced/logs/wsl/ipv4_combinatorial_coverage_summary.log",
+        "lcov_log": "security_testing/additions/whitebox_safety_enhanced/logs/wsl/ipv4_combinatorial_coverage_lcov.log",
+        "lcov_exit_code": 0,
+        "lcov_file": "security_testing/additions/whitebox_safety_enhanced/artifacts/coverage_ipv4_combinatorial_wsl.lcov"
+      }
+    },
+    "microbench": {
+      "summary_exit_code": 0,
+      "coverage": {
+        "regions": 161,
+        "missed": 2,
+        "coverage_percent": 98.76,
+        "summary_log": "security_testing/additions/whitebox_safety_enhanced/logs/wsl/microbench_coverage_summary.log",
+        "lcov_log": "security_testing/additions/whitebox_safety_enhanced/logs/wsl/microbench_coverage_lcov.log",
+        "lcov_exit_code": 0,
+        "lcov_file": "security_testing/additions/whitebox_safety_enhanced/artifacts/coverage_microbench_wsl.lcov"
+      }
+    }
+  },
+  "static_checks": null
+}

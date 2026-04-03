@@ -1,0 +1,3182 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:19:11.428037+00:00
+FINISHED_UTC: 2026-04-03T20:19:24.336282+00:00
+DURATION_SECONDS: 11.946495
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+=== STDERR ===
+error: expected one of `+`, `,`, `::`, `=`, or `>`, found `-`
+   --> src/wire/tcp.rs:404:21
+    |
+404 | impl<T: AsRef<[u8]> - AsMut<[u8]>> Packet<T> {
+    |                     ^ expected one of `+`, `,`, `::`, `=`, or `>`
+    |
+help: you might have meant to end the type parameters here
+    |
+404 | impl<T: AsRef<[u8]>> - AsMut<[u8]>> Packet<T> {
+    |                    +
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:1451:24
+     |
+1451 |             .and_then(|tcp_ts| tcp_ts.generate_reply(self.tsval_generator));
+     |                        ^^^^^^  ------ type must be known at this point
+     |
+help: consider giving this closure parameter an explicit type
+     |
+1451 |             .and_then(|tcp_ts: /* Type */| tcp_ts.generate_reply(self.tsval_generator));
+     |                              ++++++++++++
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2130:27
+     |
+2130 |         let payload_len = payload.len();
+     |                           ^^^^^^^ cannot infer type
+
+error[E0282]: type annotations needed for `(_, _)`
+    --> src/socket/tcp.rs:2908:43
+     |
+2908 |             .dispatch(&mut socket.cx, |_, (ip_repr, tcp_repr)| {
+     |                                           ^^^^^^^^^^^^^^^^^^^
+2909 |                 assert_eq!(ip_repr.next_header(), IpProtocol::Tcp);
+     |                            ------- type must be known at this point
+     |
+help: consider giving this closure parameter an explicit type, where the placeholders `_` are specified
+     |
+2908 |             .dispatch(&mut socket.cx, |_, (ip_repr, tcp_repr): (_, _)| {
+     |                                                              ++++++++
+
+error[E0282]: type annotations needed for `({type error}, _)`
+    --> src/socket/tcp.rs:2908:43
+     |
+2908 |             .dispatch(&mut socket.cx, |_, (ip_repr, tcp_repr)| {
+     |                                           ^^^^^^^^^^^^^^^^^^^
+...
+2912 |                 assert_eq!(ip_repr.payload_len(), tcp_repr.buffer_len());
+     |                                                   -------- type must be known at this point
+     |
+help: consider giving this closure parameter an explicit type, where the placeholders `_` are specified
+     |
+2908 |             .dispatch(&mut socket.cx, |_, (ip_repr, tcp_repr): (_, _)| {
+     |                                                              ++++++++
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3121 | /         recv!(
+3122 | |             s,
+3123 | |             [TcpRepr {
+3124 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+3128 | |             }]
+3129 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3192 | /         recv!(
+3193 | |             s,
+3194 | |             [TcpRepr {
+3195 | |                 control: TcpControl::Syn,
+...    |
+3200 | |             }]
+3201 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3215 | /         recv!(
+3216 | |             s,
+3217 | |             [TcpRepr {
+3218 | |                 control: TcpControl::Syn,
+...    |
+3224 | |             }]
+3225 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3259 | /             recv!(
+3260 | |                 s,
+3261 | |                 [TcpRepr {
+3262 | |                     control: TcpControl::Syn,
+...    |
+3269 | |                 }]
+3270 | |             );
+     | |_____________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3354 | /         recv!(
+3355 | |             s,
+3356 | |             [TcpRepr {
+3357 | |                 control: TcpControl::Syn,
+...    |
+3362 | |             }]
+3363 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3410 | /         recv!(
+3411 | |             s,
+3412 | |             [TcpRepr {
+3413 | |                 control: TcpControl::Syn,
+...    |
+3418 | |             }]
+3419 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3441 | /         recv!(
+3442 | |             s,
+3443 | |             [TcpRepr {
+3444 | |                 control: TcpControl::Syn,
+...    |
+3449 | |             }]
+3450 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3472 | /         recv!(
+3473 | |             s,
+3474 | |             [TcpRepr {
+3475 | |                 control: TcpControl::Syn,
+...    |
+3480 | |             }]
+3481 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3492 | /         recv!(
+3493 | |             s,
+3494 | |             [TcpRepr {
+3495 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+3499 | |             }]
+3500 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3513 | /         recv!(
+3514 | |             s,
+3515 | |             [TcpRepr {
+3516 | |                 control: TcpControl::Syn,
+...    |
+3521 | |             }]
+3522 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3551 | /         recv!(
+3552 | |             s,
+3553 | |             [TcpRepr {
+3554 | |                 control: TcpControl::Syn,
+...    |
+3560 | |             }]
+3561 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3591 | /             recv!(
+3592 | |                 s,
+3593 | |                 [TcpRepr {
+3594 | |                     control: TcpControl::Syn,
+...    |
+3600 | |                 }]
+3601 | |             );
+     | |_____________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3658 | /         recv!(
+3659 | |             s,
+3660 | |             [TcpRepr {
+3661 | |                 control: TcpControl::Syn,
+...    |
+3668 | |             }]
+3669 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3720 | /         recv!(
+3721 | |             s,
+3722 | |             [TcpRepr {
+3723 | |                 control: TcpControl::Syn,
+...    |
+3730 | |             }]
+3731 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3743 | /         recv!(
+3744 | |             s,
+3745 | |             [TcpRepr {
+3746 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+3749 | |             }]
+3750 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3759 | /         recv!(
+3760 | |             s,
+3761 | |             [TcpRepr {
+3762 | |                 control: TcpControl::Syn,
+...    |
+3769 | |             }]
+3770 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3787 | /         recv!(
+3788 | |             s,
+3789 | |             [TcpRepr {
+3790 | |                 control: TcpControl::Syn,
+...    |
+3796 | |             }]
+3797 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3801 | /         recv!(
+3802 | |             s,
+3803 | |             time 1001,
+3804 | |             Ok(TcpRepr {
+...    |
+3811 | |             })
+3812 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3831 | /         recv!(
+3832 | |             s,
+3833 | |             [TcpRepr {
+3834 | |                 control: TcpControl::Syn,
+...    |
+3841 | |             }]
+3842 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3867 | /         recv!(
+3868 | |             s,
+3869 | |             [TcpRepr {
+3870 | |                 control: TcpControl::Syn,
+...    |
+3877 | |             }]
+3878 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3955 | /         recv!(
+3956 | |             s,
+3957 | |             [TcpRepr {
+3958 | |                 control: TcpControl::Syn,
+...    |
+3965 | |             }]
+3966 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+3985 | /         recv!(
+3986 | |             s,
+3987 | |             [TcpRepr {
+3988 | |                 control: TcpControl::Syn,
+...    |
+3995 | |             }]
+3996 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4021 | /         recv!(
+4022 | |             s,
+4023 | |             [TcpRepr {
+4024 | |                 control: TcpControl::Syn,
+...    |
+4031 | |             }]
+4032 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4064 | /         recv!(
+4065 | |             s,
+4066 | |             [TcpRepr {
+4067 | |                 control: TcpControl::Syn,
+...    |
+4074 | |             }]
+4075 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4091 | /         recv!(
+4092 | |             s,
+4093 | |             [TcpRepr {
+4094 | |                 control: TcpControl::Syn,
+...    |
+4101 | |             }]
+4102 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4138 | /             recv!(
+4139 | |                 s,
+4140 | |                 [TcpRepr {
+4141 | |                     control: TcpControl::Syn,
+...    |
+4149 | |                 }]
+4150 | |             );
+     | |_____________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4157 | /         recv!(
+4158 | |             s,
+4159 | |             [TcpRepr {
+4160 | |                 control: TcpControl::Syn,
+...    |
+4169 | |             }]
+4170 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4193 | /         recv!(
+4194 | |             s,
+4195 | |             [TcpRepr {
+4196 | |                 control: TcpControl::Syn,
+...    |
+4203 | |             }]
+4204 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4239 | /         recv!(
+4240 | |             s,
+4241 | |             [TcpRepr {
+4242 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4246 | |             }]
+4247 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4329 | /             recv!(
+4330 | |                 s,
+4331 | |                 [TcpRepr {
+4332 | |                     seq_number: LOCAL_SEQ + 1,
+...    |
+4336 | |                 }]
+4337 | |             );
+     | |_____________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4432 | /         recv!(
+4433 | |             s,
+4434 | |             [TcpRepr {
+4435 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4439 | |             }]
+4440 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4448 | /         recv!(
+4449 | |             s,
+4450 | |             [TcpRepr {
+4451 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4455 | |             }]
+4456 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4469 | /         recv!(
+4470 | |             s,
+4471 | |             [TcpRepr {
+4472 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+4476 | |             }]
+4477 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4494 | /         recv!(
+4495 | |             s,
+4496 | |             [TcpRepr {
+4497 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4501 | |             }]
+4502 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4504 | /         recv!(
+4505 | |             s,
+4506 | |             [TcpRepr {
+4507 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+4511 | |             }]
+4512 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4525 | /         recv!(
+4526 | |             s,
+4527 | |             [TcpRepr {
+4528 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4532 | |             }]
+4533 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4542 | /         recv!(
+4543 | |             s,
+4544 | |             [TcpRepr {
+4545 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4549 | |             }]
+4550 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4581 | /         recv!(
+4582 | |             s,
+4583 | |             [TcpRepr {
+4584 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+4588 | |             }]
+4589 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4682 | /         recv!(s, time 1000, Ok(TcpRepr {
+4683 | |             seq_number: local_seq_start + 1,
+4684 | |             ack_number: Some(REMOTE_SEQ + 1),
+4685 | |             payload:    &b"abc"[..],
+4686 | |             ..RECV_TEMPL
+4687 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4793 | /         recv!(
+4794 | |             s,
+4795 | |             [TcpRepr {
+4796 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4799 | |             }]
+4800 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4856 | /         recv!(
+4857 | |             s,
+4858 | |             [TcpRepr {
+4859 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+4863 | |             }]
+4864 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4910 | /         recv!(
+4911 | |             s,
+4912 | |             [TcpRepr {
+4913 | |                 control: TcpControl::Rst,
+...    |
+4917 | |             }]
+4918 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+4980 | /         recv!(
+4981 | |             s,
+4982 | |             [TcpRepr {
+4983 | |                 control: TcpControl::Fin,
+...    |
+4987 | |             }]
+4988 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5004 | /         recv!(
+5005 | |             s,
+5006 | |             [TcpRepr {
+5007 | |                 control: TcpControl::Fin,
+...    |
+5011 | |             }]
+5012 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5032 | /         recv!(
+5033 | |             s,
+5034 | |             Ok(TcpRepr {
+5035 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+5039 | |             })
+5040 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5114 | /         recv!(
+5115 | |             s,
+5116 | |             [TcpRepr {
+5117 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5120 | |             }]
+5121 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5138 | /         recv!(
+5139 | |             s,
+5140 | |             [TcpRepr {
+5141 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5144 | |             }]
+5145 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5169 | /         recv!(
+5170 | |             s,
+5171 | |             [TcpRepr {
+5172 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5175 | |             }]
+5176 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5195 | /         recv!(
+5196 | |             s,
+5197 | |             [TcpRepr {
+5198 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5201 | |             }]
+5202 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5224 | /         recv!(
+5225 | |             s,
+5226 | |             [TcpRepr {
+5227 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5230 | |             }]
+5231 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5245 | /         recv!(
+5246 | |             s,
+5247 | |             [TcpRepr {
+5248 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+5252 | |             }]
+5253 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5278 | /         recv!(
+5279 | |             s,
+5280 | |             [TcpRepr {
+5281 | |                 control: TcpControl::Fin,
+...    |
+5285 | |             }]
+5286 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5302 | /         recv!(
+5303 | |             s,
+5304 | |             [TcpRepr {
+5305 | |                 control: TcpControl::Fin,
+...    |
+5309 | |             }]
+5310 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5348 | /         recv!(
+5349 | |             s,
+5350 | |             [TcpRepr {
+5351 | |                 control: TcpControl::Fin,
+...    |
+5355 | |             }]
+5356 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5457 | /         recv!(
+5458 | |             s,
+5459 | |             [TcpRepr {
+5460 | |                 control: TcpControl::Syn,
+...    |
+5465 | |             }]
+5466 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5493 | /         recv!(
+5494 | |             s,
+5495 | |             [TcpRepr {
+5496 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+5499 | |             }]
+5500 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5503 | /         recv!(
+5504 | |             s,
+5505 | |             [TcpRepr {
+5506 | |                 control: TcpControl::Fin,
+...    |
+5510 | |             }]
+5511 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5528 | /         recv!(
+5529 | |             s,
+5530 | |             [TcpRepr {
+5531 | |                 control: TcpControl::Fin,
+...    |
+5535 | |             }]
+5536 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5556 | /         recv!(
+5557 | |             s,
+5558 | |             [TcpRepr {
+5559 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5562 | |             }]
+5563 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5571 | /         recv!(
+5572 | |             s,
+5573 | |             [TcpRepr {
+...    |
+5579 | |             }]
+5580 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5591 | /         recv!(
+5592 | |             s,
+5593 | |             [TcpRepr {
+5594 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5597 | |             }]
+5598 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5617 | /         recv!(
+5618 | |             s,
+5619 | |             [TcpRepr {
+5620 | |                 control: TcpControl::Fin,
+...    |
+5624 | |             }]
+5625 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5636 | /         recv!(
+5637 | |             s,
+5638 | |             [TcpRepr {
+5639 | |                 seq_number: LOCAL_SEQ + 1 + 1,
+...    |
+5642 | |             }]
+5643 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5665 | /         recv!(
+5666 | |             s,
+5667 | |             [TcpRepr {
+5668 | |                 control: TcpControl::Fin,
+...    |
+5672 | |             }]
+5673 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5708 | /         recv!(
+5709 | |             s,
+5710 | |             [TcpRepr {
+5711 | |                 control: TcpControl::Fin,
+...    |
+5716 | |             }]
+5717 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5737 | /         recv!(
+5738 | |             s,
+5739 | |             [TcpRepr {
+5740 | |                 control: TcpControl::Fin,
+...    |
+5745 | |             }]
+5746 | |         )
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5755 | /         recv!(
+5756 | |             s,
+5757 | |             [TcpRepr {
+5758 | |                 control: TcpControl::Fin,
+...    |
+5763 | |             }]
+5764 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5782 | /         recv!(
+5783 | |             s,
+5784 | |             [TcpRepr {
+5785 | |                 control: TcpControl::Fin,
+...    |
+5790 | |             }]
+5791 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5810 | /         recv!(
+5811 | |             s,
+5812 | |             [TcpRepr {
+5813 | |                 seq_number: LOCAL_SEQ + 1 + 6 + 1,
+...    |
+5816 | |             }]
+5817 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5850 | /         recv!(s, time 1000, Ok(TcpRepr {
+5851 | |             seq_number: LOCAL_SEQ + 1,
+5852 | |             ack_number: Some(REMOTE_SEQ + 1),
+5853 | |             payload:    &b"abcdef"[..],
+5854 | |             ..RECV_TEMPL
+5855 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+5857 | /         recv!(s, time 2000, Ok(TcpRepr {
+5858 | |             seq_number: LOCAL_SEQ + 1,
+5859 | |             ack_number: Some(REMOTE_SEQ + 1),
+5860 | |             payload:    &b"abcdef"[..],
+5861 | |             ..RECV_TEMPL
+5862 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6027 | /         recv!(s, time 50, Ok(TcpRepr {
+6028 | |             control:    TcpControl::Syn,
+6029 | |             seq_number: LOCAL_SEQ,
+6030 | |             ack_number: Some(REMOTE_SEQ + 1),
+6031 | |             max_seg_size: Some(BASE_MSS),
+6032 | |             ..RECV_TEMPL
+6033 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6034 | /         recv!(s, time 1050, Ok(TcpRepr { // retransmit
+6035 | |             control:    TcpControl::Syn,
+6036 | |             seq_number: LOCAL_SEQ,
+6037 | |             ack_number: Some(REMOTE_SEQ + 1),
+6038 | |             max_seg_size: Some(BASE_MSS),
+6039 | |             ..RECV_TEMPL
+6040 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6051 | /         recv!(
+6052 | |             s,
+6053 | |             [TcpRepr {
+6054 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+6058 | |             }]
+6059 | |         )
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6067 | /         recv!(s, time 1000, Ok(TcpRepr {
+6068 | |             seq_number: LOCAL_SEQ + 1,
+6069 | |             ack_number: Some(REMOTE_SEQ + 1),
+6070 | |             payload:    &b"abc"[..],
+6071 | |             ..RECV_TEMPL
+6072 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6085 | /         recv!(s, time 4000, Ok(TcpRepr {
+6086 | |             seq_number: LOCAL_SEQ + 1,
+6087 | |             ack_number: Some(REMOTE_SEQ + 1),
+6088 | |             payload:    &b"abc"[..],
+6089 | |             ..RECV_TEMPL
+6090 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6100 | /         recv!(s, time 1000, Ok(TcpRepr {
+6101 | |             seq_number: LOCAL_SEQ + 1,
+6102 | |             ack_number: Some(REMOTE_SEQ + 1),
+6103 | |             payload:    &b"abcdef"[..],
+6104 | |             ..RECV_TEMPL
+6105 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6112 | /         recv!(s, time 1010, Ok(TcpRepr {
+6113 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6114 | |             ack_number: Some(REMOTE_SEQ + 1),
+6115 | |             payload:    &b"123456"[..],
+6116 | |             ..RECV_TEMPL
+6117 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6124 | /         recv!(s, time 1020, Ok(TcpRepr {
+6125 | |             seq_number: LOCAL_SEQ + 1 + 6 + 6,
+6126 | |             ack_number: Some(REMOTE_SEQ + 1),
+6127 | |             payload:    &b"ABCDEF"[..],
+6128 | |             ..RECV_TEMPL
+6129 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6137 | /         recv!(s, time 1000, Ok(TcpRepr {
+6138 | |             seq_number: LOCAL_SEQ + 1,
+6139 | |             ack_number: Some(REMOTE_SEQ + 1),
+6140 | |             payload:    &b"abcdef"[..],
+6141 | |             ..RECV_TEMPL
+6142 | |         })); // this one is dropped
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6143 | /         recv!(s, time 1005, Ok(TcpRepr {
+6144 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6145 | |             ack_number: Some(REMOTE_SEQ + 1),
+6146 | |             payload:    &b"123456"[..],
+6147 | |             ..RECV_TEMPL
+6148 | |         })); // this one is received
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6149 | /         recv!(s, time 1010, Ok(TcpRepr {
+6150 | |             seq_number: LOCAL_SEQ + 1 + 6 + 6,
+6151 | |             ack_number: Some(REMOTE_SEQ + 1),
+6152 | |             payload:    &b"ABCDEF"[..],
+6153 | |             ..RECV_TEMPL
+6154 | |         })); // also dropped
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6155 | /         recv!(s, time 3000, Ok(TcpRepr {
+6156 | |             seq_number: LOCAL_SEQ + 1,
+6157 | |             ack_number: Some(REMOTE_SEQ + 1),
+6158 | |             payload:    &b"abcdef"[..],
+6159 | |             ..RECV_TEMPL
+6160 | |         })); // retransmission
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6166 | /         recv!(s, time 3010, Ok(TcpRepr {
+6167 | |             seq_number: LOCAL_SEQ + 1 + 6 + 6,
+6168 | |             ack_number: Some(REMOTE_SEQ + 1),
+6169 | |             payload:    &b"ABCDEF"[..],
+6170 | |             ..RECV_TEMPL
+6171 | |         })); // retransmission of only unacknowledged data
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6181 | /         recv!(s, time 1000, Ok(TcpRepr {
+6182 | |             seq_number: LOCAL_SEQ + 1,
+6183 | |             ack_number: Some(REMOTE_SEQ + 1 + 1),
+6184 | |             payload:    &b"abcdef"[..],
+6185 | |             ..RECV_TEMPL
+6186 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6193 | /         recv!(s, time 1010, Ok(TcpRepr {
+6194 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6195 | |             ack_number: Some(REMOTE_SEQ + 1 + 1),
+6196 | |             payload:    &b"123456"[..],
+6197 | |             ..RECV_TEMPL
+6198 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6205 | /         recv!(s, time 1020, Ok(TcpRepr {
+6206 | |             seq_number: LOCAL_SEQ + 1 + 6 + 6,
+6207 | |             ack_number: Some(REMOTE_SEQ + 1 + 1),
+6208 | |             payload:    &b"ABCDEF"[..],
+6209 | |             ..RECV_TEMPL
+6210 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6221 | /         recv!(s, time 1000, Ok(TcpRepr {
+6222 | |             seq_number: LOCAL_SEQ + 1,
+6223 | |             ack_number: Some(REMOTE_SEQ + 1),
+6224 | |             payload:    &b"abcdef"[..],
+6225 | |             ..RECV_TEMPL
+6226 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6233 | /         recv!(s, time 1010, Ok(TcpRepr {
+6234 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6235 | |             ack_number: Some(REMOTE_SEQ + 1),
+6236 | |             payload:    &b"123456"[..],
+6237 | |             ..RECV_TEMPL
+6238 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6245 | /         recv!(s, time 1020, Ok(TcpRepr {
+6246 | |             control:    TcpControl::Fin,
+6247 | |             seq_number: LOCAL_SEQ + 1 + 6 + 6,
+6248 | |             ack_number: Some(REMOTE_SEQ + 1),
+6249 | |             payload:    &b"ABCDEF"[..],
+6250 | |             ..RECV_TEMPL
+6251 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6270 | /         recv!(s, time 1000, Ok(TcpRepr {
+6271 | |             seq_number: LOCAL_SEQ + 1,
+6272 | |             ack_number: Some(REMOTE_SEQ + 1),
+6273 | |             payload:    &b"xxxxxx"[..],
+6274 | |             ..RECV_TEMPL
+6275 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6276 | /         recv!(s, time 1005, Ok(TcpRepr {
+6277 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6278 | |             ack_number: Some(REMOTE_SEQ + 1),
+6279 | |             payload:    &b"yyyyyy"[..],
+6280 | |             ..RECV_TEMPL
+6281 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6282 | /         recv!(s, time 1010, Ok(TcpRepr {
+6283 | |             seq_number: LOCAL_SEQ + 1 + (6 * 2),
+6284 | |             ack_number: Some(REMOTE_SEQ + 1),
+6285 | |             payload:    &b"wwwwww"[..],
+6286 | |             ..RECV_TEMPL
+6287 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6288 | /         recv!(s, time 1015, Ok(TcpRepr {
+6289 | |             seq_number: LOCAL_SEQ + 1 + (6 * 3),
+6290 | |             ack_number: Some(REMOTE_SEQ + 1),
+6291 | |             payload:    &b"zzzzzz"[..],
+6292 | |             ..RECV_TEMPL
+6293 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6316 | /         recv!(s, time 1100, Ok(TcpRepr {
+6317 | |             seq_number: LOCAL_SEQ + 1,
+6318 | |             ack_number: Some(REMOTE_SEQ + 1),
+6319 | |             payload:    &b"xxxxxx"[..],
+6320 | |             ..RECV_TEMPL
+6321 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6323 | /         recv!(s, time 1105, Ok(TcpRepr {
+6324 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6325 | |             ack_number: Some(REMOTE_SEQ + 1),
+6326 | |             payload:    &b"yyyyyy"[..],
+6327 | |             ..RECV_TEMPL
+6328 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6329 | /         recv!(s, time 1110, Ok(TcpRepr {
+6330 | |             seq_number: LOCAL_SEQ + 1 + (6 * 2),
+6331 | |             ack_number: Some(REMOTE_SEQ + 1),
+6332 | |             payload:    &b"wwwwww"[..],
+6333 | |             ..RECV_TEMPL
+6334 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6335 | /         recv!(s, time 1115, Ok(TcpRepr {
+6336 | |             seq_number: LOCAL_SEQ + 1 + (6 * 3),
+6337 | |             ack_number: Some(REMOTE_SEQ + 1),
+6338 | |             payload:    &b"zzzzzz"[..],
+6339 | |             ..RECV_TEMPL
+6340 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6362 | /         recv!(s, time 1000, Ok(TcpRepr {
+6363 | |             seq_number: LOCAL_SEQ + 1,
+6364 | |             ack_number: Some(REMOTE_SEQ + 1),
+6365 | |             payload:    &b"abc"[..],
+6366 | |             ..RECV_TEMPL
+6367 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6411 | /         recv!(
+6412 | |             s,
+6413 | |             [TcpRepr {
+6414 | |                 seq_number: LOCAL_SEQ + 1 + 3,
+...    |
+6418 | |             }]
+6419 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6432 | /         recv!(s, time 1000, Ok(TcpRepr {
+6433 | |             seq_number: LOCAL_SEQ + 1,
+6434 | |             ack_number: Some(REMOTE_SEQ + 1),
+6435 | |             payload:    &b"abc"[..],
+6436 | |             ..RECV_TEMPL
+6437 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6516 | /         recv!(s, time 1000, Ok(TcpRepr {
+6517 | |             seq_number: LOCAL_SEQ + 1,
+6518 | |             ack_number: Some(REMOTE_SEQ + 1),
+6519 | |             payload:    &b"xxxxxx"[..],
+6520 | |             ..RECV_TEMPL
+6521 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6522 | /         recv!(s, time 1005, Ok(TcpRepr {
+6523 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6524 | |             ack_number: Some(REMOTE_SEQ + 1),
+6525 | |             payload:    &b"yyyyyy"[..],
+6526 | |             ..RECV_TEMPL
+6527 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6528 | /         recv!(s, time 1010, Ok(TcpRepr {
+6529 | |             seq_number: LOCAL_SEQ + 1 + (6 * 2),
+6530 | |             ack_number: Some(REMOTE_SEQ + 1),
+6531 | |             payload:    &b"wwwwww"[..],
+6532 | |             ..RECV_TEMPL
+6533 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6534 | /         recv!(s, time 1015, Ok(TcpRepr {
+6535 | |             seq_number: LOCAL_SEQ + 1 + (6 * 3),
+6536 | |             ack_number: Some(REMOTE_SEQ + 1),
+6537 | |             payload:    &b"zzzzzz"[..],
+6538 | |             ..RECV_TEMPL
+6539 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6578 | /         recv!(s, time 0, Ok(TcpRepr {
+6579 | |             seq_number: LOCAL_SEQ + 1,
+6580 | |             ack_number: Some(REMOTE_SEQ + 1),
+6581 | |             payload:    &b"abc"[..],
+6582 | |             ..RECV_TEMPL
+6583 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6631 | /         recv!(s, time 0, Ok(TcpRepr {
+6632 | |             seq_number: LOCAL_SEQ + 1,
+6633 | |             ack_number: Some(REMOTE_SEQ + 1),
+6634 | |             payload:    &b"abc"[..],
+6635 | |             ..RECV_TEMPL
+6636 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6665 | /         recv!(s, time 0, Ok(TcpRepr {
+6666 | |             seq_number: LOCAL_SEQ + 1,
+6667 | |             ack_number: Some(REMOTE_SEQ + 1),
+6668 | |             payload:    &b"abcdef"[..],
+6669 | |             ..RECV_TEMPL
+6670 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6674 | /         recv!(s, time expected_retransmission_instant, Ok(TcpRepr {
+6675 | |             seq_number: LOCAL_SEQ + 1,
+6676 | |             ack_number: Some(REMOTE_SEQ + 1),
+6677 | |             payload:    &b"abcdef"[..],
+6678 | |             ..RECV_TEMPL
+6679 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6685 | /         recv!(s, time expected_retransmission_instant, Ok(TcpRepr {
+6686 | |             seq_number: LOCAL_SEQ + 1,
+6687 | |             ack_number: Some(REMOTE_SEQ + 1),
+6688 | |             payload:    &b"abcdef"[..],
+6689 | |             ..RECV_TEMPL
+6690 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6699 | /         recv!(s, time 0, Ok(TcpRepr {
+6700 | |             seq_number: LOCAL_SEQ + 1,
+6701 | |             ack_number: Some(REMOTE_SEQ + 1),
+6702 | |             payload:    &b"aaaaaa"[..],
+6703 | |             ..RECV_TEMPL
+6704 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6705 | /         recv!(s, time 0, Ok(TcpRepr {
+6706 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6707 | |             ack_number: Some(REMOTE_SEQ + 1),
+6708 | |             payload:    &b"bbbbbb"[..],
+6709 | |             ..RECV_TEMPL
+6710 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6711 | /         recv!(s, time 0, Ok(TcpRepr {
+6712 | |             seq_number: LOCAL_SEQ + 1 + 12,
+6713 | |             ack_number: Some(REMOTE_SEQ + 1),
+6714 | |             payload:    &b"cccccc"[..],
+6715 | |             ..RECV_TEMPL
+6716 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6724 | /         recv!(s, time 1000, Ok(TcpRepr {
+6725 | |             seq_number: LOCAL_SEQ + 1,
+6726 | |             ack_number: Some(REMOTE_SEQ + 1),
+6727 | |             payload:    &b"aaaaaa"[..],
+6728 | |             ..RECV_TEMPL
+6729 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6730 | /         recv!(s, time 1000, Ok(TcpRepr {
+6731 | |             seq_number: LOCAL_SEQ + 1 + 6,
+6732 | |             ack_number: Some(REMOTE_SEQ + 1),
+6733 | |             payload:    &b"bbbbbb"[..],
+6734 | |             ..RECV_TEMPL
+6735 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6776 | /         recv!(s, time 0, Ok(TcpRepr {
+6777 | |             control: TcpControl::Fin,
+6778 | |             seq_number: LOCAL_SEQ + 1,
+6779 | |             ack_number: Some(REMOTE_SEQ + 1),
+6780 | |             ..RECV_TEMPL
+6781 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6784 | /         recv!(s, time 1000, Ok(TcpRepr {
+6785 | |             control: TcpControl::Fin,
+6786 | |             seq_number: LOCAL_SEQ + 1,
+6787 | |             ack_number: Some(REMOTE_SEQ + 1),
+6788 | |             ..RECV_TEMPL
+6789 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6796 | /         recv!(
+6797 | |             s,
+6798 | |             [TcpRepr {
+6799 | |                 control: TcpControl::Fin,
+...    |
+6803 | |             }]
+6804 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6816 | /         recv!(
+6817 | |             s,
+6818 | |             [TcpRepr {
+6819 | |                 control: TcpControl::None,
+...    |
+6823 | |             }]
+6824 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6828 | /         recv!(
+6829 | |             s,
+6830 | |             time 1000,
+6831 | |             [TcpRepr {
+...    |
+6836 | |             }]
+6837 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6839 | /         recv!(
+6840 | |             s,
+6841 | |             time 3000,
+6842 | |             [TcpRepr {
+...    |
+6847 | |             }]
+6848 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6869 | /         recv!(
+6870 | |             s,
+6871 | |             [TcpRepr {
+6872 | |                 control: TcpControl::Syn,
+...    |
+6877 | |             }]
+6878 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6889 | /         recv!(
+6890 | |             s,
+6891 | |             Ok(TcpRepr {
+6892 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+6896 | |             })
+6897 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6930 | /         recv!(
+6931 | |             s,
+6932 | |             Ok(TcpRepr {
+6933 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+6937 | |             })
+6938 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6957 | /         recv!(
+6958 | |             s,
+6959 | |             Ok(TcpRepr {
+6960 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+6964 | |             })
+6965 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+6984 | /         recv!(
+6985 | |             s,
+6986 | |             Ok(TcpRepr {
+6987 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+6991 | |             })
+6992 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7017 | /         recv!(
+7018 | |             s,
+7019 | |             Ok(TcpRepr {
+7020 | |                 seq_number: LOCAL_SEQ + 2,
+...    |
+7024 | |             })
+7025 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7073 | /         recv!(
+7074 | |             s,
+7075 | |             [TcpRepr {
+7076 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7080 | |             }]
+7081 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7098 | /         recv!(
+7099 | |             s,
+7100 | |             [TcpRepr {
+7101 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7105 | |             }]
+7106 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7140 | /         recv!(
+7141 | |             s,
+7142 | |             [TcpRepr {
+7143 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7147 | |             }]
+7148 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7164 | /         recv!(
+7165 | |             s,
+7166 | |             [TcpRepr {
+7167 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7171 | |             }]
+7172 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7189 | /         recv!(
+7190 | |             s,
+7191 | |             [TcpRepr {
+7192 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7196 | |             }]
+7197 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7204 | /         recv!(s, time 0, Ok(TcpRepr {
+7205 | |             seq_number: LOCAL_SEQ + 1,
+7206 | |             ack_number: Some(REMOTE_SEQ + 1 + 6),
+7207 | |             window_len: 3,
+7208 | |             ..RECV_TEMPL
+7209 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7216 | /         recv!(s, time 0, Ok(TcpRepr {
+7217 | |             seq_number: LOCAL_SEQ + 1,
+7218 | |             ack_number: Some(REMOTE_SEQ + 1 + 6),
+7219 | |             window_len: 6,
+7220 | |             ..RECV_TEMPL
+7221 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7246 | /         recv!(
+7247 | |             s,
+7248 | |             time 5,
+7249 | |             Ok(TcpRepr {
+...    |
+7254 | |             })
+7255 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7269 | /         recv!(
+7270 | |             s,
+7271 | |             time 5,
+7272 | |             Ok(TcpRepr {
+...    |
+7277 | |             })
+7278 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7286 | /         recv!(
+7287 | |             s,
+7288 | |             [
+7289 | |                 TcpRepr {
+...    |
+7308 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7325 | /         recv!(
+7326 | |             s,
+7327 | |             [TcpRepr {
+7328 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7332 | |             }]
+7333 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7338 | /         recv!(
+7339 | |             s,
+7340 | |             [TcpRepr {
+7341 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+7345 | |             }]
+7346 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7480 | /         recv!(
+7481 | |             s,
+7482 | |             time 1000,
+7483 | |             [TcpRepr {
+...    |
+7488 | |             }]
+7489 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7502 | /         recv!(
+7503 | |             s,
+7504 | |             time 1010,
+7505 | |             [TcpRepr {
+...    |
+7510 | |             }]
+7511 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7529 | /         recv!(
+7530 | |             s,
+7531 | |             time 1000,
+7532 | |             [TcpRepr {
+...    |
+7537 | |             }]
+7538 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7551 | /         recv!(
+7552 | |             s,
+7553 | |             time 3000,
+7554 | |             [TcpRepr {
+...    |
+7559 | |             }]
+7560 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7573 | /         recv!(
+7574 | |             s,
+7575 | |             time 7000,
+7576 | |             [TcpRepr {
+...    |
+7581 | |             }]
+7582 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7600 | /         recv!(
+7601 | |             s,
+7602 | |             time 1000,
+7603 | |             [TcpRepr {
+...    |
+7608 | |             }]
+7609 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7612 | /         recv!(
+7613 | |             s,
+7614 | |             time 3000,
+7615 | |             [TcpRepr {
+...    |
+7620 | |             }]
+7621 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7640 | /         recv!(
+7641 | |             s,
+7642 | |             time 1000,
+7643 | |             [TcpRepr {
+...    |
+7648 | |             }]
+7649 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7652 | /         recv!(
+7653 | |             s,
+7654 | |             time 3000,
+7655 | |             [TcpRepr {
+...    |
+7660 | |             }]
+7661 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7678 | /         recv!(
+7679 | |             s,
+7680 | |             time 4100,
+7681 | |             [TcpRepr {
+...    |
+7686 | |             }]
+7687 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7709 | /         recv!(s, time 150, Ok(TcpRepr {
+7710 | |             control:    TcpControl::Syn,
+7711 | |             seq_number: LOCAL_SEQ,
+7712 | |             ack_number: None,
+...    |
+7716 | |             ..RECV_TEMPL
+7717 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7723 | /         recv!(s, time 250, Ok(TcpRepr {
+7724 | |             control:    TcpControl::Rst,
+7725 | |             seq_number: LOCAL_SEQ + 1,
+7726 | |             ack_number: Some(TcpSeqNumber(0)),
+7727 | |             window_scale: None,
+7728 | |             ..RECV_TEMPL
+7729 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7744 | /         recv!(s, time 255, Ok(TcpRepr {
+7745 | |             seq_number: LOCAL_SEQ + 1,
+7746 | |             ack_number: Some(REMOTE_SEQ + 1),
+7747 | |             payload:    &b"abcdef"[..],
+7748 | |             ..RECV_TEMPL
+7749 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7754 | /         recv!(s, time 1255, Ok(TcpRepr {
+7755 | |             seq_number: LOCAL_SEQ + 1,
+7756 | |             ack_number: Some(REMOTE_SEQ + 1),
+7757 | |             payload:    &b"abcdef"[..],
+7758 | |             ..RECV_TEMPL
+7759 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7764 | /         recv!(s, time 2255, Ok(TcpRepr {
+7765 | |             control:    TcpControl::Rst,
+7766 | |             seq_number: LOCAL_SEQ + 1 + 6,
+7767 | |             ack_number: Some(REMOTE_SEQ + 1),
+7768 | |             ..RECV_TEMPL
+7769 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7778 | /         recv!(s, time 100, Ok(TcpRepr {
+7779 | |             seq_number: LOCAL_SEQ,
+7780 | |             ack_number: Some(REMOTE_SEQ + 1),
+7781 | |             payload:    &[0],
+7782 | |             ..RECV_TEMPL
+7783 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7798 | /         recv!(s, time 155, Ok(TcpRepr {
+7799 | |             seq_number: LOCAL_SEQ,
+7800 | |             ack_number: Some(REMOTE_SEQ + 1),
+7801 | |             payload:    &[0],
+7802 | |             ..RECV_TEMPL
+7803 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7810 | /         recv!(s, time 205, Ok(TcpRepr {
+7811 | |             control:    TcpControl::Rst,
+7812 | |             seq_number: LOCAL_SEQ + 1,
+7813 | |             ack_number: Some(REMOTE_SEQ + 1),
+7814 | |             ..RECV_TEMPL
+7815 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7824 | /         recv!(s, time 100, Ok(TcpRepr {
+7825 | |             control:    TcpControl::Fin,
+7826 | |             seq_number: LOCAL_SEQ + 1,
+7827 | |             ack_number: Some(REMOTE_SEQ + 1),
+7828 | |             ..RECV_TEMPL
+7829 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7830 | /         recv!(s, time 1100, Ok(TcpRepr {
+7831 | |             control:    TcpControl::Rst,
+7832 | |             seq_number: LOCAL_SEQ + 1 + 1,
+7833 | |             ack_number: Some(REMOTE_SEQ + 1),
+7834 | |             ..RECV_TEMPL
+7835 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7843 | /         recv!(s, time 100, Ok(TcpRepr {
+7844 | |             control:    TcpControl::Fin,
+7845 | |             seq_number: LOCAL_SEQ + 1,
+7846 | |             ack_number: Some(REMOTE_SEQ + 1 + 1),
+7847 | |             ..RECV_TEMPL
+7848 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7849 | /         recv!(s, time 1100, Ok(TcpRepr {
+7850 | |             control:    TcpControl::Rst,
+7851 | |             seq_number: LOCAL_SEQ + 1 + 1,
+7852 | |             ack_number: Some(REMOTE_SEQ + 1 + 1),
+7853 | |             ..RECV_TEMPL
+7854 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7865 | /         recv!(s, time 100, Ok(TcpRepr {
+7866 | |             control:    TcpControl::Rst,
+7867 | |             seq_number: LOCAL_SEQ + 1,
+7868 | |             ack_number: Some(REMOTE_SEQ + 1),
+7869 | |             ..RECV_TEMPL
+7870 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7903 | /         recv!(s, time 0, Ok(TcpRepr {
+7904 | |             seq_number: LOCAL_SEQ,
+7905 | |             ack_number: Some(REMOTE_SEQ + 1),
+7906 | |             payload:    &[0],
+7907 | |             ..RECV_TEMPL
+7908 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7915 | /         recv!(s, time 100, Ok(TcpRepr {
+7916 | |             seq_number: LOCAL_SEQ,
+7917 | |             ack_number: Some(REMOTE_SEQ + 1),
+7918 | |             payload:    &[0],
+7919 | |             ..RECV_TEMPL
+7920 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7927 | /         recv!(s, time 200, Ok(TcpRepr {
+7928 | |             seq_number: LOCAL_SEQ,
+7929 | |             ack_number: Some(REMOTE_SEQ + 1),
+7930 | |             payload:    &[0],
+7931 | |             ..RECV_TEMPL
+7932 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+7944 | /         recv!(s, time 350, Ok(TcpRepr {
+7945 | |             seq_number: LOCAL_SEQ,
+7946 | |             ack_number: Some(REMOTE_SEQ + 1),
+7947 | |             payload:    &b"\x00"[..],
+7948 | |             ..RECV_TEMPL
+7949 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed for `(_, _)`
+    --> src/socket/tcp.rs:7962:46
+     |
+7962 |             s.socket.dispatch(&mut s.cx, |_, (ip_repr, _)| {
+     |                                              ^^^^^^^^^^^^
+7963 |                 assert_eq!(ip_repr.hop_limit(), 0x2a);
+     |                            ------- type must be known at this point
+     |
+help: consider giving this closure parameter an explicit type, where the placeholders `_` are specified
+     |
+7962 |             s.socket.dispatch(&mut s.cx, |_, (ip_repr, _): (_, _)| {
+     |                                                          ++++++++
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8075 | /         recv!(
+8076 | |             s,
+8077 | |             Ok(TcpRepr {
+8078 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8082 | |             })
+8083 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8084 | /         recv!(
+8085 | |             s,
+8086 | |             Ok(TcpRepr {
+8087 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+8091 | |             })
+8092 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8311 | /         recv!(s, time 11, Ok(TcpRepr {
+8312 | |             seq_number: LOCAL_SEQ + 1,
+8313 | |             ack_number: Some(REMOTE_SEQ + 1 + 3),
+8314 | |             window_len: 61,
+8315 | |             ..RECV_TEMPL
+8316 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8344 | /         recv!(s, time 11, Ok(TcpRepr {
+8345 | |             seq_number: LOCAL_SEQ + 1,
+8346 | |             ack_number: Some(REMOTE_SEQ + 1 + 3),
+8347 | |             ..RECV_TEMPL
+8348 | |         }));
+     | |___________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8375 | /         recv!(
+8376 | |             s,
+8377 | |             Ok(TcpRepr {
+8378 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8382 | |             })
+8383 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8427 | /         recv!(
+8428 | |             s,
+8429 | |             Ok(TcpRepr {
+8430 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8434 | |             })
+8435 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8476 | /         recv!(
+8477 | |             s,
+8478 | |             Ok(TcpRepr {
+8479 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8483 | |             })
+8484 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8497 | /         recv!(
+8498 | |             s,
+8499 | |             [TcpRepr {
+8500 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8504 | |             }]
+8505 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8509 | /         recv!(
+8510 | |             s,
+8511 | |             [TcpRepr {
+8512 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+8516 | |             }]
+8517 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8521 | /         recv!(
+8522 | |             s,
+8523 | |             [TcpRepr {
+8524 | |                 seq_number: LOCAL_SEQ + 1 + 6 + 6,
+...    |
+8528 | |             }]
+8529 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8542 | /         recv!(
+8543 | |             s,
+8544 | |             [TcpRepr {
+8545 | |                 seq_number: LOCAL_SEQ + 1 + 6 + 6 + 6,
+...    |
+8549 | |             }]
+8550 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8712 | /         recv!(
+8713 | |             s,
+8714 | |             [TcpRepr {
+8715 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8720 | |             }]
+8721 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8735 | /         recv!(
+8736 | |             s,
+8737 | |             [TcpRepr {
+8738 | |                 seq_number: LOCAL_SEQ + 1 + 6,
+...    |
+8743 | |             }]
+8744 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8773 | /         recv!(
+8774 | |             s,
+8775 | |             [TcpRepr {
+8776 | |                 control: TcpControl::Syn,
+...    |
+8781 | |             }]
+8782 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8814 | /         recv!(
+8815 | |             s,
+8816 | |             [TcpRepr {
+8817 | |                 control: TcpControl::Syn,
+...    |
+8822 | |             }]
+8823 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8847 | /         recv!(
+8848 | |             s,
+8849 | |             [TcpRepr {
+8850 | |                 control: TcpControl::Syn,
+...    |
+8858 | |             }]
+8859 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8874 | /         recv!(
+8875 | |             s,
+8876 | |             [TcpRepr {
+8877 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8882 | |             }]
+8883 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8896 | /         recv!(
+8897 | |             s,
+8898 | |             [TcpRepr {
+8899 | |                 control: TcpControl::Syn,
+...    |
+8906 | |             }]
+8907 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8922 | /         recv!(
+8923 | |             s,
+8924 | |             [TcpRepr {
+8925 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8930 | |             }]
+8931 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+    --> src/socket/tcp.rs:2967:30
+     |
+2967 |                   let result = result.map(|mut repr| {
+     |                                ^^^^^^ cannot infer type
+...
+8944 | /         recv!(
+8945 | |             s,
+8946 | |             [TcpRepr {
+8947 | |                 seq_number: LOCAL_SEQ + 1,
+...    |
+8951 | |             }]
+8952 | |         );
+     | |_________- in this macro invocation
+     |
+     = note: this error originates in the macro `recv` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0282]: type annotations needed
+   --> src/wire/ip.rs:956:33
+    |
+956 | ...                   tcp_packet.verify_checksum(&repr.src_addr(), &repr.dst_addr());
+    |                       ^^^^^^^^^^ cannot infer type
+
+For more information about this error, try `rustc --explain E0282`.
+error: could not compile `smoltcp` (lib test) due to 195 previous errors

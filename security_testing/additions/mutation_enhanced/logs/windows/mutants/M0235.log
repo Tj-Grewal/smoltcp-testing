@@ -1,0 +1,15 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:20:59.476437+00:00
+FINISHED_UTC: 2026-04-03T19:21:02.828064+00:00
+DURATION_SECONDS: 3.351132
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+running 9 tests
+.........
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.00s
+
+
+=== STDERR ===

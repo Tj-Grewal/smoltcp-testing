@@ -1,0 +1,45 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:21:41.998365+00:00
+FINISHED_UTC: 2026-04-03T19:21:45.342675+00:00
+DURATION_SECONDS: 3.344193
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+.... 4/9
+wire::tcp::test::test_construct --- FAILED
+wire::tcp::test::test_deconstruct --- FAILED
+.. 8/9
+wire::tcp::test::test_emit --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_construct stdout ----
+
+thread 'wire::tcp::test::test_construct' (15852) panicked at src\wire\tcp.rs:430:43:
+slice index starts at 16 but ends at 12
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::tcp::test::test_deconstruct stdout ----
+
+thread 'wire::tcp::test::test_deconstruct' (16236) panicked at src\wire\tcp.rs:199:48:
+slice index starts at 16 but ends at 12
+
+---- wire::tcp::test::test_emit stdout ----
+
+thread 'wire::tcp::test::test_emit' (3216) panicked at src\wire\tcp.rs:430:43:
+slice index starts at 16 but ends at 12
+
+
+failures:
+    wire::tcp::test::test_construct
+    wire::tcp::test::test_deconstruct
+    wire::tcp::test::test_emit
+
+test result: FAILED. 6 passed; 3 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

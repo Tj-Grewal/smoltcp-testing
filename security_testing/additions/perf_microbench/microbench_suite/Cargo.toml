@@ -1,0 +1,8 @@
+[package]
+name = "microbench_suite"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+smoltcp = { path = "../../../../" }

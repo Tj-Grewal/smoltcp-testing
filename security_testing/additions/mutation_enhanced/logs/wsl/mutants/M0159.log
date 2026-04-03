@@ -1,0 +1,39 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:56:48.423303+00:00
+FINISHED_UTC: 2026-04-03T19:56:59.064611+00:00
+DURATION_SECONDS: 10.641281
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+............. 13/15
+wire::ipv4::test::test_parse --- FAILED
+wire::ipv4::test::test_deconstruct --- FAILED
+
+failures:
+
+---- wire::ipv4::test::test_parse stdout ----
+
+thread 'wire::ipv4::test::test_parse' (51166) panicked at src/wire/ipv4.rs:813:75:
+called `Result::unwrap()` on an `Err` value: Error
+
+---- wire::ipv4::test::test_deconstruct stdout ----
+
+thread 'wire::ipv4::test::test_deconstruct' (51163) panicked at src/wire/ipv4.rs:727:9:
+assertion `left == right` failed
+  left: 80
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::ipv4::test::test_deconstruct
+    wire::ipv4::test::test_parse
+
+test result: FAILED. 13 passed; 2 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::udp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:17:57.616010+00:00
+FINISHED_UTC: 2026-04-03T19:18:00.931165+00:00
+DURATION_SECONDS: 3.315663
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 8 tests
+....... 7/8
+wire::udp::test::test_emit --- FAILED
+
+failures:
+
+---- wire::udp::test::test_emit stdout ----
+
+thread 'wire::udp::test::test_emit' (18376) panicked at src\wire\udp.rs:179:43:
+range end index 6 out of range for slice of length 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::udp::test::test_emit
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

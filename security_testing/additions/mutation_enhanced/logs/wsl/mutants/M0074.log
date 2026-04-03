@@ -1,0 +1,41 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:41:19.104562+00:00
+FINISHED_UTC: 2026-04-03T19:41:30.283584+00:00
+DURATION_SECONDS: 11.178998
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.................................... 36/38
+storage::assembler::test::test_random --- FAILED
+storage::assembler::test::test_partial_add_back --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (26443) panicked at src/storage/assembler.rs:737:21:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(())
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (26435) panicked at src/storage/assembler.rs:444:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 4, data_size: 8 }, Contig { hole_size: 0, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 4, data_size: 12 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_random
+
+test result: FAILED. 36 passed; 2 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

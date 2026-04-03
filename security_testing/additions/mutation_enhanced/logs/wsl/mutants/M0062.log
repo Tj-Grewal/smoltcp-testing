@@ -1,0 +1,39 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:39:06.359462+00:00
+FINISHED_UTC: 2026-04-03T19:39:16.490735+00:00
+DURATION_SECONDS: 10.131247
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.................................... 36/38
+storage::assembler::test::test_random --- FAILED
+storage::assembler::test::test_shrink_next_hole --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (22639) panicked at src/storage/assembler.rs:740:25:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 94, data_size: 2 }, Contig { hole_size: 80, data_size: 2 }, Contig { hole_size: 21, data_size: 3 }, Contig { hole_size: 28, data_size: 2 }] }
+ right: Assembler { contigs: [Contig { hole_size: 94, data_size: 2 }, Contig { hole_size: 81, data_size: 2 }, Contig { hole_size: 21, data_size: 3 }, Contig { hole_size: 27, data_size: 2 }] }
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (22641) panicked at src/storage/assembler.rs:274:30:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 36 passed; 2 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

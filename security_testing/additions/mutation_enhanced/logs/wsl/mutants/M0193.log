@@ -1,0 +1,80 @@
+COMMAND: cargo test wire::udp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:03:06.964914+00:00
+FINISHED_UTC: 2026-04-03T20:03:17.494979+00:00
+DURATION_SECONDS: 10.530037
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 8 tests
+wire::udp::test::test_deconstruct --- FAILED
+wire::udp::test::test_checksum_omitted --- FAILED
+wire::udp::test::test_construct --- FAILED
+wire::udp::test::test_emit --- FAILED
+wire::udp::test::test_no_checksum --- FAILED
+wire::udp::test::test_parse --- FAILED
+wire::udp::test::test_zero_checksum --- FAILED
+wire::udp::test::test_impossible_len --- FAILED
+
+failures:
+
+---- wire::udp::test::test_deconstruct stdout ----
+
+thread 'wire::udp::test::test_deconstruct' (61022) panicked at src/wire/udp.rs:101:38:
+slice index starts at 6 but ends at 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::udp::test::test_checksum_omitted stdout ----
+
+thread 'wire::udp::test::test_checksum_omitted' (61020) panicked at src/wire/udp.rs:101:38:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_construct stdout ----
+
+thread 'wire::udp::test::test_construct' (61021) panicked at src/wire/udp.rs:186:43:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_emit stdout ----
+
+thread 'wire::udp::test::test_emit' (61023) panicked at src/wire/udp.rs:186:43:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_no_checksum stdout ----
+
+thread 'wire::udp::test::test_no_checksum' (61025) panicked at src/wire/udp.rs:186:43:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_parse stdout ----
+
+thread 'wire::udp::test::test_parse' (61026) panicked at src/wire/udp.rs:101:38:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_zero_checksum stdout ----
+
+thread 'wire::udp::test::test_zero_checksum' (61027) panicked at src/wire/udp.rs:186:43:
+slice index starts at 6 but ends at 4
+
+---- wire::udp::test::test_impossible_len stdout ----
+
+thread 'wire::udp::test::test_impossible_len' (61024) panicked at src/wire/udp.rs:422:9:
+assertion `left == right` failed
+  left: Ok(())
+ right: Err(Error)
+
+
+failures:
+    wire::udp::test::test_checksum_omitted
+    wire::udp::test::test_construct
+    wire::udp::test::test_deconstruct
+    wire::udp::test::test_emit
+    wire::udp::test::test_impossible_len
+    wire::udp::test::test_no_checksum
+    wire::udp::test::test_parse
+    wire::udp::test::test_zero_checksum
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

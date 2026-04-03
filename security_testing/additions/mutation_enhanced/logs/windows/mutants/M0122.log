@@ -1,0 +1,49 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:14:41.658509+00:00
+FINISHED_UTC: 2026-04-03T19:14:45.777713+00:00
+DURATION_SECONDS: 4.119370
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 15 tests
+........ 8/15
+wire::ipv4::test::test_construct --- FAILED
+wire::ipv4::test::test_emit --- FAILED
+... 13/15
+wire::ipv4::test::test_deconstruct --- FAILED
+.
+failures:
+
+---- wire::ipv4::test::test_construct stdout ----
+
+thread 'wire::ipv4::test::test_construct' (9668) panicked at src\wire\ipv4.rs:764:30:
+copy_from_slice: source slice length (10) does not match destination slice length (30)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::ipv4::test::test_emit stdout ----
+
+thread 'wire::ipv4::test::test_emit' (10056) panicked at src\wire\ipv4.rs:845:9:
+assertion `left == right` failed
+  left: [170, 0, 0, 255, 0, 0, 64, 0, 64, 1, 255, 255, 17, 18, 19, 20, 33, 34, 35, 36, 165, 165, 165, 165]
+ right: [69, 0, 0, 24, 0, 0, 64, 0, 64, 1, 210, 121, 17, 18, 19, 20, 33, 34, 35, 36, 170, 0, 0, 255]
+
+---- wire::ipv4::test::test_deconstruct stdout ----
+
+thread 'wire::ipv4::test::test_deconstruct' (5200) panicked at src\wire\ipv4.rs:729:9:
+assertion `left == right` failed
+  left: 17
+ right: 0
+
+
+failures:
+    wire::ipv4::test::test_construct
+    wire::ipv4::test::test_deconstruct
+    wire::ipv4::test::test_emit
+
+test result: FAILED. 12 passed; 3 failed; 0 ignored; 0 measured; 633 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

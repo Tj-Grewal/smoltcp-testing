@@ -1,0 +1,50 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:08:31.004147+00:00
+FINISHED_UTC: 2026-04-03T19:08:34.521445+00:00
+DURATION_SECONDS: 3.517330
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.. 2/38
+storage::assembler::test::test_add_then_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_full --- FAILED
+.................................
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (10700) panicked at src\storage\assembler.rs:649:9:
+assertion `left == right` failed
+  left: Ok(10)
+ right: Ok(0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (9756) panicked at src\storage\assembler.rs:665:9:
+assertion `left == right` failed
+  left: Ok(50)
+ right: Ok(60)
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full' (280) panicked at src\storage\assembler.rs:677:9:
+assertion `left == right` failed
+  left: Ok(3)
+ right: Err(TooManyHolesError)
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_add_then_remove_front_at_front_full
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+
+test result: FAILED. 35 passed; 3 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.35s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

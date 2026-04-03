@@ -1,0 +1,133 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:10:23.028953+00:00
+FINISHED_UTC: 2026-04-03T19:10:26.216456+00:00
+DURATION_SECONDS: 3.185873
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+...... 6/38
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+....... 14/38
+storage::assembler::test::test_issue_694 --- FAILED
+...... 21/38
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+. 25/38
+storage::assembler::test::test_partial_add_back --- FAILED
+storage::assembler::test::test_partial_add_back_overlap --- FAILED
+storage::assembler::test::test_partial_add_back_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_both_overlap --- FAILED
+storage::assembler::test::test_partial_add_both_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_front --- FAILED
+storage::assembler::test::test_partial_add_front_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_front_overlap --- FAILED
+.. 35/38
+storage::assembler::test::test_shrink_next_hole --- FAILED
+. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (9140) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_issue_694 stdout ----
+
+thread 'storage::assembler::test::test_issue_694' (11252) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (17160) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (19044) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (8580) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (9304) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_back_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap' (8504) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_back_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap_split' (11464) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_both_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap' (11968) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_both_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap_split' (8096) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_front stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front' (12164) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_front_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap_split' (7580) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_partial_add_front_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap' (13380) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (9636) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (13408) panicked at src\storage\assembler.rs:246:5:
+index out of bounds: the len is 4 but the index is 4
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_issue_694
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_partial_add_back_overlap
+    storage::assembler::test::test_partial_add_back_overlap_split
+    storage::assembler::test::test_partial_add_both_overlap
+    storage::assembler::test::test_partial_add_both_overlap_split
+    storage::assembler::test::test_partial_add_front
+    storage::assembler::test::test_partial_add_front_overlap
+    storage::assembler::test::test_partial_add_front_overlap_split
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 23 passed; 15 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

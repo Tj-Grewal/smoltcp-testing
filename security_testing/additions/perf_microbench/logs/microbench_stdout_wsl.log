@@ -1,0 +1,6 @@
+[runner] still running: cargo test --release -- --nocapture
+[runner] still running: cargo test --release -- --nocapture
+[runner] still running: cargo test --release -- --nocapture
+[runner] still running: cargo test --release -- --nocapture
+Microbench suite complete for platform=wsl
+Summary JSON: security_testing/additions/perf_microbench/artifacts/microbench_summary_wsl.json

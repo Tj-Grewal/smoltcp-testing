@@ -1,0 +1,15 @@
+COMMAND: rustup toolchain install nightly
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T21:19:46.876335+00:00
+FINISHED_UTC: 2026-04-03T21:19:47.126821+00:00
+DURATION_SECONDS: 0.247865
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+  nightly-x86_64-pc-windows-msvc unchanged - rustc 1.96.0-nightly (55e86c996 2026-04-02)
+
+
+=== STDERR ===
+info: syncing channel updates for nightly-x86_64-pc-windows-msvc
+info: checking for self-update (current version: 1.29.0)

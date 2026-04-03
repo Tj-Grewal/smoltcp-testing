@@ -1,0 +1,614 @@
+{
+  "platform": "wsl",
+  "total_mutants": 333,
+  "killed": 232,
+  "live": 101,
+  "overall_kill_ratio": 0.6966966966966966,
+  "per_file": {
+    "src/storage/assembler.rs": {
+      "total_mutants": 85,
+      "killed": 76,
+      "live": 9,
+      "kill_ratio": 0.8941176470588236
+    },
+    "src/wire/ipv4.rs": {
+      "total_mutants": 88,
+      "killed": 54,
+      "live": 34,
+      "kill_ratio": 0.6136363636363636
+    },
+    "src/wire/udp.rs": {
+      "total_mutants": 40,
+      "killed": 23,
+      "live": 17,
+      "kill_ratio": 0.575
+    },
+    "src/wire/tcp.rs": {
+      "total_mutants": 120,
+      "killed": 79,
+      "live": 41,
+      "kill_ratio": 0.6583333333333333
+    }
+  },
+  "per_routine": {
+    "src/storage/assembler.rs::add": {
+      "total_mutants": 47,
+      "killed": 45,
+      "live": 2,
+      "kill_ratio": 0.9574468085106383
+    },
+    "src/storage/assembler.rs::remove_front": {
+      "total_mutants": 5,
+      "killed": 3,
+      "live": 2,
+      "kill_ratio": 0.6
+    },
+    "src/storage/assembler.rs::peek_front": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/storage/assembler.rs::empty": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::add_contig_at": {
+      "total_mutants": 4,
+      "killed": 4,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::add_then_remove_front": {
+      "total_mutants": 7,
+      "killed": 6,
+      "live": 1,
+      "kill_ratio": 0.8571428571428571
+    },
+    "src/storage/assembler.rs::fmt": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/storage/assembler.rs::shrink_hole_to": {
+      "total_mutants": 2,
+      "killed": 1,
+      "live": 1,
+      "kill_ratio": 0.5
+    },
+    "src/storage/assembler.rs::remove_contig_at": {
+      "total_mutants": 6,
+      "killed": 6,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::has_data": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::shrink_hole_by": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::has_hole": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::total_size": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::back": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/storage/assembler.rs::format": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/storage/assembler.rs::front": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::format": {
+      "total_mutants": 13,
+      "killed": 11,
+      "live": 2,
+      "kill_ratio": 0.8461538461538461
+    },
+    "src/wire/ipv4.rs::broadcast": {
+      "total_mutants": 7,
+      "killed": 7,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::prefix_len": {
+      "total_mutants": 14,
+      "killed": 1,
+      "live": 13,
+      "kill_ratio": 0.07142857142857142
+    },
+    "src/wire/ipv4.rs::dscp": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/ipv4.rs::dont_frag": {
+      "total_mutants": 3,
+      "killed": 1,
+      "live": 2,
+      "kill_ratio": 0.3333333333333333
+    },
+    "src/wire/ipv4.rs::check_len": {
+      "total_mutants": 4,
+      "killed": 1,
+      "live": 3,
+      "kill_ratio": 0.25
+    },
+    "src/wire/ipv4.rs::netmask": {
+      "total_mutants": 10,
+      "killed": 10,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::ecn": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::more_frags": {
+      "total_mutants": 3,
+      "killed": 1,
+      "live": 2,
+      "kill_ratio": 0.3333333333333333
+    },
+    "src/wire/ipv4.rs::<module>": {
+      "total_mutants": 6,
+      "killed": 0,
+      "live": 6,
+      "kill_ratio": 0.0
+    },
+    "src/wire/ipv4.rs::header_len": {
+      "total_mutants": 3,
+      "killed": 3,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::contains_addr": {
+      "total_mutants": 3,
+      "killed": 3,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::new": {
+      "total_mutants": 3,
+      "killed": 2,
+      "live": 1,
+      "kill_ratio": 0.6666666666666666
+    },
+    "src/wire/ipv4.rs::verify_checksum": {
+      "total_mutants": 3,
+      "killed": 2,
+      "live": 1,
+      "kill_ratio": 0.6666666666666666
+    },
+    "src/wire/ipv4.rs::from_netmask": {
+      "total_mutants": 4,
+      "killed": 4,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::x_is_unicast": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/ipv4.rs::frag_offset": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::contains_subnet": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::version": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/ipv4.rs::network": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/udp.rs::verify_checksum": {
+      "total_mutants": 6,
+      "killed": 3,
+      "live": 3,
+      "kill_ratio": 0.5
+    },
+    "src/wire/udp.rs::test_zero_checksum": {
+      "total_mutants": 6,
+      "killed": 4,
+      "live": 2,
+      "kill_ratio": 0.6666666666666666
+    },
+    "src/wire/udp.rs::check_len": {
+      "total_mutants": 4,
+      "killed": 2,
+      "live": 2,
+      "kill_ratio": 0.5
+    },
+    "src/wire/udp.rs::<module>": {
+      "total_mutants": 7,
+      "killed": 5,
+      "live": 2,
+      "kill_ratio": 0.7142857142857143
+    },
+    "src/wire/udp.rs::test_no_checksum": {
+      "total_mutants": 7,
+      "killed": 2,
+      "live": 5,
+      "kill_ratio": 0.2857142857142857
+    },
+    "src/wire/udp.rs::pretty_print": {
+      "total_mutants": 5,
+      "killed": 5,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/udp.rs::test_emit": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/udp.rs::verify_partial_checksum": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/udp.rs::test_impossible_len": {
+      "total_mutants": 2,
+      "killed": 1,
+      "live": 1,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::sub": {
+      "total_mutants": 6,
+      "killed": 3,
+      "live": 3,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::buffer_len": {
+      "total_mutants": 9,
+      "killed": 9,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::parse": {
+      "total_mutants": 14,
+      "killed": 13,
+      "live": 1,
+      "kill_ratio": 0.9285714285714286
+    },
+    "src/wire/tcp.rs::set_rst": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::set_ece": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::urg": {
+      "total_mutants": 3,
+      "killed": 1,
+      "live": 2,
+      "kill_ratio": 0.3333333333333333
+    },
+    "src/wire/tcp.rs::set_cwr": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::set_ns": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::header_len": {
+      "total_mutants": 3,
+      "killed": 3,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::set_ack": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::verify_checksum": {
+      "total_mutants": 3,
+      "killed": 2,
+      "live": 1,
+      "kill_ratio": 0.6666666666666666
+    },
+    "src/wire/tcp.rs::cwr": {
+      "total_mutants": 3,
+      "killed": 0,
+      "live": 3,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::add": {
+      "total_mutants": 2,
+      "killed": 1,
+      "live": 1,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::clear_flags": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::check_len": {
+      "total_mutants": 4,
+      "killed": 2,
+      "live": 2,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::partial_cmp": {
+      "total_mutants": 12,
+      "killed": 10,
+      "live": 2,
+      "kill_ratio": 0.8333333333333334
+    },
+    "src/wire/tcp.rs::ack": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::max": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::syn": {
+      "total_mutants": 3,
+      "killed": 3,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::segment_len": {
+      "total_mutants": 5,
+      "killed": 0,
+      "live": 5,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::set_psh": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::fmt": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::set_header_len": {
+      "total_mutants": 4,
+      "killed": 4,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::rst": {
+      "total_mutants": 3,
+      "killed": 3,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::pretty_print": {
+      "total_mutants": 4,
+      "killed": 4,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::ns": {
+      "total_mutants": 3,
+      "killed": 0,
+      "live": 3,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::add_assign": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::set_ack_number": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::selective_ack_permitted": {
+      "total_mutants": 3,
+      "killed": 0,
+      "live": 3,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::selective_ack_ranges": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::verify_partial_checksum": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::fill_checksum": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::ece": {
+      "total_mutants": 2,
+      "killed": 0,
+      "live": 2,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::test_construct": {
+      "total_mutants": 4,
+      "killed": 4,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::payload": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::fin": {
+      "total_mutants": 2,
+      "killed": 2,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::set_fin": {
+      "total_mutants": 2,
+      "killed": 1,
+      "live": 1,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::set_urg": {
+      "total_mutants": 2,
+      "killed": 1,
+      "live": 1,
+      "kill_ratio": 0.5
+    },
+    "src/wire/tcp.rs::set_seq_number": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::set_syn": {
+      "total_mutants": 1,
+      "killed": 1,
+      "live": 0,
+      "kill_ratio": 1.0
+    },
+    "src/wire/tcp.rs::format": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    },
+    "src/wire/tcp.rs::min": {
+      "total_mutants": 1,
+      "killed": 0,
+      "live": 1,
+      "kill_ratio": 0.0
+    }
+  },
+  "first_five_live_mutants": [
+    {
+      "mutant_id": "M0004",
+      "file": "src/storage/assembler.rs",
+      "routine": "peek_front",
+      "operator": "const_0_1",
+      "line": 154,
+      "original": "0",
+      "replacement": "1",
+      "log_file": "security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0004.log"
+    },
+    {
+      "mutant_id": "M0009",
+      "file": "src/storage/assembler.rs",
+      "routine": "add",
+      "operator": "rel_lt_le",
+      "line": 224,
+      "original": " < ",
+      "replacement": " <= ",
+      "log_file": "security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0009.log"
+    },
+    {
+      "mutant_id": "M0015",
+      "file": "src/storage/assembler.rs",
+      "routine": "fmt",
+      "operator": "bool_and_or",
+      "line": 29,
+      "original": " && ",
+      "replacement": " || ",
+      "log_file": "security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0015.log"
+    },
+    {
+      "mutant_id": "M0020",
+      "file": "src/storage/assembler.rs",
+      "routine": "remove_front",
+      "operator": "rel_gt_ge",
+      "line": 289,
+      "original": " > ",
+      "replacement": " >= ",
+      "log_file": "security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0020.log"
+    },
+    {
+      "mutant_id": "M0038",
+      "file": "src/storage/assembler.rs",
+      "routine": "add",
+      "operator": "rel_gt_ge",
+      "line": 267,
+      "original": " > ",
+      "replacement": " >= ",
+      "log_file": "security_testing-v1/additions/mutation_enhanced/logs/wsl/mutants/M0038.log"
+    }
+  ],
+  "artifacts": {
+    "mutants_diff": "security_testing-v1/additions/mutation_enhanced/artifacts/mutants_wsl.diff",
+    "mutants_csv": "security_testing-v1/additions/mutation_enhanced/artifacts/mutation_results_wsl.csv",
+    "run_manifest": "security_testing-v1/additions/mutation_enhanced/artifacts/mutation_run_manifest_wsl.json"
+  }
+}

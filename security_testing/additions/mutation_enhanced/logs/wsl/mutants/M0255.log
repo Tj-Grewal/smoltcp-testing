@@ -1,0 +1,32 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:14:10.795622+00:00
+FINISHED_UTC: 2026-04-03T20:14:22.901217+00:00
+DURATION_SECONDS: 11.100432
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+........ 8/9
+wire::tcp::test::test_tcp_options --- FAILED
+
+failures:
+
+---- wire::tcp::test::test_tcp_options stdout ----
+
+thread 'wire::tcp::test::test_tcp_options' (77218) panicked at src/wire/tcp.rs:1363:9:
+assertion `left == right` failed
+  left: Ok(([], SackRange([Some((500, 1500)), Some((500, 1500)), Some((500, 1500))])))
+ right: Ok(([], SackRange([Some((500, 1500)), None, None])))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_tcp_options
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

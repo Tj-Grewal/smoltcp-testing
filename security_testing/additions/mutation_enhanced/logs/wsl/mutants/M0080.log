@@ -1,0 +1,30 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:42:25.908479+00:00
+FINISHED_UTC: 2026-04-03T19:42:36.630759+00:00
+DURATION_SECONDS: 10.722257
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+..................................... 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (28351) panicked at src/storage/assembler.rs:273:46:
+index out of bounds: the len is 4 but the index is 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    storage::assembler::test::test_random
+
+test result: FAILED. 37 passed; 1 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.02s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

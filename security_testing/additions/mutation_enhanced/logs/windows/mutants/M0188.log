@@ -1,0 +1,32 @@
+COMMAND: cargo test wire::udp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:18:21.292439+00:00
+FINISHED_UTC: 2026-04-03T19:18:24.655397+00:00
+DURATION_SECONDS: 3.363551
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 8 tests
+....... 7/8
+wire::udp::test::test_zero_checksum --- FAILED
+
+failures:
+
+---- wire::udp::test::test_zero_checksum stdout ----
+
+thread 'wire::udp::test::test_zero_checksum' (18756) panicked at src\wire\udp.rs:434:9:
+assertion `left == right` failed
+  left: 1
+ right: 65535
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::udp::test::test_zero_checksum
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

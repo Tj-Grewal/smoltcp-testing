@@ -1,0 +1,15 @@
+COMMAND: cargo test wire::udp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:05:36.413039+00:00
+FINISHED_UTC: 2026-04-03T20:05:48.549624+00:00
+DURATION_SECONDS: 11.043062
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+running 8 tests
+........
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.01s
+
+
+=== STDERR ===

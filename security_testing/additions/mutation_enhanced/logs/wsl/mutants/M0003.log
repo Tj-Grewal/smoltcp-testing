@@ -1,0 +1,58 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:28:00.300705+00:00
+FINISHED_UTC: 2026-04-03T19:28:11.687278+00:00
+DURATION_SECONDS: 11.386550
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+................ 16/38
+storage::assembler::test::test_boundary_case_remove_front --- FAILED
+........ 25/38
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+........ 34/38
+storage::assembler::test::test_trailing_data_remove_front --- FAILED
+. 36/38
+storage::assembler::test::test_trailing_hole_remove_front --- FAILED
+.
+failures:
+
+---- storage::assembler::test::test_boundary_case_remove_front stdout ----
+
+thread 'storage::assembler::test::test_boundary_case_remove_front' (1468) panicked at src/storage/assembler.rs:530:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 2 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (1467) panicked at src/storage/assembler.rs:168:9:
+assertion failed: self.contigs[at].has_data()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_trailing_data_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_data_remove_front' (1499) panicked at src/storage/assembler.rs:518:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 4, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_trailing_hole_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_hole_remove_front' (1500) panicked at src/storage/assembler.rs:168:9:
+assertion failed: self.contigs[at].has_data()
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_boundary_case_remove_front
+    storage::assembler::test::test_trailing_data_remove_front
+    storage::assembler::test::test_trailing_hole_remove_front
+
+test result: FAILED. 34 passed; 4 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.40s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

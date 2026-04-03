@@ -1,0 +1,31 @@
+COMMAND: cargo +nightly fuzz run ieee802154_header -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1/fuzz
+STARTED_UTC: 2026-04-03T21:29:23.095589+00:00
+FINISHED_UTC: 2026-04-03T21:32:26.312551+00:00
+DURATION_SECONDS: 176.232950
+EXIT_CODE: 0
+
+=== STDOUT ===
+
+=== STDERR ===
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.76s
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.78s
+     Running `target/x86_64-unknown-linux-gnu/release/ieee802154_header -artifact_prefix=/mnt/c/Users/TJ/Desktop/smoltcp-main-1/fuzz/artifacts/ieee802154_header/ -max_total_time=180 -timeout=10 -rss_limit_mb=4096 /mnt/c/Users/TJ/Desktop/smoltcp-main-1/fuzz/corpus/ieee802154_header`
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 259137670
+INFO: Loaded 1 modules   (700 inline 8-bit counters): 700 [0x5aa43e92b6f0, 0x5aa43e92b9ac), 
+INFO: Loaded 1 PC tables (700 PCs): 700 [0x5aa43e92b9b0,0x5aa43e92e570), 
+INFO:      111 files found in /mnt/c/Users/TJ/Desktop/smoltcp-main-1/fuzz/corpus/ieee802154_header
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: seed corpus: files: 111 min: 1b max: 128b total: 905b rss: 32Mb
+#112	INITED cov: 248 ft: 367 corp: 100/833b exec/s: 0 rss: 34Mb
+#524288	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 262144 rss: 103Mb
+#1048576	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 349525 rss: 166Mb
+#2097152	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 349525 rss: 294Mb
+#4194304	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 322638 rss: 532Mb
+#8388608	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 364722 rss: 537Mb
+#16777216	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 364722 rss: 539Mb
+#33554432	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 372827 rss: 539Mb
+#67108864	pulse  cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 374909 rss: 539Mb
+#67626732	DONE   cov: 248 ft: 367 corp: 100/833b lim: 4096 exec/s: 373628 rss: 539Mb
+Done 67626732 runs in 181 second(s)

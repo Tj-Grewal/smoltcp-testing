@@ -1,0 +1,30 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:22:41.395378+00:00
+FINISHED_UTC: 2026-04-03T20:22:51.993159+00:00
+DURATION_SECONDS: 10.597758
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+....... 7/9
+wire::tcp::test::test_deconstruct --- FAILED
+.
+failures:
+
+---- wire::tcp::test::test_deconstruct stdout ----
+
+thread 'wire::tcp::test::test_deconstruct' (89109) panicked at src/wire/tcp.rs:1232:9:
+assertion failed: !packet.syn()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    wire::tcp::test::test_deconstruct
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

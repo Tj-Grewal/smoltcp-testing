@@ -1,0 +1,52 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:32:02.918716+00:00
+FINISHED_UTC: 2026-04-03T19:32:13.541261+00:00
+DURATION_SECONDS: 10.622520
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.............................. 30/38
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+.... 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (9957) panicked at src/storage/assembler.rs:247:16:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (9959) panicked at src/storage/assembler.rs:247:16:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (9958) panicked at src/storage/assembler.rs:247:16:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (9969) panicked at src/storage/assembler.rs:247:16:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+
+test result: FAILED. 34 passed; 4 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

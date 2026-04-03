@@ -1,0 +1,38 @@
+COMMAND: cargo test wire::udp --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:18:07.628220+00:00
+FINISHED_UTC: 2026-04-03T19:18:11.038196+00:00
+DURATION_SECONDS: 3.409466
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 8 tests
+... 3/8
+wire::udp::test::test_checksum_omitted --- FAILED
+.. 6/8
+wire::udp::test::test_parse --- FAILED
+.
+failures:
+
+---- wire::udp::test::test_checksum_omitted stdout ----
+
+thread 'wire::udp::test::test_checksum_omitted' (15168) panicked at src\wire\udp.rs:498:10:
+called `Result::unwrap()` on an `Err` value: Error
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::udp::test::test_parse stdout ----
+
+thread 'wire::udp::test::test_parse' (15156) panicked at src\wire\udp.rs:467:10:
+called `Result::unwrap()` on an `Err` value: Error
+
+
+failures:
+    wire::udp::test::test_checksum_omitted
+    wire::udp::test::test_parse
+
+test result: FAILED. 6 passed; 2 failed; 0 ignored; 0 measured; 640 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

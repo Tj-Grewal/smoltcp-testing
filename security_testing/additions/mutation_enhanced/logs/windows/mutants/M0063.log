@@ -1,0 +1,60 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:11:24.550957+00:00
+FINISHED_UTC: 2026-04-03T19:11:28.111187+00:00
+DURATION_SECONDS: 3.560449
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+........ 8/38
+storage::assembler::test::test_boundary_case_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+......................... 35/38
+storage::assembler::test::test_trailing_data_remove_front --- FAILED
+storage::assembler::test::test_trailing_hole_remove_front --- FAILED
+.
+failures:
+
+---- storage::assembler::test::test_boundary_case_remove_front stdout ----
+
+thread 'storage::assembler::test::test_boundary_case_remove_front' (18748) panicked at src\storage\assembler.rs:530:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 2 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 1, data_size: 1 }, Contig { hole_size: 0, data_size: 0 }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (18860) panicked at src\storage\assembler.rs:666:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 60 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_trailing_data_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_data_remove_front' (11944) panicked at src\storage\assembler.rs:518:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 4 }, Contig { hole_size: 4, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 4, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_trailing_hole_remove_front stdout ----
+
+thread 'storage::assembler::test::test_trailing_hole_remove_front' (3336) panicked at src\storage\assembler.rs:511:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 0, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_boundary_case_remove_front
+    storage::assembler::test::test_trailing_data_remove_front
+    storage::assembler::test::test_trailing_hole_remove_front
+
+test result: FAILED. 34 passed; 4 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.35s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

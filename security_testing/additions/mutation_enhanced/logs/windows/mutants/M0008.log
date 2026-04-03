@@ -1,0 +1,61 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:08:21.028231+00:00
+FINISHED_UTC: 2026-04-03T19:08:24.277893+00:00
+DURATION_SECONDS: 3.244078
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.... 4/38
+storage::assembler::test::test_add_then_remove_front --- FAILED
+................. 22/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+.......... 34/38
+storage::assembler::test::test_shrink_next_hole --- FAILED
+.. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (14640) panicked at src\storage\assembler.rs:188:44:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (18184) panicked at src\storage\assembler.rs:188:44:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (6732) panicked at src\storage\assembler.rs:188:44:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (13124) panicked at src\storage\assembler.rs:188:44:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (4460) panicked at src\storage\assembler.rs:188:44:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

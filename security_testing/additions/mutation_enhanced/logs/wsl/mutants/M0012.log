@@ -1,0 +1,59 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:29:47.773517+00:00
+FINISHED_UTC: 2026-04-03T19:29:58.509692+00:00
+DURATION_SECONDS: 10.736151
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.................... 20/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_issue_694 --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+............. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (6154) panicked at src/storage/assembler.rs:254:22:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (6153) panicked at src/storage/assembler.rs:254:22:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_issue_694 stdout ----
+
+thread 'storage::assembler::test::test_issue_694' (6143) panicked at src/storage/assembler.rs:254:22:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (6155) panicked at src/storage/assembler.rs:254:22:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (6165) panicked at src/storage/assembler.rs:254:22:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_issue_694
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+
+test result: FAILED. 33 passed; 5 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.05s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

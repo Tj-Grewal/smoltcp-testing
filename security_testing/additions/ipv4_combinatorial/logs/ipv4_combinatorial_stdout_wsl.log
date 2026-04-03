@@ -1,0 +1,4 @@
+[runner] still running: cargo test -- --nocapture
+[runner] still running: cargo test -- --nocapture
+IPv4 combinatorial suite complete for platform=wsl
+Summary JSON: security_testing/additions/ipv4_combinatorial/artifacts/ipv4_combinatorial_summary_wsl.json

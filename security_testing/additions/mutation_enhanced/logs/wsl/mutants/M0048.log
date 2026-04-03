@@ -1,0 +1,133 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:36:32.307938+00:00
+FINISHED_UTC: 2026-04-03T19:36:42.958510+00:00
+DURATION_SECONDS: 10.650545
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+................ 16/38
+storage::assembler::test::test_issue_694 --- FAILED
+. 18/38
+storage::assembler::test::test_add_then_remove_front_at_front_touch --- FAILED
+.. 21/38
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+. 24/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_partial_add_back_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_back --- FAILED
+storage::assembler::test::test_partial_add_back_overlap --- FAILED
+storage::assembler::test::test_partial_add_both_overlap_split --- FAILED
+storage::assembler::test::test_partial_add_both_overlap --- FAILED
+storage::assembler::test::test_partial_add_front_overlap --- FAILED
+storage::assembler::test::test_partial_add_front_overlap_split --- FAILED
+.. 34/38
+storage::assembler::test::test_partial_add_front --- FAILED
+storage::assembler::test::test_shrink_next_hole --- FAILED
+. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_issue_694 stdout ----
+
+thread 'storage::assembler::test::test_issue_694' (18177) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_touch stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_touch' (18170) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (18187) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (18188) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (18189) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap_split' (18193) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back' (18191) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_back_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_back_overlap' (18192) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap_split' (18195) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_both_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_both_overlap' (18194) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_front_overlap stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap' (18197) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_front_overlap_split stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front_overlap_split' (18198) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_partial_add_front stdout ----
+
+thread 'storage::assembler::test::test_partial_add_front' (18196) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (18201) panicked at src/storage/assembler.rs:244:21:
+attempt to subtract with overflow
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (18199) panicked at src/storage/assembler.rs:252:21:
+attempt to subtract with overflow
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front_at_front_touch
+    storage::assembler::test::test_issue_694
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_partial_add_back
+    storage::assembler::test::test_partial_add_back_overlap
+    storage::assembler::test::test_partial_add_back_overlap_split
+    storage::assembler::test::test_partial_add_both_overlap
+    storage::assembler::test::test_partial_add_both_overlap_split
+    storage::assembler::test::test_partial_add_front
+    storage::assembler::test::test_partial_add_front_overlap
+    storage::assembler::test::test_partial_add_front_overlap_split
+    storage::assembler::test::test_random
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 23 passed; 15 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

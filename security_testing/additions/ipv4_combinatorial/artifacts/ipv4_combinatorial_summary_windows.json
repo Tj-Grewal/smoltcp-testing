@@ -1,0 +1,10 @@
+{
+  "platform": "windows",
+  "frame_csv": "security_testing\\additions\\ipv4_combinatorial\\ipv4_cases_windows.csv",
+  "generated_frames_csv_count": 216,
+  "test_command": "cargo test -- --nocapture",
+  "test_exit_code": 0,
+  "test_log": "security_testing\\additions\\ipv4_combinatorial\\logs\\windows\\ipv4_combinatorial.log",
+  "generated_cases_from_test": 216,
+  "matched_expectation_from_test": 216
+}

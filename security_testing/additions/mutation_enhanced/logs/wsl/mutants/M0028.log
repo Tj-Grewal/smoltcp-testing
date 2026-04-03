@@ -1,0 +1,60 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:32:47.198296+00:00
+FINISHED_UTC: 2026-04-03T19:32:58.712141+00:00
+DURATION_SECONDS: 10.603330
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.............................. 30/38
+storage::assembler::test::test_join_two --- FAILED
+storage::assembler::test::test_join_two_reversed --- FAILED
+storage::assembler::test::test_join_two_overlong --- FAILED
+.... 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_join_two stdout ----
+
+thread 'storage::assembler::test::test_join_two' (11225) panicked at src/storage/assembler.rs:548:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 30, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (11227) panicked at src/storage/assembler.rs:557:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 30, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 50 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (11226) panicked at src/storage/assembler.rs:566:9:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 10, data_size: 65 }, Contig { hole_size: 15, data_size: 10 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+ right: Assembler { contigs: [Contig { hole_size: 10, data_size: 65 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }, Contig { hole_size: 0, data_size: 0 }] }
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (11237) panicked at src/storage/assembler.rs:740:25:
+assertion `left == right` failed
+  left: Assembler { contigs: [Contig { hole_size: 137, data_size: 2 }, Contig { hole_size: 55, data_size: 3 }, Contig { hole_size: 9, data_size: 4 }, Contig { hole_size: 2, data_size: 1 }] }
+ right: Assembler { contigs: [Contig { hole_size: 137, data_size: 2 }, Contig { hole_size: 55, data_size: 3 }, Contig { hole_size: 9, data_size: 4 }, Contig { hole_size: 0, data_size: 0 }] }
+
+
+failures:
+    storage::assembler::test::test_join_two
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+
+test result: FAILED. 34 passed; 4 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

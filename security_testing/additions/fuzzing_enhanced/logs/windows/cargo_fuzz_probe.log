@@ -1,0 +1,30 @@
+COMMAND: cargo fuzz --help
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T21:19:46.800718+00:00
+FINISHED_UTC: 2026-04-03T21:19:46.876335+00:00
+DURATION_SECONDS: 0.084314
+EXIT_CODE: 0
+
+=== STDOUT ===
+A `cargo` subcommand for fuzzing with `libFuzzer`! Easy to use!
+
+Usage: cargo-fuzz.exe <COMMAND>
+
+Commands:
+  init      Initialize the fuzz directory
+  add       Add a new fuzz target
+  build     Build fuzz targets [aliases: b]
+  check     Type-check the fuzz targets [aliases: c]
+  fmt       Print the `std::fmt::Debug` output for an input
+  list      List all the existing fuzz targets [aliases: ls]
+  run       Run a fuzz target [aliases: r]
+  cmin      Minify a corpus
+  tmin      Minify a test case
+  coverage  Run program on the generated corpus and generate coverage information [aliases: cov]
+  help      Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+
+=== STDERR ===

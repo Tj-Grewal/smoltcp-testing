@@ -1,0 +1,17 @@
+COMMAND: cargo test wire::ipv4 --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:43:53.420025+00:00
+FINISHED_UTC: 2026-04-03T19:44:00.388667+00:00
+DURATION_SECONDS: 6.028581
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+=== STDERR ===
+error: expected expression, found `>`
+  --> src/wire/ipv4.rs:76:24
+   |
+76 |                 mask > > 1;
+   |                        ^ expected expression
+
+error: could not compile `smoltcp` (lib test) due to 1 previous error

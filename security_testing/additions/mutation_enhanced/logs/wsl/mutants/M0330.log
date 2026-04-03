@@ -1,0 +1,39 @@
+COMMAND: cargo test wire::tcp --quiet
+CWD: /mnt/c/Users/TJ/Desktop/smoltcp-main-1
+STARTED_UTC: 2026-04-03T20:27:40.633311+00:00
+FINISHED_UTC: 2026-04-03T20:27:52.759761+00:00
+DURATION_SECONDS: 11.351558
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 9 tests
+...... 6/9
+wire::tcp::test::test_deconstruct --- FAILED
+wire::tcp::test::test_parse --- FAILED
+.
+failures:
+
+---- wire::tcp::test::test_deconstruct stdout ----
+
+thread 'wire::tcp::test::test_deconstruct' (96334) panicked at src/wire/tcp.rs:1232:9:
+assertion failed: !packet.syn()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- wire::tcp::test::test_parse stdout ----
+
+thread 'wire::tcp::test::test_parse' (96339) panicked at src/wire/tcp.rs:1321:9:
+assertion `left == right` failed
+  left: Repr { src_port: 48896, dst_port: 80, control: None, seq_number: SeqNumber(19088743), ack_number: None, window_len: 291, window_scale: None, max_seg_size: None, sack_permitted: false, sack_ranges: [None, None, None], timestamp: None, payload: [170, 0, 0, 255] }
+ right: Repr { src_port: 48896, dst_port: 80, control: Syn, seq_number: SeqNumber(19088743), ack_number: None, window_len: 291, window_scale: None, max_seg_size: None, sack_permitted: false, sack_ranges: [None, None, None], timestamp: None, payload: [170, 0, 0, 255] }
+
+
+failures:
+    wire::tcp::test::test_deconstruct
+    wire::tcp::test::test_parse
+
+test result: FAILED. 7 passed; 2 failed; 0 ignored; 0 measured; 639 filtered out; finished in 0.01s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

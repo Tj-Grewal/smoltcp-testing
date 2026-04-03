@@ -1,0 +1,51 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:09:10.462711+00:00
+FINISHED_UTC: 2026-04-03T19:09:13.971359+00:00
+DURATION_SECONDS: 3.517406
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+.... 4/38
+storage::assembler::test::test_add_then_remove_front --- FAILED
+storage::assembler::test::test_add_then_remove_front_at_front_full --- FAILED
+...... 12/38
+storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0 --- FAILED
+.........................
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (12860) panicked at src\storage\assembler.rs:649:9:
+assertion `left == right` failed
+  left: Ok(10)
+ right: Ok(0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full' (7176) panicked at src\storage\assembler.rs:677:9:
+assertion `left == right` failed
+  left: Ok(3)
+ right: Err(TooManyHolesError)
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0 stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0' (17316) panicked at src\storage\assembler.rs:687:9:
+assertion `left == right` failed
+  left: Err(TooManyHolesError)
+ right: Ok(3)
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_add_then_remove_front_at_front_full
+    storage::assembler::test::test_add_then_remove_front_at_front_full_offset_0
+
+test result: FAILED. 35 passed; 3 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.36s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

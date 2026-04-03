@@ -1,0 +1,77 @@
+COMMAND: cargo test storage::assembler --quiet
+CWD: C:\Users\TJ\Desktop\smoltcp-main-1
+STARTED_UTC: 2026-04-03T19:11:12.597623+00:00
+FINISHED_UTC: 2026-04-03T19:11:16.055295+00:00
+DURATION_SECONDS: 3.460778
+EXIT_CODE: 101
+
+=== STDOUT ===
+
+running 38 tests
+..... 5/38
+storage::assembler::test::test_add_then_remove_front --- FAILED
+..... 11/38
+storage::assembler::test::test_add_then_remove_front_at_front_full --- FAILED
+.......... 22/38
+storage::assembler::test::test_join_two_reversed --- FAILED
+... 26/38
+storage::assembler::test::test_join_two_overlong --- FAILED
+....... 34/38
+storage::assembler::test::test_rejected_add_keeps_state --- FAILED
+storage::assembler::test::test_shrink_next_hole --- FAILED
+. 37/38
+storage::assembler::test::test_random --- FAILED
+
+failures:
+
+---- storage::assembler::test::test_add_then_remove_front stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front' (18720) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- storage::assembler::test::test_add_then_remove_front_at_front_full stdout ----
+
+thread 'storage::assembler::test::test_add_then_remove_front_at_front_full' (10520) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_join_two_reversed stdout ----
+
+thread 'storage::assembler::test::test_join_two_reversed' (3448) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_join_two_overlong stdout ----
+
+thread 'storage::assembler::test::test_join_two_overlong' (17144) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_rejected_add_keeps_state stdout ----
+
+thread 'storage::assembler::test::test_rejected_add_keeps_state' (5964) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_shrink_next_hole stdout ----
+
+thread 'storage::assembler::test::test_shrink_next_hole' (2312) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+---- storage::assembler::test::test_random stdout ----
+
+thread 'storage::assembler::test::test_random' (16964) panicked at src\storage\assembler.rs:158:9:
+index out of bounds: the len is 4 but the index is 4
+
+
+failures:
+    storage::assembler::test::test_add_then_remove_front
+    storage::assembler::test::test_add_then_remove_front_at_front_full
+    storage::assembler::test::test_join_two_overlong
+    storage::assembler::test::test_join_two_reversed
+    storage::assembler::test::test_random
+    storage::assembler::test::test_rejected_add_keeps_state
+    storage::assembler::test::test_shrink_next_hole
+
+test result: FAILED. 31 passed; 7 failed; 0 ignored; 0 measured; 610 filtered out; finished in 0.00s
+
+
+=== STDERR ===
+error: test failed, to rerun pass `--lib`

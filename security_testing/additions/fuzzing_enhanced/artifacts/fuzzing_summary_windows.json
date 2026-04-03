@@ -1,0 +1,54 @@
+{
+  "platform": "windows",
+  "seconds_per_target": 180,
+  "targets": [
+    {
+      "target": "packet_parser",
+      "command": "cargo +nightly fuzz run packet_parser -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096",
+      "exit_code": 1,
+      "fuzz_log": "security_testing\\additions\\fuzzing_enhanced\\logs\\windows\\fuzz_packet_parser.log",
+      "artifact_count": 0,
+      "artifacts": [],
+      "reproductions": []
+    },
+    {
+      "target": "tcp_headers",
+      "command": "cargo +nightly fuzz run tcp_headers -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096",
+      "exit_code": 1,
+      "fuzz_log": "security_testing\\additions\\fuzzing_enhanced\\logs\\windows\\fuzz_tcp_headers.log",
+      "artifact_count": 0,
+      "artifacts": [],
+      "reproductions": []
+    },
+    {
+      "target": "dhcp_header",
+      "command": "cargo +nightly fuzz run dhcp_header -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096",
+      "exit_code": 1,
+      "fuzz_log": "security_testing\\additions\\fuzzing_enhanced\\logs\\windows\\fuzz_dhcp_header.log",
+      "artifact_count": 0,
+      "artifacts": [],
+      "reproductions": []
+    },
+    {
+      "target": "ieee802154_header",
+      "command": "cargo +nightly fuzz run ieee802154_header -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096",
+      "exit_code": 1,
+      "fuzz_log": "security_testing\\additions\\fuzzing_enhanced\\logs\\windows\\fuzz_ieee802154_header.log",
+      "artifact_count": 0,
+      "artifacts": [],
+      "reproductions": []
+    },
+    {
+      "target": "sixlowpan_packet",
+      "command": "cargo +nightly fuzz run sixlowpan_packet -- -max_total_time=180 -timeout=10 -rss_limit_mb=4096",
+      "exit_code": 1,
+      "fuzz_log": "security_testing\\additions\\fuzzing_enhanced\\logs\\windows\\fuzz_sixlowpan_packet.log",
+      "artifact_count": 0,
+      "artifacts": [],
+      "reproductions": []
+    }
+  ],
+  "discovered_error_instances": [],
+  "distinct_error_signatures": [],
+  "distinct_error_count": 0
+}
