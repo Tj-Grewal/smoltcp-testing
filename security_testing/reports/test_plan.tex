@@ -1,0 +1,333 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+
+% ── Color definitions ──
+\definecolor{codeblue}{HTML}{3B82F6}
+\definecolor{codegray}{HTML}{64748B}
+\definecolor{codegreen}{HTML}{10B981}
+\definecolor{codered}{HTML}{EF4444}
+\definecolor{codebg}{HTML}{F1F5F9}
+\definecolor{sectionblue}{HTML}{1E40AF}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},
+  keywordstyle=\color{codeblue}\bfseries,
+  commentstyle=\color{codegray}\itshape,
+  stringstyle=\color{codegreen},
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{codegray!30},
+  numbers=left,
+  numberstyle=\tiny\color{codegray},
+  numbersep=8pt,
+  tabsize=4,
+  showstringspaces=false,
+  captionpos=b,
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textsc{smoltcp Master Test Plan}}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\small\textit{Test Planning Document}}
+
+\titleformat{\section}{\Large\bfseries\color{sectionblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{sectionblue!80}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{sectionblue!60}}{\thesubsubsection}{1em}{}
+
+\setstretch{1.15}
+
+\begin{document}
+
+% ══════════════════════════════════════════════════════════════════
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Huge\bfseries\color{sectionblue} Master Test Plan\\[0.4cm] smoltcp v0.12.0\par}
+\vspace{1.5cm}
+{\Large Security \& Quality Testing Campaign\par}
+\vspace{1cm}
+{\large TCP/IP Stack Quality Assurance\par}
+\vspace{2cm}
+{\large\textit{Test Planning Document}\par}
+\vspace{0.5cm}
+{\large April 2026\par}
+\vfill
+{\small Document version: 1.0\par}
+{\small Platforms: Windows 10 (MSVC) | WSL Ubuntu 24.04.2 LTS\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Plan Overview}
+% ══════════════════════════════════════════════════════════════════
+
+\subsection{Purpose}
+
+This Master Test Plan outlines the strategy, environment, resources, schedule, and evaluation criteria for a comprehensive quality assessment of smoltcp v0.12.0, an open-source, event-driven TCP/IP stack written in Rust. The plan coordinates eight distinct testing phases spanning mutation adequacy, functional testing, security analysis, conformance testing, performance evaluation, white-box adequacy, safety assessment, and defect correction.
+
+\subsection{Scope}
+
+Testing focuses on four high-complexity source modules selected for their critical role in packet processing:
+
+\begin{itemize}[noitemsep]
+\item \texttt{src/storage/assembler.rs} --- TCP segment reassembly with gap tracking
+\item \texttt{src/wire/ipv4.rs} --- IPv4 header parsing, validation, and emission
+\item \texttt{src/wire/udp.rs} --- UDP datagram parsing and checksum verification
+\item \texttt{src/wire/tcp.rs} --- TCP segment parsing, flag extraction, and option handling
+\end{itemize}
+
+\subsection{Standards and References}
+
+\begin{itemize}[noitemsep]
+\item RFC 791 --- Internet Protocol (IPv4)
+\item RFC 768 --- User Datagram Protocol (UDP)
+\item RFC 793 --- Transmission Control Protocol (TCP)
+\item RFC 2460 --- Internet Protocol, Version 6 (IPv6)
+\item IEEE 802.15.4 --- Low-Rate Wireless Personal Area Networks
+\item IETF RFC 6282 --- 6LoWPAN Header Compression
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Objectives}
+% ══════════════════════════════════════════════════════════════════
+
+The overall testing objectives are:
+
+\begin{enumerate}[noitemsep]
+\item \textbf{Evaluate test adequacy} via mutation analysis on four complex modules and quantify kill ratios per module and per operator class.
+\item \textbf{Improve test suite} based on surviving non-equivalent mutants by adding targeted assertions.
+\item \textbf{Perform functional testing} using the category-partition method with combinatorial test generation for UDP and IPv4 parsing.
+\item \textbf{Conduct security fuzzing} with coverage-guided mutation (libFuzzer) to identify crash-inducing inputs.
+\item \textbf{Verify conformance} against RFC 791 and RFC 768 header parsing requirements.
+\item \textbf{Benchmark performance} using loopback throughput measurement and microbenchmarks.
+\item \textbf{Measure white-box coverage} using LLVM source-based coverage instrumentation.
+\item \textbf{Assess software safety} through panic-safety testing and unsafe code inventory.
+\item \textbf{Apply defect corrections} for any discovered specification deviations.
+
+\end{enumerate}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Environment}
+% ══════════════════════════════════════════════════════════════════
+
+\subsection{Hardware}
+
+All testing is conducted on a single host machine with the following specifications:
+\begin{itemize}[noitemsep]
+\item CPU: AMD/Intel x86\_64 processor
+\item RAM: 16 GB minimum
+\item Storage: SSD with $\geq$50 GB free space for build artifacts
+\end{itemize}
+
+\subsection{Software Configurations}
+
+Two platform configurations are tested:
+
+\begin{table}[H]
+\centering
+\caption{Test environment configurations.}
+\begin{tabular}{lll}
+\toprule
+\textbf{Attribute} & \textbf{Windows} & \textbf{WSL} \\
+\midrule
+Operating System   & Windows 10 (64-bit) & Ubuntu 24.04.2 LTS \\
+Shell              & PowerShell 7.x      & Bash 5.x \\
+Rust Stable        & 1.91+               & 1.91+ \\
+Rust Nightly       & 1.96.0-nightly      & 1.96.0-nightly \\
+C Compiler         & MSVC (cl.exe)       & GCC/Clang \\
+cargo-fuzz         & 0.13.1              & 0.13.1 \\
+cargo-llvm-cov     & 0.8.5               & 0.8.5 \\
+Python             & 3.12+               & 3.12+ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Configuration Strategy}
+
+Given resource constraints, the following testing strategy is applied:
+\begin{itemize}[noitemsep]
+\item Both platforms are tested extensively (``extreme point'' approach).
+\item Core functional tests (mutation, partitioning, conformance, safety, coverage) run on both platforms.
+\item Fuzzing is Linux-only due to MSVC/libFuzzer incompatibility.
+\item Performance results are compared across platforms to identify OS-specific bottlenecks.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Suites}
+% ══════════════════════════════════════════════════════════════════
+
+\subsection{Suite 1: Mutation Adequacy}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Evaluate test suite effectiveness via first-order mutation analysis.
+\item \textbf{Method:} Custom Python mutant generator applying 7 operator classes.
+\item \textbf{Target files:} 4 source modules, $\geq$300 total mutants.
+\item \textbf{Oracle:} Module-level unit test suite (cargo test --lib).
+\item \textbf{Metrics:} Kill ratio $K/(M-E)$ per file and overall.
+\item \textbf{Deliverables:} \texttt{mutants.diff}, \texttt{mutation\_results\_\{platform\}.csv}, per-mutant execution logs.
+\end{itemize}
+
+\begin{lstlisting}[language=bash, caption={Mutation testing invocation.}]
+python mutate_and_test.py --source src/storage/assembler.rs \
+    --operators rel,arith,bool,const,bit,assign,shift \
+    --output-dir logs/ --platform windows
+\end{lstlisting}
+
+\subsection{Suite 2: Input Space Partitioning (UDP)}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Systematic functional testing of UDP parsing via the category-partition method.
+\item \textbf{Method:} Full combinatorial coverage of 6 input dimensions.
+\item \textbf{Total cases:} 480 test frames.
+\item \textbf{Oracle:} Expected \texttt{new\_checked()} and \texttt{parse()} outcomes derived from RFC 768 and smoltcp behavior.
+\item \textbf{Deliverables:} \texttt{udp\_cases.csv}, partition suite source code, execution logs.
+\end{itemize}
+
+\subsection{Suite 3: IPv4 Combinatorial}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Category-partition testing of IPv4 header parsing.
+\item \textbf{Method:} Combinatorial coverage of version, IHL, total length, fragmentation, and checksum.
+\item \textbf{Total cases:} 216 test frames.
+\item \textbf{Oracle:} Aligned to smoltcp's actual fragmentation and header-length behavior.
+\item \textbf{Deliverables:} \texttt{ipv4\_cases\_\{platform\}.csv}, JSON summary.
+\end{itemize}
+
+\subsection{Suite 4: Security Fuzzing}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Discover crash-inducing inputs via coverage-guided mutation fuzzing.
+\item \textbf{Method:} libFuzzer (via cargo-fuzz) with sanitizer instrumentation.
+\item \textbf{Targets:} 5 fuzz harnesses (\texttt{packet\_parser}, \texttt{tcp\_headers}, \texttt{dhcp\_header}, \texttt{ieee802154\_header}, \texttt{sixlowpan\_packet}).
+\item \textbf{Time budget:} 60s initial + 180s extended per target.
+\item \textbf{Oracle:} Process exit code (crash = failure); sanitizer reports for root cause.
+\item \textbf{Deliverables:} Crash artifacts, reproduction logs, coverage statistics.
+\end{itemize}
+
+\subsection{Suite 5: Conformance Testing}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Verify adherence to RFC 791 (IPv4) and RFC 768 (UDP).
+\item \textbf{Method:} Crafted packets testing specific header validation rules.
+\item \textbf{Total cases:} 9 hand-crafted conformance assertions.
+\item \textbf{Oracle:} RFC-derived expected accept/reject decisions.
+\item \textbf{Deliverables:} \texttt{conformance\_results.csv}, per-platform logs.
+\end{itemize}
+
+\subsection{Suite 6: Performance Testing}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Measure raw throughput and per-operation latency.
+\item \textbf{Methods:} Loopback throughput benchmark (128 MB transfer, 5 runs) and microbenchmarks (5 repetitions).
+\item \textbf{Metrics:} Gbps throughput, ns/iteration latency.
+\item \textbf{Deliverables:} CSV metrics per platform, execution logs.
+\end{itemize}
+
+\subsection{Suite 7: White-Box Adequacy}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Quantify source code coverage.
+\item \textbf{Tool:} \texttt{cargo-llvm-cov v0.8.5} (LLVM source-based coverage).
+\item \textbf{Metrics:} Region, function, and line coverage percentages.
+\item \textbf{Deliverables:} Coverage reports, LCOV artifacts, per-module breakdowns.
+\end{itemize}
+
+\subsection{Suite 8: Software Safety}
+
+\begin{itemize}[noitemsep]
+\item \textbf{Objective:} Verify panic-free operation on invalid inputs and audit unsafe code usage.
+\item \textbf{Methods:} Panic-safety test suite; \texttt{grep -r ``unsafe''} inventory with manual classification.
+\item \textbf{Deliverables:} Safety test logs, \texttt{unsafe\_inventory.csv}.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Evaluation Criteria}
+% ══════════════════════════════════════════════════════════════════
+
+\begin{table}[H]
+\centering
+\caption{Evaluation criteria for each test dimension.}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Dimension} & \textbf{Criteria} \\
+\midrule
+Mutation adequacy     & Kill ratio $K/(M-E) \geq 70\%$ per file; overall $\geq 65\%$ \\
+Input partitioning    & Pairwise coverage achieved; $\geq 95\%$ tests passing \\
+Fuzzing               & $\geq 6$ distinct error signatures documented (or justification if fewer) \\
+Conformance           & All tests pass or deviations documented with rationale \\
+Performance           & Median throughput and variance reported; cross-platform comparison \\
+White-box adequacy    & $\geq 80\%$ line coverage for target modules \\
+Safety                & No panics on invalid inputs; all unsafe usage reviewed \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Execution Schedule}
+% ══════════════════════════════════════════════════════════════════
+
+Testing follows a sequential single-threaded execution model:
+
+\begin{enumerate}[noitemsep]
+\item \textbf{Phase 1 --- Infrastructure:} Create test suites, harnesses, and automation scripts.
+\item \textbf{Phase 2 --- Windows execution:} Run all suites sequentially on Windows (PowerShell).
+\item \textbf{Phase 3 --- WSL execution:} Run all suites sequentially on WSL (Bash).
+\item \textbf{Phase 4 --- Enhanced suites:} Execute IPv4 combinatorial, microbenchmarks, enhanced fuzzing, and white-box additions.
+\item \textbf{Phase 5 --- Analysis:} Analyze surviving mutants, compare cross-platform results, identify defects.
+\item \textbf{Phase 6 --- Remediation:} Apply defect corrections, re-run relevant suites to verify fixes.
+\item \textbf{Phase 7 --- Reporting:} Generate final report, test plan, and presentation.
+\end{enumerate}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Test Deliverables}
+% ══════════════════════════════════════════════════════════════════
+
+\begin{itemize}[noitemsep]
+\item \textbf{Test automation scripts:} Python runners, PowerShell/Bash wrappers for each suite.
+\item \textbf{Documented test cases:} CSV files with inputs, expected outputs, and actual results.
+\item \textbf{Mutation artifacts:} Unified diff file (\texttt{mutants.diff}) and per-mutant CSV results.
+\item \textbf{Test logs:} Per-suite, per-platform execution logs with timestamps.
+\item \textbf{Coverage reports:} LLVM-cov and LCOV formatted coverage data.
+\item \textbf{Incident reports:} Conformance deviations and portability failures.
+\item \textbf{Statistical summaries:} JSON summary files for each enhanced suite.
+\item \textbf{Final report:} Comprehensive write-up with figures and analysis.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+\section{Risk Assessment}
+% ══════════════════════════════════════════════════════════════════
+
+\begin{table}[H]
+\centering
+\caption{Testing risks and mitigations.}
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+\textbf{Risk} & \textbf{Impact} & \textbf{Mitigation} \\
+\midrule
+MSVC/libFuzzer incompatibility & No fuzzing on Windows & Defer to WSL; document as portability gap \\
+Long fuzzing campaigns & Limited time budget per target & Use 60s+180s budgets; prioritize coverage \\
+Equivalent mutants inflate scores & Misleading adequacy ratios & Manual equivalence classification for top survivors \\
+TunTap Linux-only gating & No official example on Windows & Develop custom loopback harness \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{document}
