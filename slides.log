@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  9 APR 2026 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  9 APR 2026 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **slides.tex
-(./slides.tex
+(./security_testing/reports/slides.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/beamer/beamer.cls
@@ -893,7 +893,8 @@ File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ef
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count372
-) (./slides.aux)
+)
+No file slides.aux.
 \openout1 = `slides.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
@@ -914,7 +915,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
 LaTeX Font Info:    ... okay on input line 82.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -974,7 +974,6 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package hyperref Info: Link coloring OFF on input line 82.
- (./slides.out) (./slides.out)
 \@outlinefile=\write5
 \openout5 = `slides.out'.
 
@@ -1048,7 +1047,9 @@ Dictionary: translator-numbers-dictionary, Language: English
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/translator/translator-theore
 m-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./slides.nav) [1
+)
+No file slides.nav.
+[1
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/us
 r/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
@@ -1130,12 +1131,26 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 203.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 203.
-<figures/fig3_operator_distribution.png, id=39, 578.16pt x 361.35pt>
-File: figures/fig3_operator_distribution.png Graphic file (type png)
-<use figures/fig3_operator_distribution.png>
-Package pdftex.def Info: figures/fig3_operator_distribution.png  used on input 
-line 203.
-(pdftex.def)             Requested size: 189.20543pt x 118.25339pt.
+
+
+LaTeX Warning: File `figures/fig3_operator_distribution.png' not found on input
+ line 203.
+
+
+! Package pdftex.def Error: File `figures/fig3_operator_distribution.png' not f
+ound: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.203 \end{frame}
+                 
+? H
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+? return
+OK, entering \nonstopmode...
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 203--203
 [][]  
@@ -1143,19 +1158,41 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 203--203
 
 [5
 
- <./figures/fig3_operator_distribution.png>]
-<figures/fig1_mutation_kill_ratio.png, id=47, 578.16pt x 361.35pt>
-File: figures/fig1_mutation_kill_ratio.png Graphic file (type png)
-<use figures/fig1_mutation_kill_ratio.png>
-Package pdftex.def Info: figures/fig1_mutation_kill_ratio.png  used on input li
-ne 231.
-(pdftex.def)             Requested size: 153.2646pt x 95.79037pt.
-<figures/fig2_mutation_pie.png, id=48, 433.62pt x 433.62pt>
-File: figures/fig2_mutation_pie.png Graphic file (type png)
-<use figures/fig2_mutation_pie.png>
-Package pdftex.def Info: figures/fig2_mutation_pie.png  used on input line 231.
+]
 
-(pdftex.def)             Requested size: 95.78706pt x 95.78706pt.
+LaTeX Warning: File `figures/fig1_mutation_kill_ratio.png' not found on input l
+ine 231.
+
+
+! Package pdftex.def Error: File `figures/fig1_mutation_kill_ratio.png' not fou
+nd: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.231 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `figures/fig2_mutation_pie.png' not found on input line 231
+.
+
+
+! Package pdftex.def Error: File `figures/fig2_mutation_pie.png' not found: usi
+ng draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.231 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 231.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1171,7 +1208,7 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 231--231
 
 [6
 
- <./figures/fig1_mutation_kill_ratio.png> <./figures/fig2_mutation_pie.png>]
+]
 Overfull \hbox (1.0pt too wide) in paragraph at lines 253--253
 [][]  
  []
@@ -1180,12 +1217,23 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 253--253
 
 {/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/loc
 al/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<figures/fig7_partition_heatmap.png, id=65, 505.89pt x 361.35pt>
-File: figures/fig7_partition_heatmap.png Graphic file (type png)
-<use figures/fig7_partition_heatmap.png>
-Package pdftex.def Info: figures/fig7_partition_heatmap.png  used on input line
- 280.
-(pdftex.def)             Requested size: 174.0768pt x 124.34058pt.
+
+LaTeX Warning: File `figures/fig7_partition_heatmap.png' not found on input lin
+e 280.
+
+
+! Package pdftex.def Error: File `figures/fig7_partition_heatmap.png' not found
+: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.280 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 280--280
 [][]  
@@ -1193,8 +1241,7 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 280--280
 
 [8
 
-{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <./f
-igures/fig7_partition_heatmap.png>]
+{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
 Overfull \hbox (1.0pt too wide) in paragraph at lines 296--296
 [][]  
  []
@@ -1202,12 +1249,23 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 296--296
 [9
 
 ]
-<figures/fig9_fuzzing_coverage.png, id=78, 578.16pt x 361.35pt>
-File: figures/fig9_fuzzing_coverage.png Graphic file (type png)
-<use figures/fig9_fuzzing_coverage.png>
-Package pdftex.def Info: figures/fig9_fuzzing_coverage.png  used on input line 
-322.
-(pdftex.def)             Requested size: 181.63615pt x 113.5226pt.
+
+LaTeX Warning: File `figures/fig9_fuzzing_coverage.png' not found on input line
+ 322.
+
+
+! Package pdftex.def Error: File `figures/fig9_fuzzing_coverage.png' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.322 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 322--322
 [][]  
@@ -1215,7 +1273,7 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 322--322
 
 [10
 
- <./figures/fig9_fuzzing_coverage.png>]
+]
 Overfull \hbox (1.0pt too wide) in paragraph at lines 338--338
 [][]  
  []
@@ -1242,12 +1300,23 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 380--380
 [13
 
 ]
-<figures/fig4_performance_throughput.png, id=102, 578.16pt x 361.35pt>
-File: figures/fig4_performance_throughput.png Graphic file (type png)
-<use figures/fig4_performance_throughput.png>
-Package pdftex.def Info: figures/fig4_performance_throughput.png  used on input
- line 406.
-(pdftex.def)             Requested size: 189.20543pt x 118.25339pt.
+
+LaTeX Warning: File `figures/fig4_performance_throughput.png' not found on inpu
+t line 406.
+
+
+! Package pdftex.def Error: File `figures/fig4_performance_throughput.png' not 
+found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.406 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 406--406
 [][]  
@@ -1255,13 +1324,24 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 406--406
 
 [14
 
- <./figures/fig4_performance_throughput.png>]
-<figures/fig5_whitebox_coverage.png, id=109, 650.43pt x 397.485pt>
-File: figures/fig5_whitebox_coverage.png Graphic file (type png)
-<use figures/fig5_whitebox_coverage.png>
-Package pdftex.def Info: figures/fig5_whitebox_coverage.png  used on input line
- 431.
-(pdftex.def)             Requested size: 189.20543pt x 115.62553pt.
+]
+
+LaTeX Warning: File `figures/fig5_whitebox_coverage.png' not found on input lin
+e 431.
+
+
+! Package pdftex.def Error: File `figures/fig5_whitebox_coverage.png' not found
+: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 431--431
 [][]  
@@ -1269,13 +1349,24 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 431--431
 
 [15
 
- <./figures/fig5_whitebox_coverage.png>]
-<figures/fig11_enhanced_coverage.png, id=116, 722.7pt x 325.215pt>
-File: figures/fig11_enhanced_coverage.png Graphic file (type png)
-<use figures/fig11_enhanced_coverage.png>
-Package pdftex.def Info: figures/fig11_enhanced_coverage.png  used on input lin
-e 444.
-(pdftex.def)             Requested size: 278.83032pt x 125.47365pt.
+]
+
+LaTeX Warning: File `figures/fig11_enhanced_coverage.png' not found on input li
+ne 444.
+
+
+! Package pdftex.def Error: File `figures/fig11_enhanced_coverage.png' not foun
+d: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 444--444
 [][]  
@@ -1283,15 +1374,27 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 444--444
 
 [16
 
- <./figures/fig11_enhanced_coverage.png>]
+]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 470.
-<figures/fig8_unsafe_inventory.png, id=123, 505.89pt x 361.35pt>
-File: figures/fig8_unsafe_inventory.png Graphic file (type png)
-<use figures/fig8_unsafe_inventory.png>
-Package pdftex.def Info: figures/fig8_unsafe_inventory.png  used on input line 
-470.
-(pdftex.def)             Requested size: 162.52107pt x 116.08649pt.
+
+
+LaTeX Warning: File `figures/fig8_unsafe_inventory.png' not found on input line
+ 470.
+
+
+! Package pdftex.def Error: File `figures/fig8_unsafe_inventory.png' not found:
+ using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.470 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 470--470
 [][]  
@@ -1299,13 +1402,24 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 470--470
 
 [17
 
- <./figures/fig8_unsafe_inventory.png>]
-<figures/fig12_test_dashboard.png, id=131, 722.7pt x 361.35pt>
-File: figures/fig12_test_dashboard.png Graphic file (type png)
-<use figures/fig12_test_dashboard.png>
-Package pdftex.def Info: figures/fig12_test_dashboard.png  used on input line 4
-83.
-(pdftex.def)             Requested size: 277.28647pt x 138.64323pt.
+]
+
+LaTeX Warning: File `figures/fig12_test_dashboard.png' not found on input line 
+483.
+
+
+! Package pdftex.def Error: File `figures/fig12_test_dashboard.png' not found: 
+using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.483 \end{frame}
+                 
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Overfull \hbox (1.0pt too wide) in paragraph at lines 483--483
 [][]  
@@ -1313,7 +1427,7 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 483--483
 
 [18
 
- <./figures/fig12_test_dashboard.png>]
+]
 Overfull \hbox (1.0pt too wide) in paragraph at lines 496--496
 [][]  
  []
@@ -1339,14 +1453,24 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 496--496
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `slides.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `slides.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25858 strings out of 469006
- 513859 string characters out of 5454814
- 888565 words of memory out of 5000000
- 53987 multiletter control sequences out of 15000+600000
+ 26031 strings out of 469006
+ 523859 string characters out of 5454814
+ 888409 words of memory out of 5000000
+ 54167 multiletter control sequences out of 15000+600000
  729159 words of font info for 108 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  101i,12n,107p,381b,869s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1360,10 +1484,10 @@ sic/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2026basic/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026bas
 ic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on slides.pdf (21 pages, 862102 bytes).
+Output written on slides.pdf (21 pages, 187419 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 195 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  43 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

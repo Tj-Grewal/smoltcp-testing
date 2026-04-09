@@ -4,7 +4,7 @@
 
 - Mutation enhancement results:
   - Total mutants: 333 (Windows), 333 (WSL)
-  - Kill ratio: 69.67% (Windows), 69.67% (WSL)
+  - Kill ratio: 69.18% (Windows), 69.18% (WSL)
   - Live mutant highlights: M0004 (assembler::peek_front), M0009 (assembler::add), M0015 (assembler::fmt), M0020 (assembler::remove_front), M0038 (assembler::add)
 - IPv4 combinatorial results:
   - Total cases: 216 (Windows), 216 (WSL)
@@ -35,7 +35,7 @@ Artifacts:
 
 Key metrics:
 - Total mutants: 333 (Windows), 333 (WSL)
-- Kill ratio: 69.67% (Windows), 69.67% (WSL)
+- Kill ratio: 69.18% (Windows), 69.18% (WSL)
 - Per-file kill ratios (Windows/WSL identical):
   - src/storage/assembler.rs: 0.8941
   - src/wire/ipv4.rs: 0.6136
