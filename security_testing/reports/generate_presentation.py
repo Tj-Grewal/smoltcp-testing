@@ -312,7 +312,7 @@ add_image_slide(slide, "Cross-Platform Portability",
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 add_image_slide(slide, "Quality Assessment Dashboard",
                 os.path.join(FIGURES, 'fig12_test_dashboard.png'),
-                "Mutation adequacy (69.67%) is the primary area for improvement")
+                "Mutation adequacy (69.18%) is the primary area for improvement")
 
 
 # ══════════════════════════════════════════════════════════════════

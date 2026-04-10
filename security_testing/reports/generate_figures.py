@@ -284,7 +284,7 @@ def fig11_enhanced_coverage():
 def fig12_test_dashboard():
     suites = ['Mutation\nAdequacy', 'Input\nPartition', 'Conformance', 'Fuzzing', 'Performance',
               'White-Box\nCoverage', 'Safety', 'IPv4\nCombinatorial', 'Microbench']
-    scores = [69.67, 100, 100, 100, 100, 80.63, 100, 100, 100]
+    scores = [69.18, 100, 100, 100, 100, 80.63, 100, 100, 100]
     colors_list = []
     for s in scores:
         if s >= 95: colors_list.append(C_GREEN)
