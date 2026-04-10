@@ -6,19 +6,19 @@
 
 ## Slide 1 — Title (30 seconds)
 
-> Good afternoon everyone. Today we'll be presenting our quality assessment and improvement of smoltcp version 0.12.0 — an open-source, event-driven TCP/IP stack written in Rust that's designed for embedded and resource-constrained systems. This is our final project for Security Testing and Software Quality Assurance, completed in April 2026.
+> Good afternoon everyone. Today we'll be presenting our quality assessment and improvement of smoltcp — an open-source, event-driven TCP/IP stack written in Rust that's designed for embedded and resource-constrained systems. This is our final project for Security Testing and Software Quality Assurance.
 
 ---
 
 ## Slide 2 — Agenda (30 seconds)
 
-> Here's a quick overview of what we'll cover. We conducted testing across eight quality dimensions — from mutation adequacy and input space partitioning, to security fuzzing, RFC conformance, performance benchmarks, white-box coverage, and software safety analysis. We'll walk through each of these, and then wrap up with our consolidated quality dashboard and conclusions.
+> Here's a quick overview of what we'll cover. We conducted testing across eight quality dimensions — from mutation adequacy and input space partitioning, to security fuzzing, RFC conformance, performance benchmarks, white-box coverage, and software safety analysis. We'll walk through each of these, and then wrap up with our quality dashboard and conclusions.
 
 ---
 
 ## Slide 3 — Introduction (45 seconds)
 
-> So what exactly is smoltcp? It's a standalone TCP/IP stack written entirely in Rust, designed for bare-metal and embedded systems. One of the key properties of Rust is its memory-safety guarantees — it eliminates entire classes of vulnerabilities like buffer overflows, use-after-free, and double-free bugs at compile time. However, this doesn't mean the code is free from all defects. Logic errors, specification deviations, and performance regressions can still exist, and that's exactly what our assessment investigates. We tested across two platforms — Windows 10 with the MSVC toolchain and Ubuntu 24.04 with GNU and LLVM — to evaluate both correctness and cross-platform portability.
+> So what exactly is smoltcp? It's a standalone TCP/IP stack written entirely in Rust, designed for bare-metal and embedded systems. One of the key properties of Rust is its memory-safety guarantees — it eliminates entire classes of vulnerabilities like buffer overflows, use-after-free, and double-free bugs at compile time. However, this doesn't mean the code is free from all defects. Logic errors, specification deviations, and performance regressions can still exist, and that's exactly what our assessment investigates. We tested across two platforms — Windows 10 and Ubuntu — to evaluate both correctness and cross-platform portability.
 
 ---
 
@@ -78,9 +78,9 @@
 
 ## Slide 11 — Fuzzing Platform Issue (45 seconds)
 
-> Why zero crashes? This is directly attributable to Rust's memory-safety guarantees — bounds checking, no null pointer dereferences, and safe integer arithmetic by default. These are exactly the vulnerability classes that fuzzing typically uncovers in C and C++ network stacks, and Rust eliminates them at the language level.
+> Why zero crashes? This is directly because of Rust's memory-safety guarantees — bounds checking, no null pointer dereferences, and safe integer arithmetic by default. These are exactly the vulnerability classes that fuzzing typically uncovers in C and C++ network stacks, and Rust eliminates them at the language level.
 
-> On the portability side, all fuzzing attempts failed on Windows due to missing ASAN runtime DLLs and unresolved sanitizer-coverage symbols. This is a known MSVC/libFuzzer compatibility Issue and represents a significant gap for Windows-based security testing workflows.
+> On the portability side, all fuzzing attempts failed on Windows due to missing runtime DLLs and unresolved sanitizer-coverage symbols. This is a known MSVC/libFuzzer compatibility Issue and represents a significant gap for Windows-based security testing workflows.
 
 ---
 
@@ -102,25 +102,25 @@
 
 > For performance testing, we developed a custom loopback benchmark that transmits 128 megabytes of data through smoltcp's internal stack using in-memory buffers. We ran five trials on each platform.
 
-> The results show a striking difference: Ubuntu 24.04 achieved an average throughput of 52.15 gigabits per second, while Windows managed only 17.11 — approximately a 3x performance gap. We used identical in-memory loopback harnesses on both platforms to keep the comparison fair, so this difference reflects genuine platform-level overhead differences.
+> The results show a striking difference: Ubuntu achieved an average throughput of 52.15 gigabits per second, while Windows managed only 17.11 — approximately a 3x performance gap. We used identical in-memory loopback harnesses on both platforms to keep the comparison fair, so this difference reflects genuine platform-level overhead differences.
 
 ---
 
 ## Slide 15 — White-Box Coverage (45 seconds)
 
-> White-box coverage was measured using cargo-llvm-cov with LLVM's source-based coverage instrumentation. The results show that `assembler.rs` achieved near-complete coverage at 98.28% of regions, reflecting its extensive test suite. The protocol wire modules showed good coverage for parsing paths — over 90% — but lower coverage for emission and error-handling paths. `tcp.rs` had the lowest coverage at 72.58% due to its complexity and many protocol state combinations.
+> White-box coverage was measured using cargo-llvm-cov with LLVM's source-based coverage tools. The results show that `assembler.rs` achieved near-complete coverage at 98.28% of regions, reflecting its extensive test suite. The protocol wire modules showed good coverage for parsing paths — over 90% — but lower coverage for emission and error-handling paths. `tcp.rs` had the lowest coverage at 72.58% due to its complexity and many protocol state combinations.
 
 ---
 
 ## Slide 16 — Enhanced Coverage (30 seconds)
 
-> We also conducted enhanced coverage measurement for the IPv4 combinatorial and microbenchmark test suites, achieving 98.53% and 98.76% region coverage respectively, with only 4 and 2 missed regions. While the remaining gaps are small in absolute terms, they provide a concrete and actionable roadmap for targeted future test additions.
+> We also did coverage measurement for the IPv4 combinatorial and microbenchmark test suites, achieving 98.53% and 98.76% region coverage respectively, with only 4 and 2 missed regions. While the remaining gaps are small in absolute terms, they provide a concrete roadmap for targeted future test additions.
 
 ---
 
 ## Slide 17 — Software Safety (1 minute)
 
-> For software safety, we conducted two analyses. First, panic-safety testing verified that smoltcp's parsing functions handle malformed inputs gracefully — zero-length buffers, truncated headers, and maximum-value fields all returned proper error results rather than panicking. All tests passed on both platforms.
+> For software safety, we conducted two analysis experiments. First, panic-safety testing verified that smoltcp's parsing functions handle wrong inputs gracefully — zero-length buffers, truncated headers, and maximum-value fields all returned proper error results rather than panicking. All tests passed on both platforms.
 
 > Second, we performed an unsafe code inventory and found 18 unsafe code occurrences across four files. Critically, all of these are confined to the PHY layer — the platform-specific FFI calls for Berkeley Packet Filter, raw sockets, and TUN/TAP interfaces. Zero unsafe code exists in the core protocol parsing or state machine modules, which is a significant safety property.
 
@@ -128,28 +128,26 @@
 
 ## Slide 18 — Quality Dashboard (30 seconds)
 
-> This consolidated dashboard summarizes all our quality scores. Mutation adequacy at about 70% is the primary area for improvement. All other quality dimensions — input partitioning, fuzzing, conformance, performance, coverage, and safety — achieved 80% or above. The dashboard confirms that smoltcp's core parsing and protocol handling is robust, but the test suite would benefit from additional boundary-condition tests on the wire protocol modules.
+> This dashboard summarizes all our quality scores. Mutation adequacy at about 70% is the primary area for improvement. All other quality dimensions — input partitioning, fuzzing, conformance, performance, coverage, and safety — achieved 80% or above. The dashboard confirms that smoltcp's core parsing and protocol handling is robust, but the test suite would benefit from additional boundary-condition tests on the wire protocol modules.
 
 ---
 
 ## Slide 19 — Cross-Platform Portability (30 seconds)
 
-> Regarding cross-platform portability: 8 of our 9 test suites executed successfully on both Windows and Ubuntu. The sole exception was fuzzing, blocked on Windows by the MSVC/libFuzzer incompatibility we discussed. Our performance harness used a custom in-memory loopback to ensure fair cross-platform comparison. These findings underscore the importance of testing across multiple toolchains in real-world deployment scenarios.
+> Regarding cross-platform portability: 8 of our 9 test suites finished successfully on both Windows and Ubuntu. The sole exception was fuzzing, blocked on Windows by the MSVC/libFuzzer incompatibility we discussed. Our performance harness used a custom in-memory loopback to ensure fair cross-platform comparison. These findings underscore the importance of testing across multiple toolchains in real-world deployment scenarios.
 
 ---
 
 ## Slide 20 — Conclusions (45 seconds)
 
-> To summarize our key takeaways: We achieved a 69.18% adjusted mutation adequacy across 333 mutants, with the assembler module leading at nearly 90%. Our 696 input partition test cases all passed with a 100% rate. Zero crash artifacts from fuzzing confirm Rust's memory safety in practice. We documented two RFC deviations that could be security-relevant in strict deployment contexts. We observed a 3x performance gap between Ubuntu and Windows. And critically, no unsafe code exists in any of the core protocol modules.
+> To summarize our key takeaways: We achieved a 69.18% adjusted mutation adequacy across 333 mutants, with the assembler module leading at nearly 90%. Our 696 input partition test cases all passed with a 100% rate. Zero crash artifacts from fuzzing confirm Rust's memory safety in practice. We documented two RFC deviations that could be security-relevant in certain deployment contexts. We observed a 3x performance gap between Ubuntu and Windows. And critically, no unsafe code exists in any of the core protocol modules.
 
-> Overall, smoltcp v0.12.0 is a well-engineered TCP/IP stack with strong safety properties. The main recommendation is to add boundary-condition tests targeting the wire protocol modules to close the mutation adequacy gap.
+> Overall, smoltcp is a well-engineered TCP/IP stack with strong safety properties. The main recommendation is to add boundary-condition tests targeting the wire protocol modules to close the mutation adequacy gap.
 
 ---
 
 ## Slide 21 — Thank You (15 seconds)
 
-> Thank you for your attention. We're happy to take any questions.
+> Thank you for your time!
 
 ---
-
-**Total: approximately 12–14 minutes**
