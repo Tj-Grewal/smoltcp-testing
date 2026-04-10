@@ -14,6 +14,8 @@
 
 > Here's a quick overview of what we'll cover. We conducted testing across eight quality dimensions — from mutation adequacy and input space partitioning, to security fuzzing, RFC conformance, performance benchmarks, white-box coverage, and software safety analysis. We'll walk through each of these, and then wrap up with our quality dashboard and conclusions.
 
+> We initially ran two confidence phases: a cross-target portability matrix and concurrency model checking with Loom. Both produced strong results, but because most behaviors were passing, we expanded into deeper security and quality dimensions to stress the stack more thoroughly and to surface actionable gaps.
+
 ---
 
 ## Slide 3 — Introduction (45 seconds)
@@ -132,13 +134,27 @@
 
 ---
 
-## Slide 19 — Cross-Platform Portability (30 seconds)
+## Slide 19 — Portability: Cross-Target Matrix (45 seconds)
 
-> Regarding cross-platform portability: 8 of our 9 test suites finished successfully on both Windows and Ubuntu. The sole exception was fuzzing, blocked on Windows by the MSVC/libFuzzer incompatibility we discussed. Our performance harness used a custom in-memory loopback to ensure fair cross-platform comparison. These findings underscore the importance of testing across multiple toolchains in real-world deployment scenarios.
+> Beyond just running on Windows and Ubuntu, we expanded portability testing across a cross-compilation matrix using `cross`. In total, we executed 42 runs: 8 hosted targets across four feature profiles, plus bare-metal build checks and netsim integration tests under emulation.
+
+> This matrix includes the targets most likely to expose hidden portability bugs — big-endian PowerPC, multiple 32-bit targets, and alignment-sensitive architectures. The key result is simple: everything passed cleanly, which provides stronger evidence that smoltcp's wire-format logic is robust across endianness, pointer-width, and alignment differences.
+
+> The one portability gap we did observe was tooling-related: fuzzing remains blocked on Windows due to MSVC/libFuzzer incompatibilities.
 
 ---
 
-## Slide 20 — Conclusions (45 seconds)
+## Slide 20 — Concurrency: Loom Model Checking (45 seconds)
+
+> Finally, we added a concurrency-focused safety check using Loom. The risk here is a classic async failure mode: a lost wake can leave an awaiting task hung indefinitely, and these bugs can depend on rare thread interleavings that normal unit tests are unlikely to hit.
+
+> Loom exhaustively explores the possible orderings. We ran three loom checks that cover register-vs-wake races, concurrent waker replacement, and wake-then-reregister. All interleavings passed with zero panics and zero deadlocks.
+
+> An interesting outcome is that Loom actually helped us correct our own test-plan assumption: it found a valid interleaving that ends with no waker registered, which is correct behavior.
+
+---
+
+## Slide 21 — Conclusions (45 seconds)
 
 > To summarize our key takeaways: We achieved a 69.18% adjusted mutation adequacy across 333 mutants, with the assembler module leading at nearly 90%. Our 696 input partition test cases all passed with a 100% rate. Zero crash artifacts from fuzzing confirm Rust's memory safety in practice. We documented two RFC deviations that could be security-relevant in certain deployment contexts. We observed a 3x performance gap between Ubuntu and Windows. And critically, no unsafe code exists in any of the core protocol modules.
 
@@ -146,7 +162,7 @@
 
 ---
 
-## Slide 21 — Thank You (15 seconds)
+## Slide 22 — Thank You (15 seconds)
 
 > Thank you for your time!
 

@@ -417,11 +417,69 @@ src/phy/sys/tuntap_interface.rs,6
 
 All unsafe blocks are confined to FFI (Foreign Function Interface) calls to platform-specific system APIs (Berkeley Packet Filter, raw sockets, TUN/TAP interfaces). No unsafe code exists in the core protocol parsing or state machine modules, which is a significant safety property.
 
+\subsection{Concurrency Protocol Model Checking (Loom)}
+
+smoltcp's optional \texttt{async} feature relies on a register/wake handshake between executor tasks and \texttt{Interface::poll()}. A single lost wake can silently cause an awaiting task to hang indefinitely, and defects of this kind are highly interleaving-dependent, making them difficult to trigger with conventional unit tests.
+
+To address this risk, we used the \texttt{loom} model checker to exhaustively explore thread interleavings for a model of the \texttt{WakerRegistration} protocol. Rather than introducing invasive \texttt{\#[cfg(loom)]} changes into the production code, we adopted a model-based approach: a \texttt{WakerSlot} wrapped in \texttt{loom::sync::Mutex} mirrors the semantics of \texttt{register()} and \texttt{wake()}, including the \texttt{will\_wake()} optimization.
+
+Three loom tests were executed with \texttt{LOOM\_MAX\_PREEMPTIONS=3}, covering (1) a register vs.
+wake race, (2) concurrent waker replacement, and (3) wake-then-reregister. All explored interleavings satisfied the final-state assertions with \textbf{zero panics} and \textbf{zero deadlocks}. Loom also improved our own test specification: an initial assertion in the wake-then-reregister scenario was revised after loom produced a valid interleaving leaving the final state with no registered waker.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth]{extra/extra_figs/pres-slide11-loom-results.png}
+\caption{Loom model checking results for the async waker register/wake protocol.}
+\label{fig:loom}
+\end{figure}
+
 % ══════════════════════════════════════════════════════════════════
 \section{Cross-Platform Portability Analysis}
 % ══════════════════════════════════════════════════════════════════
 
-The dual-platform execution strategy revealed that 8 of 9 test suites executed successfully on both platforms. The sole exception was fuzzing, which was blocked on Windows due to MSVC/libFuzzer incompatibility. Loopback performance measurements relied on a custom in-memory harness to keep execution comparable across platforms. These findings underscore the importance of testing across multiple toolchains in real-world deployment scenarios.
+\subsection{Host Toolchain Portability (Windows vs.\ Ubuntu)}
+
+The dual-platform execution strategy revealed that 8 of 9 test suites executed successfully on both Windows and Ubuntu. The sole exception was fuzzing, which was blocked on Windows due to MSVC/libFuzzer incompatibility. Loopback performance measurements relied on a custom in-memory harness to keep execution comparable across platforms. These findings underscore the importance of testing across multiple toolchains in real-world deployment scenarios.
+
+\subsection{Cross-Architecture \& Feature-Profile Portability}
+
+Because smoltcp targets embedded and resource-constrained systems, portability risks extend beyond OS differences. Network wire formats are inherently big-endian; some ISAs are alignment-strict; and 32-bit targets surface pointer-width assumptions that 64-bit development hosts can hide. To exercise these failure modes, we executed the existing test suite across a cross-compilation matrix using \texttt{cross} (QEMU-backed where applicable):
+
+\begin{itemize}[noitemsep]
+\item \textbf{8 hosted targets $\times$ 4 feature profiles} (\texttt{protocol-full}, \texttt{ipv4-stack}, \texttt{ipv6-stack}, \texttt{dual-stack}) for \textbf{32} test runs.
+\item \textbf{1 bare-metal Cortex-M target $\times$ 3 \texttt{no\_std} profiles} (build-only) for \textbf{3} runs.
+\item \textbf{7 netsim integration runs} under emulation for \textbf{7} runs.
+\end{itemize}
+
+\textbf{Result:} all \textbf{42} runs passed with zero test failures and no runtime panics. The matrix explicitly includes a big-endian host (\texttt{powerpc}), multiple 32-bit targets (\texttt{i686}, \texttt{armv7}, \texttt{mipsel}), and both glibc and musl environments, providing evidence against latent endianness, alignment, and pointer-width defects.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{extra/extra_figs/pres-slide03-test-matrix.png}
+\caption{Cross-compilation portability matrix (hosted, bare-metal, and netsim integration runs).}
+\label{fig:portability-matrix}
+\end{figure}
+
+\subsection{Compiler Warning Taxonomy}
+
+Although all builds succeeded, the portability sweep surfaced compilation warnings that would become hard failures under \texttt{-D warnings}. Manual classification shows that warnings in library code are overwhelmingly \textbf{feature-conditional} (items used in some feature profiles but unused in others), while \textbf{genuinely dead} warnings are isolated to test-only code plus a single unused library import.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Category & Unique warnings & Feature-conditional & Genuinely dead \\
+\midrule
+Library code & 32 & 31 & 1 \\
+Test-only code & 17 & 0 & 17 \\
+\bottomrule
+\end{tabular}
+\caption{Warning classification across the portability build matrix.}
+\label{tab:warning-taxonomy}
+\end{table}
+
+This indicates strong functional portability, but also suggests a practical CI hardening opportunity: enforcing \texttt{-D warnings} on a representative feature profile (e.g., \texttt{protocol-full}) or adding narrowly scoped \texttt{\#[allow(unused)]} annotations where feature-gating makes warnings unavoidable.
 
 % ══════════════════════════════════════════════════════════════════
 \section{Quality Assessment Dashboard}
@@ -449,6 +507,7 @@ This quality assessment demonstrates that smoltcp v0.12.0 is a well-engineered T
 \item \textbf{Two RFC deviations} documented: permissive IPv4 header length validation and IPv6 UDP zero-checksum acceptance.
 \item \textbf{3$\times$ performance gap} between Ubuntu 24.04 and Windows loopback throughput.
 \item \textbf{White-box missed-region analysis} highlighted under-tested error-handling and edge-case branches, providing a concrete roadmap for targeted test additions.
+\item \textbf{42 cross-target portability runs} and \textbf{3 loom model-checking tests} completed with zero failures.
 
 \end{itemize}
 

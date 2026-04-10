@@ -17,6 +17,10 @@
 \contentsline {section}{\numberline {8}Software Safety}{10}{section.8}%
 \contentsline {subsection}{\numberline {8.1}Panic Safety Testing}{10}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Unsafe Code Inventory}{10}{subsection.8.2}%
-\contentsline {section}{\numberline {9}Cross-Platform Portability Analysis}{11}{section.9}%
-\contentsline {section}{\numberline {10}Quality Assessment Dashboard}{11}{section.10}%
-\contentsline {section}{\numberline {11}Conclusions and Recommendations}{12}{section.11}%
+\contentsline {subsection}{\numberline {8.3}Concurrency Protocol Model Checking (Loom)}{11}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Cross-Platform Portability Analysis}{12}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Host Toolchain Portability (Windows vs.\ Ubuntu)}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Cross-Architecture \& Feature-Profile Portability}{12}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Compiler Warning Taxonomy}{13}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Quality Assessment Dashboard}{13}{section.10}%
+\contentsline {section}{\numberline {11}Conclusions and Recommendations}{14}{section.11}%

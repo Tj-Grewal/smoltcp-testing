@@ -478,20 +478,38 @@ RFC~2460 mandates non-zero checksums for UDP/IPv6, but smoltcp accepts zero-chec
 \end{itemize}
 \end{frame}
 
-% ─────────────────────── SLIDE 19 : CROSS-PLATFORM ───────────────────────
-\begin{frame}{Cross-Platform Portability}
-\begin{block}{Dual-platform execution}
-\textbf{8 of 9} test suites executed successfully on both Windows and Ubuntu.
-\end{block}
-\vspace{0.3cm}
-\begin{itemize}
-  \item \textbf{Sole exception:} Fuzzing blocked on Windows (MSVC/libFuzzer issue)
-  \item Performance harness used custom in-memory loopback for fair comparison
-  \item Results underscore importance of multi-toolchain testing
+% ─────────────────────── SLIDE 19 : PORTABILITY MATRIX ───────────────────────
+\begin{frame}{Portability: Cross-Target Matrix}
+\begin{columns}[c]
+\begin{column}{0.60\textwidth}
+  \centering
+  \includegraphics[width=0.98\textwidth,height=0.72\textheight,keepaspectratio]{extra/extra_figs/pres-slide03-test-matrix.png}
+\end{column}
+\begin{column}{0.38\textwidth}
+  \begin{itemize}\small
+    \item \textbf{42 runs} via \texttt{cross}: 8 hosted targets $\times$ 4 profiles
+    \item Includes \textbf{big-endian PowerPC}, \textbf{32-bit}, musl, and MIPS
+    \item Netsim integration also passes (QEMU is slower off x86)
+    \item Windows fuzzing blocked (MSVC/libFuzzer compatibility)
+  \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ─────────────────────── SLIDE 20 : CONCURRENCY (LOOM) ───────────────────────
+\begin{frame}{Concurrency: Loom Model Checking}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.50\textheight,keepaspectratio]{extra/extra_figs/pres-slide11-loom-results.png}
+\vspace{0.25cm}
+
+\begin{itemize}\small
+  \item Exhaustively explores async register/wake interleavings
+  \item \textbf{3 loom checks}, \textbf{6/6 orderings}, \textcolor{maingreen}{0 panics / 0 deadlocks}
+  \item Loom also corrected a test-plan assertion (valid final state with no waker)
 \end{itemize}
 \end{frame}
 
-% ─────────────────────── SLIDE 20 : CONCLUSIONS ───────────────────────
+% ─────────────────────── SLIDE 21 : CONCLUSIONS ───────────────────────
 {
 \setbeamertemplate{background}{%
   \begin{tikzpicture}[remember picture,overlay]
@@ -514,6 +532,7 @@ RFC~2460 mandates non-zero checksums for UDP/IPv6, but smoltcp accepts zero-chec
     \item[\textcolor{lightgreen}{$\checkmark$}] \color{white}\textbf{Two RFC deviations} documented (IPv4 IHL, IPv6 UDP cksum)
     \item[\textcolor{lightgreen}{$\checkmark$}] \color{white}\textbf{3$\times$ performance gap} (Ubuntu vs.\ Windows)
     \item[\textcolor{lightgreen}{$\checkmark$}] \color{white}\textbf{No unsafe code} in core protocol modules
+    \item[\textcolor{lightgreen}{$\checkmark$}] \color{white}\textbf{Cross-target \& loom checks} completed with zero failures
   \end{itemize}
   \vspace{0.5cm}
   {\color{white!80}\small smoltcp v0.12.0 is well-engineered with strong safety properties\\
@@ -521,7 +540,7 @@ RFC~2460 mandates non-zero checksums for UDP/IPv6, but smoltcp accepts zero-chec
 \end{frame}
 }
 
-% ─────────────────────── SLIDE 21 : THANK YOU ───────────────────────
+% ─────────────────────── SLIDE 22 : THANK YOU ───────────────────────
 {
 \setbeamertemplate{background}{%
   \begin{tikzpicture}[remember picture,overlay]
