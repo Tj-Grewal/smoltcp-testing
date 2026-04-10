@@ -164,36 +164,6 @@ def fig5_whitebox_coverage():
     plt.close(fig)
 
 
-# ═══════════════════════════════════════════════════════════════
-# FIGURE 6: Conformance Test Results
-# ═══════════════════════════════════════════════════════════════
-def fig6_conformance():
-    cases = [
-        'ipv4_bad_version', 'ipv4_hdr_len_lt_min', 'ipv4_total_lt_hdr',
-        'ipv4_invalid_cksum', 'ipv4_cksum_ignored', 'udp_len_lt_hdr',
-        'udp_dst_port_zero', 'udp_ipv4_zero_cksum', 'udp_ipv6_zero_cksum'
-    ]
-    expected = [False, True, False, False, True, False, False, True, True]
-    actual   = [False, True, False, False, True, False, False, True, True]
-    match    = [e == a for e, a in zip(expected, actual)]
-
-    fig, ax = plt.subplots(figsize=(10, 4))
-    colors = [C_GREEN if m else C_RED for m in match]
-    y = np.arange(len(cases))
-    ax.barh(y, [1]*len(cases), color=colors, edgecolor='white', linewidth=1, height=0.6)
-    for i, (c, m) in enumerate(zip(cases, match)):
-        ax.text(0.5, i, '✓ PASS' if m else '✗ FAIL', ha='center', va='center',
-                fontweight='bold', fontsize=10, color='white')
-    ax.set_yticks(y)
-    ax.set_yticklabels(cases, fontsize=9)
-    ax.set_xlim(0, 1)
-    ax.set_xticks([])
-    ax.set_title('Conformance Test Results (RFC 791 / RFC 768)')
-    ax.invert_yaxis()
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'fig6_conformance.png'), dpi=200)
-    plt.close(fig)
-
 
 # ═══════════════════════════════════════════════════════════════
 # FIGURE 7: Input Space Partition Model
@@ -275,35 +245,6 @@ def fig9_fuzzing_coverage():
 
 
 # ═══════════════════════════════════════════════════════════════
-# FIGURE 10: Microbenchmark Results
-# ═══════════════════════════════════════════════════════════════
-def fig10_microbench():
-    benchmarks = ['ipv4_parse', 'udp_parse_emit', 'ring_buffer_cycle']
-    win_mean = [10.726, 24.436, 0.474]
-    wsl_mean = [12.148, 24.649, 0.474]
-
-    x = np.arange(len(benchmarks))
-    w = 0.35
-
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(x - w/2, win_mean, w, label='Windows', color=C_WIN, edgecolor='white', linewidth=0.5)
-    ax.bar(x + w/2, wsl_mean, w, label='WSL', color=C_WSL, edgecolor='white', linewidth=0.5)
-
-    for i in range(len(benchmarks)):
-        ax.text(i - w/2, win_mean[i] + 0.3, f'{win_mean[i]:.1f}', ha='center', fontsize=9, fontweight='bold')
-        ax.text(i + w/2, wsl_mean[i] + 0.3, f'{wsl_mean[i]:.1f}', ha='center', fontsize=9, fontweight='bold')
-
-    ax.set_ylabel('Mean Time (ns/iter)')
-    ax.set_title('Microbenchmark Performance (ns/iteration)')
-    ax.set_xticks(x)
-    ax.set_xticklabels(benchmarks, rotation=15)
-    ax.legend(frameon=True, fancybox=True, shadow=True)
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'fig10_microbench.png'), dpi=200)
-    plt.close(fig)
-
-
-# ═══════════════════════════════════════════════════════════════
 # FIGURE 11: Enhanced Coverage (IPv4 Combinatorial + Microbench)
 # ═══════════════════════════════════════════════════════════════
 def fig11_enhanced_coverage():
@@ -371,60 +312,6 @@ def fig12_test_dashboard():
     plt.close(fig)
 
 
-# ═══════════════════════════════════════════════════════════════
-# FIGURE 13: Equivalent Mutant Analysis
-# ═══════════════════════════════════════════════════════════════
-def fig13_equivalent_mutants():
-    mutants = ['M0004\nconst_0_1\nassembler:289', 'M0009\nrel_gt_ge\nassembler:267',
-               'M0015\nbool_and_or\nassembler:29', 'M0020\nrel_lt_le\nassembler:273',
-               'M0038\nrel_gt_ge\nassembler:267']
-    classification = ['Equivalent', 'Killable', 'Equivalent', 'Killable', 'Killable']
-    colors = [C_GRAY if c == 'Equivalent' else C_AMBER for c in classification]
-
-    fig, ax = plt.subplots(figsize=(9, 4))
-    y = np.arange(len(mutants))
-    ax.barh(y, [1]*len(mutants), color=colors, edgecolor='white', linewidth=1, height=0.6)
-    for i, (m, c) in enumerate(zip(mutants, classification)):
-        ax.text(0.5, i, c, ha='center', va='center', fontweight='bold', fontsize=11, color='white')
-    ax.set_yticks(y)
-    ax.set_yticklabels(mutants, fontsize=8)
-    ax.set_xlim(0, 1)
-    ax.set_xticks([])
-    ax.set_title('Equivalent Mutant Analysis (Top 5 Survivors)')
-    ax.invert_yaxis()
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'fig13_equivalent_mutants.png'), dpi=200)
-    plt.close(fig)
-
-
-# ═══════════════════════════════════════════════════════════════
-# FIGURE 14: Cross-Platform Portability Matrix
-# ═══════════════════════════════════════════════════════════════
-def fig14_portability_matrix():
-    suites = ['Mutation', 'Input Part.', 'Conformance', 'Fuzzing',
-              'Loopback Perf', 'Coverage', 'Safety', 'IPv4 Comb.', 'Microbench']
-    windows = [1, 1, 1, 0, 1, 1, 1, 1, 1]  # 1=pass, 0=blocked
-    wsl     = [1, 1, 1, 1, 1, 1, 1, 1, 1]
-
-    fig, ax = plt.subplots(figsize=(8, 5))
-    data = np.array([windows, wsl])
-    im = ax.imshow(data, cmap='RdYlGn', aspect='auto', vmin=0, vmax=1)
-    ax.set_xticks(np.arange(len(suites)))
-    ax.set_yticks([0, 1])
-    ax.set_xticklabels(suites, rotation=45, ha='right', fontsize=9)
-    ax.set_yticklabels(['Windows', 'WSL'])
-    ax.set_title('Cross-Platform Portability Matrix')
-
-    for i in range(2):
-        for j in range(len(suites)):
-            v = data[i, j]
-            ax.text(j, i, '✓' if v else '✗', ha='center', va='center',
-                    fontweight='bold', fontsize=14, color='white')
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(OUT, 'fig14_portability_matrix.png'), dpi=200)
-    plt.close(fig)
-
 
 if __name__ == '__main__':
     print("Generating figures...")
@@ -438,22 +325,17 @@ if __name__ == '__main__':
     print("  [4/14] Performance throughput")
     fig5_whitebox_coverage()
     print("  [5/14] White-box coverage")
-    fig6_conformance()
-    print("  [6/14] Conformance results")
+
     fig7_partition_heatmap()
     print("  [7/14] Partition heatmap")
     fig8_unsafe_inventory()
     print("  [8/14] Unsafe inventory")
     fig9_fuzzing_coverage()
     print("  [9/14] Fuzzing coverage progression")
-    fig10_microbench()
-    print("  [10/14] Microbenchmark")
+
     fig11_enhanced_coverage()
     print("  [11/14] Enhanced coverage")
     fig12_test_dashboard()
     print("  [12/14] Test dashboard")
-    fig13_equivalent_mutants()
-    print("  [13/14] Equivalent mutants")
-    fig14_portability_matrix()
-    print("  [14/14] Portability matrix")
+
     print(f"\nAll figures saved to: {OUT}")
