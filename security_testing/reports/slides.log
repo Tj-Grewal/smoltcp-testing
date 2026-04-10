@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  9 APR 2026 16:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  9 APR 2026 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1260,10 +1260,10 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 406--406
 File: figures/fig5_whitebox_coverage.png Graphic file (type png)
 <use figures/fig5_whitebox_coverage.png>
 Package pdftex.def Info: figures/fig5_whitebox_coverage.png  used on input line
- 431.
+ 427.
 (pdftex.def)             Requested size: 189.20543pt x 115.62553pt.
 
-Overfull \hbox (1.0pt too wide) in paragraph at lines 431--431
+Overfull \hbox (1.0pt too wide) in paragraph at lines 427--427
 [][]  
  []
 
@@ -1274,10 +1274,10 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 431--431
 File: figures/fig11_enhanced_coverage.png Graphic file (type png)
 <use figures/fig11_enhanced_coverage.png>
 Package pdftex.def Info: figures/fig11_enhanced_coverage.png  used on input lin
-e 444.
+e 440.
 (pdftex.def)             Requested size: 278.83032pt x 125.47365pt.
 
-Overfull \hbox (1.0pt too wide) in paragraph at lines 444--444
+Overfull \hbox (1.0pt too wide) in paragraph at lines 440--440
 [][]  
  []
 
@@ -1285,15 +1285,15 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 444--444
 
  <./figures/fig11_enhanced_coverage.png>]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 470.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 466.
 <figures/fig8_unsafe_inventory.png, id=123, 505.89pt x 361.35pt>
 File: figures/fig8_unsafe_inventory.png Graphic file (type png)
 <use figures/fig8_unsafe_inventory.png>
 Package pdftex.def Info: figures/fig8_unsafe_inventory.png  used on input line 
-470.
+466.
 (pdftex.def)             Requested size: 162.52107pt x 116.08649pt.
 
-Overfull \hbox (1.0pt too wide) in paragraph at lines 470--470
+Overfull \hbox (1.0pt too wide) in paragraph at lines 466--466
 [][]  
  []
 
@@ -1304,17 +1304,17 @@ Overfull \hbox (1.0pt too wide) in paragraph at lines 470--470
 File: figures/fig12_test_dashboard.png Graphic file (type png)
 <use figures/fig12_test_dashboard.png>
 Package pdftex.def Info: figures/fig12_test_dashboard.png  used on input line 4
-83.
+79.
 (pdftex.def)             Requested size: 277.28647pt x 138.64323pt.
 
-Overfull \hbox (1.0pt too wide) in paragraph at lines 483--483
+Overfull \hbox (1.0pt too wide) in paragraph at lines 479--479
 [][]  
  []
 
 [18
 
  <./figures/fig12_test_dashboard.png>]
-Overfull \hbox (1.0pt too wide) in paragraph at lines 496--496
+Overfull \hbox (1.0pt too wide) in paragraph at lines 492--492
 [][]  
  []
 
@@ -1360,7 +1360,7 @@ sic/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2026basic/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026bas
 ic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on slides.pdf (21 pages, 861876 bytes).
+Output written on slides.pdf (21 pages, 861830 bytes).
 PDF statistics:
  216 PDF objects out of 1000 (max. 8388607)
  144 compressed objects within 2 object streams
